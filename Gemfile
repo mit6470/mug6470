@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '>= 3.1.3'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'sqlite3', '>= 1.3.3'
+gem 'mysql2', '>= 0.3.6'
 
 
 # Gems used only for assets and not required
@@ -14,9 +15,18 @@ group :assets do
   gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
+  
+  gem 'therubyracer'
 end
 
-gem 'jquery-rails'
+gem 'json', '>= 1.6.1'
+gem 'jquery-rails', '>= 1.0.0'
+
+# Bundle the extra gems:
+gem 'pwnstyles_rails', '>= 0.1.4'
+gem 'bourbon', '~> 1.2.0'
+gem 'authpwn_rails', '>= 0.10.3'
+gem 'fbgraph_rails', '>=0.2.2' # Rails does not initialize nested engines.
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
