@@ -1,0 +1,12 @@
+<hgroup>
+  <h1>
+    <%= image_tag 'logo.png', :alt => '' %>
+    <span class="app-name">
+      App Name
+    </span>
+  </h1>
+
+  <% if current_user %>
+  <%= render 'layouts/menu' %>
+  <% end %>
+</hgroup>

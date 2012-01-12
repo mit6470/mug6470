@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Email hash:</b>
+  <%= @user.email_hash %>
+</p>
+
+<p>
+  <b>Password salt:</b>
+  <%= @user.password_salt %>
+</p>
+
+<p>
+  <b>Password hash:</b>
+  <%= @user.password_hash %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user.id) %> |
+<%= link_to 'Back', users_path %>
