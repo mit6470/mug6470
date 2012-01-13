@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(:version => 20100725000003) do
 
   create_table "credentials", :force => true do |t|
-    t.integer "user_id",                                     :null => false
-    t.string  "type",     :limit => 32,                      :null => false
+    t.integer "user_id",                                    :null => false
+    t.string  "type",     :limit => 32,                     :null => false
     t.string  "name",     :limit => 128
-    t.boolean "verified",                 :default => false, :null => false
-    t.binary  "key",      :limit => 2048
+    t.boolean "verified",                :default => false, :null => false
+    t.binary  "key"
   end
 
   add_index "credentials", ["type", "name"], :name => "index_credentials_on_type_and_name", :unique => true
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(:version => 20100725000003) do
 
   create_table "users", :force => true do |t|
     t.string   "exuid",      :limit => 32, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "users", ["exuid"], :name => "index_users_on_exuid", :unique => true
