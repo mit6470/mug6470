@@ -34,8 +34,8 @@ Rails framework.
     
 * Java dependencies:
 
-  ** Put weka.jar ([version 3.6.6](/home/yingyin/Downloads/weka-3-6-6/weka.jar)) 
-     in `lib/weka` directory.
+    * Put weka.jar ([version 3.6.6](/home/yingyin/Downloads/weka-3-6-6/weka.jar)) 
+      in lib/weka directory.
 
 * Database setup.
 
