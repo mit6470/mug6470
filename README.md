@@ -8,21 +8,36 @@ Rails framework.
 * OS: Ubuntu 11.10
 * Update Ruby to 1.9.2 on Ubuntu 11.10
     
-    $sudo apt-get remove ruby rubygems ruby1.8 ruby1.8-dev ruby1.8-full
+    $ sudo apt-get remove ruby rubygems ruby1.8 ruby1.8-dev ruby1.8-full
     
-    $sudo apt-get install ruby1.9.1-full
+    $ sudo apt-get install ruby1.9.1-full
     
-    $sudo update-alternatives --set ruby /usr/bin/ruby1.9.1
+    $ sudo update-alternatives --set ruby /usr/bin/ruby1.9.1
     
-    $sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+    $ sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
     
 * Libraries needed for Rails development
 
-    $sudo apt-get install build-essential 
+    $ sudo apt-get install build-essential 
     
-    $sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+    $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
     
-    $sudo apt-get install sqlite3 libsqlite3-dev
+    $ sudo apt-get install sqlite3 libsqlite3-dev
     
-    $sudo gem install bundler
+    $ sudo gem install bundler
+    
+## Setting up the application
+
+* Install all necessary gems, In the project's directory:
+    
+    $ bundle install
+    
+* Java dependencies:
+
+  ** Put weka.jar ([version 3.6.6](/home/yingyin/Downloads/weka-3-6-6/weka.jar)) 
+     in `lib/weka` directory.
+
+* Database setup.
+
+    $ rake db:drop db:create db:migrate db:seed
 
