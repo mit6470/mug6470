@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @classifier.name %>
+</p>
+
+<p>
+  <b>Program name:</b>
+  <%= @classifier.program_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_classifier_path(@classifier) %> |
+<%= link_to 'Back', classifiers_path %>

@@ -1,5 +1,7 @@
 Mug6470::Application.routes.draw do
 
+  resources :classifiers
+
   resource :session, :controller => 'session'
   
   resources :users
