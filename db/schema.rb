@@ -14,14 +14,10 @@
 ActiveRecord::Schema.define(:version => 20120113022131) do
 
   create_table "classifiers", :force => true do |t|
-    t.string   "type",         :limit => 32
-    t.string   "name",         :limit => 32,  :null => false
     t.string   "program_name", :limit => 128, :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
-
-  add_index "classifiers", ["type", "name"], :name => "index_classifiers_on_type_and_name", :unique => true
 
   create_table "config_vars", :force => true do |t|
     t.string "name",  :null => false

@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Name</th>
     <th>Program name</th>
     <th></th>
     <th></th>
@@ -11,7 +10,6 @@
 
 <% @classifiers.each do |classifier| %>
   <tr>
-    <td><%= classifier.name %></td>
     <td><%= classifier.program_name %></td>
     <td><%= link_to 'Show', classifier %></td>
     <td><%= link_to 'Edit', edit_classifier_path(classifier) %></td>

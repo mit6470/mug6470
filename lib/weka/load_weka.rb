@@ -9,10 +9,9 @@ class WekaLoader
   def run
     s = File.read @filename
     all_classifiers = /weka\.classifiers\.Classifier=\\\n(?:\s*weka\.classifiers\.[\w\.]+,?\\?\n)+/m.match s
-    classifiers = all_classifiers[0].scan /weka\.classifiers\.(?<type>\w+)\.(?<name>\w+),?\\?/
-    classifiers.each do |type, name|
-      c = Classifier.new(:name => name, :type => type, 
-                         :program_name => "weka.classifiers.#{type}.#{name}")
+    classifiers = all_classifiers[0].scan /(weka\.classifiers\.(?:\w+\.)+\w+),?\\?/
+    classifiers.each do |name|
+      c = Classifier.new :program_name => name.first
       c.save!
     end
   end
