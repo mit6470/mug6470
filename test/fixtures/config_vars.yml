@@ -1,0 +1,3 @@
+app_uri:
+  name: app_uri
+  value: "http://localhost:3800/"
