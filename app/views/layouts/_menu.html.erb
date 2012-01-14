@@ -1,21 +1,16 @@
 <nav>
   <ol>
-    <li>
-      <%= link_to 'Submenu', '#' %>
-      <ol>
-        <li><%= link_to 'Item 1', '#' %></li>
-        <li><%= link_to 'Item 2', '#' %></li>
-        <li><%= link_to 'Item 3', '#' %></li>
-      </ol>
-    </li>
-    <li>
-      <%= link_to 'Action', '#' %>
-    </li>
-    <li>
-      <%= link_to current_user.email, '#' %>
-    </li>
-    <li>
-      <%= link_to 'Sign out', session_path, :method => :delete %>
-    </li>
+    <% if current_user %>
+      <li>
+        <%= link_to current_user.email, '#' %>
+      </li>
+      <li>
+        <%= link_to 'Sign out', session_path, :method => :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to 'Create account', new_user_path %>
+      </li>
+    <% end %>
   </ol>
 </nav>
