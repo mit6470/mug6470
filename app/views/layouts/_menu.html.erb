@@ -12,11 +12,10 @@
       <%= link_to 'Action', '#' %>
     </li>
     <li>
-      <%= link_to 'username', '#' %>
-      <ol>
-        <li><%= link_to 'Sign out', '#' %></li>
-        <li><%= link_to 'Settings', '#' %></li>
-      </ol>
+      <%= link_to current_user.email, '#' %>
+    </li>
+    <li>
+      <%= link_to 'Sign out', session_path, :method => :delete %>
     </li>
   </ol>
 </nav>

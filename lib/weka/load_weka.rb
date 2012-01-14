@@ -1,13 +1,9 @@
-#!usr/bin/env ruby
-
-# Loads classifier information to the database.
+# Loads classifier, data information to the database.
 class WekaLoader
-  def initialize(filename)
-    @filename = filename  
-  end
   
-  def run
-    s = File.read @filename
+  # Loads the classifier information to the database.
+  def self.load_classifiers(options_filename)
+    s = File.read options_filename
     all_classifiers = /weka\.classifiers\.Classifier=\\\n(?:\s*weka\.classifiers\.[\w\.]+,?\\?\n)+/m.match s
     classifiers = all_classifiers[0].scan /(weka\.classifiers\.(?:\w+\.)+\w+),?\\?/
     classifiers.each do |name|
@@ -15,8 +11,14 @@ class WekaLoader
       c.save!
     end
   end
+  
+  # Loads the data file name to the database.
+  def self.load_data(data_dir)
+    Dir[File.join data_dir, '*'].each do |file|
+      filename = File.basename file
+      d = Datum.new :file_name => filename
+      d.save!
+    end
+  end
 end
 
-if __FILE__ == $0
-  WekaLoader.new('weka_options.props').run
-end
