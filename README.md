@@ -32,11 +32,6 @@ Rails framework.
     
     $ bundle install
     
-* Java dependencies:
-
-    * Put weka.jar ([version 3.6.6](http://prdownloads.sourceforge.net/weka/weka-3-6-6.zip)) 
-      in lib/weka directory.
-
 * Database setup.
 
     $ rake db:drop db:create db:migrate db:seed
