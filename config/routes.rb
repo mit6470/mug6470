@@ -1,6 +1,12 @@
 Mug6470::Application.routes.draw do
 
-  resources :classifiers
+  config_vars
+
+  resources :classifiers do
+    member do
+      get :run
+    end
+  end
 
   resource :session, :controller => 'session'
   

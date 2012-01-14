@@ -80,4 +80,15 @@ class ClassifiersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # GET /classifiers/1/run
+  # GET /classifier/1/run
+  def run
+    @classifier = Classifier.find(params[:id])
+    @result = @classifier.run
+    respond_to do |format|
+      format.html # run.html.erb
+      format.json { render json: @result }
+    end
+  end
 end

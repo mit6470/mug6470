@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Seeds the Classifiers table.
+puts 'Seeding the Classifiers table...'
 require Rails.root.join 'lib/weka/load_weka.rb'
 
 options_file = Rails.root.join 'lib/weka/weka_options.props'
