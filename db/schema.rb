@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120113022131) do
+ActiveRecord::Schema.define(:version => 20120114212057) do
 
   create_table "classifiers", :force => true do |t|
     t.string   "program_name", :limit => 128, :null => false
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(:version => 20120113022131) do
 
   add_index "credentials", ["type", "name"], :name => "index_credentials_on_type_and_name", :unique => true
   add_index "credentials", ["user_id", "type"], :name => "index_credentials_on_user_id_and_type"
+
+  create_table "data", :force => true do |t|
+    t.string   "file_name",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "exuid",      :limit => 32, :null => false

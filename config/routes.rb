@@ -1,5 +1,7 @@
 Mug6470::Application.routes.draw do
 
+  resources :data
+
   config_vars
 
   resources :classifiers do
