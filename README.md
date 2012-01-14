@@ -16,6 +16,22 @@ Rails framework.
     
     $ sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
     
+* Update Ruby to 1.9.2 on Ubuntu < 11.10.
+
+    $ sudo apt-get remove --purge ruby rubygems ruby1.8 ruby1.8-dev ruby1.8-full
+    
+    $ sudo apt-get install ruby1.9.1-full
+
+    $ sudo update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 0
+
+    $ sudo update-alternatives --install /usr/bin/gem gem /usr/bin/gim1.9.1 0
+
+    $ sudo update-alternatives --install /usr/bin/ri ri /usr/bin/ri1.9.1 0
+
+    $ sudo update-alternatives --install /usr/bin/irb irb /usr/bin/irb1.9.1 0
+    
+    $ sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+
 * Libraries needed for Rails development
 
     $ sudo apt-get install build-essential 
