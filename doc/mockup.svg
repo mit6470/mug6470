@@ -42,16 +42,16 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1598"
-     inkscape:window-height="1179"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
      id="namedview4451"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="511.86439"
-     inkscape:cy="227.04401"
+     inkscape:cx="496.36439"
+     inkscape:cy="332.04401"
      inkscape:window-x="0"
-     inkscape:window-y="19"
-     inkscape:window-maximized="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
      inkscape:current-layer="svg4449"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -64,17 +64,32 @@
      id="image4457"
      x="1"
      y="1" />
+  <rect
+     style="fill:#295b5c;fill-opacity:1;stroke:none"
+     id="header"
+     width="962"
+     height="43"
+     x="1"
+     y="64.84375" />
+  <rect
+     style="fill:#48a0a1;fill-opacity:1;stroke:none"
+     id="rect3909"
+     width="86.790283"
+     height="28.609539"
+     x="602.98706"
+     y="79.042992" />
   <g
      transform="translate(-1.90041,-17.909124)"
-     id="g3899">
+     id="g3899"
+     style="fill:#ffffff">
     <text
        sodipodi:linespacing="125%"
        id="text3873"
        y="119.34917"
        x="648.16235"
-       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
        xml:space="preserve"><tspan
-         style="font-family:Arial;-inkscape-font-specification:Arial"
+         style="font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
          y="119.34917"
          x="648.16235"
          id="tspan3875"
@@ -83,62 +98,49 @@
        sodipodi:linespacing="125%"
        id="text3877"
        y="119.34917"
-       x="725.41736"
-       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="749.41736"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
        xml:space="preserve"><tspan
          y="119.34917"
-         x="725.41736"
+         x="749.41736"
          id="tspan3879"
-         sodipodi:role="line">Tool</tspan></text>
+         sodipodi:role="line">Workbench</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3881"
        y="119.34917"
-       x="793.03955"
-       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="835.03955"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
        xml:space="preserve"><tspan
          y="119.34917"
-         x="793.03955"
+         x="835.03955"
          id="tspan3883"
          sodipodi:role="line">Profile</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3885"
        y="119.7896"
-       x="869.34534"
-       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times new roman;-inkscape-font-specification:Times new roman"
+       x="911.34534"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times new roman;-inkscape-font-specification:Times new roman"
        xml:space="preserve"><tspan
-         style="font-family:arial;-inkscape-font-specification:arial"
+         style="fill:#ffffff;font-family:arial;-inkscape-font-specification:arial"
          y="119.7896"
-         x="869.34534"
+         x="911.34534"
          id="tspan3887"
-         sodipodi:role="line">logout</tspan></text>
+         sodipodi:role="line">Sign out</tspan></text>
   </g>
   <text
      xml:space="preserve"
      style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
      x="57.722839"
-     y="92.975197"
+     y="94.975197"
      id="text3889"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
        id="tspan3891"
        x="57.722839"
-       y="92.975197"
-       style="font-size:32px">Logo</tspan></text>
-  <path
-     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-     d="m 0.63375,108.75003 959.68026,0"
-     id="path3897"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="cc" />
-  <rect
-     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-     id="rect3909"
-     width="86.790283"
-     height="28.609539"
-     x="602.98706"
-     y="80.042992" />
+       y="94.975197"
+       style="font-size:32px;font-style:italic;font-weight:bold;fill:#ffffff;-inkscape-font-specification:Arial Bold Italic">Logo</tspan></text>
   <g
      id="g3967"
      transform="translate(-4.30457,-9.73497)">
