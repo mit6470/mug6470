@@ -12,15 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :classifier %><br />
+    <%= f.label :classifier_id %><br />
     <%= f.collection_select :classifier_id, Classifier.all, :id, 
-                            :program_name %>
+        :program_name %>
   </div>
   <div class="field">
-    <%= f.label :datum %><br />
-    <%= f.collection_select :datum_id, Datum.all, :id, :file_name %>
+    <%= f.label :datum_id %><br />
+    <%= select_tag :datum_id, data_options, 
+        'data-pwnfx-refresh-url' => fetch_data_url,
+        'data-pwnfx-refresh-method' => 'GET',
+        'data-pwnfx-refresh-target' => 'data_content' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Run' %>
   </div>
 <% end %>

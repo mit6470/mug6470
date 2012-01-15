@@ -27,6 +27,7 @@ gem 'bourbon', '~> 1.2.0'
 gem 'authpwn_rails', '>= 0.10.7'
 gem 'fbgraph_rails', '>=0.2.2' # Rails does not initialize nested engines.
 gem 'configvars_rails', '>= 0.5.2'
+gem 'enhanced_select'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

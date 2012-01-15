@@ -14,7 +14,8 @@ class TrialsController < ApplicationController
   # GET /trials/1.json
   def show
     @trial = Trial.find(params[:id])
-
+    @result = @trial.run
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @trial }
@@ -41,7 +42,8 @@ class TrialsController < ApplicationController
   # POST /trials.json
   def create
     @trial = Trial.new(params[:trial])
-
+    @trial.datum_id = params[:datum_id]
+    
     respond_to do |format|
       if @trial.save
         format.html { redirect_to @trial, notice: 'Trial was successfully created.' }
@@ -81,15 +83,4 @@ class TrialsController < ApplicationController
     end
   end
   
-  # GET /trials/1/run
-  # GET /trials/1/run.json
-  def run
-    @trial = Trial.find(params[:id])
-    @result = @trial.run
-    respond_to do |format|
-      format.html # run.html.erb
-      format.json { render json: @result }
-    end
-  end
-
 end

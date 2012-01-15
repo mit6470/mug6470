@@ -8,4 +8,9 @@ class Datum < ActiveRecord::Base
     file_name
   end
   
+  # @return [String] full content of the data file.
+  def content
+    File.read(File.join ConfigVar[:data_dir], file_name)
+  end
+  
 end

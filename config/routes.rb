@@ -1,12 +1,12 @@
 Mug6470::Application.routes.draw do
 
-  resources :trials do
-    member do
-      get :run
+  resources :trials
+
+  resources :data do
+    collection do
+      get :fetch
     end
   end
-
-  resources :data
 
   config_vars
 

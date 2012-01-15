@@ -80,4 +80,11 @@ class DataController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # GET /data/fetch
+  # GET /data/fetch
+  def fetch
+    @datum = Datum.find(params[:datum_id])
+    render :layout => false
+  end
 end

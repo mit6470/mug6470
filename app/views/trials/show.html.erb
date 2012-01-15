@@ -1,15 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h1>New trial</h1>
 
-<p>
-  <b>Classifier:</b>
-  <%= @trial.classifier %>
-</p>
+<%= render 'form' %>
 
-<p>
-  <b>Datum:</b>
-  <%= @trial.datum %>
-</p>
-
-
-<%= link_to 'Edit', edit_trial_path(@trial) %> |
+<h2>Data content</h2>
+<div id="data_content"></div>
+<h2>Result</h2>
+<% @result.each do |line| %>
+  <p><%= line %></p>
+<% end %>
 <%= link_to 'Back', trials_path %>
