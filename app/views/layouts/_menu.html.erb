@@ -1,5 +1,8 @@
 <nav>
   <ol>
+    <li>
+      <%= link_to 'Workbench', trials_path %>
+    </li>
     <% if current_user %>
       <li>
         <%= link_to current_user.email, '#' %>

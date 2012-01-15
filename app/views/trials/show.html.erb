@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Classifier:</b>
+  <%= @trial.classifier %>
+</p>
+
+<p>
+  <b>Datum:</b>
+  <%= @trial.datum %>
+</p>
+
+
+<%= link_to 'Edit', edit_trial_path(@trial) %> |
+<%= link_to 'Back', trials_path %>

@@ -1,0 +1,26 @@
+<%= form_for(@trial) do |f| %>
+  <% if @trial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trial.errors.count, "error") %> prohibited this trial from being saved:</h2>
+
+      <ul>
+      <% @trial.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :classifier %><br />
+    <%= f.collection_select :classifier_id, Classifier.all, :id, 
+                            :program_name %>
+  </div>
+  <div class="field">
+    <%= f.label :datum %><br />
+    <%= f.collection_select :datum_id, Datum.all, :id, :file_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

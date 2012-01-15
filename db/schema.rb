@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114212057) do
+ActiveRecord::Schema.define(:version => 20120115015524) do
 
   create_table "classifiers", :force => true do |t|
     t.string   "program_name", :limit => 128, :null => false
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20120114212057) do
     t.string   "file_name",  :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "trials", :force => true do |t|
+    t.integer  "classifier_id", :null => false
+    t.integer  "datum_id",      :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|
