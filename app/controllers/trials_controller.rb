@@ -14,7 +14,7 @@ class TrialsController < ApplicationController
   # GET /trials/1.json
   def show
     @trial = Trial.find(params[:id])
-    @result = @trial.run
+    @output = @trial.run
     
     respond_to do |format|
       format.html # show.html.erb

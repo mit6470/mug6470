@@ -1,11 +1,25 @@
-<h1>New trial</h1>
+<h1>Trial</h1>
 
-<%= render 'form' %>
+<p>
+  <b>Datum:</b>
+  <%= @trial.datum %>
+</p>
+
+<p>
+  <b>Classifier:</b>
+  <%= @trial.classifier %>
+</p>
 
 <h2>Data content</h2>
-<div id="data_content"></div>
+<p>
+  <%= @trial.datum.content %>
+</p>
 <h2>Result</h2>
-<% @result.each do |line| %>
+<% @output[:result].each do |line| %>
+  <p><%= line %></p>
+<% end %>
+<h2>Error</h2>
+<% @output[:error].each do |line| %>
   <p><%= line %></p>
 <% end %>
 <%= link_to 'Back', trials_path %>
