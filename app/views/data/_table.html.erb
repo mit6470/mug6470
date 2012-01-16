@@ -1,0 +1,15 @@
+<table class="data">
+  <tr>
+    <% datum[:attributes].each do |a| %>
+      
+      <th> <%= a[:name] %> </th>
+    <% end %>
+  </tr>
+  <% datum[:data].each do |d| %>
+    <tr>
+      <% d.each do |e| %>
+        <td> <%= e %> </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
