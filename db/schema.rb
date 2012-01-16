@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(:version => 20120115015524) do
   add_index "credentials", ["user_id", "type"], :name => "index_credentials_on_user_id_and_type"
 
   create_table "data", :force => true do |t|
-    t.string   "file_name",  :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "file_name",  :limit => 64, :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "trials", :force => true do |t|
-    t.integer  "classifier_id", :null => false
-    t.integer  "datum_id",      :null => false
+    t.integer  "classifier_id"
+    t.integer  "datum_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

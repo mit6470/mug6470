@@ -25,17 +25,26 @@ class ArffParser
     content_hash = {}
     content_hash[:attributes] = []
     content_hash[:data] = []
+    
     lines.each_with_index do |line, index|
+      # Removes comment.
+      line = line.split ?%, 2
+      next if line.empty?
+      line = line[0]
       kvp = line.chomp.split(' ', 2).map(&:strip)
       if kvp.length >= 1
         key = kvp[0].downcase
         case key
         when '@relation'
-          content_hash[:relation] = kvp[1] if kvp.length >= 2
+          content_hash[:relation] = kvp[1].strip_quotes if kvp.length >= 2
         when '@attribute'
           if kvp.length >= 2
             name, type = kvp[1].split ' ', 2
-            content_hash[:attributes] << { :name => name, :type => type }
+            if /{(?<nominal_values>.+)}/ =~ type 
+              type = nominal_values.split(',').map(&:strip).map(&:strip_quotes)
+            end
+            content_hash[:attributes] << { :name => name.strip_quotes, 
+                                           :type => type }
           end
         when '@data'
           lines[(index + 1)..-1].each do |line|
@@ -57,7 +66,7 @@ class ArffParser
                             line.length
               end
               value = line[start_index...end_index].strip
-              instance << value unless value.empty?
+              instance << value.strip_quotes unless value.empty?
               start_index = end_index + 1 
             end
             content_hash[:data] << instance
@@ -69,3 +78,9 @@ class ArffParser
     content_hash
   end
 end
+
+class String
+  def strip_quotes
+    self.gsub(/\A['"]/, '').gsub /['"]\Z/, ''
+  end
+end  
