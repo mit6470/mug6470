@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 class DataView
   constructor: ->
-    console.log 'DataView constructor called.'
     $('#data-tabs').tabs()
     
-    
+window.DataView = DataView    

@@ -1,0 +1,2 @@
+$ ->
+  trialView = new window.TrialView
