@@ -4,13 +4,17 @@ Mug6470::Application.routes.draw do
 
   resources :data do
     collection do
-      get :fetch
+      get :choose
     end
   end
 
   config_vars
 
-  resources :classifiers
+  resources :classifiers do 
+    collection do
+      get :choose
+    end
+  end
 
   resource :session, :controller => 'session'
   

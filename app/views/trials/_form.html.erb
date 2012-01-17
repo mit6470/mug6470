@@ -11,19 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :classifier_id %><br />
-    <%= f.collection_select :classifier_id, Classifier.all, :id, 
-        :program_name %>
-  </div>
-  <div class="field">
-    <%= f.label :datum_id %><br />
-    <%= select_tag :datum_id, data_options, 
-        'data-pwnfx-refresh-url' => fetch_data_url,
-        'data-pwnfx-refresh-method' => 'GET',
-        'data-pwnfx-refresh-target' => 'data_content' %>
-  </div>
   <div class="actions">
     <%= f.submit 'Run' %>
   </div>
+
+  <div class="field">
+    <%= f.label :datum_id %><br />
+    <%= select_tag :datum_id, data_options, 
+        'data-pwnfx-refresh-url' => choose_data_url,
+        'data-pwnfx-refresh-method' => 'GET',
+        'data-pwnfx-refresh-target' => 'data_content' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :classifier_id %><br />
+    <%= select_tag :classifier_id, classifiers_options,
+        'data-pwnfx-refresh-url' => choose_classifiers_url,
+        'data-pwnfx-refresh-method' => 'GET',
+        'data-pwnfx-refresh-target' => 'classifier_info' %>
+  </div>
+
+  <h2>Data content</h2>
+  <div id="data_content"></div>
+  
+  <h2>Classifier Information</h2>
+  <div id="classifier_info"></div>
 <% end %>

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20120115015524) do
 
   create_table "classifiers", :force => true do |t|
     t.string   "program_name", :limit => 128, :null => false
+    t.text     "synopsis"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end

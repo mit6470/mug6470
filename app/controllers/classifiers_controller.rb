@@ -80,5 +80,11 @@ class ClassifiersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
+  # GET /classifiers/choose
+  # GET /classifiers/choose
+  def choose
+    @classifier = Classifier.find params[:classifier_id]
+    render :layout => false
+  end
 end

@@ -81,9 +81,9 @@ class DataController < ApplicationController
     end
   end
   
-  # GET /data/fetch
-  # GET /data/fetch
-  def fetch
+  # GET /data/choose
+  # GET /data/choose
+  def choose
     @datum = Datum.find(params[:datum_id])
     render :layout => false
   end

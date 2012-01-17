@@ -43,6 +43,7 @@ class TrialsController < ApplicationController
   def create
     @trial = Trial.new(params[:trial])
     @trial.datum_id = params[:datum_id]
+    @trial.classifier_id = params[:classifier_id]
     
     respond_to do |format|
       if @trial.save

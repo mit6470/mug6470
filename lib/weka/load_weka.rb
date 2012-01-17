@@ -5,10 +5,14 @@ class WekaLoader
   def self.load_classifiers(options_filename)
     s = File.read options_filename
     all_classifiers = /weka\.classifiers\.Classifier=\\\n(?:\s*weka\.classifiers\.[\w\.]+,?\\?\n)+/m.match s
-    classifiers = all_classifiers[0].scan /(weka\.classifiers\.(?:\w+\.)+\w+),?\\?/
+    classifiers = all_classifiers[0].scan /weka\.classifiers\.(?:\w+\.)+\w+(?=,?\\?)/
     Classifier.delete_all
     classifiers.each do |name|
-      c = Classifier.new :program_name => name.first
+      stdout = IO.popen "java -cp #{ConfigVar[:weka_classpath]} #{name} -synopsis -h 2>&1"
+      md = /^Synopsis for .+\:$/.match stdout.read
+      synopsis = md && md.post_match
+      synopsis &&= synopsis.strip
+      c = Classifier.new :program_name => name, :synopsis => synopsis
       c.save!
     end
   end

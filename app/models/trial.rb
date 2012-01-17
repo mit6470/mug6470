@@ -11,6 +11,12 @@ class Trial < ActiveRecord::Base
  
   # Executes the trial and returns the result and error.
   #
+  # Example command for filtering attributes:
+  # java -cp weka.jar weka.classifiers.meta.FilteredClassifier -t data/cpu.arff 
+  #     -F "weka.filters.unsupervised.attribute.Remove -R 6" 
+  #     -W weka.classifiers.rules.DecisionTable -- 
+  #         -X 1 -S "weka.attributeSelection.BestFirst -D 1 -N 5"
+  #
   # @return [Hash] result and error from the execution, or nil if datum or 
   #     classifier is not specified.
   def run
