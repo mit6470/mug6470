@@ -1,2 +1,2 @@
 $ ->
-  trialView = new window.TrialView
+  trialController = new window.TrialController

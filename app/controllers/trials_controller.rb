@@ -44,13 +44,12 @@ class TrialsController < ApplicationController
     @trial = Trial.new(params[:trial])
     @trial.datum_id = params[:datum_id]
     @trial.classifier_id = params[:classifier_id]
-    
+    @result = @trial.run
+
     respond_to do |format|
       if @trial.save
-        format.html { redirect_to @trial, notice: 'Trial was successfully created.' }
-        format.json { render json: @trial, status: :created, location: @trial }
+        format.json { render json: @result, status: :created, location: @trial }
       else
-        format.html { render action: "new" }
         format.json { render json: @trial.errors, status: :unprocessable_entity }
       end
     end
