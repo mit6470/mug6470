@@ -1,9 +1,9 @@
 <nav>
   <ol>
-    <li>
-      <%= link_to 'Workbench', trials_path %>
-    </li>
     <% if current_user %>
+      <li>
+        <%= link_to 'Workbench', trials_path %>
+      </li>
       <li>
         <%= link_to current_user.email, '#' %>
       </li>
@@ -11,6 +11,9 @@
         <%= link_to 'Sign out', session_path, :method => :delete %>
       </li>
     <% else %>
+      <li>
+        <%= link_to 'Sign in', new_session_path %>
+      </li>
       <li>
         <%= link_to 'Create account', new_user_path %>
       </li>

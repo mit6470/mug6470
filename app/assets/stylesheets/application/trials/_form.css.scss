@@ -1,0 +1,39 @@
+#workflow-tabs {
+  position: static;
+  border: none;
+  background: none;
+  
+  > nav, > section {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    
+    > ul.ui-tabs-nav {
+      border: none;
+      padding: 0;
+      
+      li {
+        @include border-radius(0);
+        clear: both;
+        border: none;
+        width: 100%;
+        
+        a {
+          float: right;
+        }
+      }
+    }
+  }
+  
+  > section {
+    width: 70%;
+  }
+
+}
+
+.ui-tabs-nav.ui-widget-header {
+  @include border-radius(0);
+  border-bottom: 1px solid $ui-state-default-border-color;
+}
+

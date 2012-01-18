@@ -1,0 +1,16 @@
+// Application specific color schemes.
+$main-color1: #3CCACF;
+
+// Header colors.
+$header-background-color: #295B5C;
+$header-text-color: #FFFFFF;
+$header-title-color: $header-text-color;
+$header-link-color: $header-text-color;
+
+$ui-state-active-color: change-color($main-color1, $saturation: 40%, $lightness: 60%);
+$ui-state-active-state-color: change-color($ui-state-active-color, $saturation: 30%, $lightness: 60%);
+$ui-state-default-color: change-color($main-color1, $saturation: 6%, $lightness: 95%);
+$ui-state-default-border-color: change-color($ui-state-default-color, $saturation: 3%, $lightness: 90%);
+
+// Pwnstyles variables.
+@import 'vars/color_scheme.css.scss';

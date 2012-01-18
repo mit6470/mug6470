@@ -12,38 +12,42 @@
   <% end %>
   
   <div id="workflow-tabs">
-    <h1>New Trial</h1>
-    <div class="actions">
-      <%= f.submit 'Run' %>
-    </div>
-  
-    <ul>
-    <li><a href="#workflow-tabs-data">Data</a></li>
-    <li><a href="#workflow-tabs-classifier">Classifier</a></li>
-    </ul>
-
-    <div id="workflow-tabs-data">
-      <div class="field">
-        <%= f.label :datum_id, 'Choose Data'%><br />
-        <%= select_tag :datum_id, data_options, 
-            'data-pwnfx-refresh-url' => choose_data_url,
-            'data-pwnfx-refresh-method' => 'GET',
-            'data-pwnfx-refresh-target' => 'data-tabs-table' %>
+    <nav>
+      <h1>New Trial</h1>
+      <div class="actions">
+        <%= f.submit 'Run' %>
       </div>
-      <h2>Data content</h2>
-      <%= render 'data/show' %>
-    </div>
-  
-    <div id="workflow-tabs-classifier" >
-      <div class="field">
-        <%= f.label :classifier_id, 'Choose Classifier' %><br />
-        <%= select_tag :classifier_id, classifiers_options,
-            'data-pwnfx-refresh-url' => choose_classifiers_url,
-            'data-pwnfx-refresh-method' => 'GET',
-            'data-pwnfx-refresh-target' => 'classifier_info' %>
+    
+      <ul>
+      <li><a href="#workflow-tabs-data">Data</a></li>
+      <li><a href="#workflow-tabs-classifier">Classifier</a></li>
+      </ul>
+    </nav>
+    
+    <section>
+      <div id="workflow-tabs-data">
+        <div class="field">
+          <%= f.label :datum_id, 'Choose Data'%><br />
+          <%= select_tag :datum_id, data_options, 
+              'data-pwnfx-refresh-url' => choose_data_url,
+              'data-pwnfx-refresh-method' => 'GET',
+              'data-pwnfx-refresh-target' => 'data-tabs-table' %>
+        </div>
+        <h2>Data content</h2>
+        <%= render 'data/show' %>
       </div>
-      <h2>Classifier Information</h2>
-      <div id="classifier_info"></div>
-    </div>
+    
+      <div id="workflow-tabs-classifier" >
+        <div class="field">
+          <%= f.label :classifier_id, 'Choose Classifier' %><br />
+          <%= select_tag :classifier_id, classifiers_options,
+              'data-pwnfx-refresh-url' => choose_classifiers_url,
+              'data-pwnfx-refresh-method' => 'GET',
+              'data-pwnfx-refresh-target' => 'classifier-info' %>
+        </div>
+        <h2>Classifier Information</h2>
+        <div id="classifier-info"></div>
+      </div>
+    </section>
   </div>
 <% end %>

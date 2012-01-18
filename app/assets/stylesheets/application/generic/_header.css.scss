@@ -1,0 +1,78 @@
+header {
+  background-color: $header-background-color;
+  border-bottom: 1px solid $header-border-color;
+
+  hgroup {
+    width: $page-width;
+    height: $header-height;
+    margin: 0 auto;    
+    position: relative;
+
+    color: $header-text-color;
+    font-family: $heading-font;
+    font-weight: bold;
+  }
+  
+  h1 {
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+  
+    font-size: ($header-height - 4px);
+    line-height: $header-height;
+    font-variant: small-caps;
+    color: $header-title-color;
+  
+    vertical-align: top;
+    
+    img {
+      display: block;
+      padding: 2px 0;
+      float: left;
+    }
+    
+    span {
+      display: block;
+      padding-right: 0.5em;
+      float: left;
+      height: 100%;
+    }
+    
+    // Padding between the image and the title.
+    img + span {
+      padding-left: 0.5em;
+    }
+    
+    a, a:visited, a:hover, a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+  
+  nav {
+    display: inline-block;
+    font-weight: normal;
+    height: 100%;
+    float: right;
+  }
+  nav > ol {
+    @include menu-list($menu-hover-color);
+    background-color: $header-background-color;
+
+    font-size: $header-menu-font-size;
+    line-height: $header-menu-line-height;
+    height: 100%;
+    > li > a {
+      padding-top: $header-height - $header-menu-line-height;
+      height: $header-menu-line-height;
+      color: $header-link-color;
+      
+      &:visited {
+        color: $header-link-color;
+      }
+    }
+  }
+  nav a img {
+    vertical-align: baseline;
+  }
+}
