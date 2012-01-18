@@ -2,7 +2,7 @@
   <ol>
     <% if current_user %>
       <li>
-        <%= link_to 'Workbench', trials_path %>
+        <%= link_to 'Workbench', new_trial_path %>
       </li>
       <li>
         <%= link_to current_user.email, '#' %>
