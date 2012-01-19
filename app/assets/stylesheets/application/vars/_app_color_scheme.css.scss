@@ -12,5 +12,8 @@ $ui-state-active-state-color: change-color($ui-state-active-color, $saturation: 
 $ui-state-default-color: change-color($main-color1, $saturation: 6%, $lightness: 95%);
 $ui-state-default-border-color: change-color($ui-state-default-color, $saturation: 3%, $lightness: 90%);
 
+// Trial workbench
+$trial-nav-background-color: $ui-state-default-color;
+
 // Pwnstyles variables.
 @import 'vars/color_scheme.css.scss';

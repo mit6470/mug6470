@@ -45,10 +45,12 @@ ActiveRecord::Schema.define(:version => 20120115015524) do
   end
 
   create_table "trials", :force => true do |t|
+    t.string   "name",          :limit => 32,       :null => false
     t.integer  "classifier_id"
     t.integer  "datum_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.text     "output",        :limit => 16777215
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "users", :force => true do |t|

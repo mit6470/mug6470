@@ -13,20 +13,19 @@
   
   <div id="workflow-tabs">
     <nav>
-      <h1>New Trial</h1>
-      <div class="actions">
-        <%= button_tag 'Run', :id => 'run-button' %>
-      </div>
-    
+      <h4>Configure Trial</h4>
       <ul>
-      <li><a href="#workflow-tabs-data">Data</a></li>
-      <li><a href="#workflow-tabs-classifier">Classifier</a></li>
-      <li><a href="#workflow-tabs-result">Result</a></li>
+        <li><a href="#workflow-tabs-data">Data</a></li>
+        <li><a href="#workflow-tabs-classifier">Classifier</a></li>
+        <li class="actions">
+          <%= button_tag 'Run', :id => 'run-button', :type => 'button' %>
+        </li>
+        <li><a href="#workflow-tabs-result">Result</a></li>
       </ul>
     </nav>
     
-    <section>
-      <div id="workflow-tabs-data">
+    <article>
+      <section id="workflow-tabs-data">
         <div class="field">
           <%= f.label :datum_id, 'Choose Data'%><br />
           <%= select_tag :datum_id, data_options, 
@@ -34,11 +33,11 @@
               'data-pwnfx-refresh-method' => 'GET',
               'data-pwnfx-refresh-target' => 'data-tabs-table' %>
         </div>
-        <h2>Data content</h2>
+        <h4>Data content</h4>
         <%= render 'data/show' %>
-      </div>
+      </section>
     
-      <div id="workflow-tabs-classifier" >
+      <section id="workflow-tabs-classifier" >
         <div class="field">
           <%= f.label :classifier_id, 'Choose Classifier' %><br />
           <%= select_tag :classifier_id, classifiers_options,
@@ -46,14 +45,14 @@
               'data-pwnfx-refresh-method' => 'GET',
               'data-pwnfx-refresh-target' => 'classifier-info' %>
         </div>
-        <h2>Classifier Information</h2>
+        <h4>Classifier Information</h4>
         <div id="classifier-info"></div>
-      </div>
+      </section>
       
-      <div id="workflow-tabs-result" >
-        <h2>Result</h2>
+      <section id="workflow-tabs-result" >
+        <h4>Result</h4>
         <div id="trial-result"></div>
-      </div>
-    </section>
+      </section>
+    </article>
   </div>
 <% end %>

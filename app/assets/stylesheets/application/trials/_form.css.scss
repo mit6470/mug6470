@@ -2,12 +2,17 @@
   position: static;
   border: none;
   background: none;
-  
-  > nav, > section {
-    display: block;
-    float: left;
+  @include box;  
+
+  > nav, > article {
     margin: 0;
     padding: 0;
+    
+    button {
+      display: block;
+      margin: auto;
+      width: $run-button-size;
+    }
     
     > ul.ui-tabs-nav {
       border: none;
@@ -26,10 +31,19 @@
     }
   }
   
-  > section {
+  > article {
     width: 70%;
   }
-
+  
+  > nav {
+    background: $trial-nav-background-color;
+  }
+  
+  table {
+    margin: auto;
+    width: 50%;
+  }
+  
 }
 
 .ui-tabs-nav.ui-widget-header {

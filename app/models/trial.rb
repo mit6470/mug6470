@@ -3,7 +3,7 @@ require 'open3'
 # A trial is a particular configuration of input data, classifier, and training
 # and testing modes.
 class Trial < ActiveRecord::Base
-  serialize output, Hash
+  serialize :output, Hash
   
   # The classifier the user chose for this trial.
   belongs_to :classifier
@@ -13,7 +13,7 @@ class Trial < ActiveRecord::Base
   
   validates :output, :length => 0..32.kilobytes, :allow_nil => true
   
-  validates :name, :length => 0..32, 
+  validates :name, :length => 0..32 
  
   # Executes the trial and returns the result and error.
   #
@@ -28,12 +28,11 @@ class Trial < ActiveRecord::Base
   def run
     if datum && classifier
       classpath = ConfigVar[:weka_classpath]
-      puts classpath
       data_file = File.join ConfigVar[:data_dir], datum.file_name
       command = "java -cp #{classpath} #{classifier} -t #{data_file} -i"
       stdin, stdout, stderr = Open3.popen3 command
       
-      output = {}
+      self.output = {}
       
       result = stdout.read   
       rest, stratified = result && 
@@ -48,12 +47,11 @@ class Trial < ActiveRecord::Base
               each { |l| confusion_matrix << 
                          l.split(/\s|\||\=/).reject(&:blank?) }
           p confusion_matrix
-          output[:result] = {}
-          output[:result][:confusion_matrix] = confusion_matrix
+          self.output[:result] = {}
+          self.output[:result][:confusion_matrix] = confusion_matrix
         end
       end
-      output[:error] = stderr.readlines
-      output
+      self.output[:error] = stderr.readlines
     end 
   end
 

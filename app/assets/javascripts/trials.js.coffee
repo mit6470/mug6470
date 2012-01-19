@@ -1,6 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+# View for the trial workbench.
 class TrialView
   constructor: ->
     @onSubmit = ->
@@ -16,11 +14,35 @@ class TrialView
     @onSubmit()
     
   renderResult: (output) ->
-    result = ("<p>#{line}</p>" for line in output.result).join ''
-    error = "<p>#{output.error && output.error[0]}</p>"
-    $('#trial-result').html result + error 
-    @workflowTabs.tabs 'select', 2    
+    result = output.result
+    error = output.error
+    resultHtml = ''
+    if error.length > 0
+      resultHtml = "<p>#{error[0]}<p>"
+    else
+      matrix = result?.confusion_matrix
+      if matrix?
+        thead = ("<th>#{cell}</th>" for cell in matrix[0]).join('')
+        thead = "<thead><tr>#{thead}</tr></thead>"
+      
+        tbody = []
+        for row in result.confusion_matrix[1..-1]
+          rowHtml = ("<td>#{cell}</td>" for cell in row[0...-2]).join('') +
+                    "<td>#{row[row.length - 2]} = #{row[row.length - 1]}</td>"
+          tbody.push "<tr>#{rowHtml}</tr>"                     
+        resultHtml = """
+                     <table>
+                       #{thead}
+                       <tbody>  
+                       #{tbody.join('')}
+                      </tbody>
+                     </table>
+                     """
     
+    $('#trial-result').html resultHtml  
+    @workflowTabs.tabs 'select', 2    
+
+# TrialController handles user interactions.
 class TrialController
   constructor: () ->
     @view = new TrialView
