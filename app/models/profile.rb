@@ -5,5 +5,5 @@ class Profile < ActiveRecord::Base
   attr_protected :user_id
   
   # Trials created by this user profile.
-  has_many :trials, :dependent => :destroy, :inverse_of => :profile
+  has_many :projects, :dependent => :destroy, :inverse_of => :profile
 end

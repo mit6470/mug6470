@@ -1,0 +1,9 @@
+<section id="current-project">
+  <nav>
+    <ul id="project-tabs-header">
+      <li><a href="#current-trial-tabs">Current trial</a></li>
+      <%= render 'trials/index', :trials => @project.trials %>
+    </ul>
+  </nav>
+  <%= render 'trials/form', :trial => @trial %>
+</section>

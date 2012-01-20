@@ -1,5 +1,7 @@
 Mug6470::Application.routes.draw do
 
+  resources :projects
+
   resources :profiles
 
   resources :trials

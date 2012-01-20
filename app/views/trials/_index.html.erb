@@ -1,11 +1,8 @@
-<h4>Previous trials</h4>
-
-<ul id="trials-list" >
-  <% if trials %>
-    <% trials.each do |trial| %>
-      <li>
-        <%= content_tag :a, trial.name, :href => "#{trial_path trial}" %>
-      </li>
-    <% end %>
+<h4>Trials results</h4>
+<% if trials %>
+  <% trials.each do |trial| %>
+    <li>
+      <%= content_tag :a, trial.name, :href => "#{trial_path trial}" %>
+    </li>
   <% end %>
-</ul>
+<% end %>

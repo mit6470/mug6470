@@ -3,13 +3,13 @@ class CreateTrials < ActiveRecord::Migration
     create_table :trials do |t|
       t.references :classifier, :null => true
       t.references :datum, :null => true
-      t.references :profile, :null => false
+      t.references :project, :null => false
       t.string :name, :null => false, :limit => 32
       t.text :output, :null => true, :limit => 32.kilobytes
       
       t.timestamps
     end
     
-    add_index :trials, :profile_id, :null => false
+    add_index :trials, :project_id, :null => false
   end
 end
