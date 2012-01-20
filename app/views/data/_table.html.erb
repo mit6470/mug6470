@@ -1,11 +1,11 @@
 <table class="data" id="data-tabs-table">
   <tr>
-    <% datum[:attributes].each do |a| %>
+    <% datum.features.each do |a| %>
       
       <th> <%= a[:name] %> </th>
     <% end %>
   </tr>
-  <% datum[:data].each do |d| %>
+  <% datum.examples.each do |d| %>
     <tr>
       <% d.each do |e| %>
         <td> <%= e %> </td>

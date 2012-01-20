@@ -25,7 +25,7 @@ class TrialsController < ApplicationController
   # GET /trials/new.json
   def new
     @trial = Trial.new
-    @trials = current_user.trials
+    @trials = current_user && current_user.trials
     
     respond_to do |format|
       format.html # new.html.erb

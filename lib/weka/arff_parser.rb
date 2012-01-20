@@ -2,10 +2,10 @@
 class ArffParser
   # Parses one file.
   #
-  # @param [String] filename name of the file.
-  # @return [Hash] attributes: array of attributes and their types 
-  #                relation: the name of the relation in the data
-  #                data: array of instances
+  # @param [String] filename full path name of the file.
+  # @return [Hash] features: array of features and their types. 
+  #                relation: the name of the relation in the data.
+  #                examples: array of examples.
   def self.parse_file(filename)
     lines = File.readlines filename 
     self.parse_lines lines
@@ -13,24 +13,24 @@ class ArffParser
   
   # Parses the content string of a ARFF file.
   #
-  # @param [String] content content string
-  # @return [Hash] attributes: array of attributes and their types 
-  #                relation: the name of the relation in the data
-  #                data: array of instances
+  # @param [String] content content string of a ARFF file.
+  # @return [Hash] features: array of features and their types. 
+  #                relation: the name of the relation in the data.
+  #                examples: array of examples.
   def self.parse_string(content)
     self.parse_lines content.split('\n').map(&:strip)
   end
   
   # Parses the array of line strings in a ARFF file.
   #
-  # @param [Array(String)] lines array of line strings 
-  # @return [Hash] attributes: array of attributes and their types 
-  #                relation: the name of the relation in the data
-  #                data: array of instances
+  # @param [Array(String)] lines array of line strings. 
+  # @return [Hash] features: array of features and their types. 
+  #                relation: the name of the relation in the data.
+  #                examples: array of examples.
   def self.parse_lines(lines)
     content_hash = {}
-    content_hash[:attributes] = []
-    content_hash[:data] = []
+    content_hash[:features] = []
+    content_hash[:examples] = []
     
     lines.each_with_index do |line, index|
       # Removes comment.
@@ -49,8 +49,8 @@ class ArffParser
             if /{(?<nominal_values>.+)}/ =~ type 
               type = nominal_values.split(',').map(&:strip).map(&:strip_quotes)
             end
-            content_hash[:attributes] << { :name => name.strip_quotes, 
-                                           :type => type }
+            content_hash[:features] << { :name => name.strip_quotes, 
+                                         :type => type }
           end
         when '@data'
           lines[(index + 1)..-1].each do |line|
@@ -75,7 +75,7 @@ class ArffParser
               instance << value.strip_quotes unless value.empty?
               start_index = end_index + 1 
             end
-            content_hash[:data] << instance
+            content_hash[:examples] << instance
           end
           break          
         end

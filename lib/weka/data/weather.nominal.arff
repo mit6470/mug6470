@@ -1,23 +1,25 @@
-@relation weather.symbolic
+@relation weather.symbolic-weka.filters.unsupervised.attribute.AddID-Cfirst-NID
 
-@attribute outlook {sunny, overcast, rainy}
-@attribute temperature {hot, mild, cool}
-@attribute humidity {high, normal}
-@attribute windy {TRUE, FALSE}
-@attribute play {yes, no}
+@attribute ID numeric
+@attribute outlook {sunny,overcast,rainy}
+@attribute temperature {hot,mild,cool}
+@attribute humidity {high,normal}
+@attribute windy {TRUE,FALSE}
+@attribute play {yes,no}
 
 @data
-sunny,hot,high,FALSE,no
-sunny,hot,high,TRUE,no
-overcast,hot,high,FALSE,yes
-rainy,mild,high,FALSE,yes
-rainy,cool,normal,FALSE,yes
-rainy,cool,normal,TRUE,no
-overcast,cool,normal,TRUE,yes
-sunny,mild,high,FALSE,no
-sunny,cool,normal,FALSE,yes
-rainy,mild,normal,FALSE,yes
-sunny,mild,normal,TRUE,yes
-overcast,mild,high,TRUE,yes
-overcast,hot,normal,FALSE,yes
-rainy,mild,high,TRUE,no
+
+1,sunny,hot,high,FALSE,no
+2,sunny,hot,high,TRUE,no
+3,overcast,hot,high,FALSE,yes
+4,rainy,mild,high,FALSE,yes
+5,rainy,cool,normal,FALSE,yes
+6,rainy,cool,normal,TRUE,no
+7,overcast,cool,normal,TRUE,yes
+8,sunny,mild,high,FALSE,no
+9,sunny,cool,normal,FALSE,yes
+10,rainy,mild,normal,FALSE,yes
+11,sunny,mild,normal,TRUE,yes
+12,overcast,mild,high,TRUE,yes
+13,overcast,hot,normal,FALSE,yes
+14,rainy,mild,high,TRUE,no
