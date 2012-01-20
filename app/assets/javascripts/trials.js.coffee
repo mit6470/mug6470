@@ -6,13 +6,15 @@ class TrialView
     new window.DataView
     @workflowTabs = $('#workflow-tabs')
     @workflowTabs.tabs()
+
     @runButton = $('#run-button')
-    @form = $('#new_trial')
     @runButton.click => @onRunButtonClick()
+
+    @form = $('#new_trial')
     
   onRunButtonClick: ->
     @onSubmit()
-    
+      
   renderResult: (output) ->
     result = output.result
     error = output.error

@@ -14,7 +14,6 @@ class TrialsController < ApplicationController
   # GET /trials/1.json
   def show
     @trial = Trial.find(params[:id])
-    @output = @trial.run
     
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +25,8 @@ class TrialsController < ApplicationController
   # GET /trials/new.json
   def new
     @trial = Trial.new
-
+    @trials = current_user.trials
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @trial }
@@ -46,13 +46,13 @@ class TrialsController < ApplicationController
     @trial.classifier_id = params[:classifier_id]
     @trial.name = Time.now.to_s
     @trial.run
-
+    if current_user
+      @trial.profile = current_user.profile
+      @trial.save
+    end
+    
     respond_to do |format|
-      if @trial.save
-        format.json { render json: @trial.output, status: :created, location: @trial }
-      else
-        format.json { render json: @trial.errors, status: :unprocessable_entity }
-      end
+      format.json { render json: @trial.output, status: :created, location: @trial }
     end
   end
 

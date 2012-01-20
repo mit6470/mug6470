@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
 
 
   # Add your extensions to the User class here.
+  has_one :profile, :dependent => :destroy, :inverse_of => :user
+  
+  has_many :trials, :through => :profile
 end

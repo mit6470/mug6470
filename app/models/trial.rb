@@ -11,6 +11,9 @@ class Trial < ActiveRecord::Base
   # The input data the user chose for this trial.
   belongs_to :datum
   
+  belongs_to :profile, :inverse_of => :trials
+  validates :profile, :presence => true
+  
   validates :output, :length => 0..32.kilobytes, :allow_nil => true
   
   validates :name, :length => 0..32 

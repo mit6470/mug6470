@@ -1,5 +1,7 @@
 Mug6470::Application.routes.draw do
 
+  resources :profiles
+
   resources :trials
 
   resources :data do

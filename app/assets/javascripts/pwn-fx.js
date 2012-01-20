@@ -70,7 +70,6 @@ PwnFx.wireRefresh = function (element) {
   jElement.bind('change', onChangeFn);
   jElement.bind('keydown', onChangeFn);
   jElement.bind('keyup', onChangeFn);
-  onChangeFn();
 };
 
 /**

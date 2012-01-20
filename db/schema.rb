@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120115015524) do
+ActiveRecord::Schema.define(:version => 20120119172808) do
 
   create_table "classifiers", :force => true do |t|
     t.string   "program_name", :limit => 128, :null => false
@@ -39,19 +39,32 @@ ActiveRecord::Schema.define(:version => 20120115015524) do
   add_index "credentials", ["user_id", "type"], :name => "index_credentials_on_user_id_and_type"
 
   create_table "data", :force => true do |t|
-    t.string   "file_name",  :limit => 64, :null => false
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.string   "file_name",      :limit => 64,       :null => false
+    t.text     "content",        :limit => 16777215, :null => false
+    t.integer  "num_attributes",                     :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
+
   create_table "trials", :force => true do |t|
-    t.string   "name",          :limit => 32,       :null => false
     t.integer  "classifier_id"
     t.integer  "datum_id"
+    t.integer  "profile_id",                        :null => false
+    t.string   "name",          :limit => 32,       :null => false
     t.text     "output",        :limit => 16777215
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
+
+  add_index "trials", ["profile_id"], :name => "index_trials_on_profile_id"
 
   create_table "users", :force => true do |t|
     t.string   "exuid",      :limit => 32, :null => false

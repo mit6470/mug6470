@@ -11,11 +11,11 @@
 </p>
 
 <h2>Result</h2>
-<% @output[:result].each do |line| %>
-  <p><%= line %></p>
+<% output = @trial.output %>
+<% if output[:result] %>
+  <p><%= output[:result][:confusion_matrix] %></p>
 <% end %>
 <h2>Error</h2>
-<% @output[:error].each do |line| %>
+<% output[:error].each do |line| %>
   <p><%= line %></p>
 <% end %>
-<%= link_to 'Back', trials_path %>

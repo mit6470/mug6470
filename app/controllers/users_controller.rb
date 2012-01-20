@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    # @user.build_profile
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,10 +41,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    # @user.profile.last_seen_at = Time.now
 
     respond_to do |format|
       if @user.save
+        @user.create_profile
         format.html { redirect_to session_path }
         format.json { render :json => @user, :status => :created, :location => @user }
       else

@@ -1,3 +1,5 @@
+require Rails.root.join 'lib/weka/arff_parser.rb'
+
 # Loads classifier, data information to the database.
 class WekaLoader
   
@@ -22,7 +24,9 @@ class WekaLoader
     Datum.delete_all
     Dir[File.join data_dir, '*'].each do |file|
       filename = File.basename file
-      d = Datum.new :file_name => filename
+      content = ArffParser.parse_file file
+      d = Datum.new :file_name => filename, :content => content, 
+                    :num_attributes => content[:attributes].size
       d.save!
     end
   end
