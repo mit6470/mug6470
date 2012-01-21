@@ -1,8 +1,10 @@
 <h4>Trials results</h4>
 <% if trials %>
-  <% trials.each do |trial| %>
+  <% trials.reverse_each do |trial| %>
     <li>
-      <%= content_tag :a, trial.name, :href => "#{trial_path trial}" %>
+      <%= link_to trial.name, "#{project_trial_url trial.project, trial}.html", 
+                  'data-trial-id' => "trial-#{trial.id}" %>
+      <%= content_tag :span, 'Remove tab', :class => 'ui-icon ui-icon-close' %>
     </li>
   <% end %>
 <% end %>

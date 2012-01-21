@@ -1,4 +1,12 @@
 class ProjectsController < ApplicationController
+  # TODO(ushadow): handle the case when user is not logged in.
+  before_filter :ensure_logged_in, :only => [:index, :new]
+  
+  def ensure_logged_in
+    bounce_user unless current_user
+  end
+  private :ensure_logged_in
+  
   # GET /projects
   # GET /projects.json
   def index
@@ -10,6 +18,28 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # GET /projects/new
+  # GET /projects/new.json
+  def new
+    @project = Project.new :profile => current_user.profile, 
+                           :name => "New project"
+    
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to edit_project_url(@project), notice: 'New project created.'}
+      else
+        format.html { render action: "index" }
+      end
+    end
+  end
+
+  # GET /projects/1/edit
+  def edit
+    @project = Project.find(params[:id])
+  end
+  
+  # TODO(ushadow): Delete unused methods.
+
   # GET /projects/1
   # GET /projects/1.json
   def show
@@ -19,23 +49,6 @@ class ProjectsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @project }
     end
-  end
-
-  # GET /projects/new
-  # GET /projects/new.json
-  def new
-    @project = Project.new
-    @trial = @project.trials.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @project }
-    end
-  end
-
-  # GET /projects/1/edit
-  def edit
-    @project = Project.find(params[:id])
   end
 
   # POST /projects

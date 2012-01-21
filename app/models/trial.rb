@@ -5,18 +5,21 @@ require 'open3'
 class Trial < ActiveRecord::Base
   serialize :output, Hash
   
+  # The project this trial belongs to.
+  belongs_to :project, :inverse_of => :trials
+  validates :project, :presence => true
+
   # The classifier the user chose for this trial.
   belongs_to :classifier
   
   # The input data the user chose for this trial.
   belongs_to :datum
-  
-  belongs_to :project, :inverse_of => :trials
-  validates :profile, :presence => true
-  
+
+  # Name of the trial. 
+  validates :name, :length => 0..32, :presence => true 
+
+  # The output of this trial.  
   validates :output, :length => 0..32.kilobytes, :allow_nil => true
-  
-  validates :name, :length => 0..32 
  
   # Executes the trial and returns the result and error.
   #

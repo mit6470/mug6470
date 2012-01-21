@@ -1,2 +1,3 @@
 $ ->
-  trialController = new window.TrialController
+  projectController = new window.ProjectController
+  

@@ -1,11 +1,13 @@
 Mug6470::Application.routes.draw do
 
-  resources :projects
+  resources :projects do
+    resources :trials
+  end
+
+  resources :trials, :only => [:destroy]
 
   resources :profiles
-
-  resources :trials
-
+  
   resources :data do
     collection do
       get :choose

@@ -81,10 +81,9 @@ class ClassifiersController < ApplicationController
     end
   end
 
-  # GET /classifiers/choose
-  # GET /classifiers/choose
+  # XHR GET /classifiers/choose
   def choose
-    @classifier = Classifier.find params[:classifier_id]
+    @classifier = Classifier.find params[:trial_classifier_id]
     render :layout => false
   end
 end

@@ -1,6 +1,8 @@
-<h1>Editing project</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<section id="current-project">
+  <ul id="project-nav">
+    <li><a href="#new_trial">Current trial</a></li>
+    <%= render 'trials/index', :trials => @project.trials %>
+  </ul>
+  <%= render 'trials/form', :trial => @project.trials.build, 
+                            :project => @project %>
+</section>

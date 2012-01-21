@@ -1,4 +1,4 @@
-<%= form_for(trial, :remote => true) do |f| %>
+<%= form_for([project, trial], :remote => true) do |f| %>
   <% if trial.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@trial.errors.count, "error") %> prohibited this trial from being saved:</h2>
@@ -11,41 +11,39 @@
     </div>
   <% end %>
   
-  <div id="current-trial">
-    <ul>
-      <li><a href="#current-trial-data">Data</a></li>
-      <li><a href="#current-trial-classifier">Classifier</a></li>
-      <li><a href="#current-trial-run">Run</li>
-    </ul>
-    
-    <section id="current-trial-data">
-      <div class="field">
-        <%= f.label :datum_id, 'Choose Data'%><br />
-        <%= select_tag :datum_id, data_options, 
-            'data-pwnfx-refresh-url' => choose_data_url,
-            'data-pwnfx-refresh-method' => 'GET',
-            'data-pwnfx-refresh-target' => 'data-tabs-table' %>
-      </div>
-      <h4>Data content</h4>
-      <%= render 'data/show' %>
-    </section>
+  <ul>
+    <li><a href="#current-trial-data">Data</a></li>
+    <li><a href="#current-trial-classifier">Classifier</a></li>
+    <li><a href="#current-trial-run">Training and testing</li>
+  </ul>
   
-    <section id="current-trial-classifier" >
-      <div class="field">
-        <%= f.label :classifier_id, 'Choose Classifier' %><br />
-        <%= select_tag :classifier_id, classifiers_options,
-            'data-pwnfx-refresh-url' => choose_classifiers_url,
-            'data-pwnfx-refresh-method' => 'GET',
-            'data-pwnfx-refresh-target' => 'classifier-info' %>
-      </div>
-      <h4>Classifier Information</h4>
-      <div id="classifier-info"></div>
-    </section>
-    
-    <section id="current-trial-run" >
-      <div class="actions">
-        <%= button_tag 'Run', :id => 'run-button', :type => 'button', :class => 'actions' %>
-      </div>
-    </section>
-  </div>
+  <section id="current-trial-data">
+    <div class="field">
+      <%= f.label :datum_id, 'Choose Data'%><br />
+      <%= select_tag :trial_datum_id, data_options, 
+          'data-pwnfx-refresh-url' => choose_data_url,
+          'data-pwnfx-refresh-method' => 'GET',
+          'data-pwnfx-refresh-target' => 'data-tabs-table' %>
+    </div>
+    <h4>Data content</h4>
+    <%= render 'data/show' %>
+  </section>
+
+  <section id="current-trial-classifier" >
+    <div class="field">
+      <%= f.label :classifier_id, 'Choose Classifier' %><br />
+      <%= select_tag :trial_classifier_id, classifiers_options,
+          'data-pwnfx-refresh-url' => choose_classifiers_url,
+          'data-pwnfx-refresh-method' => 'GET',
+          'data-pwnfx-refresh-target' => 'classifier-info' %>
+    </div>
+    <h4>Classifier Information</h4>
+    <div id="classifier-info"></div>
+  </section>
+  
+  <section id="current-trial-run" >
+    <div class="actions">
+      <%= button_tag 'Run', :id => 'run-button', :type => 'button' %>
+    </div>
+  </section>
 <% end %>

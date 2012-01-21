@@ -81,10 +81,9 @@ class DataController < ApplicationController
     end
   end
   
-  # GET /data/choose
-  # GET /data/choose
+  # XHR GET /data/choose
   def choose
-    @datum = Datum.find(params[:datum_id])
+    @datum = Datum.find(params[:trial_datum_id])
     render :layout => false
   end
 end

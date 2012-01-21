@@ -4,7 +4,7 @@
   background: none;
   @include box;  
 
-  > nav, > article {
+  > ul, > article, > form {
     margin: 0;
     padding: 0;
     
@@ -14,19 +14,14 @@
       width: $run-button-size;
     }
     
-    > ul.ui-tabs-nav {
+    > li {
+      @include border-radius(0);
+      clear: both;
       border: none;
-      padding: 0;
+      width: 100%;
       
-      li {
-        @include border-radius(0);
-        clear: both;
-        border: none;
-        width: 100%;
-        
-        a {
-          float: right;
-        }
+      a {
+        float: right;
       }
     }
   }
@@ -35,7 +30,7 @@
     width: 70%;
   }
   
-  > nav {
+  > ul {
     background: $trial-nav-background-color;
   }
   

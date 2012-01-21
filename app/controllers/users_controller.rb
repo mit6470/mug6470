@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # TODO(ushadow): Add admin.
+  
   # GET /users
   # GET /users.json
   def index
