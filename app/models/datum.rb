@@ -21,5 +21,25 @@ class Datum < ActiveRecord::Base
   def to_s
     relation_name
   end
+  
+  def chart_data
+    return unless nominal_type?(features.last[:type])
+    all_features = {}
+    features.each_with_index do |feature, i|
+      if nominal_type?(feature[:type])
+        feature_values = feature[:type]
+        all_features[feature[:name]] = { :values => feature_values }
+        data = {}
+        feature_values.each { |v| data[v] = Hash.new 0 } 
+        examples.each { |example| data[example[i]][example.last] += 1 }
+        all_features[feature[:name]][:data] = data
+      end
+    end
+    all_features
+  end
+  
+  def nominal_type?(type)
+    type.kind_of? Array
+  end
 end
 

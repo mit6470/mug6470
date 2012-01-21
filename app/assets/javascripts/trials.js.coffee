@@ -3,9 +3,6 @@ class CurrentTrialView
   constructor: ->
     @onSubmit = ->
     
-    new window.DataView
-   
-    
     @trialTabs = $('#new_trial')
     @trialTabs.tabs()
 
@@ -13,8 +10,29 @@ class CurrentTrialView
     @runButton.click => @onRunButtonClick()
 
     @form = $('#new_trial')
+    @dataView = new window.DataView
     
   onRunButtonClick: ->
     @onSubmit()
+    
+class TrialController
+  constructor: (@trialView) ->
+    @dataView = @trialView.dataView
+    
+    @dataView.chooseData = => @chooseData() 
       
+  chooseData: ->
+    dataSelect = @dataView.dataSelect
+    form = @trialView.form
+    
+    onXhrSuccess = (data) =>
+      @dataView.render(data)
+    
+    $.ajax({
+      data: form.serialize(), success: onXhrSuccess,
+      dataType: 'json', type: dataSelect.attr('data-choose-data-method'),
+      url: dataSelect.attr('data-choose-data-url') 
+    })
+    
 window.CurrentTrialView = CurrentTrialView
+window.TrialController = TrialController

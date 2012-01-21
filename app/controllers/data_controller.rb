@@ -82,8 +82,13 @@ class DataController < ApplicationController
   end
   
   # XHR GET /data/choose
+  # XHR GET /data/choose.json
   def choose
     @datum = Datum.find(params[:trial_datum_id])
-    render :layout => false
+    
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.json { render json: @datum.chart_data }
+    end
   end
 end

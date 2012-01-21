@@ -1,8 +1,17 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 class DataView
   constructor: ->
     $('#data-tabs').tabs()
+    @dataSelect = $('#trial_datum_id')
+    @histogramTab = $('#data-tabs-histogram')
     
-window.DataView = DataView    
+    @chooseData = ->
+    @dataSelect.change => @onDataSelectChange()
+      
+  onDataSelectChange: ->
+    @chooseData()
+    
+  render: (data) ->
+    console.log data
+    @histogramTab.html 'Got data'
+    
+window.DataView = DataView

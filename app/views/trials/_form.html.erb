@@ -21,9 +21,8 @@
     <div class="field">
       <%= f.label :datum_id, 'Choose Data'%><br />
       <%= select_tag :trial_datum_id, data_options, 
-          'data-pwnfx-refresh-url' => choose_data_url,
-          'data-pwnfx-refresh-method' => 'GET',
-          'data-pwnfx-refresh-target' => 'data-tabs-table' %>
+          'data-choose-data-url' => choose_data_url,
+          'data-choose-data-method' => 'GET' %>
     </div>
     <h4>Data content</h4>
     <%= render 'data/show' %>

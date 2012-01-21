@@ -1,5 +1,7 @@
 class ProjectView
   constructor: ->
+    @currentTrialView = new window.CurrentTrialView
+
     onAddTab = (event, ui) =>
       $(ui.panel).append @resultHtml
       @projectTabs.tabs 'select', "\##{ui.panel.id}"
@@ -23,7 +25,6 @@ class ProjectView
     
     $('#project-nav span.ui-icon-close').live 'click', 
                                               -> onCloseTab($(this).parent()) 
-    @currentTrialView = new window.CurrentTrialView
   
   # Renders the trial result.  
   renderResult: (trial) ->
@@ -59,8 +60,7 @@ class ProjectView
 
 # ProjectController handles user interactions on the project view.
 class ProjectController
-  constructor: ->
-    @projectView = new ProjectView
+  constructor: (@projectView) ->
     @currentTrialView = @projectView.currentTrialView
     @currentTrialView.onSubmit = => @submit()
     
@@ -73,6 +73,7 @@ class ProjectController
     $.ajax({
       data: form.serialize(), success: onXhrSuccess,
       dataType: 'json', type: form.attr('method'), url: form.attr('action')
-    });
+    })
     
-window.ProjectController = ProjectController   
+window.ProjectController = ProjectController 
+window.ProjectView = ProjectView  
