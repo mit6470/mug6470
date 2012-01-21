@@ -62,13 +62,18 @@ header {
     font-size: $header-menu-font-size;
     line-height: $header-menu-line-height;
     height: 100%;
-    > li > a {
-      padding-top: $header-height - $header-menu-line-height;
-      height: $header-menu-line-height;
-      color: $header-link-color;
+    > li {
+      padding-top: $header-height - $header-menu-line-height - 5px;
       
-      &:visited {
+      > a {
+        @include border-top-radius($radius);
+        padding-top: 5px;
+        height: $header-menu-line-height;
         color: $header-link-color;
+        
+        &:visited {
+          color: $header-link-color;
+        }
       }
     }
   }

@@ -7,10 +7,27 @@ $header-text-color: #FFFFFF;
 $header-title-color: $header-text-color;
 $header-link-color: $header-text-color;
 
-$ui-state-active-color: change-color($main-color1, $saturation: 40%, $lightness: 60%);
-$ui-state-active-state-color: change-color($ui-state-active-color, $saturation: 30%, $lightness: 60%);
-$ui-state-default-color: change-color($main-color1, $saturation: 6%, $lightness: 95%);
-$ui-state-default-border-color: change-color($ui-state-default-color, $saturation: 3%, $lightness: 90%);
+$menu-hover-color: change-color($header-background-color, $saturation: 30%, 
+                                $lightness: 50%);
+    
+// Jquery UI colors.
+$ui-state-active-color: change-color($main-color1, $saturation: 40%, 
+                                     $lightness: 60%);
+$ui-state-active-state-color: change-color($ui-state-active-color, 
+                                           $saturation: 30%, $lightness: 60%);
+$ui-state-default-color: change-color($main-color1, $saturation: 6%, 
+                                      $lightness: 95%);
+$ui-state-default-border-color: change-color($ui-state-default-color, 
+                                             $saturation: 3%, $lightness: 90%);
+
+// Text
+$heading-main-color: #000000;
+$h1-text-color: change-color($heading-main-color, $lightness: 25%);
+$h2-text-color: change-color($heading-main-color, $lightness: 27%);
+$h3-text-color: change-color($heading-main-color, $lightness: 29%);
+$h4-text-color: change-color($heading-main-color, $lightness: 31%);
+$h5-text-color: change-color($heading-main-color, $lightness: 33%);
+$h6-text-color: change-color($heading-main-color, $lightness: 35%);
 
 // Trial workbench
 $trial-nav-background-color: $ui-state-default-color;

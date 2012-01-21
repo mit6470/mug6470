@@ -21,7 +21,7 @@ class DataView
           ymax: 14, categories: featuresData[featuresData.length - 1].values,
           ylabel: 'examples'
         }
-        options = {stack: true}
+        options = {stack: true, fillColors: pv.Colors.category20().range()}
         chart = new BarChart(chartData, options)
         id = "chart-#{data.features[i].name}"
         @histogramTab.append("<div id='#{id}'></div>")
