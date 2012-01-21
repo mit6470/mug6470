@@ -103,7 +103,6 @@ PwnFx.wireConfirm = function (element) {
   jElement.bind('change', onChangeFn);
   jElement.bind('keydown', onChangeFn);
   jElement.bind('keyup', onChangeFn);
-  onChangeFn();
 };
 
 /** Moves an element using data-pwnfx-move. */

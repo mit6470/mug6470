@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(:version => 20120120045033) do
   add_index "projects", ["profile_id"], :name => "index_projects_on_profile_id"
 
   create_table "trials", :force => true do |t|
-    t.integer  "classifier_id"
-    t.integer  "datum_id"
     t.integer  "project_id",                        :null => false
     t.string   "name",          :limit => 32,       :null => false
+    t.integer  "classifier_id"
+    t.integer  "datum_id"
     t.text     "output",        :limit => 16777215
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false

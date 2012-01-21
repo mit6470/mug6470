@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         @user.create_profile
-        format.html { redirect_to session_path }
+        format.html { redirect_to new_session_path }
         format.json { render :json => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -82,5 +82,13 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :ok }
     end
+  end
+  
+  # XHR /users/check_email
+  def check_email
+    @email = params[:user][:email]
+    @user = User.with_email @email
+    
+    render :layout => false
   end
 end

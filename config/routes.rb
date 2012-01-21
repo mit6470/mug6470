@@ -24,7 +24,11 @@ Mug6470::Application.routes.draw do
 
   resource :session, :controller => 'session'
   
-  resources :users
+  resources :users do
+    collection do
+      post :check_email
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
