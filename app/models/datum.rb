@@ -7,13 +7,17 @@ class Datum < ActiveRecord::Base
   validates :file_name, :presence => true, :uniqueness => true, 
                         :length => 1..64, :format => { :with => /.arff$/ }
   
-  # A hash of the examples of the data.
+  # An array of the examples of the data.
   validates :examples, :presence => true, :length => 1..32.kilobytes
   validates :num_examples, :presence => true
 
+  # An array of hashes with name and type keys.
+  #     :name => feature name.
+  #     :type => type of the feature. (numeric, text, [](nominal))
   validates :features, :presence => true, :length => 1..512
 
-  # The number of features in the data.
+  # The number of features in the data, including ID as the first feature, and 
+  # class as the last feature.
   validates :num_features, :presence => true
   
   validates :relation_name, :presence => true, :length => 1..256
@@ -22,22 +26,47 @@ class Datum < ActiveRecord::Base
     relation_name
   end
   
+  # Returns a hash of feature data for drawing histograms.
+  # :features => array of hashes 
+  #                 :name => feature name.
+  #                 :type => type of the feature.
+  # :features_data => agregated data for all features.
+  #                 :values => nominal values for a feature.
+  #                 :data => an array of hashes for each feature value with 
+  #                          class values as keys and class value occurrences as
+  #                          as values.
+  #                 :missing => number of missing or invalid values for this 
+  #                              feature.
+  # Returns nil if the class type is not nominal.
+  # TODO(ushadow): handle numeric values for both class and features
   def chart_data
-    return unless nominal_type?(features.last[:type])
-    all_features = {}
+    classValues = features.last[:type]
+    return unless nominal_type?(classValues)
+    all_features = Array.new(num_features) { Hash.new 0 } 
     features.each_with_index do |feature, i|
       if nominal_type?(feature[:type])
-        feature_values = feature[:type]
-        all_features[feature[:name]] = { :values => feature_values }
-        data = {}
-        feature_values.each { |v| data[v] = Hash.new 0 } 
-        examples.each { |example| data[example[i]][example.last] += 1 }
-        all_features[feature[:name]][:data] = data
+        fvalues = feature[:type]
+        all_features[i][:values] = fvalues
+        data = Hash[fvalues.map { 
+            |v| [v, Hash[classValues.map { |cv| [cv, 0] }]] }] 
+        examples.each do |example| 
+          v = example[i]
+          if data[v].nil? 
+            all_features[i][:missing] += 1
+          else
+            data[v][example.last] += 1 
+          end
+        end
+        all_features[i][:data] = fvalues.map { |v| data[v] }
       end
     end
-    all_features
+    { :features => features, :features_data => all_features }
   end
   
+  # Checks if the feature is nominal type.
+  #
+  # @param [Object] type feature type.
+  # @return [true/false] true if type is an array.
   def nominal_type?(type)
     type.kind_of? Array
   end
