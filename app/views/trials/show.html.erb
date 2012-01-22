@@ -26,9 +26,16 @@
 </p>
 
 <% output = @trial.output %>
-<% if output[:result] %>
-  <h2>Result</h2>
-  <% matrix = output[:result][:confusion_matrix] %>
+<h2>Result</h2>
+<% accuracy = output[:result][:accuracy] %>
+<% if accuracy %>
+  <p>
+    <strong>Accuracy:</strong>
+    <%= "#{output[:result][:accuracy]} %" %>
+  </p>
+<% end %>
+<% matrix = output[:result][:confusion_matrix] %>
+<% if matrix %>
   <table>
     <thead>
       <tr>
@@ -47,7 +54,8 @@
       <% end %>
     </tbody>
   </table>
-<% else %>
+<% end %>
+<% unless output[:error].blank? %>
   <h2>Error</h2>
   <p>
     <%= output[:error][0] %>

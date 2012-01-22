@@ -22,12 +22,10 @@ class Trial < ActiveRecord::Base
   validates :name, :length => 0..32, :presence => true 
 
   # The output of this trial.  
-  validates :output, :length => 0..32.kilobytes, :allow_nil => true, 
-                     :presence => true
+  validates :output, :length => 0..32.kilobytes, :presence => true 
  
   # An array of integer indices as selected features.
-  validates :selected_features, :length => 0..128, :allow_nil => true,
-                                :presence => true
+  validates :selected_features, :length => 0..128, :presence => true
                                 
   # Executes the trial and returns the result and error.
   #
@@ -55,13 +53,19 @@ class Trial < ActiveRecord::Base
 
       stdin, stdout, stderr = Open3.popen3 command
       
-      self.output = {}
+      self.output = { :result => {}, :error => {} }
       
-      result = stdout.read   
+      result = stdout.read  
+      
+      # Parses results. 
       rest, stratified = result && 
                          result.split("=== Stratified cross-validation ===\n")
       if stratified
-        rest, raw_matrix = stratified.split("=== Confusion Matrix ===\n")
+        p stratified
+        r = /Correctly Classified Instances\s+(\d+)\s+(?<accuracy>[\d\.]+)\s+%/i
+        md = r.match stratified
+        self.output[:result][:accuracy] = md && md[:accuracy]
+        rest, raw_matrix = stratified.split "=== Confusion Matrix ===\n"
         if raw_matrix
           confusion_matrix = []
           raw_matrix = raw_matrix.split("\n").reject(&:blank?) 
@@ -69,7 +73,6 @@ class Trial < ActiveRecord::Base
           raw_matrix[1..-1].
               each { |l| confusion_matrix << 
                          l.split(/\s|\||\=/).reject(&:blank?) }
-          self.output[:result] = {}
           self.output[:result][:confusion_matrix] = confusion_matrix
         end
       end

@@ -55,7 +55,7 @@ class ProjectView
                        # </table>
                      # <article>
                      # """
-  
+
     trialElement = $($(@resultHtml).filter('[data-trial-id]')[0])
     trialId = trialElement.attr('data-trial-id')
     trialName = $.trim trialElement.text()                
