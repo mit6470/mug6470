@@ -32,7 +32,7 @@ $h5-text-color: change-color($heading-main-color, $lightness: 33%);
 $h6-text-color: change-color($heading-main-color, $lightness: 35%);
 
 // Elements.
-$button-base-color: $main-color1 !default;
+$button-base-color: change-color($main-color2, $saturation: 55%, $lightness: 45%);
 $button-color: change-color($button-base-color, $lightness: 40%);
 $button-border-color: change-color($button-base-color,
     $saturation: 100%, $lightness: 33%) !default;

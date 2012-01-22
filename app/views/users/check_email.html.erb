@@ -1,5 +1,5 @@
-<% if @email.length < 5 %>
-  <span class="error-text">too short</span> 
+<% unless valid_email? @email %>
+  <span class="error-text">invalid email</span> 
 <% else %>
   <% if @user %>
     <span class="error-text">taken</span>

@@ -5,11 +5,14 @@ $page-columns: 26;
 
 // Generic
 $radius: 4px;
+$label-right-padding: 11px;
+$input-focus-shadow: rgba(94, 187, 189, 0.6);
 
 // Signup form
 $signup-form-width: $column-total * 13 - $column-margin;
-$signup-value-width: 220px;
+$signup-value-width: $signup-form-width * 0.4;
 $signup-comment-width: $signup-form-width * 0.2;
+$signup-label-width: $signup-form-width * 0.4;
 
 // Trial
 $run-button-size: 70px;

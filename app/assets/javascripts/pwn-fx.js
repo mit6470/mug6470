@@ -88,13 +88,13 @@ PwnFx.wireConfirm = function (element) {
     $(sourceSelector).each(function (index, element) {
       var val = $(element).val();
       value = value || val;
-      if (value != val) {
+      if (value != val || value == '') {
         matching = false;
       }
       if (matching) {
         $(winSelector).removeClass('hidden');
         $(failSelector).addClass('hidden');
-      } else {
+      } else if (value != '') {
         $(winSelector).addClass('hidden');
         $(failSelector).removeClass('hidden');
       }

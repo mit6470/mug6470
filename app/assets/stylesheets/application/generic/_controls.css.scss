@@ -2,3 +2,10 @@ input[type=text], input[type=email], input[type=tel], input[type=password],
     input[type=search], input[type=number] {
   line-height: 1.6em;      
 }
+
+input:focus {
+  outline: 0;
+  border-color: $main-color1;
+  @include box-shadow(inset 0 1px 3px rgba(0, 0, 0, 0.1), 
+                      0 0 8px $input-focus-shadow);
+}

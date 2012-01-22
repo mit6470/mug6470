@@ -1,0 +1,36 @@
+#signup-form {
+  width: $signup-form-width;
+  margin: auto;
+ 
+  h2 {
+    @include box-sizing(border-box);
+    width: $signup-label-width; 
+    text-align: right;
+    padding-right: $label-right-padding;
+  }
+  
+  form {
+    .fields .field { 
+      label, > .value, > .comment {
+        @include box-sizing(border-box);
+      }
+      label {
+        line-height: 1.6em;
+        width: $signup-label-width;
+      }
+      
+      > .comment {
+        width: $signup-comment-width;
+        color: $error-color;
+      }
+    }
+      
+    > .actions {
+      padding-left: $signup-value-width;
+      
+      input[type=submit] {
+        @include button-with-gradient($button-base-color);
+      }
+    }
+  }
+}

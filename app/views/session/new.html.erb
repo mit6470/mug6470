@@ -1,34 +1,38 @@
-<% if @redirect_url %>
-<p>
-  We need you to log in before we can show you the page that you are trying to
-  view.
-</p>
-<% end %>
-
-<h2>Sign in</h2>
-<%= form_tag session_path do %>
-<section class="fields">
-  <p class="field">
-    <%= label_tag :email, 'Email Address' %>
-    <span class="value">
-      <%= email_field_tag :email, @email, :required => true, 
-                                          :autofocus => true %>
-    </span>
+<section id="signin-form">
+  <% if @redirect_url %>
+  <p>
+    We need you to log in before we can show you the page that you are trying to
+    view.
   </p>
+  <% end %>
   
-  <p class="field">
-    <%= label_tag :password %>
-    <span class="value">
-      <%= password_field_tag :password %>
-    </span>
-  </p>
-  
+  <h2>Sign in</h2>
+  <%= form_tag session_path do %>
+  <section class="fields">
+    <p class="field">
+      <%= label_tag :email %>
+      <span class="value">
+        <%= email_field_tag :email, @email, :required => true, 
+                                            :autofocus => true %>
+      </span>
+      <span class="comment"></span>
+    </p>
+    
+    <p class="field">
+      <%= label_tag :password %>
+      <span class="value">
+        <%= password_field_tag :password %>
+      </span>
+      <span class="comment"></span>
+    </p>
+  </section>
+    
   <p class="actions">
-    <%= submit_tag 'Log in' %>
+    <%= submit_tag 'Sign in' %>
     
     <% if @redirect_url %>
     <%= hidden_field_tag :redirect_url, @redirect_url %>
     <% end %>
   </p>
+  <% end %>
 </section>
-<% end %>

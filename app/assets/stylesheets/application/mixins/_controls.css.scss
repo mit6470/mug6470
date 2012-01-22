@@ -1,0 +1,16 @@
+@mixin button-with-gradient ($base-color) {
+  $color-stop: change-color($base-color, $saturation: 60%, $lightness: 60%);
+  $text-shadow: adjust-color($base-color, $saturation: 10%, $lightness: 4%);
+  $border: adjust-color($base-color, $saturation: -10%, $lightness: 20%);
+  $border-bottom: adjust-color($base-color, $saturation: 5%, $lightness: -10%);
+  
+  @include linear-gradient(top, $color-stop, $base-color);
+  @include box-shadow(none);
+  
+  text-align: center;
+  text-shadow: 0 -1px 1px $text-shadow;
+  color: white;
+  border-color: $border; 
+  border-bottom-color: $border-bottom;
+  font-weight: bold;
+}

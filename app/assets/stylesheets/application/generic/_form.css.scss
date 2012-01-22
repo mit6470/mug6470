@@ -16,13 +16,13 @@ form {
         display: none;
       }
   
-      > * {
+      > *, label {
         display: table-cell;
         vertical-align: baseline;
         margin: 0;
       }
-      > label {
-        padding: 0 0.8em 0 0;
+      label {
+        padding: 0 $label-right-padding 0 0;
         text-align: right;
       }
       > .value {
