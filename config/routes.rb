@@ -1,5 +1,9 @@
 Mug6470::Application.routes.draw do
 
+  resources :tutorials
+
+  resources :sections
+
   resources :projects do
     resources :trials
   end

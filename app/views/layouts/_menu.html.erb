@@ -2,10 +2,13 @@
   <ol>
     <% if current_user %>
       <li>
-        <%= link_to 'Projects', projects_path %>
+        <%= link_to current_user.email, '#' %>
       </li>
       <li>
-        <%= link_to current_user.email, '#' %>
+        <%= link_to 'Tutorials', tutorials_path %>
+      </li>
+      <li>
+        <%= link_to 'Projects', projects_path %>
       </li>
       <li>
         <%= link_to 'Sign out', session_path, :method => :delete %>

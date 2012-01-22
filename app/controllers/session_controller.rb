@@ -12,7 +12,8 @@ class SessionController < ApplicationController
   # Sets up the 'session/home' view. A user is logged in.
   def home
     # Pull information about the current user.
-    @user = current_user
+    @projects = current_user.projects || []
+    @tutorials = Tutorial.all
   end
   private :home
   

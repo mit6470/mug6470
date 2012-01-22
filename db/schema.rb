@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120120045033) do
+ActiveRecord::Schema.define(:version => 20120122052424) do
 
   create_table "classifiers", :force => true do |t|
     t.string   "program_name", :limit => 128, :null => false
@@ -66,18 +66,35 @@ ActiveRecord::Schema.define(:version => 20120120045033) do
 
   add_index "projects", ["profile_id"], :name => "index_projects_on_profile_id"
 
+  create_table "sections", :force => true do |t|
+    t.string   "name",        :limit => 128,      :null => false
+    t.integer  "tutorial_id",                     :null => false
+    t.text     "content",     :limit => 16777215, :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "sections", ["tutorial_id"], :name => "index_sections_on_tutorial_id"
+
   create_table "trials", :force => true do |t|
     t.integer  "project_id",                            :null => false
     t.string   "name",              :limit => 32,       :null => false
-    t.integer  "classifier_id"
-    t.integer  "datum_id"
-    t.text     "output",            :limit => 16777215
-    t.string   "selected_features", :limit => 128
+    t.integer  "classifier_id",                         :null => false
+    t.integer  "datum_id",                              :null => false
+    t.string   "selected_features", :limit => 128,      :null => false
+    t.text     "output",            :limit => 16777215, :null => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
   end
 
   add_index "trials", ["project_id"], :name => "index_trials_on_project_id"
+
+  create_table "tutorials", :force => true do |t|
+    t.string   "name",       :limit => 128, :null => false
+    t.text     "summary",                   :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "exuid",      :limit => 32, :null => false
