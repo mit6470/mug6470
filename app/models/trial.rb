@@ -4,7 +4,8 @@ require 'open3'
 # and testing modes.
 class Trial < ActiveRecord::Base
   serialize :output, Hash
-  
+  serialize :selected_features, Array
+    
   # The project this trial belongs to.
   belongs_to :project, :inverse_of => :trials
   validates :project, :presence => true
@@ -21,6 +22,9 @@ class Trial < ActiveRecord::Base
   # The output of this trial.  
   validates :output, :length => 0..32.kilobytes, :allow_nil => true
  
+  # An array of integer indices as selected features.
+  validates :selected_features, :length => 0..128, :allow_nil => true
+  
   # Executes the trial and returns the result and error.
   #
   # Example command for filtering attributes:
@@ -35,7 +39,14 @@ class Trial < ActiveRecord::Base
     if datum && classifier
       classpath = ConfigVar[:weka_classpath]
       data_file = File.join ConfigVar[:data_dir], datum.file_name
-      command = "java -cp #{classpath} #{classifier} -t #{data_file} -i"
+      removed_features = [1]
+      
+      removed_features = (1..datum.num_features).to_a - selected_features if selected_features
+      
+      command = ["java -cp #{classpath}",
+                 "weka.classifiers.meta.FilteredClassifier", 
+                 "-F \"weka.filters.unsupervised.attribute.Remove -R #{removed_features.join ','}\"",
+                 "-W #{classifier} -t #{data_file} -i"].join ' '
       stdin, stdout, stderr = Open3.popen3 command
       
       self.output = {}
@@ -52,7 +63,6 @@ class Trial < ActiveRecord::Base
           raw_matrix[1..-1].
               each { |l| confusion_matrix << 
                          l.split(/\s|\||\=/).reject(&:blank?) }
-          p confusion_matrix
           self.output[:result] = {}
           self.output[:result][:confusion_matrix] = confusion_matrix
         end

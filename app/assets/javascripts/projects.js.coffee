@@ -32,7 +32,7 @@ class ProjectView
     error = trial.output.error
     @resultHtml = ''
     if error.length > 0
-      @resultHtml = "<p>#{error[0]}<p>"
+      @resultHtml = "<p>#{error[0]}</p>"
     else
       matrix = result?.confusion_matrix
       if matrix?

@@ -7,6 +7,7 @@ class CreateTrials < ActiveRecord::Migration
       t.references :classifier, :null => true
       t.references :datum, :null => true
       t.text :output, :null => true, :limit => 32.kilobytes
+      t.string :selected_features, :null => true, :limit => 128
       
       t.timestamps
     end

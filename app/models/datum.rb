@@ -26,7 +26,7 @@ class Datum < ActiveRecord::Base
     relation_name
   end
   
-  # Returns a hash of feature data for drawing histograms.
+  # Returns a hash of feature data.
   # :features => array of hashes 
   #                 :name => feature name.
   #                 :type => type of the feature.
@@ -37,30 +37,34 @@ class Datum < ActiveRecord::Base
   #                          as values.
   #                 :missing => number of missing or invalid values for this 
   #                              feature.
-  # Returns nil if the class type is not nominal.
   # TODO(ushadow): handle numeric values for both class and features
   def chart_data
+    returnHash =  { :relation => relation_name, :num_examples => num_examples, 
+                    :features => features}
     classValues = features.last[:type]
-    return unless nominal_type?(classValues)
     all_features = Array.new(num_features) { Hash.new 0 } 
-    features.each_with_index do |feature, i|
-      if nominal_type?(feature[:type])
-        fvalues = feature[:type]
-        all_features[i][:values] = fvalues
-        data = Hash[fvalues.map { 
-            |v| [v, Hash[classValues.map { |cv| [cv, 0] }]] }] 
-        examples.each do |example| 
-          v = example[i]
-          if data[v].nil? 
-            all_features[i][:missing] += 1
-          else
-            data[v][example.last] += 1 
+
+    if nominal_type?(classValues)
+      features.each_with_index do |feature, i|
+        if nominal_type?(feature[:type])
+          fvalues = feature[:type]
+          all_features[i][:values] = fvalues
+          data = Hash[fvalues.map { 
+              |v| [v, Hash[classValues.map { |cv| [cv, 0] }]] }] 
+          examples.each do |example| 
+            v = example[i]
+            if data[v].nil? 
+              all_features[i][:missing] += 1
+            else
+              data[v][example.last] += 1 
+            end
           end
+          all_features[i][:data] = fvalues.map { |v| data[v] }
         end
-        all_features[i][:data] = fvalues.map { |v| data[v] }
       end
     end
-    { :features => features, :features_data => all_features }
+    returnHash[:features_data] = all_features
+    returnHash
   end
   
   # Checks if the feature is nominal type.

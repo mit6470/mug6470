@@ -22,6 +22,8 @@ class TrialsController < ApplicationController
     @trial = Trial.new(params[:trial])
     @trial.datum_id = params[:trial_datum_id]
     @trial.classifier_id = params[:trial_classifier_id]
+    features = params[:selected_features]
+    @trial.selected_features = features && features.map(&:to_i)
     project_id = params[:project_id]
     max_trial_id = Trial.where(:project_id => project_id).maximum(:id) || 0
     @trial.name = "Trial-#{max_trial_id + 1}"
