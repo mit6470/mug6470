@@ -32,7 +32,7 @@ class DataView
     @featuresTab.empty()
     featuresData = data.features_data
     for feature, i in data.features
-      continue if i == 0 # Ignore the ID feature. Feature index is 1 based.
+      continue if i == 0 # Ignore the ID feature.
       featureName = data.features[i].name
       chartId = "chart-#{featureName}"
       checkboxId = "feature-#{featureName}"
@@ -40,10 +40,10 @@ class DataView
       disabled = if isClassFeature then 'disabled' else ''
       hiddenInput = ''
       if isClassFeature 
-        hiddenInput = "<input hidden name='selected_features[]' value='#{i + 1}' />"
+        hiddenInput = "<input hidden name='selected_features[]' value='#{i}' />"
       featureHtml = """
                     <li>
-                      <input type='checkbox' id='#{checkboxId}' value='#{i + 1}' 
+                      <input type='checkbox' id='#{checkboxId}' value='#{i}' 
                        checked='yes' #{disabled} name='selected_features[]' />
                       <label for='#{checkboxId}'>#{featureName}<label>
                       #{hiddenInput}

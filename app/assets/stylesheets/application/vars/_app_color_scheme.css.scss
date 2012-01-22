@@ -1,5 +1,7 @@
 // Application specific color schemes.
 $main-color1: #3CCACF;
+$main-color2: #9FF578;
+$main-color3: #F35E5E;
 
 // Header colors.
 $header-background-color: #295B5C;
@@ -29,8 +31,30 @@ $h4-text-color: change-color($heading-main-color, $lightness: 31%);
 $h5-text-color: change-color($heading-main-color, $lightness: 33%);
 $h6-text-color: change-color($heading-main-color, $lightness: 35%);
 
+// Elements.
+$button-base-color: $main-color1 !default;
+$button-color: change-color($button-base-color, $lightness: 40%);
+$button-border-color: change-color($button-base-color,
+    $saturation: 100%, $lightness: 33%) !default;
+$button-font-color: change-color($button-base-color,
+    $saturation: 66%, $lightness: 99%) !default;
+$button-shadow-color: change-color($button-base-color,
+    $saturation: 66%, $lightness: 76%) !default;
+$button-hover-font-color: change-color($button-base-color,
+    $saturation: 66%, $lightness: 88%) !default;
+$button-active-shadow-color: change-color($button-base-color,
+    $saturation: 100%, $lightness: 33%) !default;
+    
+$input-base-color: #000000;
+$input-border-color: change-color($input-base-color, $lightness: 60%);
+$input-shadow-color: change-color($input-base-color, $lightness: 88%);
+$input-background-color: change-color($input-base-color, $lightness: 99%);
+
 // Trial workbench
 $trial-nav-background-color: $ui-state-default-color;
+
+// Error colors
+$error-color: $main-color3;
 
 // Pwnstyles variables.
 @import 'vars/color_scheme.css.scss';

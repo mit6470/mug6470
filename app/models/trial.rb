@@ -12,19 +12,23 @@ class Trial < ActiveRecord::Base
 
   # The classifier the user chose for this trial.
   belongs_to :classifier
-  
+  validates :classifier, :presence => true
+    
   # The input data the user chose for this trial.
   belongs_to :datum
-
+  validates :datum, :presence => true
+  
   # Name of the trial. 
   validates :name, :length => 0..32, :presence => true 
 
   # The output of this trial.  
-  validates :output, :length => 0..32.kilobytes, :allow_nil => true
+  validates :output, :length => 0..32.kilobytes, :allow_nil => true, 
+                     :presence => true
  
   # An array of integer indices as selected features.
-  validates :selected_features, :length => 0..128, :allow_nil => true
-  
+  validates :selected_features, :length => 0..128, :allow_nil => true,
+                                :presence => true
+                                
   # Executes the trial and returns the result and error.
   #
   # Example command for filtering attributes:
@@ -39,14 +43,16 @@ class Trial < ActiveRecord::Base
     if datum && classifier
       classpath = ConfigVar[:weka_classpath]
       data_file = File.join ConfigVar[:data_dir], datum.file_name
-      removed_features = [1]
-      
-      removed_features = (1..datum.num_features).to_a - selected_features if selected_features
-      
+      rm_features = [0]
+      rm_features = (0...datum.num_features).to_a - 
+                            selected_features if selected_features
+      rm_features_str = rm_features.map { |i| i + 1 }.join ','
       command = ["java -cp #{classpath}",
                  "weka.classifiers.meta.FilteredClassifier", 
-                 "-F \"weka.filters.unsupervised.attribute.Remove -R #{removed_features.join ','}\"",
+                 "-F \"weka.filters.unsupervised.attribute.Remove",
+                 "-R #{rm_features_str}\"",
                  "-W #{classifier} -t #{data_file} -i"].join ' '
+
       stdin, stdout, stderr = Open3.popen3 command
       
       self.output = {}
@@ -70,5 +76,4 @@ class Trial < ActiveRecord::Base
       self.output[:error] = stderr.readlines
     end 
   end
-
 end

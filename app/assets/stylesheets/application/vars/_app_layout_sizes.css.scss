@@ -1,3 +1,15 @@
-$run-button-size: 70px;
+$page-columns: 26;
 
+// Import layout vars from pwnstyles.
+@import 'vars/layout_sizes.css.scss';
+
+// Generic
 $radius: 4px;
+
+// Signup form
+$signup-form-width: $column-total * 13 - $column-margin;
+$signup-value-width: 220px;
+$signup-comment-width: $signup-form-width * 0.2;
+
+// Trial
+$run-button-size: 70px;

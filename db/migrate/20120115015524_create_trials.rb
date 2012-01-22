@@ -4,10 +4,10 @@ class CreateTrials < ActiveRecord::Migration
       t.references :project, :null => false
       t.string :name, :null => false, :limit => 32
 
-      t.references :classifier, :null => true
-      t.references :datum, :null => true
-      t.text :output, :null => true, :limit => 32.kilobytes
-      t.string :selected_features, :null => true, :limit => 128
+      t.references :classifier, :null => false
+      t.references :datum, :null => false
+      t.string :selected_features, :null => false, :limit => 128
+      t.text :output, :null => false, :limit => 32.kilobytes
       
       t.timestamps
     end

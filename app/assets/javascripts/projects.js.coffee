@@ -27,36 +27,39 @@ class ProjectView
                                               -> onCloseTab($(this).parent()) 
   
   # Renders the trial result.  
-  renderResult: (trial) ->
-    result = trial.output.result
-    error = trial.output.error
-    @resultHtml = ''
-    if error.length > 0
-      @resultHtml = "<p>#{error[0]}</p>"
-    else
-      matrix = result?.confusion_matrix
-      if matrix?
-        thead = ("<th>#{cell}</th>" for cell in matrix[0]).join('')
-        thead = "<thead><tr>#{thead}</tr></thead>"
-      
-        tbody = []
-        for row in result.confusion_matrix[1..-1]
-          rowHtml = ("<td>#{cell}</td>" for cell in row[0...-2]).join('') +
-                    "<td>#{row[row.length - 2]} = #{row[row.length - 1]}</td>"
-          tbody.push "<tr>#{rowHtml}</tr>"                     
-        
-        @resultHtml = """
-                     <article>
-                       <table>
-                         #{thead}
-                         <tbody>  
-                         #{tbody.join('')}
-                        </tbody>
-                       </table>
-                     <article>
-                     """
-    
-    @projectTabs.tabs 'add', "\#trial-#{trial.id}", "#{trial.name}", 1
+  renderResult: (@resultHtml) ->
+    # result = trial.output.result
+    # error = trial.output.error
+    # @resultHtml = ''
+    # if error.length > 0
+      # @resultHtml = "<p>#{error[0]}</p>"
+    # else
+      # matrix = result?.confusion_matrix
+      # if matrix?
+        # thead = ("<th>#{cell}</th>" for cell in matrix[0]).join('')
+        # thead = "<thead><tr>#{thead}</tr></thead>"
+#       
+        # tbody = []
+        # for row in result.confusion_matrix[1..-1]
+          # rowHtml = ("<td>#{cell}</td>" for cell in row[0...-2]).join('') +
+                    # "<td>#{row[row.length - 2]} = #{row[row.length - 1]}</td>"
+          # tbody.push "<tr>#{rowHtml}</tr>"                     
+#         
+        # @resultHtml = """
+                     # <article>
+                       # <table>
+                         # #{thead}
+                         # <tbody>  
+                         # #{tbody.join('')}
+                        # </tbody>
+                       # </table>
+                     # <article>
+                     # """
+  
+    trialElement = $($(@resultHtml).filter('[data-trial-id]')[0])
+    trialId = trialElement.attr('data-trial-id')
+    trialName = $.trim trialElement.text()                
+    @projectTabs.tabs 'add', "\#trial-#{trialId}", "#{trialName}", 1
 
 # ProjectController handles user interactions on the project view.
 class ProjectController
@@ -64,6 +67,7 @@ class ProjectController
     @currentTrialView = @projectView.currentTrialView
     @currentTrialView.onSubmit = => @submit()
     
+  # Submits the current trial form to run the trial.  
   submit: ->
     form = @currentTrialView.form
       
@@ -72,7 +76,7 @@ class ProjectController
       
     $.ajax({
       data: form.serialize(), success: onXhrSuccess,
-      dataType: 'json', type: form.attr('method'), url: form.attr('action')
+      dataType: 'html', type: form.attr('method'), url: form.attr('action')
     })
     
 window.ProjectController = ProjectController 

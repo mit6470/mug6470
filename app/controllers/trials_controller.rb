@@ -22,8 +22,9 @@ class TrialsController < ApplicationController
     @trial = Trial.new(params[:trial])
     @trial.datum_id = params[:trial_datum_id]
     @trial.classifier_id = params[:trial_classifier_id]
-    features = params[:selected_features]
-    @trial.selected_features = features && features.map(&:to_i)
+    datum = Datum.find_by_id @trial.datum_id
+    features = params[:selected_features] || (1...datum.num_features).to_a 
+    @trial.selected_features = features.map(&:to_i)
     project_id = params[:project_id]
     max_trial_id = Trial.where(:project_id => project_id).maximum(:id) || 0
     @trial.name = "Trial-#{max_trial_id + 1}"
@@ -32,8 +33,12 @@ class TrialsController < ApplicationController
     
     respond_to do |format|
       if @trial.save
+        format.html { render :action => 'show', :layout => false }
         format.json { render json: @trial, status: :created }
       else 
+        # TODO(ushadow): Handle or display error.
+        format.html { render :action => 'show', :layout => false, 
+                             :error => 'Trial run is unsuccessfule.'}  
         format.json { render json: @trial.errors, status: :unprecessable_entity }
       end
     end

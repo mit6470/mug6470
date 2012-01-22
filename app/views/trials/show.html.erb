@@ -1,21 +1,55 @@
-<h1>Trial</h1>
-
+<%= content_tag :h2, "#{@trial.name}", 'data-trial-id' => @trial.id %>
+<% datum = @trial.datum%>
 <p>
-  <b>Datum:</b>
-  <%= @trial.datum %>
+  <strong>Data:</strong>
+  <%= datum.relation_name.split('-')[0] %>
 </p>
 
 <p>
-  <b>Classifier:</b>
+  <strong>Classifier:</strong>
   <%= @trial.classifier %>
 </p>
 
-<h2>Result</h2>
+<p>
+  <strong>Examples:</strong>
+  <%= datum.num_examples %>
+</p>
+
+<p>
+  <strong>Features:</strong>
+  <%= datum.num_features - 1 %>
+  <ul>
+    <% @trial.selected_features.each do |i| %>
+      <li><%= datum.features[i][:name] %></li>
+    <% end %>
+  </ul>
+</p>
+
 <% output = @trial.output %>
 <% if output[:result] %>
-  <p><%= output[:result][:confusion_matrix] %></p>
-<% end %>
-<h2>Error</h2>
-<% output[:error].each do |line| %>
-  <p><%= line %></p>
+  <h2>Result</h2>
+  <% matrix = output[:result][:confusion_matrix] %>
+  <table>
+    <thead>
+      <tr>
+        <% matrix[0].each do |c| %>
+          <td><%= c %></td>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% matrix[1..-1].each do |r| %>
+        <tr>
+          <% r.each do |c| %>
+            <td><%= c %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h2>Error</h2>
+  <p>
+    <%= output[:error][0] %>
+  </p>
 <% end %>
