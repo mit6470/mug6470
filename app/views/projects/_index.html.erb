@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Profile</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,8 +11,6 @@
 <% projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
-    <td><%= project.profile %></td>
-    <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
