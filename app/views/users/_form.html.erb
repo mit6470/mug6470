@@ -15,7 +15,7 @@
     <p class="field">
       <%= f.label :email %>
       <span class="value">
-        <%= f.text_field :email, :required => true, :autofocus => true,
+        <%= f.email_field :email, :required => true, :autofocus => true,
             'data-pwnfx-refresh-url' => check_email_users_url,
             'data-pwnfx-refresh-method' => 'POST',
             'data-pwnfx-refresh-target' => 'user_form_email_availability' %>
