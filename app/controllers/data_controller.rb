@@ -88,7 +88,7 @@ class DataController < ApplicationController
     
     respond_to do |format|
       format.html { render :layout => false }
-      format.json { render json: @datum.chart_data }
+      format.json { render json: @datum && @datum.chart_data }
     end
   end
 end

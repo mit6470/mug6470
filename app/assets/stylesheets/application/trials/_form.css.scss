@@ -4,7 +4,7 @@
   background: none;
   @include box;  
 
-  > ul, > article, > form {
+  > ul, > form {
     margin: 0;
     padding: 0;
     
@@ -15,7 +15,7 @@
     }
     
     > li {
-      @include border-radius(0);
+      @include border-radius($radius);
       clear: both;
       border: none;
       width: 100%;
@@ -23,15 +23,24 @@
       a {
         float: right;
       }
+      
+      h4 {
+        text-align: right;
+        font-size: inherit;
+        padding: 0.5em 1em;
+      }
     }
+    
   }
   
-  > article {
+  > form {
     width: 70%;
   }
   
   > ul {
     background: $trial-nav-background-color;
+    width: $project-nav-width;
+    margin-right: $column-margin;
   }
   
   table {

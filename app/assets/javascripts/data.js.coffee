@@ -8,10 +8,12 @@ class DataView
     @dataSelect.change => @onDataSelectChange()
       
   onDataSelectChange: ->
-    @chooseData()
+    if @dataSelect.val() isnt '-1'
+      @chooseData()
     
   # @param [json] relation data, should not be null
   render: (data) ->
+    return unless data?
     numFeatures = data.features.length
     summary = """
               <h5>Summary</h5>
@@ -40,26 +42,37 @@ class DataView
       disabled = if isClassFeature then 'disabled' else ''
       hiddenInput = ''
       if isClassFeature 
-        hiddenInput = "<input hidden name='selected_features[]' value='#{i}' />"
+        hiddenInput = "<input hidden name='sf[]' value='#{i}' />"
       featureHtml = """
                     <li>
                       <input type='checkbox' id='#{checkboxId}' value='#{i}' 
-                       checked='yes' #{disabled} name='selected_features[]' />
+                       checked='yes' #{disabled} name='sf[]' />
                       <label for='#{checkboxId}'>#{featureName}<label>
                       #{hiddenInput}
                       <div id='#{chartId}'></div>
                     </li>
                     """
+      @featuresTab.append featureHtml
+      
+      # Renders chart if necessary.
       featureData = featuresData[i]
       unless $.isEmptyObject(featureData)
+        
+        reduceFn = (x, y) ->
+          sum = 0
+          for key, value of y
+            sum += value
+          if x > sum then x else sum
+            
+        ymax = featureData.data.reduce reduceFn, 0
+        
         chartData = {
           data: featureData.data, labels: featureData.values,
-          ymax: 14, categories: featuresData[featuresData.length - 1].values,
-          ylabel: 'examples'
+          ymax: ymax, categories: featuresData[featuresData.length - 1].values,
+          ylabel: 'Number of examples'
         }
         options = {stack: true, fillColors: pv.Colors.category20().range()}
         chart = new BarChart(chartData, options)
-        @featuresTab.append featureHtml
         chart.render(chartId)
-    
+
 window.DataView = DataView

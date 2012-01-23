@@ -1,6 +1,8 @@
 module TrialsHelper
   def data_options
-    options_for_select(Datum.all.map { |d| [d.file_name, d.id] })
+    options = [['Choose data', -1]]
+    Datum.all.each { |d| options << [d.file_name, d.id] }
+    options_for_select options
   end
   
   def classifiers_options
