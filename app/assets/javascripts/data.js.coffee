@@ -8,8 +8,11 @@ class DataView
     @dataSelect.change => @onDataSelectChange()
       
   onDataSelectChange: ->
-    if @dataSelect.val() isnt '-1'
+    if @dataSelectValid()
       @chooseData()
+  
+  dataSelectValid: ->
+    @dataSelect.val() isnt '-1'
     
   # @param [json] relation data, should not be null
   render: (data) ->

@@ -23,12 +23,13 @@
       a {
         float: right;
       }
-      
-      h4 {
-        text-align: right;
-        font-size: inherit;
-        padding: 0.5em 1em;
-      }
+    }
+
+    > h4 {
+      text-align: right;
+      font-size: inherit;
+      padding: 0.5em 1em;
+      margin-top: 40px;
     }
     
   }

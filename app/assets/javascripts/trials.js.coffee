@@ -11,9 +11,11 @@ class CurrentTrialView
 
     @form = $('#new_trial')
     @dataView = new window.DataView
+    @classifierView = new window.ClassifierView
     
   onRunButtonClick: ->
-    @onSubmit()
+    if @dataView.dataSelectValid() and @classifierView.classifierSelectValid()
+      @onSubmit()
     
 class TrialController
   constructor: (@trialView) ->

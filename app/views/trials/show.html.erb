@@ -1,63 +1,73 @@
-<%= content_tag :h2, "#{@trial.name}", 'data-trial-id' => @trial.id %>
-<% datum = @trial.datum%>
-<p>
-  <strong>Data:</strong>
-  <%= datum.relation_name.split('-')[0] %>
-</p>
-
-<p>
-  <strong>Classifier:</strong>
-  <%= @trial.classifier %>
-</p>
-
-<p>
-  <strong>Examples:</strong>
-  <%= datum.num_examples %>
-</p>
-
-<p>
-  <strong>Features:</strong>
-  <%= datum.num_features - 1 %>
-  <ul>
-    <% @trial.selected_features.each do |i| %>
-      <li><%= datum.features[i][:name] %></li>
-    <% end %>
-  </ul>
-</p>
-
-<% output = @trial.output %>
-<h2>Result</h2>
-<% accuracy = output[:result][:accuracy] %>
-<% if accuracy %>
+<% if @trial.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @trial.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <div>
+<% else %>
+  <%= content_tag :h2, "#{@trial.name}", 'data-trial-id' => @trial.id %>
+  <% datum = @trial.datum %>
   <p>
-    <strong>Accuracy:</strong>
-    <%= "#{output[:result][:accuracy]} %" %>
+    <strong>Data:</strong>
+    <%= datum.relation_name.split('-')[0] %>
   </p>
-<% end %>
-<% matrix = output[:result][:confusion_matrix] %>
-<% if matrix %>
-  <table>
-    <thead>
-      <tr>
-        <% matrix[0].each do |c| %>
-          <td><%= c %></td>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% matrix[1..-1].each do |r| %>
+  
+  <p>
+    <strong>Classifier:</strong>
+    <%= @trial.classifier %>
+  </p>
+  
+  <p>
+    <strong>Examples:</strong>
+    <%= datum.num_examples %>
+  </p>
+  
+  <p>
+    <strong>Features:</strong>
+    <%= datum.num_features - 1 %>
+    <ul>
+      <% @trial.selected_features.each do |i| %>
+        <li><%= datum.features[i][:name] %></li>
+      <% end %>
+    </ul>
+  </p>
+  
+  <% output = @trial.output %>
+  <h2>Result</h2>
+  <% accuracy = output[:result][:accuracy] %>
+  <% if accuracy %>
+    <p>
+      <strong>Accuracy:</strong>
+      <%= "#{output[:result][:accuracy]} %" %>
+    </p>
+  <% end %>
+  <% matrix = output[:result][:confusion_matrix] %>
+  <% if matrix %>
+    <table>
+      <thead>
         <tr>
-          <% r.each do |c| %>
+          <% matrix[0].each do |c| %>
             <td><%= c %></td>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-<% unless output[:error].blank? %>
-  <h2>Error</h2>
-  <p>
-    <%= output[:error][0] %>
-  </p>
+      </thead>
+      <tbody>
+        <% matrix[1..-1].each do |r| %>
+          <tr>
+            <% r.each do |c| %>
+              <td><%= c %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <% unless output[:error].blank? %>
+    <h2>Error</h2>
+    <p>
+      <%= output[:error][0] %>
+    </p>
+  <% end %>
 <% end %>

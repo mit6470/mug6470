@@ -38,7 +38,8 @@ class Trial < ActiveRecord::Base
   # @return [Hash] result and error from the execution, or nil if datum or 
   #     classifier is not specified.
   def run
-    if datum && classifier
+    self.output = { :result => {}, :error => {} }
+    if datum && classifier && selected_features
       classpath = ConfigVar[:weka_classpath]
       data_file = File.join ConfigVar[:data_dir], datum.file_name
       rm_features = [0]
@@ -53,7 +54,6 @@ class Trial < ActiveRecord::Base
 
       stdin, stdout, stderr = Open3.popen3 command
       
-      self.output = { :result => {}, :error => {} }
       
       result = stdout.read  
       
