@@ -1,22 +1,15 @@
-<h1>Listing projects</h1>
+<article id="projects-index">
+  <h2>Projects</h2>
+  
+  <%= button_to 'New Project', new_project_path, :method => :get %> 
+  
+  <ul>
+    <% projects.each do |project| %>
+      <li>  
+        <h3><%= link_to "#{project.name}", edit_project_path(project) %></h3>
+        <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+</article>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% projects.each do |project| %>
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= button_to 'New Project', new_project_path %>

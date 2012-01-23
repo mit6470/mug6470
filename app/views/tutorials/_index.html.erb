@@ -1,23 +1,9 @@
-<h2>Listing tutorials</h2>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Summary</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% tutorials.each do |tutorial| %>
-  <tr>
-    <td><%= tutorial.name %></td>
-    <td><%= link_to 'Show', tutorial %></td>
-    <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
-    <td><%= link_to 'Destroy', tutorial, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Tutorial', new_tutorial_path %>
+<article id="tutorials-index">
+  <h2>Tutorials</h2>
+  
+  <ul>
+    <% tutorials.each do |tutorial| %>
+      <li><h3><%= link_to "#{tutorial.name}", tutorial %></h3></li>
+    <% end %>
+  </ul>
+</article>
