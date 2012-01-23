@@ -7,6 +7,8 @@ gem 'rails', '>= 3.2.0.rc2'
 
 gem 'mysql2', '>= 0.3.11'
 
+gem "remotipart", "~> 1.0"
+
 
 # Gems used only for assets and not required
 # in production environments by default.

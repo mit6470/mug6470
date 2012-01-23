@@ -1,3 +1,16 @@
+  <ul>
+    <li><a href="#current-trial-data">Data</a></li>
+    <li><a href="#current-trial-classifier">Classifier</a></li>
+    <li><a href="#current-trial-run">Training and testing</a></li>
+  </ul>
+  
+  <section id="current-trial-data">
+    <div class="field">
+			<%= form_tag({:controller => 'data', :action => 'create', :method => 'post'}, :multipart => true, :remote => true) do %>
+			  <%= file_field_tag 'data_file' %>
+				<%= submit_tag 'Upload' %>
+			<% end %>
+    </div>
 <%= form_for([project, trial], :remote => true) do |f| %>
   <% if trial.errors.any? %>
     <div id="error_explanation">
@@ -11,13 +24,6 @@
     </div>
   <% end %>
   
-  <ul>
-    <li><a href="#current-trial-data">Data</a></li>
-    <li><a href="#current-trial-classifier">Classifier</a></li>
-    <li><a href="#current-trial-run">Training and testing</a></li>
-  </ul>
-  
-  <section id="current-trial-data">
     <div class="field">
       <%= select_tag :trial_datum_id, data_options, 
           'data-choose-data-url' => choose_data_url,

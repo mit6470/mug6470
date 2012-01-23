@@ -40,17 +40,9 @@ class DataController < ApplicationController
   # POST /data
   # POST /data.json
   def create
-    @datum = Datum.new(params[:datum])
-
-    respond_to do |format|
-      if @datum.save
-        format.html { redirect_to @datum, notice: 'Datum was successfully created.' }
-        format.json { render json: @datum, status: :created, location: @datum }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @datum.errors, status: :unprocessable_entity }
-      end
-    end
+		respond_to do |format|
+			format.js
+		end
   end
 
   # PUT /data/1
