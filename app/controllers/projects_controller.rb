@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   # TODO(ushadow): handle the case when user is not logged in.
-  before_filter :ensure_logged_in, :only => [:index, :new]
+  before_filter :ensure_logged_in, :only => [:index]
   
   def ensure_logged_in
     bounce_user unless current_user
@@ -21,14 +21,18 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
-    @project = Project.new :profile => current_user.profile, 
+    @project = Project.new :profile => current_user && current_user.profile, 
                            :name => "New project"
     
     respond_to do |format|
-      if @project.save
-        format.html { redirect_to edit_project_url(@project), notice: 'New project created.'}
+      if current_user
+        if @project.save
+          format.html { redirect_to edit_project_url(@project), notice: 'New project created.'}
+        else
+          format.html { redirect_to projects_url }
+        end
       else
-        format.html { render action: "index" }
+        format.html { render :edit }
       end
     end
   end

@@ -1,3 +1,4 @@
+# View of the data in the current trial.
 class DataView
   constructor: ->
     $('#data-tabs').tabs()
@@ -14,7 +15,8 @@ class DataView
   dataSelectValid: ->
     @dataSelect.val() isnt '-1'
     
-  # @param [json] relation data, should not be null
+  # @param [json] data to be rendered. It can be null if the server does not 
+  #   find the data and returns nothing.
   render: (data) ->
     return unless data?
     numFeatures = data.features.length

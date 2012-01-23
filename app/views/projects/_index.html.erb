@@ -1,7 +1,7 @@
 <article id="projects-index">
   <h2>Projects</h2>
   
-  <%= button_to 'New Project', new_project_path, :method => :get %> 
+  <%= link_to 'New Project', new_project_path, :class => :button %> 
   
   <ul>
     <% projects.each do |project| %>

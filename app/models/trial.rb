@@ -61,7 +61,6 @@ class Trial < ActiveRecord::Base
       rest, stratified = result && 
                          result.split("=== Stratified cross-validation ===\n")
       if stratified
-        p stratified
         r = /Correctly Classified Instances\s+(\d+)\s+(?<accuracy>[\d\.]+)\s+%/i
         md = r.match stratified
         self.output[:result][:accuracy] = md && md[:accuracy]

@@ -1,6 +1,6 @@
 class TrialsController < ApplicationController
   # TODO(ushadow): handle the case when user is not logged in.
-  before_filter :ensure_logged_in, :only => [:index, :new, :create]
+  before_filter :ensure_logged_in, :only => [:index, :new]
   
   def ensure_logged_in
     bounce_user unless current_user
@@ -17,7 +17,9 @@ class TrialsController < ApplicationController
     end
   end
   
-  # XHR POST /trials.json
+  # XHR POST projects/1/trials.html
+  # XHR POST projects/trials.html
+  # XHR POST projects/1/trials.json
   def create
     # @trial = Trial.new(params[:trial])
     # datum_id = params[:trial_datum_id]
@@ -47,21 +49,34 @@ class TrialsController < ApplicationController
     @trial.datum_id = params[:trial_datum_id]
     @trial.classifier_id = params[:trial_classifier_id]
     @trial.selected_features = params[:sf] && params[:sf].map(&:to_i)
-    project_id = params[:project_id]
-    max_trial_id = Trial.where(:project_id => project_id).maximum(:id) || 0
-    @trial.name = "Trial-#{max_trial_id + 1}"
-    @trial.project_id = project_id
+    
+    if current_user
+      project_id = params[:project_id]
+      max_trial_id = Trial.where(:project_id => project_id).maximum(:id) || 0
+      @trial.name = "Trial-#{max_trial_id + 1}"
+      @trial.project_id = project_id
+    else
+      time = Time.now
+      @trial.name = "Trial-#{time.hour}-#{time.min}-#{time.sec}"
+    end 
+    
     @trial.run
     
     respond_to do |format|
-      if @trial.save
-        format.html { render :action => 'show', :layout => false }
-        format.json { render json: @trial, status: :created }
-      else 
-        # TODO(ushadow): Handle or display error.
-        format.html { render :action => 'show', :layout => false, 
-                             :error => 'Trial run is unsuccessful.'}  
-        format.json { render json: @trial.errors, status: :unprecessable_entity }
+      if current_user
+        if @trial.save
+          format.html { render :action => 'show', :layout => false }
+          format.json { render json: @trial, status: :created }
+        else 
+          # TODO(ushadow): Handle or display error.
+          format.html { render :action => 'show', :layout => false, 
+                               :error => 'Trial run is unsuccessful.'}  
+          format.json { render json: @trial.errors, 
+                               status: :unprecessable_entity }
+        end
+      else
+        format.html { render :show, layout: false }
+        format.json { render json: @trial, status: :ok }
       end
     end
   end

@@ -3,7 +3,7 @@
   <% trials.reverse_each do |trial| %>
     <li>
       <%= link_to trial.name, "#{project_trial_url trial.project, trial}.html", 
-                  'data-trial-id' => "trial-#{trial.id}" %>
+                  'data-trial-href' => "#trial-#{trial.id}" %>
       <%= content_tag :span, 'Remove tab', :class => 'ui-icon ui-icon-close' %>
     </li>
   <% end %>

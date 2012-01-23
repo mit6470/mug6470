@@ -33,6 +33,8 @@ Mug6470::Application.routes.draw do
       post :check_email
     end
   end
+  
+  match 'projects/trials' => 'trials#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

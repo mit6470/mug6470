@@ -7,7 +7,7 @@
     </ul>
   <div>
 <% else %>
-  <%= content_tag :h2, "#{@trial.name}", 'data-trial-id' => @trial.id %>
+  <%= content_tag :h2, "#{@trial.name}", 'data-trial-id' => @trial.id || -1 %>
   <% datum = @trial.datum %>
   <p>
     <strong>Data:</strong>
@@ -45,6 +45,7 @@
   <% end %>
   <% matrix = output[:result][:confusion_matrix] %>
   <% if matrix %>
+    <h3>Confusion matrix:</h3>
     <table>
       <thead>
         <tr>
