@@ -1,0 +1,36 @@
+<article>
+  <h1>Introduction to Machine Learning</h1>
+  <summary>
+    Machine learning is a burgeoning new technology for mining knowledge from
+    data, a technology that a lot of people are starting to take seriously.
+    But what is it all about? This tutorial will introduce some fundamental 
+    terms in machine learning with some toy exmaples.
+  </summary>
+  <section>
+    <h2>Data mining and machine learning</h2>
+    <p>
+      We are overwhelmed with data. There is a growing gap between the <em>
+      generation</em> of data and our <em>understanding</em> of it. Data mining 
+      is the process of discovering patterns in data.
+    </p>
+    <p>
+      Many techniques for finding and describing structural patterns in data are
+      developed within the field known at <em>machine learning</em>.
+    </p>
+  </section>
+  <section>
+    <h2>
+      Describing structural patterns
+    </h2>
+    <p>
+      What is meant by <em>structural pattern?</em> How do you describe them? 
+      And what form does the input take? We will answer these questions by way 
+      of illustration rather than by attempting formal, and ultimately sterile,
+      definitions.
+    </p>
+    <p>
+      Please choose the contact lens data from the data tab in the current trial
+      panel.
+    </p>
+  </section>
+</article>
