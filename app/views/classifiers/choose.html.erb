@@ -1,1 +1,6 @@
-<%= @classifier.synopsis %>
+<% p @classifier.synopsis %>
+<% @classifier.synopsis.split("\n").each do |l| %>
+  <% unless l.blank? %>
+    <p><%= "#{l}" %></p>
+  <% end %>
+<% end %>
