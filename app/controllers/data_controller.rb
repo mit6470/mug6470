@@ -1,3 +1,5 @@
+require Rails.root.join 'lib/weka/arff_parser.rb'
+
 class DataController < ApplicationController
   # GET /data
   # GET /data.json
@@ -40,15 +42,21 @@ class DataController < ApplicationController
   # POST /data
   # POST /data.json
   def create
-    @datum = Datum.new(params[:datum])
-
-    respond_to do |format|
-      if @datum.save
-        format.html { redirect_to @datum, notice: 'Datum was successfully created.' }
-        format.json { render json: @datum, status: :created, location: @datum }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @datum.errors, status: :unprocessable_entity }
+    uploaded_io = params[:data_file]
+    out_file = File.join ConfigVar[:data_dir], uploaded_io.original_filename
+    File.open(out_file, 'w') do |file|
+      file.write(uploaded_io.read)
+    end
+    content = ArffParser.parse_file out_file
+    @datum = Datum.new :file_name => uploaded_io.original_filename,
+                  :examples => content[:examples],
+                  :num_examples => content[:examples].size,
+                  :features => content[:features],
+                  :num_features => content[:features].size,
+                  :relation_name => content[:relation]
+    if @datum.save
+      respond_to do |format|
+        format.js
       end
     end
   end
