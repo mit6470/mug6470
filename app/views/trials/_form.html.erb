@@ -6,8 +6,8 @@
   </ul>
   
   <section id="current-trial-data">
-    <%= form_tag({:controller => 'data', :action => 'create', :method => 'post'}, :id => 'upload_data', :multipart => true, :remote => true) do %>
-      <%= file_field_tag @data_file %>
+    <%= form_tag({:controller => 'data', :action => 'create'}, :id => 'upload_data', :multipart => true, :remote => true) do %>
+      <%= file_field_tag 'data_file' %>
       <%= submit_tag 'Upload' %>
     <% end %>
     

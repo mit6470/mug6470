@@ -1,4 +1,5 @@
 <%= remotipart_response do %>
-		$('#trial_datum_id').val(3)
-		window.dataView.onDataSelectChange()
+  window.dataView.dataSelect.append('<%= options_for_select([[@datum.file_name, @datum.id]]) %>')
+  window.dataView.dataSelect.val('<%= @datum.id %>')
+  window.dataView.onDataSelectChange()
 <% end %>
