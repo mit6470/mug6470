@@ -1,0 +1,10 @@
+th, td {
+  padding: 0.1em 0.3em 0.2em 0;
+}
+
+tr, th, td {
+  vertical-align: top;
+}
+
+tbody td:nth-child(even) {
+}

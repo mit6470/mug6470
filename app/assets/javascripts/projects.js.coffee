@@ -19,7 +19,9 @@ class ProjectView
       tabTemplate: '''
                    <li>
                      <a href="#{href}" data-trial-href="#{href}">#{label}</a> 
-                     <span class="ui-icon ui-icon-close">Remove Tab</span>
+                     <span class="ui-icon ui-icon-close" title="Delete">
+                       Remove Tab
+                     </span>
                    </li> 
                    ''',
       add: onAddTab

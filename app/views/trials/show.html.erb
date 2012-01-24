@@ -9,43 +9,66 @@
 <% else %>
   <%= content_tag :h2, "#{@trial.name}", 'data-trial-id' => @trial.id || -1 %>
   <% datum = @trial.datum %>
-  <p>
-    <strong>Data:</strong>
-    <%= datum.relation_name.split('-')[0] %>
-  </p>
-  
-  <p>
-    <strong>Classifier:</strong>
-    <%= @trial.classifier %>
-  </p>
-  
-  <p>
-    <strong>Examples:</strong>
-    <%= datum.num_examples %>
-  </p>
-  
-  <p>
-    <strong>Features:</strong>
-    <%= datum.num_features - 1 %>
-    <ul>
-      <% @trial.selected_features.each do |i| %>
-        <li><%= datum.features[i][:name] %></li>
-      <% end %>
-    </ul>
-  </p>
-  
+  <table class="summary">
+    <tbody>
+      <tr>
+        <td>Data:</td>
+        <td><%= datum.relation_name.split('-')[0] %></td>
+      </tr>
+    
+      <tr>
+        <td>Classifier:</td>
+        <td><%= @trial.classifier %></td>
+      </tr>
+      
+      <tr>
+        <td>Examples:</td>
+        <td><%= datum.num_examples %></td>
+      </tr>
+      
+      <tr>
+        <td>Class:</td>
+        <td><%= datum.features.last[:name] %></td>
+      </tr>
+      
+      <tr>
+        <td>Features used:</td>
+        <td><%= "#{@trial.selected_features.size} / #{datum.num_features - 1}" %>
+          <ul>
+            <% @trial.selected_features[0..4].each do |i| %>
+              <li><%= datum.features[i][:name] %></li>
+            <% end %>
+          </ul>
+          <ul id="toggled-features" hidden >
+            <% @trial.selected_features[5..-1].each do |i| %>
+              <li><%= datum.features[i][:name] %></li>
+            <% end %>
+          </ul>
+          <ul>
+            <li id="feature-toggle-button">
+              <span class="ui-icon ui-icon-triangle-1-s">Reveal</span>
+            </li>
+          </ul>
+        </td>
+      </tr>
+     </tbody>
+  </table>
   <% output = @trial.output %>
-  <h2>Result</h2>
+  <h3>Result</h3>
   <% accuracy = output[:result][:accuracy] %>
   <% if accuracy %>
-    <p>
-      <strong>Accuracy:</strong>
-      <%= "#{output[:result][:accuracy]} %" %>
-    </p>
+    <table class="summary">
+      <tbody>
+        <tr>
+          <td>Accuracy:</td>
+          <td><%= "#{output[:result][:accuracy]} %" %></td>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
   <% matrix = output[:result][:confusion_matrix] %>
   <% if matrix %>
-    <h3>Confusion matrix:</h3>
+    <h4>Confusion matrix</h4>
     <table>
       <thead>
         <tr>
@@ -66,7 +89,7 @@
     </table>
   <% end %>
   <% unless output[:error].blank? %>
-    <h2>Error</h2>
+    <h3>Error</h3>
     <p>
       <%= output[:error][0] %>
     </p>

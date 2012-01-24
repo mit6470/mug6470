@@ -12,6 +12,14 @@ class CurrentTrialView
     @form = $('#new_trial')
     @dataView = new window.DataView
     @classifierView = new window.ClassifierView
+      
+    @featureToggleButton = $('#feature-toggle-button')
+    @featureToggleButton.live 'click', => @onFeatureToggle()
+  
+  onFeatureToggle: ->
+    console.log $('#toggled-features')
+    $('#toggled-features').toggle('blind', {}, 500)
+    false
     
   onRunButtonClick: ->
     if @dataView.dataSelectValid() and @classifierView.classifierSelectValid()

@@ -4,7 +4,8 @@
     <li>
       <%= link_to trial.name, "#{project_trial_url trial.project, trial}.html", 
                   'data-trial-href' => "#trial-#{trial.id}" %>
-      <%= content_tag :span, 'Remove tab', :class => 'ui-icon ui-icon-close' %>
+      <%= content_tag :span, 'Remove tab', :class => 'ui-icon ui-icon-close',
+          :title => 'Delete' %>
     </li>
   <% end %>
 <% end %>

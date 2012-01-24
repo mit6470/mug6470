@@ -24,7 +24,7 @@ class Trial < ActiveRecord::Base
   # The output of this trial.  
   validates :output, :length => 0..32.kilobytes, :presence => true 
  
-  # An array of integer indices as selected features.
+  # An array of integer indices as selected features used in training. 
   validates :selected_features, :length => 0..128, :presence => true
                                 
   # Executes the trial and returns the result and error.
