@@ -125,70 +125,24 @@ weka.core.tokenizers.Tokenizer=\
  
 # Lists the Classifiers I want to choose from
 weka.classifiers.Classifier=\
- weka.classifiers.bayes.AODE,\
- weka.classifiers.bayes.AODEsr,\
- weka.classifiers.bayes.BayesianLogisticRegression,\
  weka.classifiers.bayes.BayesNet,\
- weka.classifiers.bayes.ComplementNaiveBayes,\
- weka.classifiers.bayes.DMNBtext,\
- weka.classifiers.bayes.HNB,\
  weka.classifiers.bayes.NaiveBayes,\
- weka.classifiers.bayes.NaiveBayesMultinomial,\
- weka.classifiers.bayes.NaiveBayesMultinomialUpdateable,\
  weka.classifiers.bayes.NaiveBayesSimple,\
  weka.classifiers.bayes.NaiveBayesUpdateable,\
- weka.classifiers.bayes.WAODE,\
- weka.classifiers.functions.GaussianProcesses,\
- weka.classifiers.functions.IsotonicRegression,\
- weka.classifiers.functions.LeastMedSq,\
  weka.classifiers.functions.LibLINEAR,\
  weka.classifiers.functions.LibSVM,\
- weka.classifiers.functions.LinearRegression,\
  weka.classifiers.functions.Logistic,\
  weka.classifiers.functions.MultilayerPerceptron,\
- weka.classifiers.functions.PaceRegression,\
- weka.classifiers.functions.PLSClassifier,\
  weka.classifiers.functions.RBFNetwork,\
- weka.classifiers.functions.SimpleLinearRegression,\
  weka.classifiers.functions.SimpleLogistic,\
  weka.classifiers.functions.SMO,\
- weka.classifiers.functions.SMOreg,\
- weka.classifiers.functions.VotedPerceptron,\
- weka.classifiers.functions.Winnow,\
- weka.classifiers.meta.AdaBoostM1,\
- weka.classifiers.meta.AdditiveRegression,\
- weka.classifiers.meta.AttributeSelectedClassifier,\
- weka.classifiers.meta.FilteredClassifier,\
- weka.classifiers.meta.Grading,\
- weka.classifiers.meta.GridSearch,\
- weka.classifiers.meta.LogitBoost,\
- weka.classifiers.meta.MetaCost,\
- weka.classifiers.meta.MultiBoostAB,\
- weka.classifiers.meta.MultiClassClassifier,\
- weka.classifiers.meta.MultiScheme,\
- weka.classifiers.meta.OrdinalClassClassifier,\
- weka.classifiers.meta.RacedIncrementalLogitBoost,\
- weka.classifiers.meta.RandomCommittee,\
- weka.classifiers.meta.RandomSubSpace,\
- weka.classifiers.meta.RegressionByDiscretization,\
- weka.classifiers.meta.RotationForest,\
- weka.classifiers.meta.Stacking,\
- weka.classifiers.meta.StackingC,\
- weka.classifiers.meta.ThresholdSelector,\
- weka.classifiers.meta.Vote,\
- weka.classifiers.meta.nestedDichotomies.ClassBalancedND,\
- weka.classifiers.meta.nestedDichotomies.DataNearBalancedND,\
- weka.classifiers.meta.nestedDichotomies.ND,\
- weka.classifiers.trees.ADTree,\
  weka.classifiers.trees.BFTree,\
  weka.classifiers.trees.DecisionStump,\
  weka.classifiers.trees.FT,\
- weka.classifiers.trees.Id3,\
  weka.classifiers.trees.J48,\
  weka.classifiers.trees.J48graft,\
  weka.classifiers.trees.LADTree,\
  weka.classifiers.trees.LMT,\
- weka.classifiers.rules.Prism,\
  weka.classifiers.rules.Ridor,\
  weka.classifiers.rules.ZeroR
 
