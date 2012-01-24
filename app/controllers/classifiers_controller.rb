@@ -82,6 +82,7 @@ class ClassifiersController < ApplicationController
   end
 
   # XHR GET /classifiers/choose
+  # XHR GET /classifiers/choose.json
   def choose
     @classifier = Classifier.find params[:trial_classifier_id]
     respond_to do |format|
