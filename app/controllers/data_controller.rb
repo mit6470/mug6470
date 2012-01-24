@@ -40,9 +40,9 @@ class DataController < ApplicationController
   # POST /data
   # POST /data.json
   def create
-		respond_to do |format|
-			format.js
-		end
+    respond_to do |format|
+      format.js
+    end
   end
 
   # PUT /data/1

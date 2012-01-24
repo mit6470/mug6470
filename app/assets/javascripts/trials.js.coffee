@@ -3,7 +3,7 @@ class CurrentTrialView
   constructor: ->
     @onSubmit = ->
     
-    @trialTabs = $('#new_trial')
+    @trialTabs = $('#current_trial')
     @trialTabs.tabs()
 
     @runButton = $('#run-button')
@@ -20,8 +20,10 @@ class CurrentTrialView
 class TrialController
   constructor: (@trialView) ->
     @dataView = @trialView.dataView
-    
     @dataView.chooseData = => @chooseData() 
+
+    @classifierView = @trialView.classifierView
+    @classifierView.chooseClassifier = => @chooseClassifier()
       
   chooseData: ->
     dataSelect = @dataView.dataSelect
@@ -34,6 +36,19 @@ class TrialController
       data: form.serialize(), success: onXhrSuccess,
       dataType: 'json', type: dataSelect.attr('data-choose-data-method'),
       url: dataSelect.attr('data-choose-data-url') 
+    })
+  
+  chooseClassifier: ->
+    classifierSelect = @classifierView.classifierSelect
+    form = @trialView.form
+    
+    onXhrSuccess = (data) =>
+      @classifierView.render(data)
+    
+    $.ajax({
+      data: form.serialize(), success: onXhrSuccess,
+      dataType: 'json', type: classifierSelect.attr('data-choose-classifier-method'),
+      url: classifierSelect.attr('data-choose-classifier-url') 
     })
     
 window.CurrentTrialView = CurrentTrialView
