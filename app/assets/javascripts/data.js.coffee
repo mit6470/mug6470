@@ -98,12 +98,14 @@ class DataView
                       <div id='#{chartId}'></div>
                     </li>
                     """
-      if not isClassFeature
-        @featuresTab.append featureHtml
-      else
+      if isClassFeature
         @featuresTab.append """
-           hiddenInput = "<input hidden name='sf[]' value='#{i}' />"
+                            <li>
+                              <input hidden name='sf[]' value='#{i}' />
+                            </li>
                             """
+      else
+        @featuresTab.append featureHtml
 
       # Renders chart if necessary.
       featureData = featuresData[i]
