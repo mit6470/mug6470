@@ -85,18 +85,11 @@ class DataView
     featuresData = data.features_data
     for feature, i in data.features
       continue if i == 0 # Ignore the ID feature.
-      isClassFeature = i == numFeatures - 1
+      
       featureName = data.features[i].name
       chartId = "chart-#{featureName}"
-      checkboxId = "feature-#{featureName}"
-      featureHtml = """
-                    <li>
-                      <input type='checkbox' id='#{checkboxId}' value='#{i}' 
-                       checked='yes' name='sf[]' />
-                      <label for='#{checkboxId}'>#{featureName}<label>
-                      <div id='#{chartId}'></div>
-                    </li>
-                    """
+      
+      isClassFeature = i == numFeatures - 1
       if isClassFeature
         @featuresTab.append """
                             <li>
@@ -104,6 +97,15 @@ class DataView
                             </li>
                             """
       else
+        checkboxId = "feature-#{featureName}"
+        featureHtml = """
+                      <li>
+                        <input type='checkbox' id='#{checkboxId}' value='#{i}' 
+                         checked='yes' name='sf[]' />
+                        <label for='#{checkboxId}'>#{featureName}<label>
+                        <div id='#{chartId}'></div>
+                      </li>
+                      """
         @featuresTab.append featureHtml
 
       # Renders chart if necessary.
