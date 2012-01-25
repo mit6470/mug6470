@@ -3,7 +3,7 @@ class CurrentTrialView
   constructor: ->
     @onSubmit = ->
     
-    @trialTabs = $('#current_trial')
+    @trialTabs = $('#current-trial')
     @trialTabs.tabs()
 
     @runButton = $('#run-button')

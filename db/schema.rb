@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
   add_index "projects", ["profile_id"], :name => "index_projects_on_profile_id"
 
   create_table "sections", :force => true do |t|
-    t.string   "name",        :limit => 128,      :null => false
+    t.string   "title",       :limit => 128,      :null => false
     t.integer  "tutorial_id",                     :null => false
     t.text     "content",     :limit => 16777215, :null => false
     t.datetime "created_at",                      :null => false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
   add_index "trials", ["project_id"], :name => "index_trials_on_project_id"
 
   create_table "tutorials", :force => true do |t|
-    t.string   "name",       :limit => 128, :null => false
+    t.string   "title",      :limit => 128, :null => false
     t.text     "summary",                   :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false

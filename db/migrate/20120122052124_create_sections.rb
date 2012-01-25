@@ -1,7 +1,7 @@
 class CreateSections < ActiveRecord::Migration
   def change
     create_table :sections do |t|
-      t.string :name, :null => false, :limit => 128
+      t.string :title, :null => false, :limit => 128
       t.references :tutorial, :null => false
       t.text :content, :null => false, :limit => 32.kilobytes
       
