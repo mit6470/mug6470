@@ -11,6 +11,13 @@ $header-link-color: $header-text-color;
 
 $menu-hover-color: change-color($header-background-color, $saturation: 30%, 
                                 $lightness: 50%);
+                                
+// Background color
+$content-background-color: change-color($main-color1, $saturation: 1%, 
+                                        $lightness: 98%);
+                                    
+// Border
+$border-color: change-color($main-color1, $saturation: 3%, $lightness: 90%);
     
 // Jquery UI colors.
 $ui-state-active-color: change-color($main-color1, $saturation: 40%, 

@@ -1,8 +1,14 @@
 <article id="tutorial">
   <h1><%= @tutorial.title %></h1>
-  <div id="tutorial-section">
-    <%= render 'sections/show', :section => @tutorial.sections.first %>
+  <div id="tutorial-sections">
+    <% @tutorial.sections.each do |sec| %>
+      <%= sec.content.html_safe %>
+    <% end %>
   </div>
+  <nav>
+    <%= link_to 'Prev', '#', :id => 'prev-section' %>
+    <%= link_to 'Next', '#', :id => 'next-section' %>
+  </nav>
 </article>
 <%= render 'projects/edit', :trial => Trial.new, :project => Project.new %>
 
