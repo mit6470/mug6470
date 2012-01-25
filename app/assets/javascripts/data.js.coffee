@@ -90,13 +90,7 @@ class DataView
       chartId = "chart-#{featureName}"
       
       isClassFeature = i == numFeatures - 1
-      if isClassFeature
-        @featuresTab.append """
-                            <li>
-                              <input hidden name='sf[]' value='#{i}' />
-                            </li>
-                            """
-      else
+      unless isClassFeature
         checkboxId = "feature-#{featureName}"
         featureHtml = """
                       <li>

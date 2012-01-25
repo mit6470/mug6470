@@ -67,6 +67,14 @@ class Datum < ActiveRecord::Base
     returnHash
   end
   
+  def nominal_class_type?
+    nominal_type? features.last[:type]
+  end
+  
+  def class_values
+    features.last[:type]
+  end
+  
   # Checks if the feature is nominal type.
   #
   # @param [Object] type feature type.
