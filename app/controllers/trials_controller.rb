@@ -50,8 +50,8 @@ class TrialsController < ApplicationController
     @trial.classifier_id = params[:trial_classifier_id]
     @trial.selected_features = params[:sf] && params[:sf].map(&:to_i)
     
-    if current_user
-      project_id = params[:project_id]
+    project_id = params[:project_id]
+    if project_id
       max_trial_id = Trial.where(:project_id => project_id).maximum(:id) || 0
       @trial.name = "Trial-#{max_trial_id + 1}"
       @trial.project_id = project_id
@@ -63,7 +63,7 @@ class TrialsController < ApplicationController
     @trial.run
     
     respond_to do |format|
-      if current_user
+      if project_id
         if @trial.save
           format.html { render :action => 'show', :layout => false }
           format.json { render json: @trial, status: :created }
