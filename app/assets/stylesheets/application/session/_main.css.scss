@@ -1,2 +1,7 @@
 @import 'new.css.scss';
 
+$width: 400px;
+
+#welcome {
+  width: $width;
+}
