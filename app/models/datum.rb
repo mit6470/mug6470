@@ -40,7 +40,7 @@ class Datum < ActiveRecord::Base
   # TODO(ushadow): handle numeric values for both class and features
   def chart_data
     returnHash =  { :relation => relation_name, :num_examples => num_examples, 
-                    :features => features}
+                    :features => features, :examples => examples}
     classValues = features.last[:type]
     all_features = Array.new(num_features) { Hash.new 0 } 
 
