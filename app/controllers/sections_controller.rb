@@ -16,7 +16,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => false }
       format.json { render json: @section }
     end
   end

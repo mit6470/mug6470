@@ -1,8 +1,8 @@
 Mug6470::Application.routes.draw do
 
-  resources :tutorials
-
-  resources :sections
+  resources :tutorials do
+    resources :sections
+  end
 
   resources :projects do
     resources :trials

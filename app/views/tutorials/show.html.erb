@@ -1,11 +1,14 @@
-<p id="notice"><%= notice %></p>
+<article id="tutorial">
+  <h1><%= @tutorial.title %></h1>
+  <div id="tutorial-sections">
+    <% @tutorial.sections.each do |sec| %>
+      <%= sec.content.html_safe %>
+    <% end %>
+  </div>
+  <nav>
+    <%= link_to 'Prev', '#', :id => 'prev-section' %>
+    <%= link_to 'Next', '#', :id => 'next-section' %>
+  </nav>
+</article>
+<%= render 'projects/edit', :trial => Trial.new, :project => Project.new %>
 
-<p>
-  <b>Name:</b>
-  <%= @tutorial.name %>
-  <%= @tutorial.summary.html_safe %>
-</p>
-
-
-<%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
-<%= link_to 'Back', tutorials_path %>

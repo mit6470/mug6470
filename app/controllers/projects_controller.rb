@@ -27,7 +27,8 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if current_user
         if @project.save
-          format.html { redirect_to edit_project_url(@project), notice: 'New project created.'}
+          format.html { redirect_to edit_project_url(@project), 
+                                    notice: 'New project created.'}
         else
           format.html { redirect_to projects_url }
         end
