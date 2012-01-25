@@ -21,30 +21,6 @@ class TrialsController < ApplicationController
   # XHR POST projects/trials.html
   # XHR POST projects/1/trials.json
   def create
-    # @trial = Trial.new(params[:trial])
-    # datum_id = params[:trial_datum_id]
-    # datum_id = datum_id && datum_id.to_i
-    # classifier_id = params[:trial_classifier_id]
-    # classifier_id = classifier_id && classifier_id.to_i
-#     
-    # valid = datum_id && datum_id >= 0 && classifier_id && classifier_id >= 0
-#     
-    # if valid
-      # @trial.datum_id = datum_id
-      # @trial.classifier_id = classifier_id
-      # datum = Datum.find_by_id @trial.datum_id
-      # valid = !datum.nil?
-      # if valid
-        # features = params[:sf] || (1...datum.num_features).to_a 
-        # @trial.selected_features = features.map(&:to_i)
-        # project_id = params[:project_id]
-        # max_trial_id = Trial.where(:project_id => project_id).maximum(:id) || 0
-        # @trial.name = "Trial-#{max_trial_id + 1}"
-        # @trial.project_id = project_id
-        # @trial.run
-      # end
-    # end
-    
     @trial = Trial.new(params[:trial])
     @trial.datum_id = params[:trial_datum_id]
     @trial.classifier_id = params[:trial_classifier_id]

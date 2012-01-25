@@ -8,7 +8,6 @@ class DataView
     @examplesTab = $('#data-tabs-examples ul')
     @chooseData = ->
     @dataSelect.change => @onDataSelectChange()
-    @data = ->
       
   onDataSelectChange: ->
     if @dataSelectValid()
@@ -41,7 +40,7 @@ class DataView
                       <td><strong>Examples:</strong> #{data.num_examples}</td>
                     </tr>
                     <tr>
-                      <td><strong>Features:</strong> #{numFeatures - 1}</td>
+                      <td><strong>Features:</strong> #{numFeatures - 2}</td>
                     </tr>
                     <tr>
                       <td><strong>Class:</strong> #{data.features[numFeatures - 1].name}</td>
