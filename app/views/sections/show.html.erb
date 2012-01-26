@@ -1,15 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @section.name %>
-</p>
-
-<p>
-  <b>Course:</b>
-  <%= @section.course %>
-</p>
-
-
-<%= link_to 'Edit', edit_section_path(@section) %> |
-<%= link_to 'Back', sections_path %>
+<article>
+  <%= render 'sections/show', :section => @section %>
+</article>

@@ -1,0 +1,19 @@
+article#tutorial {
+  width: $tutorial-width;
+  padding: 0 $column-margin;
+  margin: 0 $column-margin;
+  
+  #tutorial-sections {
+    height: 400px;  
+  }
+  
+  h1 {
+    font-size: $h4-font-size;
+    margin-bottom: 0.5em;
+  }
+  
+  h2 {
+    font-size: $h5-font-size;
+    margin: 0 0 0.5em 0;
+  }
+}

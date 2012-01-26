@@ -82,8 +82,12 @@ class ClassifiersController < ApplicationController
   end
 
   # XHR GET /classifiers/choose
+  # XHR GET /classifiers/choose.json
   def choose
     @classifier = Classifier.find params[:trial_classifier_id]
-    render :layout => false
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.json { render json: @classifier }
+    end
   end
 end

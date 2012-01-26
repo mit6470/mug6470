@@ -1,0 +1,8 @@
+<article id="current-project">
+  <ul id="project-nav">
+    <li><a href="#current-trial">Current trial</a></li>
+    <%= render 'trials/index', :trials => project.trials %>
+  </ul>
+  <%= render 'trials/form', :trial => project.trials.build, 
+                            :project => project %>
+</article>

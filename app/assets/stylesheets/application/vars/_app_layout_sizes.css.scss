@@ -1,4 +1,4 @@
-$page-columns: 26;
+$page-columns: 32;
 
 // Import layout vars from pwnstyles.
 @import 'vars/layout_sizes.css.scss';
@@ -16,4 +16,8 @@ $signup-label-width: $signup-form-width * 0.35;
 
 // Project trial
 $run-button-size: 70px;
-$project-nav-width: $column-total * 5 - $column-margin;
+$project-nav-width: $column-total * 4 - $column-margin;
+$tab-margin: 5px;
+
+// Tutorial
+$tutorial-width: $column-total * 12 - $column-margin;

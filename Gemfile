@@ -7,7 +7,6 @@ gem 'rails', '>= 3.2.0.rc2'
 
 gem 'mysql2', '>= 0.3.11'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -28,6 +27,7 @@ gem 'authpwn_rails', '>= 0.10.7'
 gem 'fbgraph_rails', '>=0.2.2' # Rails does not initialize nested engines.
 gem 'configvars_rails', '>= 0.5.2'
 gem 'enhanced_select'
+gem "remotipart", "~> 1.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -33,22 +33,24 @@
       
       <tr>
         <td>Features used:</td>
-        <td><%= "#{@trial.selected_features.size} / #{datum.num_features - 1}" %>
+        <td><%= "#{@trial.selected_features.size} / #{datum.num_features - 2}" %>
           <ul>
             <% @trial.selected_features[0..4].each do |i| %>
               <li><%= datum.features[i][:name] %></li>
             <% end %>
           </ul>
-          <ul id="toggled-features" hidden >
-            <% @trial.selected_features[5..-1].each do |i| %>
-              <li><%= datum.features[i][:name] %></li>
-            <% end %>
-          </ul>
-          <ul>
-            <li id="feature-toggle-button">
-              <span class="ui-icon ui-icon-triangle-1-s">Reveal</span>
-            </li>
-          </ul>
+          <% if @trial.selected_features.length > 5 %>
+            <ul id="toggled-features" hidden >
+              <% @trial.selected_features[5..-1].each do |i| %>
+                <li><%= datum.features[i][:name] %></li>
+              <% end %>
+            </ul>
+            <ul>
+              <li id="feature-toggle-button">
+                <span class="ui-icon ui-icon-triangle-1-s">Reveal</span>
+              </li>
+            </ul>
+          <% end %>
         </td>
       </tr>
      </tbody>
@@ -61,7 +63,7 @@
       <tbody>
         <tr>
           <td>Accuracy:</td>
-          <td><%= "#{output[:result][:accuracy]} %" %></td>
+          <td><%= "#{"%.4f" % (output[:result][:accuracy] * 100) } %" %></td>
         </tr>
       </tbody>
     </table>
@@ -72,16 +74,18 @@
     <table>
       <thead>
         <tr>
-          <% matrix[0].each do |c| %>
-            <td><%= c %></td>
+          <td></td>
+          <% 1.upto(matrix.size) do |i| %>
+            <td><%= i %></td>
           <% end %>
         </tr>
       </thead>
       <tbody>
-        <% matrix[1..-1].each do |r| %>
+        <% matrix.each_with_index do |r, i| %>
           <tr>
+            <td><%= i + 1 %>
             <% r.each do |c| %>
-              <td><%= c %></td>
+              <td><%= c.size %></td>
             <% end %>
           </tr>
         <% end %>

@@ -1,0 +1,5 @@
+<%= remotipart_response do %>
+  window.dataView.dataSelect.append('<%= options_for_select([[@datum.file_name, @datum.id]]) %>')
+  window.dataView.dataSelect.val('<%= @datum.id %>')
+  window.dataView.onDataSelectChange()
+<% end %>
