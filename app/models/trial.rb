@@ -49,10 +49,11 @@ class Trial < ActiveRecord::Base
                  "weka.classifiers.meta.FilteredClassifier", 
                  "-F \"weka.filters.unsupervised.attribute.Remove",
                  "-R #{rm_features_str}\"",
-                 "-W #{classifier} -t #{data_file} -p 1"].join ' '
+                 "-W #{classifier.program_name} -t #{data_file} -p 1"].join ' '
 
       stdin, stdout, stderr = Open3.popen3 command
       
+      # Only output accuracy and confusion matrix if the class type is nominal
       if datum.nominal_class_type?
         num_class_values = datum.class_values.size 
         matrix = Array.new(num_class_values) { 

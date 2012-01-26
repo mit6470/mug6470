@@ -71,6 +71,7 @@ class Datum < ActiveRecord::Base
     nominal_type? features.last[:type]
   end
   
+  # Type of the class.
   def class_values
     features.last[:type]
   end

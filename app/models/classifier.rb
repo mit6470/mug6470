@@ -8,6 +8,11 @@ class Classifier < ActiveRecord::Base
   validates :synopsis, :length => 0..4.kilobytes, :allow_nil => true
   
   def to_s
-    program_name
+    short_name
   end
+  
+  def short_name
+    program_name.split('.', 3)[2]
+  end
+
 end

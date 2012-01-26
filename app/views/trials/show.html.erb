@@ -71,10 +71,10 @@
   <% matrix = output[:result][:confusion_matrix] %>
   <% if matrix %>
     <h4>Confusion matrix</h4>
-    <table>
+    <table id="confusion-matrix">
       <thead>
         <tr>
-          <td></td>
+          <td>Classified as =></td>
           <% 1.upto(matrix.size) do |i| %>
             <td><%= i %></td>
           <% end %>
@@ -83,9 +83,10 @@
       <tbody>
         <% matrix.each_with_index do |r, i| %>
           <tr>
-            <td><%= i + 1 %>
-            <% r.each do |c| %>
-              <td><%= c.size %></td>
+            <td><%= "#{@trial.datum.class_values[i]} = #{i + 1}" %></td>
+            <% r.each_with_index do |c, j| %>
+              <%= content_tag :td, "#{c.size}", 
+                              :class => "#{cell_class i, j, c.size }"%>
             <% end %>
           </tr>
         <% end %>

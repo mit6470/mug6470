@@ -72,5 +72,8 @@ $data-tab-active-border-color: change-color($ui-state-active-color,
 // Error colors
 $error-color: $main-color3;
 
+// Confusion matrix colors;
+$result-yes-color: change-color($main-color2, $saturation: 75%, $lightness: 40%);
+
 // Pwnstyles variables.
 @import 'vars/color_scheme.css.scss';
