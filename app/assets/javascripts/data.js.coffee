@@ -33,13 +33,15 @@ class DataView
                   <tbody>
                     <tr>
                       <td colspan="3">
-                        <strong>Relation:</strong> #{data.relation.split('-')[0]}
+                        Relation:<strong> #{data.relation.split('-')[0]}</strong>
                       </td>
                     </tr>
                     <tr>
-                      <td><strong>Examples:</strong> #{data.num_examples}</td>
-                      <td><strong>Features:</strong> #{numFeatures - 2}</td>
-                      <td><strong>Class:</strong> #{data.features[numFeatures - 1].name}</td>
+                      <td>Examples:<strong> #{data.num_examples}</strong></td>
+                      <td>Features:<strong> #{numFeatures - 2}</strong></td>
+                      <td>
+                        Class:<strong> #{data.features[numFeatures - 1].name}</strong>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

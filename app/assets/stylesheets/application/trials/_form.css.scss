@@ -46,7 +46,12 @@
   
   .ui-tabs.ui-tabs-panel {
     padding: $tab-margin 0;
+    margin-right: $column-margin;
   }
+}
+
+#current-trial {
+  @include box-flex(1)
 }
 
 #data-summary {
@@ -54,9 +59,12 @@
   margin: 1em 0;
   
   h5 {
-    background: $trial-nav-background-color;
+    background: $table-background;
     margin: 0;
-    border-bottom: 2px solid $trial-nav-background-color;
+    border: {
+      bottom: 2px solid $table-border;
+      top: 1px solid $table-border;
+    }
     padding: 0.2em 0;
   }
   
@@ -65,16 +73,34 @@
   }
   
   tr:nth-child(even) {
-    background: $trial-nav-background-color;
+    background: $table-background;
   }
   
   tr {
-    border-top: 1px solid $trial-nav-background-color;
+    border: {
+      top: 1px solid $table-border;
+      bottom: 1px solid $table-border;
+    }
   }
 }
 
 .ui-tabs-nav.ui-widget-header {
   @include border-radius(0);
   border-bottom: 1px solid $ui-state-default-border-color;
+}
+
+#data-tabs {
+  a {
+    font-size: $main-font-size;
+  }
+  
+  .ui-state-active {
+    background: white;
+    border-color: $data-tab-active-border-color;
+    
+    a {
+      color: $h1-text-color;
+    }
+  }
 }
 

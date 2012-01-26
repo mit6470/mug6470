@@ -13,7 +13,11 @@ class ClassifierView
     @classifierSelect.val() isnt '-1'
 
   render: (data) ->
-    return unless data?
-    @classifierInfo.html data.synopsis
+    return unless data?.synopsis?
+    
+    html = []
+    for line in data.synopsis.split("\n")
+      html.push "<p>#{line}</p>"
+    @classifierInfo.html html.join('')
       
 window.ClassifierView = ClassifierView
