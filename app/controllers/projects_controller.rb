@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new :profile => current_user && current_user.profile, 
-                           :name => "New project"
+                           :name => "Project-#{current_user.projects.size + 1}"
     
     respond_to do |format|
       if current_user

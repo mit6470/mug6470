@@ -1,3 +1,4 @@
 #projects-index, #tutorials-index {
-  display: inline-block;
+  width: $index-width;
+  padding: $column-margin;
 }
