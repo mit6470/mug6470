@@ -7,6 +7,8 @@ $page-columns: 32;
 $radius: 4px;
 $label-right-padding: 11px;
 
+$content-wrapper-top-padding: 20px;
+
 // Signup form
 $signup-form-width: $column-total * 13 - $column-margin;
 $signup-value-width: $signup-form-width * 0.4;
@@ -19,4 +21,7 @@ $project-nav-width: $column-total * 4 - $column-margin;
 $tab-margin: 5px;
 
 // Tutorial
-$tutorial-width: $column-total * 12 - $column-margin;
+$tutorial-width: $column-total * 10 - $column-margin;
+
+// Status bar
+$status-bar-width: $page-width / 2;

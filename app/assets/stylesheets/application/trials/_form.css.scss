@@ -22,6 +22,14 @@
       width: $project-nav-width - $column-margin;
       margin: $tab-margin $tab-margin;
       
+      &.ui-state-default {
+        background:  $trial-nav-background-color;
+      }
+      
+      &.ui-state-active {
+        background:  $ui-state-active-color;
+      }
+      
       a {
         float: right;
         font-size: $h6-font-size;
@@ -104,3 +112,10 @@
   }
 }
 
+#upload_data {
+  float: right;
+}
+
+#data_file {
+  width: 300px;
+}

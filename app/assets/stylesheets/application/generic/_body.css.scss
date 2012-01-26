@@ -31,10 +31,11 @@ header, footer {
 
 #content-wrapper {
   margin: 0 auto;
-  padding: 20px 0 24px 0;
+  padding: $content-wrapper-top-padding 0 24px 0;
   width: $page-width;
   overflow: hidden;
   background-color: $content-background-color;
+  position: relative;
 }
 
 article#sidebar {

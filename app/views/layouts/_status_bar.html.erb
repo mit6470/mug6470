@@ -22,12 +22,11 @@
   </ul>
 </div>
 <% elsif flash[:notice] %>
-<p class="status-bar notice" data-pwnfx-reveal-target="status-bar">
+<p class="status-bar notice">
   <%= flash[:notice] %>
 
   <span class="actions">
-  <%= link_to 'Hide', '#', 'data-pwnfx-reveal' => 'status-bar',
-                           'data-pwnfx-reveal-trigger' => 'click-hide' %>
+  <%= link_to 'Hide', '#' %>
   </span>
 </p>
 <% end %>

@@ -6,5 +6,14 @@ $ ->
   
   tutorialView = new window.TutorialView
   
-  hideStatus = -> $('.status-bar.notice').addClass('hidden')
-  setTimeout(hideStatus, 4000);
+  
+  hideNotice = -> 
+    $('.status-bar.notice').hide('slide', {direction: 'up'}, 400)
+  
+  noticeTimer = setTimeout(hideNotice, 4000);
+
+  hideOnClick = -> 
+    $('.status-bar').hide('slide', {direction: 'up'}, 400)
+    clearTimeout(noticeTimer)
+    
+  $('.status-bar a').live 'click ', hideOnClick

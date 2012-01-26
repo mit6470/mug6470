@@ -41,22 +41,29 @@ class DataController < ApplicationController
 
   # POST /data
   # POST /data.json
+  # TODO(ushadow): Handle invalid file.
   def create
     uploaded_io = params[:data_file]
-    out_file = File.join ConfigVar[:data_dir], uploaded_io.original_filename
-    File.open(out_file, 'w') do |file|
-      file.write(uploaded_io.read)
+    filename = uploaded_io.original_filename
+    if filename.end_with? '.arff'
+      out_file = File.join ConfigVar[:data_dir], 
+      File.open(out_file, 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+      content = ArffParser.parse_file out_file
+      @datum = Datum.new :file_name => uploaded_io.original_filename,
+                    :examples => content[:examples],
+                    :num_examples => content[:examples].size,
+                    :features => content[:features],
+                    :num_features => content[:features].size,
+                    :relation_name => content[:relation]
     end
-    content = ArffParser.parse_file out_file
-    @datum = Datum.new :file_name => uploaded_io.original_filename,
-                  :examples => content[:examples],
-                  :num_examples => content[:examples].size,
-                  :features => content[:features],
-                  :num_features => content[:features].size,
-                  :relation_name => content[:relation]
-    if @datum.save
-      respond_to do |format|
+    
+    respond_to do |format|
+      if @datum && @datum.save
         format.js
+      else
+        format.js 
       end
     end
   end
