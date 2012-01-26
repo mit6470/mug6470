@@ -53,6 +53,15 @@ article#main {
     overflow: hidden;
     background: white;
     min-height: 600px;
+    margin: 0 $column-margin / 2;
+  }
+  
+  > article:first-child {
+    margin-left: $column-margin;
+  }
+  
+  > article:last-child {
+    margin-right: $column-margin;
   }
 }
 

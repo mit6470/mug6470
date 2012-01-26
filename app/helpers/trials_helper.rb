@@ -1,7 +1,7 @@
 module TrialsHelper
   def data_options
     options = [['--Choose data--', -1]]
-    Datum.all.each { |d| options << [d.file_name, d.id] }
+    Datum.all.each { |d| options << [d.file_name.chomp('.arff'), d.id] }
     options_for_select options
   end
   

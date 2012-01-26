@@ -2,9 +2,10 @@
   position: static;
   border: none;
   background: none;
+  @include box-flex(1);
   @include box;  
-
-  > ul, > form {
+  
+  > ul {
     margin: 0;
     padding: 0;
     
@@ -18,10 +19,12 @@
       @include border-radius($radius);
       clear: both;
       border: none;
-      width: 100%;
+      width: $project-nav-width - $column-margin;
+      margin: $tab-margin $tab-margin;
       
       a {
         float: right;
+        font-size: $h6-font-size;
       }
     }
 
@@ -34,15 +37,40 @@
     
   }
   
-  > form {
-    width: 70%;
-  }
-  
   > ul {
     background: $trial-nav-background-color;
+    width: $project-nav-width;
     margin-right: $column-margin;
+    border: 0;
   }
   
+  .ui-tabs.ui-tabs-panel {
+    padding: $tab-margin 0;
+  }
+}
+
+#data-summary {
+  height: 75px;
+  margin: 1em 0;
+  
+  h5 {
+    background: $trial-nav-background-color;
+    margin: 0;
+    border-bottom: 2px solid $trial-nav-background-color;
+    padding: 0.2em 0;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  tr:nth-child(even) {
+    background: $trial-nav-background-color;
+  }
+  
+  tr {
+    border-top: 1px solid $trial-nav-background-color;
+  }
 }
 
 .ui-tabs-nav.ui-widget-header {

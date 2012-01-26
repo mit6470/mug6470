@@ -32,21 +32,17 @@ class DataView
                 <table>
                   <tbody>
                     <tr>
-                      <td>
+                      <td colspan="3">
                         <strong>Relation:</strong> #{data.relation.split('-')[0]}
                       </td>
                     </tr>
                     <tr>
                       <td><strong>Examples:</strong> #{data.num_examples}</td>
-                    </tr>
-                    <tr>
                       <td><strong>Features:</strong> #{numFeatures - 2}</td>
-                    </tr>
-                    <tr>
                       <td><strong>Class:</strong> #{data.features[numFeatures - 1].name}</td>
                     </tr>
                   </tbody>
-                <table>
+                </table>
               """
     @summarySection.html summary
     
