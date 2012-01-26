@@ -1,5 +1,7 @@
 Mug6470::Application.routes.draw do
 
+  resources :examples
+
   resources :tutorials do
     resources :sections
   end

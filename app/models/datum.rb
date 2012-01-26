@@ -1,14 +1,14 @@
 # The input data for a machine learing trial.
 class Datum < ActiveRecord::Base
-  serialize :examples, Array
   serialize :features, Array
-  
+
+  has_many :examples, :dependent => :destroy, :inverse_of => :datum
+    
   # The name of the data file.
   validates :file_name, :presence => true, :uniqueness => true, 
                         :length => 1..64, :format => { :with => /.arff$/ }
   
   # An array of the examples of the data.
-  validates :examples, :presence => true, :length => 1..32.kilobytes
   validates :num_examples, :presence => true
 
   # An array of hashes with name and type keys.

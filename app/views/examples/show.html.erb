@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Datum:</b>
+  <%= @example.datum %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @example.content %>
+</p>
+
+<p>
+  <b>Example:</b>
+  <%= @example.example_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_example_path(@example) %> |
+<%= link_to 'Back', examples_path %>

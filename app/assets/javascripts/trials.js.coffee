@@ -17,13 +17,26 @@ class CurrentTrialView
     @featureToggleButton.live 'click', => @onFeatureToggle()
   
   onFeatureToggle: ->
-    console.log $('#toggled-features')
     $('#toggled-features').toggle('blind', {}, 500)
     false
     
   onRunButtonClick: ->
     if @dataView.dataSelectValid() and @classifierView.classifierSelectValid()
       @onSubmit()
+      
+class TrialResultController
+  constructor: ->
+    
+    onConfusionMatrixClick = (target) ->
+      params = target.attr('data-confusion-matrix').split '-'
+      dataId = params[0]
+      $.ajax({
+        data: {examples: params[1..-1]},
+        dataType: 'html', type: 'GET', url: "/data/#{dataId}"
+      })  
+    
+    $('[data-confusion-matrix]').live 'click', 
+                                      -> onConfusionMatrixClick($(this))
     
 class TrialController
   constructor: (@trialView) ->
@@ -60,4 +73,5 @@ class TrialController
     })
     
 window.CurrentTrialView = CurrentTrialView
+window.TrialResultController = TrialResultController
 window.TrialController = TrialController

@@ -21,21 +21,20 @@ class WekaLoader
   
   # Loads the data file name to the database.
   def self.load_data(data_dir)
+    Example.delete_all
     Datum.delete_all
     Dir[File.join data_dir, '*.arff'].each do |file|
       filename = File.basename file
       content = ArffParser.parse_file file
-      d = Datum.new :file_name => filename, :examples => content[:examples], 
-                    :num_examples => content[:examples].size,
-                    :features => content[:features],
-                    :num_features => content[:features].size,
-                    :relation_name => content[:relation]
-      begin
-        d.save!
-      rescue
-        p content[:relation]
-        raise
-      end
+      d = Datum.create! :file_name => filename,
+                        :num_examples => content[:examples].size,
+                        :features => content[:features],
+                        :num_features => content[:features].size,
+                        :relation_name => content[:relation]
+      
+      content[:examples].each { |e| Example.create! :datum => d,
+                                                    :example_id => e[0].to_i,
+                                                    :content => e } if d
     end
   end
 end

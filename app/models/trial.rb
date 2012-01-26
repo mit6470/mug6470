@@ -64,7 +64,7 @@ class Trial < ActiveRecord::Base
           if md = regex.match(l) 
             actual = md[:actual].to_i
             predicted = md[:predicted].to_i
-            matrix[actual - 1][predicted - 1] << id 
+            matrix[actual - 1][predicted - 1] << md[:id].to_i 
             num_correct += 1 if actual == predicted
           end
         end

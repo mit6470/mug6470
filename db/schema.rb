@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122052424) do
+ActiveRecord::Schema.define(:version => 20120126230743) do
 
   create_table "classifiers", :force => true do |t|
     t.string   "program_name", :limit => 128, :null => false
@@ -39,15 +39,22 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
   add_index "credentials", ["user_id", "type"], :name => "index_credentials_on_user_id_and_type"
 
   create_table "data", :force => true do |t|
-    t.string   "file_name",     :limit => 64,       :null => false
-    t.string   "relation_name", :limit => 256,      :null => false
-    t.text     "examples",      :limit => 16777215, :null => false
-    t.integer  "num_examples",                      :null => false
-    t.text     "features",                          :null => false
-    t.integer  "num_features",                      :null => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.string   "file_name",     :limit => 64,  :null => false
+    t.string   "relation_name", :limit => 256, :null => false
+    t.integer  "num_examples",                 :null => false
+    t.text     "features",                     :null => false
+    t.integer  "num_features",                 :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
+
+  create_table "examples", :force => true do |t|
+    t.integer "datum_id",   :null => false
+    t.text    "content",    :null => false
+    t.integer "example_id", :null => false
+  end
+
+  add_index "examples", ["datum_id", "example_id"], :name => "index_examples_on_datum_id_and_example_id", :unique => true
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id",    :null => false

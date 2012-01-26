@@ -30,7 +30,8 @@ class ArffParser
   # @param [Array(String)] lines array of line strings. 
   # @return [Hash] features: array of features and their types. 
   #                relation: the name of the relation in the data.
-  #                examples: array of examples.
+  #                examples: array of examples. Each example is an array of 
+  #                          feature values.
   def self.parse_lines(lines)
     content_hash = {}
     content_hash[:features] = []
