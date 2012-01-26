@@ -59,6 +59,7 @@ $input-base-color: #000000;
 $input-border-color: change-color($input-base-color, $lightness: 60%);
 $input-shadow-color: change-color($input-base-color, $lightness: 88%);
 $input-background-color: change-color($input-base-color, $lightness: 99%);
+$input-focus-shadow: rgba(94, 187, 189, 0.6);
 
 // Trial workbench
 $trial-nav-background-color: change-color($main-color1, $saturation: 15%, 
