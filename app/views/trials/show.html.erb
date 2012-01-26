@@ -7,71 +7,77 @@
     </ul>
   <div>
 <% else %>
-  <%= content_tag :h2, "#{@trial.name}", 'data-trial-id' => @trial.id || -1 %>
+  <%= content_tag :h4, "#{@trial.name}", 'data-trial-id' => @trial.id || -1 %>
   <% datum = @trial.datum %>
-  <table class="summary">
-    <tbody>
-      <tr>
-        <td>Data:</td>
-        <td><%= datum.relation_name.split('-')[0] %></td>
-      </tr>
-    
-      <tr>
-        <td>Classifier:</td>
-        <td><%= @trial.classifier %></td>
-      </tr>
-      
-      <tr>
-        <td>Examples:</td>
-        <td><%= datum.num_examples %></td>
-      </tr>
-      
-      <tr>
-        <td>Class:</td>
-        <td><%= datum.features.last[:name] %></td>
-      </tr>
-      
-      <tr>
-        <td>Features used:</td>
-        <td><%= "#{@trial.selected_features.size} / #{datum.num_features - 2}" %>
-          <ul>
-            <% @trial.selected_features[0..4].each do |i| %>
-              <li><%= datum.features[i][:name] %></li>
-            <% end %>
-          </ul>
-          <% if @trial.selected_features.length > 5 %>
-            <ul id="toggled-features" hidden >
-              <% @trial.selected_features[5..-1].each do |i| %>
+  <section>
+    <h5>Summary</h5>
+    <table class="summary result">
+      <tbody>
+        <tr>
+          <td>Data:</td>
+          <td><strong><%= datum.relation_name.split('-')[0] %></strong></td>
+          <td>Classifier:</td>
+          <td><strong><%= @trial.classifier %></strong></td>
+        </tr>
+        
+        <tr>
+          <td>Examples:</td>
+          <td><strong><%= datum.num_examples %></strong></td>
+          <td>Class:</td>
+          <td><strong><%= datum.features.last[:name] %></strong></td>
+        </tr>
+        
+        <tr>
+          <td>Features used:</td>
+          <td colspan="3">
+            <strong>
+              <%= "#{@trial.selected_features.size} / #{datum.num_features - 2}" %>
+            </strong>
+            <ul>
+              <% @trial.selected_features[0..4].each do |i| %>
                 <li><%= datum.features[i][:name] %></li>
               <% end %>
             </ul>
-            <ul>
-              <li id="feature-toggle-button">
-                <span class="ui-icon ui-icon-triangle-1-s">Reveal</span>
-              </li>
-            </ul>
-          <% end %>
-        </td>
-      </tr>
-     </tbody>
-  </table>
-  <% output = @trial.output %>
-  <h3>Result</h3>
-  <% accuracy = output[:result][:accuracy] %>
-  <% if accuracy %>
-    <table class="summary">
-      <tbody>
-        <tr>
-          <td>Accuracy:</td>
-          <td><%= "#{"%.4f" % (output[:result][:accuracy] * 100) } %" %></td>
+            <% if @trial.selected_features.length > 5 %>
+              <ul id="toggled-features" hidden >
+                <% @trial.selected_features[5..-1].each do |i| %>
+                  <li><%= datum.features[i][:name] %></li>
+                <% end %>
+              </ul>
+              <ul>
+                <li id="feature-toggle-button">
+                  <span class="ui-icon ui-icon-triangle-1-s">Reveal</span>
+                </li>
+              </ul>
+            <% end %>
+          </td>
         </tr>
-      </tbody>
+       </tbody>
     </table>
-  <% end %>
+    <% output = @trial.output %>
+    <h5>Result</h5>
+    <% accuracy = output[:result][:accuracy] %>
+    <% if accuracy %>
+      <table class="summary result">
+        <tbody>
+          <tr>
+            <td>Accuracy:</td>
+            <td>
+              <strong>
+                <%= "#{"%.4f" % (output[:result][:accuracy] * 100) } %" %>
+              </strong>
+            </td>
+            <td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </section>
   <% matrix = output[:result][:confusion_matrix] %>
   <% if matrix %>
-    <h4>Confusion matrix</h4>
-    <table id="confusion-matrix">
+  <section id="confusion-matrix">
+    <h5>Confusion matrix</h5>
+    <table >
       <thead>
         <tr>
           <td>Classified as =></td>
@@ -92,11 +98,21 @@
         <% end %>
       </tbody>
     </table>
+  </section>
   <% end %>
   <% unless output[:error].blank? %>
-    <h3>Error</h3>
-    <p>
-      <%= output[:error][0] %>
-    </p>
+    <section>
+       <h5>Other output</h5>
+       <table class="summary result">
+         <tbody>
+           <% output[:error].each do |k, v| %>
+              <tr>
+                <td><%= "#{k.capitalize}:" %></td> 
+                <td><%= v %></td>
+              </tr>
+           <% end %>
+        </tbody>
+      </table>
+    </section>
   <% end %>
 <% end %>

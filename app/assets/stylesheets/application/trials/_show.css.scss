@@ -1,37 +1,50 @@
-table.summary {
-  td:first-child {
-    font-weight: bold;
+#current-project > .ui-tabs-panel {
+  h4 {
+    border-bottom: 1px solid $ui-state-default-border-color;
+  }
+
+  table.summary.result {
+    td:first-child {
+      width: 25%;
+    }
   }
 }
 
-table#confusion-matrix {
-  border-spacing: 0.2em;
-  border-collapse: separate;
+#current-project #confusion-matrix {
+  border-bottom: 1px solid $table-border;
+  overflow: auto;
   
-  td:first-child {
-    text-align: right;
-  }
-  
-  td {
-    text-align: center;
-    vertical-align: middle;
-    min-width: 26px;
-    min-height: 26px;
-  }
-  
-  .result-yes {
-    background: $result-yes-color;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .result-no {
-    background: $main-color3;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .result-none {
-    background: $table-background;
+  table {
+    border-spacing: 0.2em;
+    border-collapse: separate;
+    width: auto;
+    overflow: auto;
+    
+    td:first-child {
+      text-align: right;
+    }
+    
+    td {
+      text-align: center;
+      vertical-align: middle;
+      min-width: 26px;
+      min-height: 26px;
+    }
+    
+    .result-yes {
+      background: $result-yes-color;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .result-no {
+      background: $main-color3;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .result-none {
+      background: $table-background;
+    }
   }
 }

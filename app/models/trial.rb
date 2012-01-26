@@ -73,7 +73,15 @@ class Trial < ActiveRecord::Base
             num_correct.to_f / datum.num_examples if datum.num_examples > 0
       end
       
-      self.output[:error] = stderr.readlines
+      stderr.readlines.each do |line|
+        pass if line.strip!.blank?
+        if md = /Warning:(?<warning>.+)/i.match(line)
+          self.output[:error][:warning] = md[:warning]
+        else
+          self.output[:error][:error] = line 
+        end
+        break 
+      end
     end 
   end
 end
