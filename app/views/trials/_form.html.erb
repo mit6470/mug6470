@@ -6,10 +6,13 @@
   </ul>
   
   <section id="current-trial-data">
-    <%= form_tag({:controller => 'data', :action => 'create'}, 
-        :id => 'upload_data', :multipart => true, :remote => true) do %>
-      <%= file_field_tag 'data_file' %>
-      <%= submit_tag 'Upload' %>
+    <%if project.id %>
+      <%= form_tag({:controller => 'data', :action => 'create'}, 
+          :id => 'upload_data', :multipart => true, :remote => true) do %>
+        <label>-or-</label>
+        <%= file_field_tag 'data_file' %>
+        <%= submit_tag 'Upload' %>
+      <% end %>
     <% end %>
     
     <%= form_for([project, trial], :remote => true) do |f| %>
@@ -30,7 +33,6 @@
         <%= select_tag :trial_datum_id, data_options, 
             'data-choose-data-url' => choose_data_url,
             'data-choose-data-method' => 'GET' %>
-        <label>-or-</label>
       </div>
       <%= render 'data/show' %>
   </section>

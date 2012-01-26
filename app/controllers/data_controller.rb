@@ -41,7 +41,8 @@ class DataController < ApplicationController
 
   # POST /data
   # POST /data.json
-  # TODO(ushadow): Handle invalid file.
+  # TODO(ushadow): Check file type before copying. Save file another user data
+  #     directory. Only save data for a saved project.
   def create
     uploaded_io = params[:data_file]
     filename = uploaded_io.original_filename
