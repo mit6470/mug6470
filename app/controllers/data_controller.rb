@@ -45,18 +45,21 @@ class DataController < ApplicationController
   def create
     uploaded_io = params[:data_file]
     filename = uploaded_io.original_filename
-    if filename.end_with? '.arff'
-      out_file = File.join ConfigVar[:data_dir], 
-      File.open(out_file, 'wb') do |file|
-        file.write(uploaded_io.read)
-      end
+
+    if filename.end_with?('.arff') && 
+       uploaded_io.content_type == 'application/octet-stream' 
+      
+      tempfile = uploaded_io.tempfile
+      out_file = File.join ConfigVar[:data_dir], filename
+      FileUtils.cp tempfile.path, out_file
       content = ArffParser.parse_file out_file
-      @datum = Datum.new :file_name => uploaded_io.original_filename,
+  
+      @datum = Datum.new :file_name => filename,
                     :examples => content[:examples],
                     :num_examples => content[:examples].size,
                     :features => content[:features],
                     :num_features => content[:features].size,
-                    :relation_name => content[:relation]
+                    :relation_name => content[:relation] unless content.blank?
     end
     
     respond_to do |format|

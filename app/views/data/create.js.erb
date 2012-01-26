@@ -1,8 +1,8 @@
 <%= remotipart_response do %>
-  <% unless @datum %>
-    html = ["<p class='status-bar error' data-pwnfx-reveal-target='status-bar'>",
+  <% unless @datum && @datum.errors.empty? %>
+    html = ["<p class='status-bar error'>",
             "Invalid file type. <span class='actions'>",
-            "<a href='#' data-pwnfx-reveal='status-bar' data-pwnfx-reveal-trigger='click-hide'>Hide</a></span></p>"].join('')
+            "<a href='#'>Hide</a></span></p>"].join('')
     $('article#main').before(html)
   <% else %>
     window.dataView.dataSelect.append('<%= options_for_select([[@datum.file_name, @datum.id]]) %>')

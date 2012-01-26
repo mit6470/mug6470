@@ -7,8 +7,12 @@ class ArffParser
   #                relation: the name of the relation in the data.
   #                examples: array of examples.
   def self.parse_file(filename)
-    lines = File.readlines filename 
-    self.parse_lines lines
+    begin
+      lines = File.readlines filename 
+      self.parse_lines lines
+    rescue
+      return {}
+    end
   end
   
   # Parses the content string of a ARFF file.
