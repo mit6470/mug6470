@@ -45,6 +45,28 @@
 
   }
 
+  // Too much detail?  Maybe.
+  #data-tabs-features ul {
+    li {
+      border-top: 1px solid $border-color;
+      padding-top: .5em;
+
+      input {
+        vertical-align: top;
+      }
+
+      label {
+        vertical-align: top;
+        text-size: 18pt;
+
+        label {
+          display: block;
+          margin: 1em 5em;
+        }
+      }
+    }
+  }
+
   > ul {
     background: $trial-nav-background-color;
     width: $project-nav-width;
