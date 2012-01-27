@@ -19,4 +19,8 @@ module TrialsHelper
       return 'result-none'
     end
   end
+  
+  def data_examples_str(data_id, example_ids)
+    ([data_id] << example_ids).flatten.join '-'
+  end
 end

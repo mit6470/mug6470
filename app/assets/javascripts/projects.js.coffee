@@ -2,7 +2,7 @@
 class ProjectView
   constructor: ->
     @currentTrialView = new window.CurrentTrialView
-
+    
     onAddTab = (event, ui) =>
       $(ui.panel).append @resultHtml
       @projectTabs.tabs 'select', "\##{ui.panel.id}"
@@ -29,37 +29,9 @@ class ProjectView
     
     $('#project-nav span.ui-icon-close').live 'click', 
                                               -> onCloseTab($(this).parent()) 
-  
+    
   # Renders the trial result.  
   renderResult: (@resultHtml) ->
-    # result = trial.output.result
-    # error = trial.output.error
-    # @resultHtml = ''
-    # if error.length > 0
-      # @resultHtml = "<p>#{error[0]}</p>"
-    # else
-      # matrix = result?.confusion_matrix
-      # if matrix?
-        # thead = ("<th>#{cell}</th>" for cell in matrix[0]).join('')
-        # thead = "<thead><tr>#{thead}</tr></thead>"
-#       
-        # tbody = []
-        # for row in result.confusion_matrix[1..-1]
-          # rowHtml = ("<td>#{cell}</td>" for cell in row[0...-2]).join('') +
-                    # "<td>#{row[row.length - 2]} = #{row[row.length - 1]}</td>"
-          # tbody.push "<tr>#{rowHtml}</tr>"                     
-#         
-        # @resultHtml = """
-                     # <article>
-                       # <table>
-                         # #{thead}
-                         # <tbody>  
-                         # #{tbody.join('')}
-                        # </tbody>
-                       # </table>
-                     # <article>
-                     # """
-
     trialElement = $($(@resultHtml).filter('[data-trial-id]')[0])
     trialId = trialElement.attr('data-trial-id')
     trialName = $.trim trialElement.text()     
@@ -68,6 +40,7 @@ class ProjectView
     if trialId is '-1'
       trialId = trialName          
     @projectTabs.tabs 'add', "\#trial-#{trialId}", "#{trialName}", 1
+    
 
 # ProjectController handles user interactions on the project view.
 class ProjectController
@@ -86,6 +59,9 @@ class ProjectController
       data: form.serialize(), success: onXhrSuccess,
       dataType: 'html', type: form.attr('method'), url: form.attr('action')
     })
+  
+  getExamples: (params) ->
+    console.log "clicked"
     
 window.ProjectController = ProjectController 
 window.ProjectView = ProjectView  
