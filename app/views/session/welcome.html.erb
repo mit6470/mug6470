@@ -1,2 +1,22 @@
-<h1>Welcome to interactive machine learning.</h1>
-<%= link_to 'Try it out', tutorials_path, :class => :button %>
+<div class=""><%=image_tag('preview.png')%></div>
+
+<div id="welcome">
+  <div class="blurb">
+    <h1>Learn</h1>
+    <p> What is machine learning?  How can it be useful to you?  ProtoM can help you find the answers to these questions and more! </p> 
+  </div>
+
+  <div class="blurb">
+    <h1>Test</h1>
+    <p> Got a project that needs that special machine learning-touch?  Look no further!  ProtoM is the perfect tool to test out new projects and determine which classifier is right. </p> 
+  </div>
+
+  <div class="blurb">
+    <h1>Contribute!</h1>
+    <p> Advance the fields of research!  See how machine learning can help your project.  This is a <a href="fsf.org">Free Software</a> project, so please contribute! </p> 
+  </div>
+
+  <div class="right-align">
+    <%= link_to 'Try it out', new_project_path, :class => :button %>
+  </div>
+</div>
