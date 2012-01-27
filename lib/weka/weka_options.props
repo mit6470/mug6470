@@ -129,7 +129,6 @@ weka.classifiers.Classifier=\
  weka.classifiers.bayes.NaiveBayes,\
  weka.classifiers.bayes.NaiveBayesSimple,\
  weka.classifiers.bayes.NaiveBayesUpdateable,\
- weka.classifiers.functions.LibLINEAR,\
  weka.classifiers.functions.LibSVM,\
  weka.classifiers.functions.Logistic,\
  weka.classifiers.functions.MultilayerPerceptron,\
