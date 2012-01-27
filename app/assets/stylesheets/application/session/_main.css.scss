@@ -1,3 +1,37 @@
 @import 'new.css.scss';
 @import 'home.css.scss';
 
+$text_width: 400px;
+
+// A blurb is a box with a <h1> and a <p>.
+#welcome {
+  > .blurb {
+    border: 1px solid $border-color;
+    background-color: $content-background-color;
+    -webkit-border-radius: 2em;
+    padding: 1em;
+    margin: 1em;
+
+    // Title of the blurb--something inspiring.
+    > h1 {
+      color: $header-title-color;
+      background-color: $header-background-color;
+      text-align: center;
+      font-size: 24pt;
+      margin: 0;
+      padding: 0;
+      -webkit-border-radius: 1em;
+    }
+
+    // Description of why the title was so inspiring.
+    > p {
+      max-width: $text_width;
+      margin: 1em;
+    }
+  }
+
+  // Anything that needs to be right-aligned (e.g., the "Try it out!" button).
+  > .right-align {
+    text-align: right;
+  }
+}

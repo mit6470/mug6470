@@ -3,33 +3,33 @@
   border: none;
   background: none;
   @include box-flex(1);
-  @include box;  
-  
+  @include box;
+
   > ul {
     margin: 0;
     padding: 0;
-    
+
     button {
       display: block;
       margin: auto;
       width: $run-button-size;
     }
-    
+
     > li {
       @include border-radius($radius);
       clear: both;
       border: none;
       width: $project-nav-width - $column-margin;
       margin: $tab-margin $tab-margin;
-      
+
       &.ui-state-default {
         background:  $trial-nav-background-color;
       }
-      
+
       &.ui-state-active {
         background:  $ui-state-active-color;
       }
-      
+
       a {
         float: right;
         font-size: $h6-font-size;
@@ -42,34 +42,56 @@
       padding: 0.5em 1em;
       margin-top: 40px;
     }
-    
+
   }
-  
+
+  // Too much detail?  Maybe.
+  #data-tabs-features ul {
+    li {
+      border-top: 1px solid $border-color;
+      padding-top: .5em;
+
+      input {
+        vertical-align: top;
+      }
+
+      label {
+        vertical-align: top;
+        text-size: 18pt;
+
+        label {
+          display: block;
+          margin: 1em 5em;
+        }
+      }
+    }
+  }
+
   > ul {
     background: $trial-nav-background-color;
     width: $project-nav-width;
     margin-right: $column-margin;
     border: 0;
   }
-  
+
   > .ui-tabs-panel {
     padding: $tab-margin 0;
     margin-right: $column-margin;
     @include box-flex(1);
-    
+
     section {
       margin: 1em 0;
     }
   }
-  
+
   table {
     width: 100%;
   }
-  
+
   tr:nth-child(even) {
     background: $table-background;
   }
-  
+
   tr {
     border: {
       top: 1px solid $table-border;
@@ -86,8 +108,6 @@
     }
     padding: 0.2em 0;
   }
-  
-  
 }
 
 #data-summary {
@@ -103,11 +123,11 @@
   a {
     font-size: $main-font-size;
   }
-  
+
   .ui-state-active {
     background: white;
     border-color: $data-tab-active-border-color;
-    
+
     a {
       color: $h1-text-color;
     }
