@@ -39,7 +39,7 @@ header, footer {
 }
 
 article#sidebar {
-  float: right;
+  @include box-sizing(border-box);
   width: $sidebar-width;
 }
 
@@ -64,10 +64,5 @@ article#main {
   > article:last-child {
     margin-right: $column-margin;
   }
-}
-
-article#sidebar + article#main {
-  float: left;
-  width: ($page-width - $sidebar-width - $column-total - $column-margin);
 }
 

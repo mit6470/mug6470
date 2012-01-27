@@ -1,0 +1,18 @@
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+// NOTE: broken into multiple sections so the selectors don't get too specific.
+a {
+  color: $link-color;
+  background-color: transparent;
+}
+a:hover {
+  color: $link-hover-color;
+  background-color: transparent;
+}
+a:active {
+  color: $link-color;
+  background-color: transparent;
+}

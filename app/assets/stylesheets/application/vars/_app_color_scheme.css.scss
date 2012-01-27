@@ -41,6 +41,10 @@ $h4-text-color: change-color($heading-main-color, $lightness: 31%);
 $h5-text-color: change-color($heading-main-color, $lightness: 33%);
 $h6-text-color: change-color($heading-main-color, $lightness: 35%);
 
+// Links
+$link-color: change-color($main-color2, $saturation: 66%, $lightness: 35%);
+$link-hover-color: change-color($main-color2, $saturation: 60%, $lightness: 30%);
+    
 // Elements.
 $button-base-color: change-color($main-color2, $saturation: 55%, $lightness: 45%);
 $button-color: change-color($button-base-color, $lightness: 40%);
