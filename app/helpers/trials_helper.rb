@@ -6,8 +6,9 @@ module TrialsHelper
   end
   
   def classifiers_options
-    options_for_select(Classifier.all.map { 
-        |d| [d.short_name, d.id] })
+    options = [['--Choose classifier--', -1]]
+    Classifier.all.each { |d| options << [d.short_name, d.id] }
+    options_for_select options
   end
   
   def cell_class(i, j, size)

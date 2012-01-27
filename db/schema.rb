@@ -77,14 +77,16 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
   add_index "sections", ["tutorial_id"], :name => "index_sections_on_tutorial_id"
 
   create_table "trials", :force => true do |t|
-    t.integer  "project_id",                            :null => false
-    t.string   "name",              :limit => 32,       :null => false
-    t.integer  "classifier_id",                         :null => false
-    t.integer  "datum_id",                              :null => false
-    t.string   "selected_features", :limit => 128,      :null => false
-    t.text     "output",            :limit => 16777215, :null => false
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.integer  "project_id",                                              :null => false
+    t.string   "name",              :limit => 32,                         :null => false
+    t.integer  "classifier_id",                                           :null => false
+    t.integer  "datum_id",                                                :null => false
+    t.string   "selected_features", :limit => 128,                        :null => false
+    t.text     "output",            :limit => 16777215,                   :null => false
+    t.integer  "test_datum_id"
+    t.string   "mode",              :limit => 32,       :default => "cv", :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
   end
 
   add_index "trials", ["project_id"], :name => "index_trials_on_project_id"

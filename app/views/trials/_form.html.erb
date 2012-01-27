@@ -39,7 +39,6 @@
     
   <section id="current-trial-classifier" >
     <div class="field">
-      <%= f.label :classifier_id, 'Choose Classifier' %><br />
       <%= select_tag :trial_classifier_id, classifiers_options,
           'data-choose-classifier-url' => choose_classifiers_url,
           'data-choose-classifier-method' => 'GET' %>
@@ -48,7 +47,14 @@
   </section>
   
   <section id="current-trial-run" >
-    <p>10-fold cross-validation.</p>
+    <div class="field">
+      <%= f.radio_button :mode, 'cv', :checked => true %>
+      <%= f.label :mode, 'Cross validation', :value => 'cv' %>
+    </div>
+    <div class="field">
+      <%= f.radio_button :mode, 'test' %>
+      <%= f.label :mode, 'Test data', :value => 'test' %>
+    </div>
     <div class="actions">
       <%= button_tag 'Run', :id => 'run-button', :type => 'button' %>
     </div>

@@ -17,6 +17,9 @@ class Trial < ActiveRecord::Base
   # The input data the user chose for this trial.
   belongs_to :datum
   validates :datum, :presence => true
+
+  belongs_to :test_datum, :class_name => :datum
+  validates :test_datum, :presence => { :if => :test_mode? }
   
   # Name of the trial. 
   validates :name, :length => 0..32, :presence => true 
@@ -27,7 +30,13 @@ class Trial < ActiveRecord::Base
   # An array of integer indices as selected features used in training. It does
   # not include the class feature which should always be included.
   validates :selected_features, :length => 0..128, :presence => true
-                                
+  
+  validates :mode, :length => 1..32
+  
+  def test_mode?
+    mode == :test
+  end
+
   # Executes the trial and returns the result and error.
   #
   # Example command for filtering attributes:

@@ -30,4 +30,18 @@
     background-color: #FEEFB3;
     color: #9F6000;
   }
+  
+  .ui-icon {
+    margin-top: 0.2em;
+  }
+}
+
+.ui-icon:first-child {
+  float: left;
+  margin-right: 0.3em;
+}
+
+#error_explanation {
+  margin: $column-margin;
+  padding: 0.1em 0.5em;
 }

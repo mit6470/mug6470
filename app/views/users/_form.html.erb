@@ -1,10 +1,10 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="ui-state-error">
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
-        <% if msg.start_with? 'Email', 'Password' %>
-          <li><%= msg %></li>
+        <% if msg = filter_error_msg(msg) %>
+          <li><%= alert_icon_tag %><%= msg %></li>
         <% end %>
       <% end %>
       </ul>
@@ -40,7 +40,7 @@
           <%= ok_image_tag %>
         </span>
         <span data-pwnfx-confirm-fail="new-password" class="hidden">
-          does not match
+          Does not match.
         </span>
     </p>
   </section>

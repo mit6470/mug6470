@@ -19,10 +19,14 @@ class CurrentTrialView
   onFeatureToggle: ->
     $('#toggled-features').toggle('blind', {}, 500)
     false
-    
+  
+  # Perform the run button action if the input is valid.  
   onRunButtonClick: ->
     if @dataView.dataSelectValid() and @classifierView.classifierSelectValid()
       @onSubmit()
+    else
+      window.statusView.showStatus 'Please select both data and a classifier.', 
+                                   'error'
       
 # Handles the event on trial result view.
 class TrialResultController

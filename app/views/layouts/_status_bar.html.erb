@@ -1,18 +1,17 @@
 <% if flash[:error] %>
-<p class="status-bar error" data-pwnfx-reveal-target="status-bar">
+<p class="status-bar ui-state-error">
+  <%= alert_icon_tag %>
   <%= flash[:error] %>
 
   <span class="actions">
-  <%= link_to 'Hide', '#', 'data-pwnfx-reveal' => 'status-bar',
-                           'data-pwnfx-reveal-trigger' => 'click-hide' %>
+    <%= close_status_tag %>
   </span>
 </p>
 <% elsif flash[:errors] && flash[:errors].any? %>
-<div class="status-bar error" data-pwnfx-reveal-target="status-bar">
+<div class="status-bar ui-state-error">
   <%= pluralize(flash[:errors].count, "error") %> occurred:
   <span class="actions">
-  <%= link_to 'Hide', '#', 'data-pwnfx-reveal' => 'status-bar',
-                           'data-pwnfx-reveal-trigger' => 'click-hide' %>
+    <%= close_status_link %>
   </span>
 
   <ul>
@@ -22,11 +21,11 @@
   </ul>
 </div>
 <% elsif flash[:notice] %>
-<p class="status-bar notice">
+<p class="status-bar ui-state-highlight">
+  <%= info_icon_tag %>
   <%= flash[:notice] %>
-
   <span class="actions">
-  <%= link_to 'Hide', '#' %>
+    <%= close_status_tag %>
   </span>
 </p>
 <% end %>

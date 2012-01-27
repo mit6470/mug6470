@@ -9,6 +9,9 @@ class CreateTrials < ActiveRecord::Migration
       t.string :selected_features, :null => false, :limit => 128
       t.text :output, :null => false, :limit => 32.kilobytes
       
+      t.integer :test_datum_id, :null => true
+      t.string :mode, :null => false, :default => :cv, :limit => 32 
+      
       t.timestamps
     end
     

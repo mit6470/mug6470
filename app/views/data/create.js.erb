@@ -1,9 +1,6 @@
 <%= remotipart_response do %>
   <% unless @datum && @datum.errors.empty? %>
-    html = ["<p class='status-bar error'>",
-            "Invalid file type. <span class='actions'>",
-            "<a href='#'>Hide</a></span></p>"].join('')
-    $('article#main').before(html)
+    window.statusView.showStatus('Invalid file type.', 'error')
   <% else %>
     window.dataView.dataSelect.append('<%= options_for_select([[@datum.file_name, @datum.id]]) %>')
     window.dataView.dataSelect.val('<%= @datum.id %>')
