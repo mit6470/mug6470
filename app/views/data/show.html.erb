@@ -1,0 +1,20 @@
+<% if @datum %>
+  <table class="examples">
+    <thead>
+      <tr>
+      <% @datum.features[1..-1].each do |f| %>
+        <td><%= f[:name] %></td>
+      <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @examples && @examples.each do |e| %>
+        <tr>
+          <% e[1..-1].each do |v| %>
+            <td><%= v %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

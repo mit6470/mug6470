@@ -7,7 +7,8 @@ class Datum < ActiveRecord::Base
   validates :file_name, :presence => true, :uniqueness => true, 
                         :length => 1..64, :format => { :with => /.arff$/ }
   
-  # An array of the examples of the data.
+  # An array of the examples of the data. The first value is the ID which starts
+  # at 1.
   validates :examples, :presence => true, :length => 1..32.kilobytes
   validates :num_examples, :presence => true
 

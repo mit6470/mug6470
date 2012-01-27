@@ -12,14 +12,19 @@ class DataController < ApplicationController
     end
   end
 
-  # GET /data/1
+  # XHR GET /data/1
   # GET /data/1.json
   def show
     @datum = Datum.find(params[:id])
-
+    # Indices are 1-based.
+    example_ind = params[:examples].map(&:to_i)
+    if @datum
+      @examples = example_ind.map { |i| @datum.examples[i - 1] }
+    end
+    
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @datum }
+      format.html { render :layout => false }
+      format.json { render json: @examples }
     end
   end
 
@@ -41,8 +46,9 @@ class DataController < ApplicationController
 
   # POST /data
   # POST /data.json
-  # TODO(ushadow): Check file type before copying. Save file another user data
-  #     directory. Only save data for a saved project.
+  # TODO(ushadow): Check file type before copying. Save file in another user 
+  #     data directory. Only save data for a saved project. Check if ID feature
+  #     is present.
   def create
     uploaded_io = params[:data_file]
     filename = uploaded_io.original_filename

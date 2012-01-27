@@ -24,20 +24,34 @@ class CurrentTrialView
     if @dataView.dataSelectValid() and @classifierView.classifierSelectValid()
       @onSubmit()
       
+# Handles the event on trial result view.
 class TrialResultController
   constructor: ->
     
     onConfusionMatrixClick = (target) ->
       params = target.attr('data-confusion-matrix').split '-'
       dataId = params[0]
-      $.ajax({
-        data: {examples: params[1..-1]},
-        dataType: 'html', type: 'GET', url: "/data/#{dataId}"
-      })  
+      currentIndex = 1
+      examplesToRequest = params[currentIndex..currentIndex + 9]
+      
+      matrixSection = target.closest 'section'
+      
+      onXhrSuccess = (data) ->
+        $('table.examples').remove()
+        matrixSection.append data
+      
+      if examplesToRequest.length > 0
+        $.ajax({
+          data: {examples: examplesToRequest},
+          success: onXhrSuccess,
+          dataType: 'html', type: 'GET', url: "/data/#{dataId}"
+        })  
     
     $('[data-confusion-matrix]').live 'click', 
                                       -> onConfusionMatrixClick($(this))
-    
+
+
+
 class TrialController
   constructor: (@trialView) ->
     @dataView = @trialView.dataView
