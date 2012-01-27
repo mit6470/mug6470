@@ -18,7 +18,7 @@ class Trial < ActiveRecord::Base
   belongs_to :datum
   validates :datum, :presence => true
 
-  belongs_to :test_datum, :class_name => :datum
+  belongs_to :test_datum, :class_name => :Datum
   validates :test_datum, :presence => { :if => :test_mode? }
   
   # Name of the trial. 
@@ -34,7 +34,7 @@ class Trial < ActiveRecord::Base
   validates :mode, :length => 1..32
   
   def test_mode?
-    mode == :test
+    mode == 'test'
   end
 
   # Executes the trial and returns the result and error.
@@ -49,7 +49,7 @@ class Trial < ActiveRecord::Base
   #     classifier or selected_features is not specified.
   def run
     self.output = { :result => {}, :error => {} }
-    if datum && classifier && selected_features
+    if datum && classifier && selected_features && mode
       classpath = ConfigVar[:weka_classpath]
       data_file = File.join ConfigVar[:data_dir], datum.file_name
       rm_features = (0..datum.num_features - 2).to_a - selected_features
@@ -58,23 +58,35 @@ class Trial < ActiveRecord::Base
                  "weka.classifiers.meta.FilteredClassifier", 
                  "-F \"weka.filters.unsupervised.attribute.Remove",
                  "-R #{rm_features_str}\"",
-                 "-W #{classifier.program_name} -t #{data_file} -p 1"].join ' '
+                 "-W #{classifier.program_name} -t #{data_file} -p 1"]
 
-      stdin, stdout, stderr = Open3.popen3 command
+      if test_mode?
+        test_data_file = File.join ConfigVar[:data_dir], test_datum.file_name
+        command << "-T #{test_data_file}"  
+      end
+      
+      stdin, stdout, stderr = Open3.popen3 command.join ' '
       
       # Only output accuracy and confusion matrix if the class type is nominal
       if datum.nominal_class_type?
         num_class_values = datum.class_values.size 
         matrix = Array.new(num_class_values) { 
               Array.new(num_class_values) { [] } }
-        regex = /^\s*\d+\s+(?<actual>\d+):[^\s]+\s+(?<predicted>\d+):[^\s]+\s+\+?\s+[\d\.]+\s*\((?<id>\d+)\)/ 
+        regex = /^\s*\d+\s+(?<actual>\d+):(?<actual_label>[^\s]+)\s+(?<predicted>\d+):[^\s]+\s+\+?\s+(?<confidence>[\d\.]+)\s*\((?<id>\d+)\)/ 
         num_correct = 0
         stdout.readlines.each do |l|
           if md = regex.match(l) 
-            actual = md[:actual].to_i
+            id = md[:id].to_i
+            actual = md[:actual_label] == '?' ? -1 : md[:actual].to_i 
             predicted = md[:predicted].to_i
-            matrix[actual - 1][predicted - 1] << md[:id].to_i 
-            num_correct += 1 if actual == predicted
+            confidence = md[:confidence].to_f
+            
+            self.output[:result][id] = { :actual => actual,
+                :predicted => predicted, :confidence => confidence }
+            if actual > 0
+              matrix[actual - 1][predicted - 1] << id 
+              num_correct += 1 if actual == predicted
+            end
           end
         end
         self.output[:result][:confusion_matrix] = matrix
@@ -83,7 +95,7 @@ class Trial < ActiveRecord::Base
       end
       
       stderr.readlines.each do |line|
-        pass if line.strip!.blank?
+        next if line.strip!.blank?
         if md = /Warning:(?<warning>.+)/i.match(line)
           self.output[:error][:warning] = md[:warning]
         else

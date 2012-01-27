@@ -15,18 +15,38 @@ class CurrentTrialView
       
     @featureToggleButton = $('#feature-toggle-button')
     @featureToggleButton.live 'click', => @onFeatureToggle()
-  
+    
+    @$trialModeTabs = $('#current-trial-run')
+    @$trialModeTabs.tabs()
+    @$trialModeTabs.tabs 'select', 0
+    @$trialModeInput = $('#trial-mode')
+    
+    @trialModeValues = ['cv', 'test']
+    
+    @$testDataSelect = $('#trial_test_datum_id')
+    
   onFeatureToggle: ->
     $('#toggled-features').toggle('blind', {}, 500)
     false
   
   # Perform the run button action if the input is valid.  
   onRunButtonClick: ->
+    errorMsg = ''
     if @dataView.dataSelectValid() and @classifierView.classifierSelectValid()
-      @onSubmit()
+      index = @$trialModeTabs.tabs('option', 'selected')
+      @$trialModeInput.val @trialModeValues[index]
+      if index is 0 or @testDataSelectValid()
+        @onSubmit()
+      else  
+        errorMsg = 'Please select a test data set.'
     else
-      window.statusView.showStatus 'Please select both data and a classifier.', 
-                                   'error'
+      errorMsg = 'Please select both a data set and a classifier.'
+    
+    if errorMsg    
+      window.statusView.showStatus errorMsg, 'error'
+  
+  testDataSelectValid: ->
+    @$testDataSelect.val() isnt '-1'
       
 # Handles the event on trial result view.
 class TrialResultController

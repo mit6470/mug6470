@@ -51,7 +51,7 @@ class ProjectController
   # Submits the current trial form to run the trial.  
   submit: ->
     form = @currentTrialView.form
-      
+    
     onXhrSuccess = (data) =>
       @projectView.renderResult data
       

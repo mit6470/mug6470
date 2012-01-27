@@ -47,14 +47,17 @@
   </section>
   
   <section id="current-trial-run" >
-    <div class="field">
-      <%= f.radio_button :mode, 'cv', :checked => true %>
-      <%= f.label :mode, 'Cross validation', :value => 'cv' %>
-    </div>
-    <div class="field">
-      <%= f.radio_button :mode, 'test' %>
-      <%= f.label :mode, 'Test data', :value => 'test' %>
-    </div>
+    <ul>
+      <li><a href="#current-trial-run-cv">Cross validation</a></li>
+      <li><a href="#current-trial-run-test">Use test data</a></li>
+    </ul>
+    <input hidden id="trial-mode" name="trial[mode]" value="cv"/>
+    <section id="current-trial-run-cv"></section>
+    <section id="current-trial-run-test">
+      <div class="field">
+        <%= f.select :test_datum_id, data_options %>
+      </div>
+    </section>
     <div class="actions">
       <%= button_tag 'Run', :id => 'run-button', :type => 'button' %>
     </div>

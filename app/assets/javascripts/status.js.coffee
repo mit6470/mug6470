@@ -1,20 +1,27 @@
 class StatusView
   constructor: ->
     @$mainArticle = $('article#main')
+    @noticeHideTime = 3000
+    @errorHideTime = 8000
+    @slideTime = 4000
     
-    hideNotice = -> 
-      $notice = $('.status-bar.ui-state-highlight')
-      $notice.hide('slide', {direction: 'up'}, 400, -> $(this).remove())
-    
-    noticeTimer = setTimeout(hideNotice, 3000);
+    setTimeout(@hideNotice, @noticeHideTime)
+    setTimeout(@hideError, @errorHideTime)
   
     hideOnClick = -> 
       $notice = $('.status-bar') 
-      $notice.hide('slide', {direction: 'up'}, 400, -> $(this).remove())
-      clearTimeout(noticeTimer)
+      $notice.hide('slide', {direction: 'up'}, @slideTime, -> $(this).remove())
       
     $('.status-bar a').live 'click ', hideOnClick
     
+  hideNotice: -> 
+    $notice = $('.status-bar.ui-state-highlight')
+    $notice.hide('slide', {direction: 'up'}, @slideTime, -> $(this).remove())
+  
+  hideError: -> 
+    $error = $('.status-bar.ui-state-error')
+    $error.hide('slide', {direction: 'up'}, @slideTime, -> $(this).remove())
+  
   showStatus: (msg, type)->
     icon = 'info'
     if type == 'error'
@@ -33,5 +40,11 @@ class StatusView
                  </p>
                  """
     @$mainArticle.before statusHtml
+    if type == 'error'
+      setTimeout(@hideError, @errorHideTime)
+    else
+      setTimeout(@hideNotice, @noticeHideTime)
     
+  
+
 window.StatusView = StatusView
