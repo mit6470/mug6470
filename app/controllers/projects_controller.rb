@@ -21,11 +21,12 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
-    @project = Project.new :profile => current_user && current_user.profile, 
-                           :name => "Project-#{current_user.projects.size + 1}"
+    @project = Project.new 
     
     respond_to do |format|
       if current_user
+        @project.profile = current_user.profile 
+        @project.name = "Project-#{current_user.projects.size + 1}"
         if @project.save
           format.html { redirect_to edit_project_url(@project), 
                                     notice: 'New project created.'}
