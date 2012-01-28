@@ -39,15 +39,19 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
   add_index "credentials", ["user_id", "type"], :name => "index_credentials_on_user_id_and_type"
 
   create_table "data", :force => true do |t|
-    t.string   "file_name",     :limit => 64,       :null => false
-    t.string   "relation_name", :limit => 256,      :null => false
-    t.text     "examples",      :limit => 16777215, :null => false
-    t.integer  "num_examples",                      :null => false
-    t.text     "features",                          :null => false
-    t.integer  "num_features",                      :null => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.string   "file_path",     :limit => 512,                         :null => false
+    t.string   "relation_name", :limit => 256,                         :null => false
+    t.text     "examples",      :limit => 16777215,                    :null => false
+    t.integer  "num_examples",                                         :null => false
+    t.text     "features",                                             :null => false
+    t.integer  "num_features",                                         :null => false
+    t.integer  "profile_id"
+    t.boolean  "is_test",                           :default => false, :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
   end
+
+  add_index "data", ["profile_id"], :name => "index_data_on_profile_id"
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id",    :null => false

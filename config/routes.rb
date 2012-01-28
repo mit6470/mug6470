@@ -18,8 +18,6 @@ Mug6470::Application.routes.draw do
     end
   end
 
-  config_vars
-
   resources :classifiers do 
     collection do
       get :choose

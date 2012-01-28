@@ -20,3 +20,6 @@
 /tmp
 
 /lib/weka/callClassifier.*
+
+/user_data/*
+!/user_data/.gitkeep

@@ -20,12 +20,14 @@ class WekaLoader
   end
   
   # Loads the data file name to the database.
+  #
+  # @param [String] data_dir full path of the data directory
   def self.load_data(data_dir)
     Datum.delete_all
-    Dir[File.join data_dir, '*.arff'].each do |file|
-      filename = File.basename file
-      content = ArffParser.parse_file file
-      d = Datum.new :file_name => filename, :examples => content[:examples], 
+    Dir[File.join data_dir, '*.arff'].each do |file_path|
+      filename = File.basename file_path
+      content = ArffParser.parse_file file_path
+      d = Datum.new :file_path => file_path, :examples => content[:examples], 
                     :num_examples => content[:examples].size,
                     :features => content[:features],
                     :num_features => content[:features].size,

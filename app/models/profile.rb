@@ -7,4 +7,6 @@ class Profile < ActiveRecord::Base
   
   # Trials created by this user profile.
   has_many :projects, :dependent => :destroy, :inverse_of => :profile
+  
+  has_many :data, :dependent => :destroy, :inverse_of => :profile
 end

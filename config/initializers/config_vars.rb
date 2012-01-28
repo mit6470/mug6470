@@ -8,3 +8,4 @@ weka = Rails.root.join 'lib/weka/weka.jar'
 libsvm = Rails.root.join 'lib/weka/libsvm.jar'
 ConfigVars.string :weka_classpath, "#{weka}:#{libsvm}"
 ConfigVars.string(:data_dir) { Rails.root.join 'lib/weka/data' }
+ConfigVars.string(:user_data_dir) { Rails.root.join 'user_data' }

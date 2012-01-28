@@ -45,13 +45,15 @@ class Trial < ActiveRecord::Base
   #     -W weka.classifiers.rules.DecisionTable -- 
   #         -X 1 -S "weka.attributeSelection.BestFirst -D 1 -N 5"
   #
-  # @return [Hash] result and error from the execution, or nil if datum or 
-  #     classifier or selected_features is not specified.
+  # @return [Hash] result and error from the execution. If datum or 
+  #     classifier or selected_features is not specified, result and error are
+  #     blank. Result is a hash with example ids and their classification,
+  #     accuracy and confusion matrix.
   def run
     self.output = { :result => {}, :error => {} }
     if datum && classifier && selected_features && mode
       classpath = ConfigVar[:weka_classpath]
-      data_file = File.join ConfigVar[:data_dir], datum.file_name
+      data_file = datum.file_path
       rm_features = (0..datum.num_features - 2).to_a - selected_features
       rm_features_str = rm_features.map { |i| i + 1 }.join ','
       command = ["java -cp #{classpath}",
@@ -61,8 +63,7 @@ class Trial < ActiveRecord::Base
                  "-W #{classifier.program_name} -t #{data_file} -p 1"]
 
       if test_mode?
-        test_data_file = File.join ConfigVar[:data_dir], test_datum.file_name
-        command << "-T #{test_data_file}"  
+        command << "-T #{test_datum.file_path}"  
       end
       
       stdin, stdout, stderr = Open3.popen3 command.join ' '

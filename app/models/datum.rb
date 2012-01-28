@@ -3,9 +3,12 @@ class Datum < ActiveRecord::Base
   serialize :examples, Array
   serialize :features, Array
   
-  # The name of the data file.
-  validates :file_name, :presence => true, :uniqueness => true, 
-                        :length => 1..64, :format => { :with => /.arff$/ }
+  # The user profile this data belongs to if the data is uploaded by a user.
+  belongs_to :profile, :inverse_of => :data
+  
+  # Full path of the data file.
+  validates :file_path, :presence => true, :uniqueness => true, 
+                        :length => 1..512, :format => { :with => /.arff$/ }
   
   # An array of the examples of the data. The first value is the ID which starts
   # at 1.
@@ -23,8 +26,18 @@ class Datum < ActiveRecord::Base
   
   validates :relation_name, :presence => true, :length => 1..256
   
+  validates :is_test, :inclusion => { :in => [true, false] }
+  
   def to_s
-    relation_name
+    short_name
+  end
+  
+  def short_name
+    filename.chomp '.arff'
+  end
+  
+  def filename
+    File.basename file_path
   end
   
   # Returns a hash of feature data.
@@ -32,7 +45,7 @@ class Datum < ActiveRecord::Base
   #                 :name => feature name.
   #                 :type => type of the feature.
   # :features_data => agregated data for all features.
-  #                 :values => nominal values for a feature.
+  #                 :values => array nominal values for a feature.
   #                 :data => an array of hashes for each feature value with 
   #                          class values as keys and class value occurrences as
   #                          as values.
@@ -40,7 +53,7 @@ class Datum < ActiveRecord::Base
   #                              feature.
   # TODO(ushadow): handle numeric values for both class and features
   def chart_data
-    returnHash =  { :relation => relation_name, :num_examples => num_examples, 
+    returnHash =  { :filename => short_name, :num_examples => num_examples, 
                     :features => features, :examples => examples}
     classValues = features.last[:type]
     all_features = Array.new(num_features) { Hash.new 0 } 
@@ -56,7 +69,7 @@ class Datum < ActiveRecord::Base
             v = example[i]
             if data[v].nil? 
               all_features[i][:missing] += 1
-            else
+            elsif data[v][example.last]
               data[v][example.last] += 1 
             end
           end
@@ -68,11 +81,12 @@ class Datum < ActiveRecord::Base
     returnHash
   end
   
+  # Returns true if the class type is nominal.
   def nominal_class_type?
     nominal_type? features.last[:type]
   end
   
-  # Type of the class.
+  # values of the class.
   def class_values
     features.last[:type]
   end
@@ -83,6 +97,11 @@ class Datum < ActiveRecord::Base
   # @return [true/false] true if type is an array.
   def nominal_type?(type)
     type.kind_of? Array
+  end
+  
+  before_save :update_is_test
+  def update_is_test
+    self.is_test = true if examples[0] && examples[0].last == '?'
   end
 end
 

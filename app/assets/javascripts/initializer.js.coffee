@@ -5,4 +5,5 @@ $ ->
   trialController = new window.TrialController(projectView.currentTrialView)  
   trialResultController = new window.TrialResultController
   window.dataView = projectView.currentTrialView.dataView
+  window.trialView = projectView.currentTrialView
   tutorialView = new window.TutorialView

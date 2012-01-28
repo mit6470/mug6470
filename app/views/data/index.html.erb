@@ -2,15 +2,16 @@
 
 <table>
   <tr>
-    <th>File name</th>
-    <th></th>
+    <th>File path</th>
+    <th>Is test</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @data.each do |datum| %>
   <tr>
-    <td><%= datum.file_name %></td>
+    <td><%= datum.file_path %></td>
+    <td><%= datum.is_test %></td>
     <td><%= link_to 'Show', datum %></td>
     <td><%= link_to 'Edit', edit_datum_path(datum) %></td>
     <td><%= link_to 'Destroy', datum, confirm: 'Are you sure?', method: :delete %></td>
@@ -18,6 +19,4 @@
 <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Datum', new_datum_path %>

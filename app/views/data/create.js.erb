@@ -1,8 +1,12 @@
 <%= remotipart_response do %>
-  <% unless @datum && @datum.errors.empty? %>
-    window.statusView.showStatus('Invalid file type.', 'error')
+  <% if @error_msg %>
+    window.statusView.showStatus('<%= @error_msg %>', 'error')
+  <% elsif @datum.is_test %>
+    window.statusView.showStatus('Test data uploaded, available for testing.', 
+                                 'highlight')
+    window.currentTrialView.$testDataSelect.append('<%= options_for_select([[@datum.short_name, @datum.id]]) %>')                             
   <% else %>
-    window.dataView.dataSelect.append('<%= options_for_select([[@datum.file_name, @datum.id]]) %>')
+    window.dataView.dataSelect.append('<%= options_for_select([[@datum.short_name, @datum.id]]) %>')
     window.dataView.dataSelect.val('<%= @datum.id %>')
     window.dataView.onDataSelectChange()
   <% end %>

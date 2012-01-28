@@ -1,8 +1,18 @@
 module TrialsHelper
-  def data_options
+  def training_data_options(user)
     options = [['--Choose data--', -1]]
-    Datum.all.each { |d| options << [d.file_name.chomp('.arff'), d.id] }
+    data_for(user).each { |d| options << [d.short_name, d.id] unless d.is_test }
     options_for_select options
+  end
+  
+  def data_options(user)
+    options = [['--Choose data--', -1]]
+    data_for(user).each { |d| options << [d.short_name, d.id] }
+    options_for_select options
+  end
+  
+  def data_for(user)
+    Datum.all.select { |d| !d.profile || d.profile == user.profile }
   end
   
   def classifiers_options
