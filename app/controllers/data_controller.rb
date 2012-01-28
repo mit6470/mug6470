@@ -1,6 +1,12 @@
 require Rails.root.join 'lib/weka/arff_parser.rb'
 
 class DataController < ApplicationController
+  before_filter :ensure_logged_in, :only => [:create]
+  
+  def ensure_logged_in
+    bounce_user unless current_user
+  end
+  
   # GET /data
   # GET /data.json
   def index
@@ -54,27 +60,37 @@ class DataController < ApplicationController
     filename = uploaded_io.original_filename
 
     if filename.end_with?('.arff') && 
-       uploaded_io.content_type == 'application/octet-stream' 
+      uploaded_io.content_type == 'application/octet-stream' 
       
       tempfile = uploaded_io.tempfile
-      out_file = File.join ConfigVar[:data_dir], filename
-      FileUtils.cp tempfile.path, out_file
-      content = ArffParser.parse_file out_file
-  
-      @datum = Datum.new :file_name => filename,
-                    :examples => content[:examples],
-                    :num_examples => content[:examples].size,
-                    :features => content[:features],
-                    :num_features => content[:features].size,
-                    :relation_name => content[:relation] unless content.blank?
+      content = ArffParser.parse_file tempfile.path
+      
+      unless content.blank?
+        file_dir =  File.join ConfigVar[:user_data_dir], current_user.id.to_s       
+        file_path = File.join file_dir, filename
+        @datum = Datum.new :file_path => file_path,
+                      :examples => content[:examples],
+                      :num_examples => content[:examples].size,
+                      :features => content[:features],
+                      :num_features => content[:features].size,
+                      :relation_name => content[:relation],
+                      :profile => current_user.profile
+       
+        if @datum.save
+          Dir.mkdir file_dir unless File.exists? file_dir
+          FileUtils.cp tempfile.path, file_path
+        else
+          @error_msg = @datum.errors.full_messages[0] 
+        end
+      else
+        @error_msg = 'Invalid file format.' 
+      end
+    else
+      @error_msg = 'Invalid file type: must be a .arff file.'
     end
     
     respond_to do |format|
-      if @datum && @datum.save
-        format.js
-      else
-        format.js 
-      end
+      format.js
     end
   end
 

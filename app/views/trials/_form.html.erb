@@ -30,7 +30,7 @@
       <% end %>
     
       <div class="field">
-        <%= select_tag :trial_datum_id, data_options, 
+        <%= select_tag :trial_datum_id, training_data_options(current_user), 
             'data-choose-data-url' => choose_data_url,
             'data-choose-data-method' => 'GET' %>
       </div>
@@ -55,7 +55,7 @@
     <section id="current-trial-run-cv"></section>
     <section id="current-trial-run-test">
       <div class="field">
-        <%= f.select :test_datum_id, data_options %>
+        <%= f.select :test_datum_id, data_options(current_user) %>
       </div>
     </section>
     <div class="actions">

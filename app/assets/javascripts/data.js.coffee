@@ -32,15 +32,10 @@ class DataView
                 <table>
                   <tbody>
                     <tr>
-                      <td colspan="3">
-                        Relation:<strong> #{data.relation.split('-')[0]}</strong>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Examples:<strong> #{data.num_examples}</strong></td>
-                      <td>Features:<strong> #{numFeatures - 2}</strong></td>
+                      <td>Number of examples:<strong> #{data.num_examples}</strong></td>
+                      <td>Number of features:<strong> #{numFeatures - 2}</strong></td>
                       <td>
-                        Class:<strong> #{data.features[numFeatures - 1].name}</strong>
+                        Class label:<strong> #{data.features[numFeatures - 1].name}</strong>
                       </td>
                     </tr>
                   </tbody>
