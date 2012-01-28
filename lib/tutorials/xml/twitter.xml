@@ -1,0 +1,114 @@
+<article>
+  <h1>Tweet Sentiment</h1>
+  <summary>
+    A real-world example that teaches you how natural language understanding works,
+    and lets you test your classifier on live tweets!
+  </summary>
+  <section>
+    <h2>
+      Understanding Language
+    </h2>
+    <p>
+      Natural Language Processing, or NLP, is all about training software to understand
+      naturally occurring text. Its strategies can be used to answer questions spoken
+      to your phone, filter spam from your inbox, translate from one language to another
+      and, in this case, summarize the public's feelings about a topic based on sentiment
+      on Twitter.
+    </p>
+    <p>
+      In this tutorial, we will train a classifier to tell a negative tweet from a positive
+      tweet. You'll learn about an NLP feature called a unigram that is used to describe
+      each tweet. Then, you'll get to test the classifier on live tweets on a topic of your choice!
+    </p>
+  </section>
+  <section>
+    <h2>
+      The Training Dataset
+    </h2>
+    <p>
+      From the Data menu, load the <em>tweet-sentiment</em> dataset. This consists of 8000
+      actual tweets on a variety of subjects from Twitter, half of them negative and half
+      of them positive. Take a moment to look through some of them and please excuse any
+      profanity.
+    </p>
+    <p>
+      Positive or negative sentiment can mainly be described by the occurrence of positive or
+      negative words in the tweet. For example, a tweet with the word 'amazing' is probably
+      positive and a tweet with the word 'terrible' is probably negative. We can check if
+      a word occurs in a tweet using <em>unigrams</em>. 
+    </p>
+  </section>
+  <section>
+    <h2>
+      Processing Tweets: The Unigram
+    </h2>
+    <p>
+      A <em>unigram</em> is a feature that indicates whether or not a particular word occurs
+      in that example. For example, the 'amazing' unigram will tell us whether or not the word
+      'amazing' occurs in each tweet. Unigrams are collected for most words in the training set,
+      meaning we have <em>a lot</em> of features - more than 1000!
+    </p>
+    <p>
+      More advanced NLP involves calculating N-grams. N-grams are unigrams extended to capture more
+      context around a particular word. For example, a bigram would indicate whether or not a 
+      <em>pair</em> of words occurs in a tweet. We stick to unigrams in our example, for simplicity.
+    </p>
+    <p>
+      We have setup Protom to calculate unigrams for you already. If there is a <em>string</em>
+      field in your ARFF file, we convert it to unigrams automatically when you train the classifier.
+    </p>
+  </section>
+  <section>
+    <h2>
+      Classifiers for Tweet Sentiment
+    </h2>
+    <p>
+      Different kinds of classifiers will work well for different kinds of tweets, but your best
+      bet is to choose either <em>Naive Bayes Multinomial</em> or <em>LibSVM</em>, which is a support
+      vector machine.
+    </p>
+    <p>
+      Go to the <em>Training and Testing</em> tab and run cross-validation to see how well the classifier
+      works on the training data. You'll find that the NaiveBayesMultinomial classifier gets sentiment
+      right about 3/4 of the time - this ain't bad! Feel free to experiment with other classifiers to
+      get better sentiment classification.
+    </p>
+  </section>
+  <section>
+    <h2>
+      Testing on Unseen Data
+    </h2>
+    <p>
+      In a moment we are going to test our classifier on live, unseen tweets. In the <em>Training and Testing</em>
+      tab, click on the <em>Test</em> tab. Here you can choose a second dataset that is used for testing.
+    </p>
+    <p>
+      When you are in the <em>Test</em> tab, you are no longer doing cross-validation. This means that the
+      whole training set is used for training the classifier, instead of only 9/10 of it.
+    </p>
+    <p>
+      Also, your test dataset might not have actual class labels, because you are dealing with unseen data!
+      When we gather live tweets, we don't know ahead of time whether they are positive or negative. In order
+      to see how well the classifier is doing, we will have to compare the predicted sentiment with the original
+      tweet directly. This is more like how you would be using a classifier in practice.
+    </p>
+  </section>
+  <section>
+    <h2>
+      Live Twitter Sentiment
+    </h2>
+    <p>
+      Let's test the classifier on some live tweets now! Enter a hashtag in the search box below
+      and we will go grab a bunch of tweets for you on that subject. We'll create an ARFF file for you
+      and put it in the menu on the <em>Test</em> tab.
+    </p>
+    <p>
+      Twitter hash tag search
+    </p>
+    <p>
+      When you have gathered tweets, select the <em>tweet-&lt;YOUR-SEARCH&gt;</em> dataset from the test
+      data menu. Hit <em>RUN</em>. The tweets and their predicted labels are shown now. How well did we do?
+      Feel free to keep experimenting with different classifiers and different Twitter topics!
+    </p>
+  </section>
+</article>

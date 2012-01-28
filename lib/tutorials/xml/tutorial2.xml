@@ -1,0 +1,112 @@
+<article>
+  <h1>Revisiting Contact Lenses</h1>
+  <summary>
+    A more involved look at machine learning concepts: choosing features and reading a confusion matrix.
+  </summary>
+  <section>
+    <h2>
+      Trials and Experiments
+    </h2>
+    <p>
+      In the previous tutorial, we covered the basic flow of machine learning in Protom. You
+      chose the <em>contact-lenses</em> dataset, looked at some examples of people who might need
+      contact lenses, chose and trained a decision tree classifier, and got accuracy results.
+    </p>
+    <p>
+      Practical machine learning is all about experimentation. You follow the same flow, get results,
+      then start a new trial, with different data and classifier settings to try to improve its accuracy.
+    </p>
+    <p>
+      Protom is built for experimentation. After you run your classifier, your results are saved in a
+      new <em>trial</em> on the left-hand <em>trials panel</em>. Click <em>Current trial</em>. This
+      brings you back to the <em>Data, Classifier, Training and Testing</em> flow so you can change
+      your settings and run the classifier again.
+    </p>
+    <p>
+      This tutorial teaches you how to change settings in order to get better results. Make sure you're 
+      in the <em>Current Trial</em> and click on the <em>Data</em> tab. Select the <em>contact-lenses</em>
+      dataset if you haven't already. 
+    </p>
+  </section>
+  <section>
+    <h2>
+      Choosing Features: Age
+    </h2>
+    <p>
+      Instead of just looking at the examples, let's try to understand the features. Click on the 
+      <em>Features</em> tab and you'll see a number of histograms, one for each feature in the 
+      <em>contact-lenses</em> dataset.
+    </p>
+    <p>
+      Let's focus on the <em>age</em> feature. Each value on the X-axis represents a different value of the
+      feature (young, pre-presbyopic and presbyopic). Each bar represents the number of examples in the dataset
+      with that value (the number of people that are young, for example).
+    </p>
+    <p>
+      The bar is divided into different colors, representing different classes in the dataset. Here, dark 
+      blue means <em>soft</em> lenses are needed, light blue means <em>hard</em> and orange means <em>none</em>.
+      We can see that age is fairly evenly distributed across all the subjects.
+    </p>
+  </section>
+  <section>
+    <h2>
+      Choosing Features: Astigmatism
+    </h2>
+    <p>
+      Features are used by the classifier to differentiate between classes in the dataset. Since age is fairly
+      evenly distributed, it probably doesn't help the classifier much to prescribe contact lenses.
+    </p>
+    <p>
+      Instead, let's look at the <em>astigmatism</em> feature. Here we see that equal numbers of people that
+      shouldn't get contact lenses (<em>orange</em>) both have and don't have astigmatism. However, it's also clear that if you 
+      have astigmatism, you should get <em>hard</em> contact lenses and if you don't, you should get <em>soft</em>
+      contact lenses. 
+    </p>
+    <p>
+      This feature seems more important than others because it helps the classifier distinguish between people who
+      should get soft vs. hard contact lenses. Let's check that this intuition is correct. Exclude this feature from
+      training by unchecking the checkbox next to the <em>astigmatism</em> histogram. Make sure the J48 tree is still
+      being used in the <em>Classifier</em> tab and then press <em>RUN</em> under the <em>Training and Testing</em> tab.
+    </p>
+  </section>
+  <section>
+    <h2>
+      The Confusion Matrix
+    </h2>
+    <p>
+      After you click <em>RUN</em> a results page should pop up and be saved as a separate trial from the last tutorial.
+      Whoa! The accuracy has dropped from 83% to 58%! It seems that we were right about astigmatism being very important.
+      Let's dig a little deeper though. What is this <em>confusion matrix</em> trying to tell us?
+    </p>
+    <p>
+      In the <em>confusion matrix</em>, each row represents one class of examples in the dataset. Here, the first row represents
+      people who <em>should have</em> been prescribed soft contact lenses. The columns represent what contact lenses were
+      prescribed by the classifier. We see that the classifier has <em>confused</em> 3 people that should have gotten
+      soft contact lenses, by prescribing 2 of them hard lenses and 1 of them no lenses at all.
+    </p>
+    <p>
+      This version of the results gives us a good overview of how well the classifier did. As long as numbers are high along the
+      diagonal, the classifier has done well. Numbers elsewhere tell us which classes the classifier is getting confused about.
+      Here, the absence of the astigmatism feature has made the classifier confused about the soft and hard contact lenses classes.
+    </p>
+  </section>
+  <section>
+    <h2>
+      You're the scientist
+    </h2>
+    <p>
+      We've seen how important selecting the right features can be. We discussed how the age feature doesn't seem to tell
+      us very much about the subject's prescription. In fact, if we were to go back and do the same experiment with the age 
+      feature, you'd see that the accuracy doesn't drop from 83%. Go ahead, try it right now!
+    </p>
+    <p>
+      Protom (and Weka underneath it) is built for experimenting with data, features and other settings. You can try different
+      classifiers to see if that helps the results. All your trials will be saved separately, automatically. If you ever
+      want to delete a trial, just click the small 'x' on the <em>trials panel</em>. 
+    </p>
+    <p>
+      Experiment away! Try different datasets, features and classifiers. In the next tutorial we'll talk about testing your classifier
+      on real-world data - actual tweets from Twitter!
+    </p>
+  </section>
+</article>

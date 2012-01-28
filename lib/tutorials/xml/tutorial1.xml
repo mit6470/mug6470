@@ -39,9 +39,9 @@
       The machine learning setup is this: we have <em>training data</em>, which are examples
       of different classes we want to teach the computer about. Take a moment to look
       at the examples in the contact-lenses dataset. Here, we have 24 examples of 
-      people and 3 classes: <em>soft</em>, <em>hard</em>, and <em>no</em>.
+      people and 3 classes: <em>soft</em>, <em>hard</em>, and <em>none</em>.
       <em>soft</em> means the person needs soft contact lenses, <em>hard</em> means
-      they need hard lenses, and <em>no</em> means they don't need contact lenses.
+      they need hard lenses, and <em>none</em> means they don't need contact lenses.
     </p>
     <p>
       We teach the computer by training what is called a <em>classifier</em>. The classifier
