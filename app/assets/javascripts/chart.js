@@ -73,9 +73,13 @@ var BarChart = function (chartData, options) {
         .left(function() { return x(this.index) + leftMargin; } )
         .fillStyle(function(d, p) { return fillColors(p); } );   
     bar.add(pv.Label)
-        .bottom(-xlabelHeight)
+        .bottom(0)
+        .left(function() { return x(this.index) + leftMargin + x.range().band / 2; })
         .text(function () { return labels[this.index]; })
-        .font("12px sans-serif");
+        .textAngle(-Math.PI / 2)
+        .textAlign("left")
+        .textBaseline("middle")
+        .font("12pt sans-serif")
   } else {
     bar = this.vis.add(pv.Panel)
         .data(data)
@@ -104,7 +108,7 @@ BarChart.prototype.render = function (id) {
 }
 
 BarChart.DefaultStyle = {
-  width: 600, height: 250, xlabelHeight: 20, ylabelWidth: 12, leftMargin: 8,
+  width: 600, height: 250, xlabelHeight: 0, ylabelWidth: 12, leftMargin: 8,
   fillColors: ["#60D698", "#F26C6C"]
 };
 
