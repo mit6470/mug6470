@@ -8,7 +8,7 @@ $text_width: 400px;
   > .blurb {
     border: 1px solid $border-color;
     background-color: $content-background-color;
-    -webkit-border-radius: 2em;
+    @include border-radius(2em);
     padding: 1em;
     margin: 1em;
 
@@ -34,4 +34,11 @@ $text_width: 400px;
   > .right-align {
     text-align: right;
   }
+}
+
+#preview-image {
+  width: $preview-image-width;
+  margin-left: $column-margin;
+  border: 1px solid $border-color;
+  @include border-radius($radius);
 }
