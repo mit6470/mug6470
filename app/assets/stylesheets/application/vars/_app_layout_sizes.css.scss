@@ -9,6 +9,7 @@ $radius: 4px;
 $label-right-padding: 11px;
 $content-wrapper-top-padding: 20px;
 $sidebar-width: $column-total * $sidebar-columns - $column-margin * 3;
+$article-min-height: 650px;
 
 // Signup form
 $signup-form-width: $column-total * 13 - $column-margin;
@@ -20,6 +21,9 @@ $signup-label-width: $signup-form-width * 0.35;
 $run-button-size: 70px;
 $project-nav-width: $column-total * 4 - $column-margin;
 $tab-margin: 5px;
+
+// Data view
+$chart-width: 600px;
 
 // Tutorial
 $tutorial-width: $column-total * 10 - $column-margin;

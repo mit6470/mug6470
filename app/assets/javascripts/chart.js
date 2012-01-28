@@ -74,7 +74,8 @@ var BarChart = function (chartData, options) {
         .fillStyle(function(d, p) { return fillColors(p); } );   
     bar.add(pv.Label)
         .bottom(-xlabelHeight)
-        .text(function () { return labels[this.index]; }); 
+        .text(function () { return labels[this.index]; })
+        .font("12px sans-serif");
   } else {
     bar = this.vis.add(pv.Panel)
         .data(data)

@@ -53,7 +53,7 @@ article#main {
     @include border-radius($radius);
     overflow: hidden;
     background: white;
-    min-height: 600px;
+    min-height: $article-min-height;
     margin: 0 $column-margin / 2;
   }
   
@@ -63,6 +63,12 @@ article#main {
   
   > article:last-child {
     margin-right: $column-margin;
+  }
+}
+
+footer nav {
+  p, ul {
+    display: inline-block;
   }
 }
 

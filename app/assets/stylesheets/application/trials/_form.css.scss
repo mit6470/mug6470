@@ -51,6 +51,10 @@
       border-top: 1px solid $border-color;
       padding-top: .5em;
 
+      div.field {
+        margin-bottom: 1em;
+      }
+      
       input {
         vertical-align: top;
       }
@@ -58,13 +62,15 @@
       label {
         vertical-align: top;
         text-size: 18pt;
-
-        label {
-          display: block;
-          margin: 1em 5em;
-        }
       }
+      
     }
+  }
+  
+  div.chart {
+    margin: auto;
+    width: $chart-width;
+    display: block;
   }
 
   > ul {
@@ -80,7 +86,10 @@
     @include box-flex(1);
 
     section {
-      margin: 1em 0;
+      margin: {
+        bottom: 2em;
+        top: 1em;
+      }
     }
   }
 
@@ -122,15 +131,12 @@
 #data-tabs {
   a {
     font-size: $main-font-size;
+    color: $h1-text-color;
   }
 
   .ui-state-active {
     background: white;
     border-color: $data-tab-active-border-color;
-
-    a {
-      color: $h1-text-color;
-    }
   }
 }
 

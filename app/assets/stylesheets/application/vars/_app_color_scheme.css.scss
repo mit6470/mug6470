@@ -66,7 +66,7 @@ $input-background-color: change-color($input-base-color, $lightness: 99%);
 $input-focus-shadow: rgba(94, 187, 189, 0.6);
 
 // Trial workbench
-$trial-nav-background-color: change-color($main-color1, $saturation: 15%, 
+$trial-nav-background-color: change-color($main-color1, $saturation: 37%, 
                                           $lightness: 93%);
 $data-tab-active-color: change-color($ui-state-active-color, 
                                      $saturation: 25%, $lightness: 80%);

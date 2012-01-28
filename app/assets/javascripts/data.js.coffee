@@ -51,7 +51,9 @@ class DataView
     # render the examples tab
     @examplesTab.html """
                       <li>
-                        <div id='chart-#{data.features[numFeatures-1].name}'></div>
+                        <div class='chart'>
+                          <div id='chart-#{data.features[numFeatures-1].name}'></div>
+                        </div>
                       </li>
                       """
     examplesData = data.examples
@@ -88,22 +90,27 @@ class DataView
       chartId = "chart-#{featureName}"
       
       isClassFeature = i == numFeatures - 1
+      featureData = featuresData[i]
+      
       unless isClassFeature
         checkboxId = "feature-#{featureName}"
         featureHtml = """
                       <li>
-                        <input type='checkbox' id='#{checkboxId}' value='#{i}' 
-                         checked='yes' name='sf[]' />
-                        <label for='#{checkboxId}'>#{featureName}</label>
-                        <div id='#{chartId}' class='chart'></div>
+                        <div class='field'>
+                          <input type='checkbox' id='#{checkboxId}' value='#{i}' 
+                            checked='yes' name='sf[]' />
+                          <label for='#{checkboxId}'>#{featureName}</label>
+                        </div>
+                        <div class='chart'>
+                          #{if $.isEmptyObject(featureData) then '{Chart not available for none nominal feature type.}' else ''}
+                          <div id='#{chartId}'></div>
+                        </div>
                       </li>
                       """
         @featuresTab.append featureHtml
 
       # Renders chart if necessary.
-      featureData = featuresData[i]
       unless $.isEmptyObject(featureData)
-        
         reduceFn = (x, y) ->
           sum = 0
           for key, value of y
@@ -114,7 +121,7 @@ class DataView
         
         chartData = {
           data: featureData.data, labels: featureData.values,
-          ymax: ymax, categories: featuresData[featuresData.length - 1].values,
+          ymax: ymax + 2, categories: featuresData[featuresData.length - 1].values,
           ylabel: 'Number of examples'
         }
         options = {stack: true, fillColors: pv.Colors.category20().range()}
