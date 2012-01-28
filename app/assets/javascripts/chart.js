@@ -58,7 +58,7 @@ var BarChart = function (chartData, options) {
   
   this.vis.add(pv.Label)
     .left(0)
-    .bottom((height - xlabelHeight) / 2)
+    .bottom((height - xlabelHeight) / 4)
     .textAngle(-Math.PI / 2)
     .text(ylabel)
     .font("12px sans-serif");
@@ -88,10 +88,12 @@ var BarChart = function (chartData, options) {
         .left(function () { return this.index * x.range().band / 
                                   categories.length; })
         .fillStyle(function () { return fillColors(this.index); });
+        
     bar.add(pv.Label)
       .bottom(-xlabelHeight)
       .left(0)
-      .text(function () { return labels[this.parent.index]; }); 
+      .text(function () { return labels[this.parent.index]; })
+      .font("12px sans-serif");
   }
   
 };
@@ -101,7 +103,7 @@ BarChart.prototype.render = function (id) {
 }
 
 BarChart.DefaultStyle = {
-  width: 450, height: 250, xlabelHeight: 20, ylabelWidth: 12, leftMargin: 8,
+  width: 600, height: 250, xlabelHeight: 20, ylabelWidth: 12, leftMargin: 8,
   fillColors: ["#60D698", "#F26C6C"]
 };
 

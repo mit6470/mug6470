@@ -55,7 +55,7 @@ class DataView
                       </li>
                       """
     examplesData = data.examples
-    for example in examplesData
+    for example in examplesData[0..9]
       exampleId = example[0]
       tableId = "table-#{exampleId}"
       exampleHtml = """
@@ -94,8 +94,8 @@ class DataView
                       <li>
                         <input type='checkbox' id='#{checkboxId}' value='#{i}' 
                          checked='yes' name='sf[]' />
-                        <label for='#{checkboxId}'>#{featureName}<label>
-                        <div id='#{chartId}'></div>
+                        <label for='#{checkboxId}'>#{featureName}</label>
+                        <div id='#{chartId}' class='chart'></div>
                       </li>
                       """
         @featuresTab.append featureHtml
