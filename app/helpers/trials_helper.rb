@@ -12,7 +12,7 @@ module TrialsHelper
   end
   
   def data_for(user)
-    Datum.all.select { |d| !d.profile || d.profile == user.profile }
+    Datum.all.select { |d| !d.profile || user && d.profile == user.profile }
   end
   
   def classifiers_options
