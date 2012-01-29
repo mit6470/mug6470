@@ -55,17 +55,17 @@ class Datum < ActiveRecord::Base
   def chart_data
     returnHash =  { :filename => short_name, :num_examples => num_examples, 
                     :features => features, :examples => examples}
-    classValues = features.last[:type]
+    class_values = features.last[:type]
     all_features = Array.new(num_features) { Hash.new 0 } 
-    examples_by_class = Array.new(classValues.length) { Hash.new 0 }
+    examples_by_class = Array.new(class_values.length) { [] }
 
-    if nominal_type?(classValues)
+    if nominal_type?(class_values)
       features.each_with_index do |feature, i|
         if nominal_type?(feature[:type])
           fvalues = feature[:type]
           all_features[i][:values] = fvalues
           data = Hash[fvalues.map { 
-              |v| [v, Hash[classValues.map { |cv| [cv, 0] }]] }] 
+              |v| [v, Hash[class_values.map { |cv| [cv, 0] }]] }] 
           examples.each do |example| 
             v = example[i]
             if data[v].nil? 
@@ -73,7 +73,8 @@ class Datum < ActiveRecord::Base
             elsif data[v][example.last]
               data[v][example.last] += 1 
             end
-            examples_by_class[classValues.index(example.last)][example.first] = 1
+            class_index = class_values.index example.last
+            examples_by_class[class_index] << example.first if class_index
           end
           all_features[i][:data] = fvalues.map { |v| data[v] }
         end

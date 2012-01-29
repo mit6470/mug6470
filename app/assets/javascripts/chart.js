@@ -73,7 +73,8 @@ var BarChart = function (chartData, options) {
       .layer.add(pv.Bar)
         .width(x.range().band)
         .left(function() { return x(this.index) + leftMargin; } )
-        .fillStyle(function(d, p) { return fillColors(p); } );   
+        .fillStyle(function(d, p) { return fillColors(p); } )
+        .cursor("pointer")   
     if (options.clickCallback) {
       bar.event("click", options.clickCallback);
     }

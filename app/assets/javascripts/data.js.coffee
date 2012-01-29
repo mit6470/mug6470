@@ -23,16 +23,21 @@ class DataView
     @dataSelect.val() isnt '-1'
     
   onChartClick: ->
-    @render(@data)
+    @renderNewExamples();
 
   filterExamples: ->
     this.parent.parent.parent.showClass(this.index)
+    
+  renderNewExamples: ->
+    @curExIndex = 0
+    @$examplesList.empty()
+    @renderNextExamples()
+    @$spinner.show()
 
   # @param [json] data to be rendered. It can be null if the server does not 
   #   find the data and returns nothing.
   render: (@data) ->
     return unless @data?
-    @curExIndex = 0
     
     # render the summary section
     @numFeatures = @data.features.length
@@ -52,14 +57,11 @@ class DataView
               """
     @summarySection.html summary
     
-
     # render the examples tab
     @$examplesChart.html """
                          <div id='chart-#{@data.features[@numFeatures-1].name}'></div>
                          """
-    @$examplesList.empty()
-    @renderNextExamples()
-    @$spinner.show()
+    @renderNewExamples()    
         
     # render the features tab
     @featuresTab.empty()
@@ -117,11 +119,8 @@ class DataView
           chart.render(chartId)
 
   renderNextExamples: ->
-    if (@classChart)
-      showClass = @classChart.vis.showClass()
-    else
-      showClass = 0
-    showClassName = @data.features[@numFeatures-1]['type'][showClass]
+    showClass = if @classChart then @classChart.vis.showClass() else 0
+    showClassName = @data.features[@numFeatures - 1]['type'][showClass]
     exampleHtml = """
                   <li>
                     <strong>
@@ -131,7 +130,7 @@ class DataView
                   """
     @$examplesList.append exampleHtml
 
-    exampleIds = (exId for exId of @data.class_examples[showClass])
+    exampleIds = @data.class_examples[showClass]
     examplesData = @data.examples
     if @curExIndex >= exampleIds.length
       @$spinner.hide()
