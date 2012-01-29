@@ -48,19 +48,21 @@
   </section>
   
   <section id="current-trial-run" >
-    <ul>
-      <li><a href="#current-trial-run-cv">Cross validation</a></li>
-      <li><a href="#current-trial-run-test">Use test data</a></li>
-    </ul>
-    <input hidden id="trial-mode" name="trial[mode]" value="cv"/>
-    <section id="current-trial-run-cv">
-      10-fold cross validation.
-    </section>
-    <section id="current-trial-run-test">
-      <div class="field">
-        <%= f.select :test_datum_id, test_data_options(current_user) %>
-      </div>
-    </section>
+    <div class="sub-tabs">
+      <ul>
+        <li><a href="#current-trial-run-cv">Cross validation</a></li>
+        <li><a href="#current-trial-run-test">Use test data</a></li>
+      </ul>
+      <input hidden id="trial-mode" name="trial[mode]" value="cv"/>
+      <section id="current-trial-run-cv">
+        10-fold cross validation.
+      </section>
+      <section id="current-trial-run-test">
+        <div class="field">
+          <%= f.select :test_datum_id, test_data_options(current_user) %>
+        </div>
+      </section>
+    </div class="sub-tabs">
     <div class="actions">
       <%= button_tag 'Run', :id => 'run-button', :type => 'button' %>
       <%= image_tag 'loader.gif', :id => 'run-loader', :class => 'hidden' %>

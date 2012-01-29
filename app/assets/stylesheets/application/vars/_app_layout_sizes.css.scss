@@ -9,7 +9,8 @@ $radius: 4px;
 $label-right-padding: 11px;
 $content-wrapper-top-padding: 20px;
 $sidebar-width: $column-total * $sidebar-columns - $column-margin * 3;
-$article-min-height: 630px;
+$article-min-height: 650px;
+$horizontal-margin: $column-margin;
 
 // Signup form
 $signup-form-width: $column-total * 13 - $column-margin;

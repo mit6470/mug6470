@@ -85,9 +85,13 @@
     margin-right: $column-margin;
     @include box-flex(1);
 
+    > section.ui-tabs-panel {
+      margin: 0;
+    }
+    
     section {
       margin: {
-        bottom: 2em;
+        bottom: 1.2em;
         top: 1em;
       }
     }
@@ -127,10 +131,26 @@
     border: 1px solid $border-color;
     margin: 0 0 $column-margin 0;
   }
-}
-
-#data-summary {
-  height: 75px;
+  
+  .sub-tabs {
+    
+    a {
+      font-size: $main-font-size;
+    }
+    
+    .ui-state-default a {
+      color: $tab-link-color;  
+    }
+    
+    .ui-state-active a {
+      color: $h1-text-color;
+    }
+    
+    .ui-state-active {
+      background: white;
+      border-color: $data-tab-active-border-color;
+    }
+  }
 }
 
 .ui-tabs-nav.ui-widget-header {
@@ -138,15 +158,39 @@
   border-bottom: 1px solid $ui-state-default-border-color;
 }
 
-#data-tabs {
-  a {
-    font-size: $main-font-size;
-    color: $h1-text-color;
-  }
 
-  .ui-state-active {
-    background: white;
-    border-color: $data-tab-active-border-color;
+#data-tabs {
+  #examples-list {
+    margin-top: $horizontal-margin;
+  
+    li {
+      margin: $horizontal-margin 0;
+      font-size: 11pt;
+      
+      table {
+        tr:first-child {
+          background: $example-header-background-color;
+          
+          th {
+            color: white; 
+          }
+        }
+        
+        th {
+          width: 33%;
+          text-align: right;
+          padding-right: 2em;
+        }
+        
+         td {
+          width: 67%;
+        }
+        
+        tr:nth-child(2) {
+          font-weight: bold;
+        }
+      }
+    }
   }
 }
 
@@ -167,11 +211,11 @@
       @include border-radius(0);
       
       &:first-child {
-        @include border-left-radius($radius);
+        @include border-top-left-radius($radius);
       }
       
       &:last-child {
-        @include border-right-radius($radius);
+        @include border-top-right-radius($radius);
       }
       
       &.ui-state-active {

@@ -54,7 +54,7 @@ class Datum < ActiveRecord::Base
   # TODO(ushadow): handle numeric values for both class and features
   def chart_data
     returnHash =  { :filename => short_name, :num_examples => num_examples, 
-                    :features => features, :examples => examples}
+                    :features => features}
     class_values = features.last[:type]
     all_features = Array.new(num_features) { Hash.new 0 } 
     examples_by_class = Array.new(class_values.length) { [] }
@@ -73,8 +73,10 @@ class Datum < ActiveRecord::Base
             elsif data[v][example.last]
               data[v][example.last] += 1 
             end
-            class_index = class_values.index example.last
-            examples_by_class[class_index] << example.first if class_index
+            if i == features.length - 1
+              class_index = class_values.index example.last
+              examples_by_class[class_index] << example if class_index
+            end
           end
           all_features[i][:data] = fvalues.map { |v| data[v] }
         end

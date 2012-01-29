@@ -36,8 +36,20 @@ class DataView
     this.parent.parent.parent.showClass(this.index)
     
   renderNewExamples: ->
-    @curExIndex = 0
     @$examplesList.empty()
+
+    showClass = if @classChart then @classChart.vis.showClass() else 0
+    showClassName = @data.features[@numFeatures - 1]['type'][showClass]
+    exampleHtml = """
+                  <li>
+                    <strong>
+                      Showing examples from class: #{showClassName}
+                    </strong>
+                  </li>
+                  """
+    @$examplesList.append exampleHtml
+
+    @curExIndex = 0
     @renderNextExamples()
     @$spinner.show()
 
@@ -127,24 +139,12 @@ class DataView
 
   renderNextExamples: ->
     showClass = if @classChart then @classChart.vis.showClass() else 0
-    showClassName = @data.features[@numFeatures - 1]['type'][showClass]
-    exampleHtml = """
-                  <li>
-                    <strong>
-                      Showing examples from class: #{showClassName}
-                    </strong>
-                  </li>
-                  """
-    @$examplesList.append exampleHtml
-
-    exampleIds = @data.class_examples[showClass]
-    examplesData = @data.examples
-    if @curExIndex >= exampleIds.length
+    examples = @data.class_examples[showClass]
+    if @curExIndex >= examples.length
       @$spinner.hide()
       return
-      
-    for exampleId in exampleIds[@curExIndex...@curExIndex + @numExToShow]
-      example = examplesData[exampleId - 1]
+
+    for example in examples[@curExIndex...@curExIndex + @numExToShow]
       exampleId = example[0]
       tableId = "table-#{exampleId}"
       exampleHtml = """
@@ -163,7 +163,7 @@ class DataView
       exampleHtml += """
                       </table>
                       </div>
-                    </li><br/>
+                    </li>
                     """
       @$examplesList.append exampleHtml
     @curExIndex += @numExToShow

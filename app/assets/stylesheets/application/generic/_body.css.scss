@@ -55,6 +55,7 @@ article#main {
     background: white;
     min-height: $article-min-height;
     margin: 0 $column-margin / 2;
+    box-sizing: border-box;
   }
   
   > article:first-child {
