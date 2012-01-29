@@ -28,6 +28,7 @@ var BarChart = function (chartData, options) {
   var leftMargin = options.leftMargin || BarChart.DefaultStyle.leftMargin;
   var xlabelHeight = options.xlabelHeight || BarChart.DefaultStyle.xlabelHeight;
   var ylabelWidth = options.ylabelWidth || BarChart.DefaultStyle.ylabelWidth;
+  var clickCallback = options.clickCallback;
   
   var barData = function (d) {
     var array = new Array(categories.length);
@@ -41,7 +42,8 @@ var BarChart = function (chartData, options) {
       .width(width - ylabelWidth)
       .height(height - xlabelHeight)
       .left(ylabelWidth)
-      .bottom(xlabelHeight);
+      .bottom(xlabelHeight)
+      .def("showClass", 0);
   var y = pv.Scale.linear(0, ymax).range(0, height);
   var x = pv.Scale.ordinal(pv.range(data.length)).
           splitBanded(0, width - leftMargin, 4 / 5);
@@ -72,6 +74,9 @@ var BarChart = function (chartData, options) {
         .width(x.range().band)
         .left(function() { return x(this.index) + leftMargin; } )
         .fillStyle(function(d, p) { return fillColors(p); } );   
+    if (options.clickCallback) {
+      bar.event("click", options.clickCallback);
+    }
     bar.add(pv.Label)
         .bottom(5)
         .left(function() { return x(this.index) + leftMargin + x.range().band / 2; })

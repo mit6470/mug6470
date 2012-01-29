@@ -57,6 +57,7 @@ class Datum < ActiveRecord::Base
                     :features => features, :examples => examples}
     classValues = features.last[:type]
     all_features = Array.new(num_features) { Hash.new 0 } 
+    examples_by_class = Array.new(classValues.length) { Hash.new 0 }
 
     if nominal_type?(classValues)
       features.each_with_index do |feature, i|
@@ -72,12 +73,14 @@ class Datum < ActiveRecord::Base
             elsif data[v][example.last]
               data[v][example.last] += 1 
             end
+            examples_by_class[classValues.index(example.last)][example.first] = 1
           end
           all_features[i][:data] = fvalues.map { |v| data[v] }
         end
       end
     end
     returnHash[:features_data] = all_features
+    returnHash[:class_examples] = examples_by_class
     returnHash
   end
   

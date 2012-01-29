@@ -22,8 +22,11 @@ class DataView
   dataSelectValid: ->
     @dataSelect.val() isnt '-1'
     
+  onChartClick: ->
+    @render(@data)
+
   filterExamples: ->
-    console.log('Displaying selected examples')
+    this.parent.parent.parent.showClass(this.index)
 
   # @param [json] data to be rendered. It can be null if the server does not 
   #   find the data and returns nothing.
@@ -103,18 +106,39 @@ class DataView
           ylabel: 'Number of examples'
         }
         options = {stack: true, fillColors: pv.Colors.category20().range()}
-        chart = new BarChart(chartData, options)
         if isClassFeature
-          chart.vis.event("click", @filterExamples)
-        chart.render(chartId)
+          options['clickCallback'] = @filterExamples
+          @classChart = new BarChart(chartData, options)
+          @classChart.render(chartId)
+          classChartElem = $('#'+chartId)
+          classChartElem.click => @onChartClick()
+        else
+          chart = new BarChart(chartData, options)
+          chart.render(chartId)
 
   renderNextExamples: ->
+    if (@classChart)
+      showClass = @classChart.vis.showClass()
+    else
+      showClass = 0
+    showClassName = @data.features[@numFeatures-1]['type'][showClass]
+    exampleHtml = """
+                  <li>
+                    <strong>
+                      Showing examples from class: #{showClassName}
+                    </strong>
+                  </li>
+                  """
+    @$examplesList.append exampleHtml
+
+    exampleIds = (exId for exId of @data.class_examples[showClass])
     examplesData = @data.examples
-    if @curExIndex >= examplesData.length
+    if @curExIndex >= exampleIds.length
       @$spinner.hide()
       return
       
-    for example in examplesData[@curExIndex...@curExIndex + @numExToShow]
+    for exampleId in exampleIds[@curExIndex...@curExIndex + @numExToShow]
+      example = examplesData[exampleId - 1]
       exampleId = example[0]
       tableId = "table-#{exampleId}"
       exampleHtml = """
