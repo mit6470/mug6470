@@ -2,7 +2,7 @@ class TutorialsController < ApplicationController
   # GET /tutorials
   # GET /tutorials.json
   def index
-    @tutorials = Tutorial.all
+    @tutorials = Tutorial.by_number
 
     respond_to do |format|
       format.html # index.html.erb

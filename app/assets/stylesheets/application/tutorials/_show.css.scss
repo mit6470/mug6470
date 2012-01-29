@@ -1,10 +1,12 @@
 article#tutorial {
   width: $tutorial-width;
-  padding: 0 $column-margin;
+  padding: 0 $column-margin $column-margin * 2 $column-margin;
   margin: 0 $column-margin;
+  @include box($orient: vertical);
   
   #tutorial-sections {
-    height: 400px;  
+    padding: 0.5em 0;
+    @include box-flex(1);  
   }
   
   h1 {
@@ -14,6 +16,16 @@ article#tutorial {
   
   h2 {
     font-size: $h5-font-size;
-    margin: 0 0 0.5em 0;
+    margin: 0 0 1em 0;
+  }
+  
+  nav {
+    li:first-child {
+      float: left;
+    }
+    
+    li:last-child {
+      float: right;
+    }
   }
 }

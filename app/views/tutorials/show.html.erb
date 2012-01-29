@@ -6,8 +6,10 @@
     <% end %>
   </div>
   <nav>
-    <%= link_to 'Prev', '#', :id => 'prev-section' %>
-    <%= link_to 'Next', '#', :id => 'next-section' %>
+    <ul>
+      <li><%= link_to '<<Prev', '#', :id => 'prev-section' %></li>
+      <li><%= link_to 'Next>>', '#', :id => 'next-section' %></li>
+    </ul>
   </nav>
 </article>
 <%= render 'projects/edit', :trial => Trial.new, :project => Project.new %>

@@ -98,9 +98,12 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
   create_table "tutorials", :force => true do |t|
     t.string   "title",      :limit => 128, :null => false
     t.text     "summary",                   :null => false
+    t.integer  "number",                    :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  add_index "tutorials", ["number"], :name => "index_tutorials_on_number", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "exuid",      :limit => 32, :null => false
