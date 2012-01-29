@@ -1,6 +1,6 @@
 Mug6470::Application.routes.draw do
 
-  resources :tutorials do
+  resources :tutorials, :except => [:destroy] do
     resources :sections
   end
 

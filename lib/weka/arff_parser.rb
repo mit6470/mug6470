@@ -50,9 +50,7 @@ class ArffParser
         when '@attribute'
           if kvp.length >= 2
             name, type = kvp[1].split ' ', 2
-            name.upcase!
-            return {} if content_hash[:features].empty? && name != 'ID'
-            type.downcase!
+            return {} if content_hash[:features].empty? && name.upcase != 'ID'
             if /{(?<nominal_values>.+)}/ =~ type 
               type = nominal_values.split(',').map(&:strip).map(&:strip_quotes)
             end

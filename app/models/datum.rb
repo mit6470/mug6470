@@ -82,7 +82,7 @@ class Datum < ActiveRecord::Base
   end
   
   def has_string_feature?
-    features.each { |f| return true if f[:type] == 'string' }
+    features.each { |f| return true if string_type? f[:type]  }
     false
   end
   
@@ -94,6 +94,10 @@ class Datum < ActiveRecord::Base
   # values of the class.
   def class_values
     features.last[:type]
+  end
+
+  def string_type?(type)
+    type.kind_of?(String) && type.downcase == 'string'
   end
   
   # Checks if the feature is nominal type.

@@ -69,15 +69,4 @@ class TutorialsController < ApplicationController
     end
   end
 
-  # DELETE /tutorials/1
-  # DELETE /tutorials/1.json
-  def destroy
-    @tutorial = Tutorial.find(params[:id])
-    @tutorial.destroy
-
-    respond_to do |format|
-      format.html { redirect_to tutorials_url }
-      format.json { head :no_content }
-    end
-  end
 end
