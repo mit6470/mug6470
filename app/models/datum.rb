@@ -81,6 +81,11 @@ class Datum < ActiveRecord::Base
     returnHash
   end
   
+  def has_string_feature?
+    features.each { |f| return true if f[:type] == 'string' }
+    false
+  end
+  
   # Returns true if the class type is nominal.
   def nominal_class_type?
     nominal_type? features.last[:type]

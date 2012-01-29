@@ -27,6 +27,9 @@ class WekaLoader
     Dir[File.join data_dir, '*.arff'].each do |file_path|
       filename = File.basename file_path
       content = ArffParser.parse_file file_path
+      
+      raise 'Invalid file format' if content.blank?
+        
       d = Datum.new :file_path => file_path, :examples => content[:examples], 
                     :num_examples => content[:examples].size,
                     :features => content[:features],

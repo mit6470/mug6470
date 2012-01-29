@@ -37,6 +37,10 @@ class Trial < ActiveRecord::Base
     mode == 'test'
   end
 
+end
+
+# :nodoc: Trial execution
+class Trial
   # Executes the trial and returns the result and error.
   #
   # Example command for filtering attributes:
@@ -57,14 +61,19 @@ class Trial < ActiveRecord::Base
       rm_features = (0..datum.num_features - 2).to_a - selected_features
       rm_features_str = rm_features.map { |i| i + 1 }.join ','
       command = ["java -cp #{classpath}",
-                 "weka.classifiers.meta.FilteredClassifier", 
-                 "-F \"weka.filters.unsupervised.attribute.Remove",
-                 "-R #{rm_features_str}\"",
-                 "-W #{classifier.program_name} -t #{data_file} -p 1"]
-
+                 "weka.classifiers.meta.FilteredClassifier -p 1", 
+                 "-t #{data_file}"]
       if test_mode?
         command << "-T #{test_datum.file_path}"  
       end
+      
+      command << ["-F \"weka.filters.unsupervised.attribute.StringToWordVector -S\"", 
+                  "-W weka.classifiers.meta.FilteredClassifier --"].join(' ') if
+                      datum.has_string_feature?
+      
+      command << ["-F \"weka.filters.unsupervised.attribute.Remove",
+                  "-R #{rm_features_str}\"",
+                  "-W #{classifier.program_name}"].join(' ')
       
       stdin, stdout, stderr = Open3.popen3 command.join ' '
       

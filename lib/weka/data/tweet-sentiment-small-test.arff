@@ -1,0 +1,724 @@
+@relation sentiment-weka.filters.unsupervised.attribute.AddID-Cfirst-NID
+
+@attribute ID numeric
+@attribute tweet string
+@attribute polarity {negative,positive}
+
+@data
+
+1,'congested nose ',negative
+2,'cant sleep need to talk to someone ',negative
+3,'username por favor decime ke no estas involucrado en esa pagina nicatrolls theyre the cancer thats killing b ',negative
+4,'too cold and tired to write good twitter everyone was obeying the cops tonight total dissappointment we were so close ',negative
+5,'lifee gets worsee ampamp worsee ',negative
+6,'username  i am shuddering and shaking too ',negative
+7,'sorting brekkie for the kids then off to the horrible place called work boohoo ',negative
+8,'my condolences to natasha richardsons family ',negative
+9,'username what do dont think ily naww ',negative
+10,'wheres derrick  url',negative
+11,'needs to stop sleeping all day causes some problems when youre wide awake at 245am ',negative
+12,'missed todays ellen ',negative
+13,'i suddenly miss my flintstones vitamin tablets  soo good',negative
+14,'username legitimately good cops out there ',negative
+15,'username twitters been doing that to me too ',negative
+16,'username i think i need to go to twitterholics anonymous ',negative
+17,'username we havent heard from her or sha ',negative
+18,'my heart has been broken ',negative
+19,'i forgot how to sleep ',negative
+20,'morning everyone in serious need of some decent coffee why isnt the catering open yet at 0830 ',negative
+21,'username im sorry ive failed you ',negative
+22,'username oh wait he does have 1 in oakland on the 18th cant understand why he only has 1 amp in oakland ',negative
+23,'is missing talking to my bff on da phone ',negative
+24,'wondering why i am so stupid  need to eat more fish i guess sigh',negative
+25,'i miss my old friends from elementary ans middle school ',negative
+26,'username please fix this url because it brakes all external twitter avatar searches ',negative
+27,'looks like ive missed out on yet another job  someone please employ me haha',negative
+28,'username dang ill get house off itunes i hear it was a devastating episode ',negative
+29,'wow the shout box has kicked me out and i cant get back in i guess this means good night ',negative
+30,'slideshares embed code is annoying me  sorry about the tiny embed  fail',negative
+31,'username why did my baby have to eat 3 prunes today and now he finally went  my poor baby ',negative
+32,'iam bored nothing to do ',negative
+33,'morning all  1st appointment of the day  the dentist  ',negative
+34,'username he wrote most of the album but ironically the singles he did not write ',negative
+35,'someone please take gossip girl away from me im addicted ',negative
+36,'good night swetdreamss to everyonee   and jared never chat in kyte puff ',negative
+37,'horrible sore throat  hurts',negative
+38,'time to get dressed i supposegah another workday ',negative
+39,'not to self licking off pudding from a seafood fork not so enjoyable as slowly licking off of a spoon ',negative
+40,'all ready to go to the premier and just realized how under dressed i am ',negative
+41,'it just makes me happy over and over again i wish i want afraid to fly  url',negative
+42,'username aww bummerrsorry missed it again ',negative
+43,'waking up to the sound of jackhammers is not a pleasant way to start the day ',negative
+44,'username im off now ',negative
+45,'username that just totally made my night lmao they were like screaming at me and i couldnt focus on the 900 mph song ',negative
+46,'nevada is really long and the gas pumps are down   but on a good note i just won 5 in a slot machine  i love to gamble',negative
+47,'username nope babys due in 5th may getting closer but still 1001 things not done ',negative
+48,'headache ',negative
+49,'is still effingg sick  when will i get better ughh',negative
+50,'still in bed and dont want to do anything else university is callung too loud ',negative
+51,'seattle is in tents i miss my to peepz tho ',negative
+52,'it just makes me happy over and over again i just wish i wasnt afraid to fly  url',negative
+53,'errgg my tummy hurts ',negative
+54,'thought it would be interesting to get f1 updates from twitter slightly regretting the decision i cant see anyone elsess updates ',negative
+55,'ripped switcheasy colors ',negative
+56,'we failed that song ',negative
+57,' poor mel feeling your pain',negative
+58,'ugh still working on project  just taking a small break',negative
+59,'the one day i have to go to school is the same day something exciting happens at parliament square ',negative
+60,'username shockingly not ',negative
+61,'today was a less interesting day on twitter username  username  and username were all kind of quiet today ',negative
+62,'username aww thanks i hate being sick ',negative
+63,'vip guests today __quot   blohhee       i hate it ',negative
+64,'up early ',negative
+65,'what the fuck youku  i want to watch skins',negative
+66,'i forgot my phone in my car but im too scared to go outside and get it ',negative
+67,'i totally forgot we were going to do fisheye 2night   what u doing thursday  btw im so late with the hills lol',negative
+68,'totally shocked by the episode of house this eveing  lost one of my favorite characters',negative
+69,'username seeing a doctor i hope ',negative
+70,'didnt pass the first part of the cset  i missed it by 5 effing points',negative
+71,'username the 2g cases were like that but scratches dont void your warrenty dents do as i found out ',negative
+72,'i have chapped lips boo ',negative
+73,'username ye im not  very sadbut weirdly enough shes lettin me go 2 da party how confusing parents r lol',negative
+74,'username no chance of that coming back when itd be 20 mins faster than the javelins though ',negative
+75,'bored and lonely ',negative
+76,'back to classic rainy amsterdam days ',negative
+77,'feels like crying thats how sick i feel ',negative
+78,'username me too i feel like ive been on the verge of an anxiety attack all day  ',negative
+79,'i woke up an hour ago  now im having a hard time going back to bed  in lakewood ca url',negative
+80,'going to sleep with lily and rocki lt3 johnathon is too busy watching batman movies  url',negative
+81,'username sigh me too  mostly i midd hsnging out with my friends damn growing up  p',negative
+82,'username lol i wish i only had bad sync in germany right now where the subtitles dont work at all  lol',negative
+83,'username im sorry   maybe walking around all goofy at the store would helphint hint lt3',negative
+84,'username did the heroics ever go through if not sorry ',negative
+85,'im so tired this morning and there was only cold shower waternot happy ',negative
+86,'haha ive been with my grandma for 2 days even shes about 5 houses away ill still miss her ',negative
+87,'clearing my desk ',negative
+88,'w every person there i didnt get a pic  my phone died but he signed my shirt so amazing words cannot describe shouldve skipped mel lol',negative
+89,'is crying inside please oh please let it rain  so warm',negative
+90,'username ',negative
+91,'packing my overnight bag for tomorrow going to the hospital ',negative
+92,'username sigh me too  mostly i miss hsnging out with my friends damn growing up  p oh yeah i miss being able to spell too lol',negative
+93,'username lol  u read my bio but spelt my name wrong           darylo  ahem ',negative
+94,'guten morgen up and off to get ready to go to phantasialand cologne yay but boo last park of holiday ',negative
+95,'username  i just saw this im sorry ',negative
+96,' username just reminded me that krispykreme url has landed in msia and has an ugly website ',negative
+97,'username  thats so sad for the goats   waahahahahah',negative
+98,'watching the roadworks develop outside the office thatll make me late for the next 10 weeks  fb',negative
+99,'at work  w asma3 nawal in fe obeerate alwatan tv',negative
+100,'i wish i could go 2 bed with out having 2 take an allergy pill ',negative
+101,'username i heard them making announcements trying to find them the mother looked so worried ',negative
+102,'i have to work alone on saturday    anyone wanna come keep me company cough cough',negative
+103,'ok maybe ill sleep for an hour or two then i must rise to work on my thesis ',negative
+104,'goodd nightt  sweet dreams to everyonee   jared neveerr chat on kyte   lol',negative
+105,'username i heard timewarp was fantastic gutted i missed it was playing  egg ',negative
+106,'wishing it wasnt 245 in the morning  sleeping is awesome work is not and i need to scrub my apt',negative
+107,'username i had that a while back url and i know some other people that have too ',negative
+108,'username hi steven man its only been a week and im already behind on school work ',negative
+109,'username run was great thanks is very windy today so bike ride not an option this morning ',negative
+110,'username yes i did thats a sad topic for me haha i am not going to the concert its very far and probably very expensive  ',negative
+111,'couple of mt texts didnt arrive here ',negative
+112,'decided to rejoin aerobics cos i know i wont exercise if i dont after paying for it i only have rm3 left in my bag ',negative
+113,'username aw im fine too thanks yeah i miss you so much on the mfc  but hope we can talk later on today  kisses huglove',negative
+114,'username looks interesting but lot of 500 errors on the documentation website ',negative
+115,'username you were my favorite  you did an excellent job',negative
+116,'this breaks my heart navy seal marcus luttrells doggy  url i am filled with rage',negative
+117,'argh ive eaton so so much today ',negative
+118,'zurich does not have smelly bags anymore ',negative
+119,'in the university in the classroom on the computer shit my day is boring ',negative
+120,'i want to get back in bed ',negative
+121,'username sorry you missed it ',negative
+122,'worst burn of my life so sick ',negative
+123,'username so funny because i watched only the strong today what are the chances i miss capoeira   zoom zoom',negative
+124,'its official im going to have an educational summer owh god bless me ',negative
+125,'username your phone doesnt like it  sorry',negative
+126,'too much to do  not enough motivation ',negative
+127,'username noo brat to the west coast hahaa quite making me sad ',negative
+128,'oh everyone is going to sleep how much i wish i could  its only 445pm and im  work',negative
+129,'one thing i hate about dozing off in lects i wake up to a sheaf of wet and badly smudged notes ',negative
+130,'sleepy head chances of actually sleeping slim to fucking none ',negative
+131,'where has all my money gone ',negative
+132,'now im down to 10 battery ',negative
+133,'username just watched the trailer for adventureland on itunes looks so funny pity i dont think we get it in australia ',negative
+134,'im so tired have to get up and go in to school during holidays for the 3rd time  xx',negative
+135,'omg more than 360 people is the death toll in italy ',negative
+136,'username layin downi dont feel well ',negative
+137,'username aww how depressing ',negative
+138,'username  ditch in another parish some really sick people in this world ',negative
+139,'yo jimo i cant talk on aim anymore its glitching  ill cya later and i hope u see this',negative
+140,'i just gave an msu fan a car rental discount he looked so sad i just couldnt turn him away ',negative
+141,'ordered a pitait nevr came why they say the fax machine broke and the driver left what about my empty belly ',negative
+142,'britney was fucking amazing after we just went back to the hoteli hate travelling with cheapos ',negative
+143,'username some people try to be tricky some stop using twitter at all  i guess its as good as it gets i had to try',negative
+144,'username now i am sad cos u r sad ',negative
+145,'username i triedand failed ',negative
+146,'username im looking at mine and i cant even get to it school work sucksatleast when u get home thats it  lol',negative
+147,'acdc rocked last night back to reality today  700 people without homes and gt150 dead in italy ',negative
+148,'username  oh well she seems like trouble christian slater is trying to kill her at the moment',negative
+149,'hoping i can get some decent sleep tonight since i didnt get any worth shitt last night  goodnight world xoxo',negative
+150,'i want diana f it looks great ',negative
+151,'ive got one of those spots that doesnt really show yet but hurts like hell and will no doubt be a beauty tomorrow ',negative
+152,'username hehehe too bad they were separated ',negative
+153,'babe aint callin ',negative
+154,'username heh yeah i shakily conquered the ladder pointless job tho were too far away to receive digital signal w antenna ',negative
+155,'good morning hope everyone is feeling better than me this cold has really got hold now ',negative
+156,'train rammed fellow commuters vile  special derision reserved for the man who appeared out of nowhere to claim his seat luggage rack ',negative
+157,'username i will miss you on the show you were awesome  what a shock  ',negative
+158,'talking to a boy  hating work though ',negative
+159,'someone keep me upim at work ',negative
+160,'username please dont leave stay for grants bday ',negative
+161,'username yeaah i hate that ',negative
+162,'username the only bad thing about aids is you can only catch it once  id want to inflict more pain on the deadshits of this world',negative
+163,'username whats wrong ',negative
+164,'off to bed now sick n cant sleep but will try w help of meds s ',negative
+165,'blipfm is downim going back to normal tweeting for a while ',negative
+166,'username i get sad when ppl shave their moustaches  i dont know if id cry about it tho',negative
+167,'oh my gosh oh my goshsusy is going to kill me with her remedy ',negative
+168,'finally going to sleep and waking up early to study ',negative
+169,'i miss my friends from elementary and middle school ',negative
+170,'username balls  although without the tunes its just a holiday then ',negative
+171,'chick corea was tonightand i missed it  now she sobs',negative
+172,'im going to love this season of the hills i can tell  spartans sucked    goodnight',negative
+173,'needs to study for quant and do legal process assessment for 2moro ',negative
+174,'username i canceled it with plane tickets hotel stay and tickets it was close to 400 if we eat cheaply   man i soo want to see o',negative
+175,'username that sounds fair horrible  i was going to repeat myself but i guess the text i just sent you would do it better whee',negative
+176,'username aw that suucks  sorry dear',negative
+177,'username yeah interview dont know even when it is ',negative
+178,'username so ur just gonna delete me like thaty do i feel like quottom cruisequot on jerry maguire when he got fired right now yo  lol',negative
+179,'had the worst dream abt some turd face i used to date ugh it was awful ',negative
+180,'username  ouch i can just imagine a toothpic in the eye or something ',negative
+181,'uhi feel so lonely  i wish my bffwiamc best friend forever who is also my cousin has a twitter',negative
+182,'why do people keep following me and then randomly stop  it makes me sad',negative
+183,'still feeling bleh spew burps and all ',negative
+184,'hot deadline ',negative
+185,'has to return the shirt she bought from topshop bc she has 50 in her bank account that has to last her the rest of the month life sucks ',negative
+186,'woke up at 6am  far too earlymore coffee then',negative
+187,'is too cold ',negative
+188,'why is it raining tomorrow night after it was soo nice today  guess i should be thankful that i was able to enjoy it at least',negative
+189,'michael crichton ',negative
+190,'curse my slow internet i miss youtube ',negative
+191,'feels a headache coming on ',negative
+192,'username youre one letter alway    koreans dont use quotxquot so theres no hope for me ',negative
+193,'working on the holy week ',negative
+194,'username haha nope i guess nothing is original these days ',negative
+195,'lots of revision to do tonight too for my final assessments more assessments today as well 90 pass mark is harsh ',negative
+196,'all thats stapling chipped my nails ',negative
+197,' is cold',negative
+198,'username we passed by the border ',negative
+199,'chewie update ocd in left legs fixed but possible ocd in right leg as well and worse still hip dysplasia in both hips  not good',negative
+200,'just got back from the hospital bfs nephew might have meningitis ',negative
+201,'chiu nay hp chun b t chc my s kin  trng  bao nhiu vic ',negative
+202,'is coldd ',negative
+203,'please watch this vid and tell me if you are not moved  url',negative
+204,'boo another day at work  but only 3 to go then 3 days off  ',negative
+205,'driving to schiphol apperantly i am not the only one stuck around aalsmeer ',negative
+206,'not anymore  how does daisy manage to take up 75 of the bed',negative
+207,'username do u write back on twitter i miss ya garee  x',negative
+208,'getting changed in the hopes that that means we can go to the store now  poor cat is out of foodoops ',negative
+209,'im in pain ',negative
+210,'username haha yeah they were that band from mmc i used to have a cd but i lost it ',negative
+211,'i miss my bcd friends ',negative
+212,'username but that requires assembly assembly is completely overrated tonight this is harder than i thought ',negative
+213,'on a diet woke up 2day hungry ',negative
+214,'username ooh heads high killin em wit da no lol didnt think so  but u dont really know me yet im a good tucker inner haha',negative
+215,'i hate cooking dinner ',negative
+216,'username you arent connected with me backso i cant dm you  ',negative
+217,'my compassion to the people in italy my mother is calling with our relatives in italy right now  ',negative
+218,'username wait what sick ',negative
+219,'username did they play polite dance song only my fav please dont say they did or course they did   damn me',negative
+220,'i need to find a battery for an elinchrom ranger  nobody in canada has any in stock ',negative
+221,'so now its just a wait amp see game i fall asleep amp it might or might not be there when i wake ',negative
+222,'off to london today ',negative
+223,'smile like you mean it wow this song brings back memories still cant sleep ',negative
+224,'username we should talk about this australia issue ',negative
+225,'i was woken up from a deep sleep just to be let go for mad max  not happy and now i can not sleep ',negative
+226,'sorry was getting ready  going to leave at 8am today',negative
+227,'got a speeding ticket ',negative
+228,'username he is an ass    hm   did you watch the first episodee i freakin missed it ',negative
+229,'username but not good for me close to my current challenge ',negative
+230,'but the international font looks ugly going back to original font after all whod tweet in malayalam ',negative
+231,'doing some business studies revision ',negative
+232,'misses david actually ',negative
+233,'url how freakin cool is that why doesnt shit like that happen to me ',negative
+234,'i cant believe it i got my answer and didnt have to ask the question  this feels awful',negative
+235,'wont be tweeting much tonight   maybe all tweets will come out in form of tweet vomit later at about 1 in the morning',negative
+236,'i think i need to get laid sad revolution i had earlier rofl  url',negative
+237,'txtchat with jake lmfao its frikkin awesome i miss this effin boy so much  aww hoping you guys would come back here na  xx',negative
+238,'username thank username dont like it  hehe but its very easy and well im just a danish dude',negative
+239,'username lol thats sweet i bought tickets last year ampamp my partnerincrime flaked so i didnt end up going  but this for sure',negative
+240,'username wha so now its 4gb yay haha no more laggy computers but my mba cannot upgrade ',negative
+241,'username aaww i know what u mean iv never been that girl with a sense of humor ',negative
+242,'username meim up  ',negative
+243,'was super lucky to get a seat on the train we pay 40 for this 25 min journey ',negative
+244,'username bet i  oh wait mac  no prolly not ',negative
+245,'my navel piercing tore a bit when i was forcing my dog into the bed of my truck  my fault i know    it looks to be healing  yay',negative
+246,'wow i got sick out of nowhere  and now i cant think straightand mtv hasnt posted the hills online wtf',negative
+247,'just woke up apples gig was ace last night seriously tired now work begins in one hour ',negative
+248,'todays episode of quothousequot episode simple explanation was so heartbreaking ',negative
+249,'im frankly disappointed and offended that there is a blogger writing against fu penguin ',negative
+250,'username woo yeah sorry to hear you missed out on origin tickets ',negative
+251,'good moorning world i had a dream last night i fucked my knee again  def need to kick start my strengthening ready for bournemouth 7s',negative
+252,'i need some selsun bluepretty sure i have a small spot of haole rot ',negative
+253,'i think im coming down with something ',negative
+254,'re newing my twitter ',negative
+255,'username about that i am gonna be in mexico ',negative
+256,'username ps i woke up this morning and i cant access any websites  or i havent cleaned my computer completely',negative
+257,'hates hearing his girl being ill nothing i can do though ',negative
+258,'username i know they have trouble but i never heard a thing i had many recommendations from mrtweet ',negative
+259,'username no  mary amp i were going to go dress shopping tomorrow',negative
+260,'username good morning you stop ignoring me just cos i said i like cough take that  am very sad nowboo hoo',negative
+261,'feeling light headed and gross ',negative
+262,'thanks chaffie thousand apologies please fogive me 4 i have sinned ',negative
+263,'username goodnight chels and sorry about the major layoutdelay  lt3',negative
+264,'username oh you were joking well now im crushed i was totally gonna stand in the middle of a field and wave my arms ',negative
+265,'is waitin for th break down service as somethin fallen of my car ive got my hot water bottle with me feel such a twat ',negative
+266,'username all in the middle if the night ive committed myself to installing windows 7 with boot camp but im already having issues ',negative
+267,'username ah man so sad his cousin committed suicide yest and she was 8 months pregnant   can you imagine we been crying non stop ',negative
+268,'damn its down ',negative
+269,'megan equals murder ',negative
+270,'poor sandra cantu my heart goes out to her family and friends rest in peace little one ',negative
+271,'morning all v groggy this morning ',negative
+272,'i feel soo bad for my doglet  she is not understanding why her mouth is so sore  poor little thing ',negative
+273,'why oh why do i watch videos of people dying right before im going to sleep ',negative
+274,'why luke worral doesnt have twitter ',negative
+275,'username haha you better watch those two they might actually kill each other ',negative
+276,'twitter is a lot less interesting since cute people suddenly stopped flirting with me ',negative
+277,'my stomach is feeling satisfied nowbeen starving for 2 hours ',negative
+278,'is very disappointed ',negative
+279,'i nearly spoiled myself for house did just a teeny bit saw a name but then it went away via link  i wont be terribly surprised now  ',negative
+280,'username ',negative
+281,'username ya i was basically screwed just rewrote it  i will seriously go with you if you want i dont know anyone else who wants to goo',negative
+282,'username lmaoo mornin baybee dont lie a peaceful journey my train is straight boring  not even a hooded teef in sight',negative
+283,'i wish i had someone to talk to im so upset  no one likes me anyway',negative
+284,'username hommeeworrkk  boo hope you fellas had a good night',negative
+285,'username i wish id known that there were more tickets earlier rang this arvo  one left but amy would end up sitting alone sigh  too hard',negative
+286,'woke up to find this coldfluillnesstype thing isnt going without a fight and apparently beats you up in your sleep sorry keynote ',negative
+287,'whf tscc killed derek reese brian austin green i actually liked that character ',negative
+288,'equinuxcom just crashed safari tks you ',negative
+289,'quotfire of anatoliaquot is fired costumes are destroyed its so poor situation ',negative
+290,'800am typical british morning cold wet road full of miserable angry drivers good times i need a holiday ',negative
+291,'really now time for sleep  dreaming of my city more tattoos and other great things  waking up to early morning sociology ',negative
+292,'just bought sour gummi worms peach gummi os and cheeto puffs and a 44 ounce soda im such a fat ass  had a huge dinner too',negative
+293,'username you and me both i thought i found a tweetheart but i guess not  so the search continues ',negative
+294,'username scroll back a few hours you missed a whole lotta jon ',negative
+295,'username no   finished two years then had twinzz',negative
+296,'missed 24 and the hills  now i have to catch up tomor but i have real housewives ugh i need to figure out my priorities',negative
+297,'oh and its officially my birthday happy 23rd birthday to me looks around yet no one is here to wish it to me  eriks in bed',negative
+298,'needs the motivation to get dressed and go to work i hate training ',negative
+299,'didnt make it by here today   they are saying we will have snow tomorrow wtf  it is tennessee  it doesnt even snow here in winter',negative
+300,'i just had two people stop following me ',negative
+301,'tried to fix hubbys computer it didnt come with disks and now windows key wont work  might have to buy it like we can afford that',negative
+302,'username  no way  ur at a game right now ',negative
+303,'it seems that twitter lost some updates yesterday  again  twitter fail',negative
+304,'my paronychia hurts ',negative
+305,'url  remember these days neither do i siike i miss my old body  someday soon u shall be miine',negative
+306,'back  work had a bad start of day almost falling down the stairs  not enjoying work yet',negative
+307,'i lt3 cigsrip ',negative
+308,'im up so much paperwork to do today n im kinda getting sick  not fun',negative
+309,'just did 5km on the tready and want to die im not built for running ',negative
+310,'username if only i didnt work an eveningnight job ',negative
+311,'needs help with this anxiety crap ',negative
+312,'username lol dont ask i was being nice given a ride shit started bar b cueing on the freeway  lmao i been had mine ready',negative
+313,'username got home after 10 in the end back in for a 9am start aswell ',negative
+314,'throat is so raw she cannot sleep  ',negative
+315,' t i just asked my friend what piglet was winnie the pooh seriously guys what is it ',negative
+316,'username haha now thats one i do know ',positive
+317,'hitting the hay yawn goodnight  xoxo',positive
+318,'woke up this morning dont believe what i sawa hundred million bottles washed up on the shore ',positive
+319,'username haha it was huggies  we believe in the importance of play between parents and children ',positive
+320,'woo thanks ron and steeve for following me yeow i have folowerss  haha  ps i wanna got to the ellen show ',positive
+321,'username ah i hear you hope everything work outs ',positive
+322,'tomorrowtoday is my freelazy day im so happy  im gonna sleep like nobodys business and maybe actually write something ',positive
+323,'username thanks  p',positive
+324,'url  claudia i hope this works  im a tweeter too  ',positive
+325,'helping my dad again with the computer ',positive
+326,'oh so here i am and and im bored  thankyou redbull for letting me drink you on such a short notice  ly redbull  fairys',positive
+327,'username no doubt   i love the seemingly random stats  im going to have to incorporate that quot26quot into a presentation somewhere',positive
+328,'username it was a good presentation  sluthood does not get talked about much ',positive
+329,'username thanks ill go with quotwake wellquot  good night to you',positive
+330,'username not a problem ',positive
+331,'just found his ipod ',positive
+332,'username hahahaha thats awesome ',positive
+333,'username thank you ',positive
+334,'hey guys everyone add username please and thank you   please retweet thank you',positive
+335,'username url  ltltlt thisll cheer you up ',positive
+336,'username you may need to finish some of it off  cant even look at the thing right now ',positive
+337,'username and snoring zzzzz ',positive
+338,'username im not that dense i dont play that low ',positive
+339,'bits goa forces chief warden to resign after a mass revolt lasting 4 hrsway to go ppl ',positive
+340,'cant wait to see steph ',positive
+341,'almost there ',positive
+342,'username i just got it i am super stoked and chilly is all your if you want it  woot glad i stayed up',positive
+343,'shower then i think ill finish another cinderella story and then im going outt ',positive
+344,'username i am truly honoured ',positive
+345,'username greeting my canadian friend ',positive
+346,'username thanks for the shout out ',positive
+347,'username ',positive
+348,'username you mean also in nz and i should just stay at home in the rain ',positive
+349,'the day is bright and theres a big presentation to write ',positive
+350,'username hope you get your nap feel better soon and enjoy baby isobel btw i saw the pic you posted on flickr and shes gorgeous ',positive
+351,'username morning michael i is good  lol xx',positive
+352,'username hi had shared with jim p we had connected on twitter  let me know if soho can assist',positive
+353,'username now now steve its not about the numbers quality not quantity ',positive
+354,'username  hahaha unfortunately not my lesbian crush is  leighton meester xd you ',positive
+355,'good morning tom and dougie ',positive
+356,'paw pawing my ass off smhim starting to feel better ',positive
+357,'working lately on building my web url will appreciate any help or comment ',positive
+358,'i am wearing my ski socks  nice amp warm',positive
+359,'username aww that sucks glad that put you in a better mood ',positive
+360,'username you know im lmao at you right now right  lol',positive
+361,'username have a great daynight ',positive
+362,'trying to find more friends to join twitter ',positive
+363,'morning everyone ',positive
+364,'username quotdrinking the drugsquot is a line from a movie i was just kiddin with yah girl   url watch  220 ull get it ',positive
+365,'rereading username avalon high for the nntthh time ',positive
+366,'username mimi hi   i love your pic u look good',positive
+367,'wowawesome night posted my first website  small steps but progress nonetheless',positive
+368,'username i think if i click the word quotreplyquot it gives me a new window of what youre replying to ill do that now ',positive
+369,'username all done  check your blog ',positive
+370,'username we know all about crazy bloggers ',positive
+371,'username my current favourites are life house and formerly boston legal i guess i enjoy sarcasm ',positive
+372,'username hopefully it wont stop you getting to the studio on time although you could always do a terry wogan and broadcast from your car ',positive
+373,'username yeah sure but its my sisters so take extra gd care ',positive
+374,'trying xdancer app by samir on my cell lol its seriously fun using it on a walk with my mom have to keep moving to hear the music ',positive
+375,'hope tomorrow is a nice day ',positive
+376,'username love the uno  who doesnt  ',positive
+377,'goodnight everyone ',positive
+378,'all going according to plan oh joy ',positive
+379,'username suckered phil or larry into the scifive did you guys get a pickup game going over at the office today ',positive
+380,'because of username ive been singing quotim a little teapotquot for days now ',positive
+381,'username hows your holy week coming along hope im not bothering you but do you think we can get the froulala cards this week ',positive
+382,'iphone spotify im now able to run spotify on my iphone through a remote desktop session to my pc using jaadu rdp it works ',positive
+383,'for your info we didnt try the laksa i ate the tongseng chicken lycee the mango salad n fried shrimp was good i like it ',positive
+384,'another sunny day here in the south of the netherlands ',positive
+385,'username but now youve got a lot of catching up to do tweety was on a roll hahaha so was d  and the rest of us ofcourse ',positive
+386,'if the iphone was being promoted by bal thackeray he would call it kaayphone  haahahahahahah lolol',positive
+387,'username thanks    appreciate that',positive
+388,'username i cant believe you pulled that off  good shit dude  i so wish i was there  sounds like it went well  ',positive
+389,'username lemme pour u some hot tea with some honey talk to me woman ',positive
+390,'username so you may just stay outside and wonder how quick the operation is ',positive
+391,'is still freezing in melbourne but the comedy festival is on  statravel',positive
+392,'every bone in my body is aching but it was worth it the prodigy rocked newcastle last night ',positive
+393,'username lol very good point ',positive
+394,'username url  aww mwah  xx',positive
+395,'when a national championship was won and 87 band members welcome to an elite group cheersquot mr fuchss toast to us go heels ',positive
+396,'username you should have a vote and i vote yes going on broadway would be amazing ',positive
+397,'username you should make a good morning train trip with tea and salty pretzels ',positive
+398,'username nah obama had unc as his champ izzo should get a 479 billion bonus ',positive
+399,'username hahahamaybe twitter has a conspiracy and are checking all political based tweets ',positive
+400,'username hey heidi  i love you and your music  keep on doing your thing  much love and support ya bwoi salman   reply ',positive
+401,'my son has treated me to a yummy lunch today in lygon st carlton  for my birthday drove me in while on his ls  lovely surprise ',positive
+402,'username you too good luck with the photoshoot sure youll be fine ',positive
+403,'goodnight cant wait for school in the morning ',positive
+404,'username yes thee target  it may happen again this week ',positive
+405,'there are people we dont like it they must be very strange people  re url',positive
+406,'and like that she was gone but at least her hair is natural brown again ',positive
+407,'lmfao i put baseball when i ment to put golfball ',positive
+408,'username  let me know when and well make it happen',positive
+409,'ah twitter seems to be working again ',positive
+410,'username you fail at life and all that it holds ',positive
+411,'ds parties in the lounge are so much fun ',positive
+412,'if a dude can do this i will thank him and shake his hand ',positive
+413,'username thanks for your atwood advice  ill put them on my list ',positive
+414,'is no longer concern about that someone hehe ',positive
+415,'morning  in the caravan at the mo and its freezing but last night was class  today should be awesomee',positive
+416,'i would marry someone if it meant they could stay ',positive
+417,'username username neat i found the answers thank you ',positive
+418,'username welcome  ',positive
+419,'username thanks very much i appreciate it and were the first site on the web with this review ',positive
+420,'found it  listening to blink then going to bed xoxo',positive
+421,'phew remembered an anniversary card   8 years today',positive
+422,'username im sure many people do jeffree ',positive
+423,'is finally off to bed made rescue videos and lost sleep  rescue me  url',positive
+424,'username thanks mick ',positive
+425,'username im so glad youre feeling better hugs ',positive
+426,'username hi  id love to see a bumper sticker that read quotministers make you scream for godquot  im so going to hell now',positive
+427,'getting ready to go away tomorrow ',positive
+428,'happy birthday to my wee lil one michael patric orourke hes 1 year old now ',positive
+429,'my ex boyfriend once blamed me for making the freckles on his skin raise above the surface he thought id done it to him  i said wtf',positive
+430,'username bonjour wii is more fun ',positive
+431,'too happy to wash away my grin ',positive
+432,'username excellent tip  makes wonder what you liked best bones try at manipulating people or ms strawberry lol',positive
+433,'goodmorning preparing for conference call with the goal to come up with improvement points for internal cooperation come to me ideas ',positive
+434,'she makes every everything bad in my life seem ok in just a few words with her gentle voice  url',positive
+435,'quotwell be a beets cover bandquot i would pay money to see that ',positive
+436,'yep im receiving dms so at least some of you have no problems with dms i however cannot send dms to anyone thanks for playing ',positive
+437,'hi rhian this is my first post on twitter so hope it works ok my mbts r fab  its a pity i cant wear them 2 work hv a good day ',positive
+438,'umm did not see that one coming lol  ',positive
+439,'username ill be in bxl tomorrow so if you would have gone back tomorrow eve we could train together but thursday will be a bit late ',positive
+440,'username when has that ever stopped you ',positive
+441,'just found that locavore  a person who goes out of the way to eat food produced locally ',positive
+442,'username oh and that one but the one before the talk ended inside the room u know delegates asking questions at mic  when me cing u',positive
+443,'wwtoutlemondesurcfblogspotcom ',positive
+444,'i dont know what im doing here       can you tell me what can i post here',positive
+445,'username yes you can do that ',positive
+446,'so follow username hes the coolest ',positive
+447,'username i know but we can dreamwish or just hope ',positive
+448,'username heh i mean i drunk so much liquor recently  no worries  and hiro has gone today ',positive
+449,'has conquered the greek exegetical paper beast only little stuff remaining to finish it praise jesus   ',positive
+450,'username cmon say me something it will cheer me up  say hi you lazards',positive
+451,'another challenging meeting in french i hope it will be productive and that i will be able to understand ',positive
+452,'says red buhok qku   hihi   url',positive
+453,'username hi ',positive
+454,'watchin movies chillin ',positive
+455,'made my dad a myspace to bring awareness to alzheimersadd him  url',positive
+456,'username thanks for putting up with us     wv09 webvisions',positive
+457,'set up my twitter account ',positive
+458,'username show on april 23rdpomona college ',positive
+459,'username are yous having a good morning today dougie  it just became morning about twenty minutes ago here in america ',positive
+460,'username enjoy the lens ',positive
+461,'username awake already big question and i have 79 thingys left can i do an interview with you guys the 18th in adam please reply ',positive
+462,'day is done  heading for bed  keep the twitterverse safe ',positive
+463,'but then theres all the rest ',positive
+464,'had an awesome day at work getting paid for what you love possibly has to be the best feeling ever  ',positive
+465,'username ongina perhaps contestant in rupauls drag race ',positive
+466,'url can create wordles url of your tweets  nice ',positive
+467,'username when i first got her i was thinking of weenkee or oracle but weenkee is more cool and she has a real winkey on her cage ',positive
+468,'so tired finally getting some sleep nighty ',positive
+469,'username love your sense of humour its more about being fired up than burnt out   whats happening in your world this week',positive
+470,'username yes thanks  just about to get some hot coffee and hoping that normal service will be resumed as soon as possible ',positive
+471,'username you like ladyhawke you are so cool ',positive
+472,'the essays are finished and im going hoome ',positive
+473,'mils sms this morn  quotgood morning how are uquot so tahching ',positive
+474,'yeay have a parking space from tomorrow  thats an extra half hour in bed in the mornings  apart from the day i have to fly get up at 0515',positive
+475,'username nice one does that mean youll put up an avatar too ',positive
+476,'username i know  are you still on shits sorry i mean shifts ',positive
+477,'username holyshitholyshitholyshitholyshit ',positive
+478,'off to london back online 14th of april so c u then ',positive
+479,'username but thanks ',positive
+480,'username  thanks',positive
+481,'good morning world i wonder what sort of adventure you have in store for me today ',positive
+482,'username the d700 rocks every day ',positive
+483,'good day today out door totally prepared early sun shining and salsa tonight o and listening to close to me ',positive
+484,'username username what happen to msu   go unc lol ',positive
+485,'whew i love the movie quotpassengersquot ',positive
+486,'username while i cant speak for beyonce i would think she would say that you deserve something better ',positive
+487,'username welcome have a nice tweday ',positive
+488,'actually ive been sleeping for about 6 hours just not been good 6 hours of sleep i should feel fine im good ',positive
+489,'username around about mid may for 3 weeks ',positive
+490,'cant wait for tomorrow ',positive
+491,'username yummy caramel latte goodness  mum youve got me onto something here lol  url',positive
+492,'username lol start over  if u were a melerr dude go firearms or bigguns  or vice versa same for goodevil lotsa fun',positive
+493,'username i am looking forward to some funny tweets from you  have a nice day xx',positive
+494,'ebtmcom is back ',positive
+495,'username no  i wont say what i was gonna say  morning ',positive
+496,'long day hope i can catch a few zzs as a result grabbing blankey     then off to chair gotta b up in just a bit 4 the bloodletting ',positive
+497,'good morning internet my ipod touch might come today  even if it does im not using it until sunday',positive
+498,'wants to go to a baseball game doesnt care whosomeone take me ',positive
+499,'username  too bad its true for the most part ',positive
+500,'another day another coach load of brummies ',positive
+501,'username thank god i dont have to take bio ',positive
+502,'awake on the phone  txt me',positive
+503,'10 blisters from last nights gig 4 of which have turnedare turning into ulcers of sorts still same gig tonight again ',positive
+504,'wants to find time for scrapbooking ',positive
+505,'username  dream  miley cyrus yeah amazing ',positive
+506,'username thats way too sweet  thanks for the kind words  ',positive
+507,'dear mr rudd fibertohome ill believe it when i see it and when i see it ill hump it  url',positive
+508,'dansu o shimasho ne ne hip hop combo in front of adult hippidy hoppersnot cool hip hop combomint hip hop isolation awesome ',positive
+509,'is it night everywhere or any daylight there ',positive
+510,'username great just enjoying my coffee while the boys are out at footy training ',positive
+511,'just audited an amazing acting class so excited to start now ',positive
+512,'url  my senior picture ',positive
+513,'back from work time for my morning coffee ',positive
+514,'username ive never seen that movie but i like the quote ',positive
+515,'i love my toothpaste ',positive
+516,'username hola yes one of these days  good knight ',positive
+517,'hey hey hey todays my last day ',positive
+518,'coachella next weekend paul ill be seeing you there  pure happiness ',positive
+519,'is watching twilight for the millionth time ',positive
+520,'username hey youhows the husband search going  spring is in the airripe time for the pickin ',positive
+521,'chriist im tiredtoo old for this shizzit nowadays  think will go get a cup of joe to wake me up',positive
+522,'stick around  we will soon unveil hacker evolution for the iphoneipod ',positive
+523,'love the jonas brothers ',positive
+524,'taken my black 2 sleep good night twitter familyy   if u aint hierd the new music listen now myspacecomrussianrullet1 enjoy',positive
+525,'tweetstats and wordle just amused me for half an hour good times ',positive
+526,'it happens to me loads if you reply  my id is ramdomthoughts not randomthoughts  i spell it wrong deliberately ',positive
+527,'username heyy missy welcome ',positive
+528,'username lifes to short to scoble it did you read gillmor article re friendfeed 15 journalists technologists and robert scoble ',positive
+529,'username hey thanks for follow  enjoy',positive
+530,'good morning everyone got a package from granmalets see whats inside ',positive
+531,'going to bed night ',positive
+532,'close my eyes all i see is dresses lmao listening to james blunts quotsame mistakequot ',positive
+533,'username aye hardly suitable for me to watch at work had to close it down sharpish ',positive
+534,'is last day of uni tomorrow ',positive
+535,'username i just saw your interview with katie amp karleigh  youre so awesome demi i hope youll come to germany one day ',positive
+536,'username yup hawx is awesome i love that game  coop multiplayer taking on tanks bombers fighters its amazingly fun ',positive
+537,'dear god thanks for a great day  now please help me through these 2 midterms   andinto notre dame  amen  good night',positive
+538,'ahah lol  oh tom and dougie funny boiz',positive
+539,'username thanks so much ',positive
+540,'username great thank you i might chat with him thanks ',positive
+541,'username de moment em queden 4 temporades de the wire  i vaig a comenar amb mad men',positive
+542,'tck is going to bed when i wake up its warm up and get to work  goodnight world',positive
+543,'username yeah and then call forwarding to my chinese cell phone want to test local call to  gt cell and i cant call myself ',positive
+544,'weekend was crazy 3 parties and got back together with my girlfriend  things are going great',positive
+545,'second attempthi stefanyoure so pretty ',positive
+546,'username love you little baby sister cant wait til next semester ',positive
+547,'did some tafe work and am going to do more tomorrow when im at mummas place going up for another baking day ',positive
+548,'username it is more abt u r heart and where u want to go in biz  as for love that is a different question lol ',positive
+549,'username aww that was nice thanks  and of course you are very welcome',positive
+550,'username i wish you could too  im hopin to get that facetime  gotta give him that scarf asap should i go a day before or 2',positive
+551,'lawl i killed this guys dog and then 1hkod him  url',positive
+552,'username yell something like angelina jolies on the tele worked with my dog ',positive
+553,'had a really good day today now its  time for bed  ',positive
+554,'eating ice cream ',positive
+555,'username oh ok that explains it and puts my universe back into balance a bit ',positive
+556,'going to chase some pills with some vodka should be interesting ',positive
+557,'username  youll have to persuade them ',positive
+558,'username no pillow for you hehee i hope youre layover isnt too long  almost there',positive
+559,'username haha ur gonna get waay pissed at us ur using that pic i sent u as ur facebook picture  read the message i sent u on fb',positive
+560,'eleonoraelitoday ive got bday  yay i wish that some celebrities wish me happy bday xp haa xd itll never happen ',positive
+561,'username right ok already had that im sorry i thought i missed something else i didnt mean to look dense ',positive
+562,'username oh ellen please tell me dr manhatten was wearing clothes  know that the gf was a little shocked when we saw watchmen',positive
+563,'username ill be sure to  look forward to seeing it',positive
+564,'im going to shop with my bff today its gonna be fun  i cant wait',positive
+565,'username which train ',positive
+566,'i think its time for a myspace eedit i just ceebs doing it besides i am writing my diary for amelia ',positive
+567,'username url  thats awesome ',positive
+568,'hey fellow tweeters please follow bgluxurybandb  huge things coming really soon super super cute stuff ',positive
+569,'just got done watching haarp for like the 5th time now amazing dvd ',positive
+570,'username yay a duck if i want anything watching me itd be a duck  lol',positive
+571,'username check it out  url',positive
+572,'setting up new systems for contributors ',positive
+573,'the sun is shining can i get work squeezed into a morning and escape for an afternoons walking ',positive
+574,'username thats ok i have eye fillet coming in about 6 minutes ',positive
+575,'got up to take the mr to work on his birthday ',positive
+576,'username im afraid to fly too what do you do when you have to i usually pop ativan and valium or maybe ambien  works ok',positive
+577,'username hello thanks for sayin hi i hope you like to watch ',positive
+578,'username hes got other qualities im pretty lucky ',positive
+579,'checking out diigo for openaustralia publicwhip for uk gt aus parliamentary info translation unless youd like to bring some lords over ',positive
+580,'everyone except me seems very busy doing something today  when everyone works i chills when everyone chills i works  lol',positive
+581,'username username uk its hard to tweet dk quoti dag har anders fdselsdagquot dk within just 140 characters ',positive
+582,'username w00t i rate 78 of your  asshattery awesome now i need to follow the other people you bug ',positive
+583,'too cute for words ',positive
+584,'my flow so tight ',positive
+585,'feeling better  ill be finei guessi hope ',positive
+586,'username gonzocontinued from last post ',positive
+587,'i have the greatest boyfriend ',positive
+588,'username yepoff to work soon ',positive
+589,'username morning mr poynter  ur up early',positive
+590,'my sister is currently telling me how 21 year olds should be at the bar not reading books maybe ill take a book to the bar with me ',positive
+591,'enjoying the nice weather ',positive
+592,'username very nice pics thanks for sharing it  ',positive
+593,'username ',positive
+594,'is so anxious for thursday i cant wait to see mike its been 3 and a half months ',positive
+595,'username some days i have too much to say not a bad thing to be at a loss for words you use your brain for much greater things ',positive
+596,'ordered my dsi and gta cant wait ',positive
+597,'username id like to put myself forward as one of your 100 men i cant tick any of the boxes but im a nice guy anyway ',positive
+598,'username when are you putting a photo up ',positive
+599,'oh wait thunderstorms tomorrow ohshit then yay  i love love love thunderstorms gnight again haha',positive
+600,'username and id go with either a nose ring or an eyebrow bar in my opinion ',positive
+601,'what that  dissertation script is finished and with his tutor for final reading  come on',positive
+602,'username it does indeed hope you are well too why are you awake at this hour ',positive
+603,'url  ukey my new uke ',positive
+604,'username me too nice work kate ',positive
+605,'username thank you ',positive
+606,'username quoti poke her facequot by kid cudi feat kanye west and common is better ',positive
+607,'off to work nowtweet you guys at lunchbreak ',positive
+608,'talking to username cant wait to hear the track david and username recorded ',positive
+609,'designing my graduation announcements ',positive
+610,'username well ill have you know i got one and and iron and a heater way domesticated ',positive
+611,'is getting ready to install our bi stack again ',positive
+612,'today ive got bday  yay i wish that some celebrities wish me happy bday xp haa xd itll never happen ',positive
+613,'username quite similar to what happened with gw bush in iraq ',positive
+614,'username  sure we need to get together to brainstorm up some blueprints',positive
+615,'mum if youre reading this i just want you to know i think you rock  we shall enjoy the 400 together ',positive
+616,'username i found the answers thanks ',positive
+617,'username im excited for you  i have no idea why your going but it must be all good',positive
+618,'username i know you do go team gb ',positive
+619,'username and prince  erotic city feat shelia e ',positive
+620,'done dun dun  i guess were getting off the computadora night',positive
+621,'shopping shopping shopping  im in desperate need of some shorts n stuff for spain b',positive
+622,'username sam and dean  im in the modd for watching it now',positive
+623,'username thats a superb picture doll face ',positive
+624,'although i am heading back to pc land for a some time id still like a mac pro at some point  url',positive
+625,'username great link it can certainly help a lot thats for sure just got to know what to do and what not to do ',positive
+626,'first i gotta set up some other anti spyware programs to give my dearest spybot some company ',positive
+627,'its great to know to be in your thoughtsandyeswe are lucky ',positive
+628,'username two mules cant make a race horse interesting but ive read that mules are smarter than horses amp do more work ',positive
+629,'username danke ',positive
+630,'username i was one of 5 kids  we didnt go on many holidays there was too much to organize lol',positive
+631,'i have worked out how to integrate twitter into a web page ',positive
+632,'follow follow follow lmaoo ',positive
+633,'wwkillerjonet try not to focus on science ',positive
+634,'time to head off and start another day of work hope yall have a good one catch you when i return ',positive
+635,'username  nice interview on letterman i love your personality charm and  sense of humor ',positive
+636,'birthday wknd was a success and got some and then some ',positive
+637,'on my way to a business coaching client i look forward to it ',positive
+638,'username yes i had all the books as a child ',positive
+639,'username ill try my best to be at the heather tomorrow for the tweetup ',positive
+640,'username being a grownup with no responsibilities is awesome though ',positive
+641,'username glad to see you here i heart other brandy fans  goodnight',positive
+642,'username well im doing good here as well  and having fun at the same time have a wonderful week as well ',positive
+643,'believe it or not i actually did it ',positive
+644,'username so the bata line will change from quotthe world at your feetquot to quotthe world in your facequot ',positive
+645,'username i see u r into gardening these days not bad ',positive
+646,'finally is a verified paypal member ',positive
+647,'just watched quothow to lose a guy in 10 daysquot i might have cried a little ',positive
+648,'username 1 ',positive
+649,'username oh now who is comfortably dumb ',positive
+650,'were on most sessions in adtech paris btw feel free to dm or reply to meet ',positive
+651,'username username  i definitely missed something  its my first ',positive
+652,'username back at ya ',positive
+653,'username they leave it on the street and string the hose up over the balcony ',positive
+654,'username  bludget b09 but budget 09 happened in october remember ',positive
+655,'username it is very simple use firefox or ie n just copy the updates n paste it ',positive
+656,'username woot ',positive
+657,'vegetarian recipe a great experiment ',positive
+658,'i love to drink water so pure  today was a good day',positive
+659,'dull greyish day in brussels wearing camps n88 from a sample and loving it as usual will definitely be buying it at some point ',positive
+660,'username  man cheese popcorn on food network me want',positive
+661,'username you can actually swear you know lol theres even somewhere that counts your swearsmuch funwwcursebirdcom ',positive
+662,'username cool pics in kyoto geisha are usually called quotmaikoquot ',positive
+663,'its 333am and im finally going to bed ',positive
+664,'username oh i didnt know what you were talking about got it now while i cant imagine i am sure they dont realise what it means ',positive
+665,'little work out was good  specially since we were watching the hills at the same time lol',positive
+666,'watched quotsnatch warsquot hilarious cheers username  url',positive
+667,'just added myself to the twitter directory you should too  url',positive
+668,'just getting ready for work oh joy is me roll on holiday ',positive
+669,'apparently i was playing risk on a railroad track hardcore risk player 4 life ',positive
+670,'username agreed amp accepted sir 2 mistakes are not unpardonable ',positive
+671,'if you could see me now sat here with tartan blanky across my lap like oap hair looking like a knitted rug bright pink pjs amp a smile ',positive
+672,'username ill be there as well maybe tomorrow ',positive
+673,'followers the more the merrier ',positive
+674,'studying for a test designing 2 logos starting on my final project and playing with indesign totally happy ',positive
+675,'username have fun ',positive
+676,'cant wait to see cody wednesday  i love my boyfrieennd',positive
+677,'okone hour and counting 4 days off and going to enjoy every minute of it hair done spa kickboxing hiking ahh cant wait  ',positive
+678,'how come only audrey updates twitter i need to follow more people sorry audrey ',positive
+679,'username now look serge dont try to escape your identity  hehe  how are you man',positive
+680,'working tweeting facebooking and enjoying a raspberry mocha latte ',positive
+681,'username blum boleh dong maaf ibu hamil ',positive
+682,'ok sun not shining now but still happy ',positive
+683,'i got a halfdecent nights sleep ',positive
+684,'good morning determined 2 make it sweeter than b4 ',positive
+685,'eventbox testen ',positive
+686,'in the meantime trying to figure out a new background for my twitter ',positive
+687,'is about to go home ',positive
+688,'username hi grinch i really would like to here your english podcast even if taking in consider the fact i am native russian speaker ',positive
+689,'welcome to the coffee online twitter page please feel free to follow us in the twitter world ',positive
+690,'my mate is currently on deal or no deal  ',positive
+691,'username hoping to come to chicago for a third time  you are competing with no doubt this summer though ',positive
+692,'username beautiful earrings very gentle ',positive
+693,'starting a new day a rainy day but inside me the sun allways shines ',positive
+694,'username use it on apps ',positive
+695,'will it work wont it will it work wont it   ',positive
+696,'username you should buy an ex army hummer wouldnt matter if you ran into anything ',positive
+697,'is amused that she gets to bully her aunt at work    ',positive
+698,'username next time come to hemel hempstead ',positive
+699,'username ',positive
+700,'username thanks for the vodou music  just what i need to send me to sleep  ',positive
+701,'username because its great lol just finished ',positive
+702,'is playing superpoke pets   url',positive
+703,'i found my motto if you hit on my woman i will hit you ',positive
+704,'it was soo simplebut i knew i would get it  smiles really big good night',positive
+705,'does anyone know where i can get real copper ear wires in the uk i dont want copper effect i need the real thing help me please ',positive
+706,'username whassup ',positive
+707,'listening to the sleepy ramblings of emily im sure it is a very interesting story ',positive
+708,'really likes diet cherry vanilla dr pepper its amazingness in a bottle ',positive
+709,'i just finished the seat of my bench but enough maya  im going to sleep now hope to finish it tomorrow im going to dream in 3d ',positive
+710,'ive always wanted to try that  url  amp guess what  it works',positive
+711,'username i know crap site huh ',positive
+712,'username dude youre totally rocking the stache avocardo handrolls are so damn good thanks for dinner insirstion andy ',positive
+713,'username thanks ',positive
+714,'gotta finish off with the remaining 30 mcs left in the morning ',positive
+715,'username hey what have you been up to ',positive
+716,'got a 35 in french      bobo sa exam  yey 75 lang haha',positive
