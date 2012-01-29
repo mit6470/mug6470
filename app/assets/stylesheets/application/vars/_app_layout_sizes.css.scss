@@ -9,7 +9,7 @@ $radius: 4px;
 $label-right-padding: 11px;
 $content-wrapper-top-padding: 20px;
 $sidebar-width: $column-total * $sidebar-columns - $column-margin * 3;
-$article-min-height: 650px;
+$article-min-height: 630px;
 
 // Signup form
 $signup-form-width: $column-total * 13 - $column-margin;
@@ -27,6 +27,7 @@ $chart-width: 600px;
 
 // Tutorial
 $tutorial-width: $column-total * 10 - $column-margin;
+$tutorial-section-height: 550px;
 
 // Status bar
 $status-bar-width: $page-width / 2;

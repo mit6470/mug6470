@@ -13,7 +13,7 @@ class SessionController < ApplicationController
   def home
     # Pull information about the current user.
     @projects = current_user.projects || []
-    @tutorials = Tutorial.all
+    @tutorials = Tutorial.by_number
   end
   private :home
   

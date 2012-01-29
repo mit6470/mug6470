@@ -46,7 +46,7 @@ article#sidebar {
 article#main {
   float: left;
   width: $page-width;
-  @include box();
+  @include box($align: start);
   
   > article {
     border: solid 1px $border-color;
