@@ -5,9 +5,15 @@ class DataView
     @dataSelect = $('#trial_datum_id')
     @summarySection = $('#data-summary')
     @featuresTab = $('#data-tabs-features ul')
-    @examplesTab = $('#data-tabs-examples ul')
+    @$examplesTab = $('#data-tabs-examples')
+    @$examplesChart = $('#class-chart', @$examplesTab)
+    @$examplesList = $('#examples-list', @$examplesTab)
+    @$spinner = $('#next-page-spinner')
+
     @chooseData = ->
     @dataSelect.change => @onDataSelectChange()
+    
+    @numExToShow = 10
       
   onDataSelectChange: ->
     if @dataSelectValid()
@@ -21,21 +27,21 @@ class DataView
 
   # @param [json] data to be rendered. It can be null if the server does not 
   #   find the data and returns nothing.
-  render: (data) ->
-    return unless data?
-    @data = data
-
+  render: (@data) ->
+    return unless @data?
+    @curExIndex = 0
+    
     # render the summary section
-    numFeatures = data.features.length
+    @numFeatures = @data.features.length
     summary = """
               <h5>Summary</h5>
                 <table>
                   <tbody>
                     <tr>
-                      <td>Number of examples:<strong> #{data.num_examples}</strong></td>
-                      <td>Number of features:<strong> #{numFeatures - 2}</strong></td>
+                      <td>Number of examples:<strong> #{@data.num_examples}</strong></td>
+                      <td>Number of features:<strong> #{@numFeatures - 2}</strong></td>
                       <td>
-                        Class label:<strong> #{data.features[numFeatures - 1].name}</strong>
+                        Class label:<strong> #{@data.features[@numFeatures - 1].name}</strong>
                       </td>
                     </tr>
                   </tbody>
@@ -43,48 +49,25 @@ class DataView
               """
     @summarySection.html summary
     
+
     # render the examples tab
-    @examplesTab.html """
-                      <li>
-                        <div class='chart'>
-                          <div id='chart-#{data.features[numFeatures-1].name}'></div>
-                        </div>
-                      </li>
-                      """
-    examplesData = data.examples
-    for example in examplesData[0..9]
-      exampleId = example[0]
-      tableId = "table-#{exampleId}"
-      exampleHtml = """
-                    <li>
-                      <div id='#{tableId}'>
-                      <table>
-                      <tr><th>Example #{exampleId}</th><th/></tr>
-                      <tr><th>Class</th><td>#{example[numFeatures-1]}</td></tr>
-                    """
-      for feature, i in data.features
-        if i == numFeatures - 1 or i == 0
-          continue
-        exampleHtml +=  """
-                    <tr><th>#{data.features[i].name}</th><td>#{example[i]}</td></tr>
-                        """
-      exampleHtml += """
-                      </table>
-                      </div>
-                    </li><br/>
-                    """
-      @examplesTab.append exampleHtml
+    @$examplesChart.html """
+                         <div id='chart-#{@data.features[@numFeatures-1].name}'></div>
+                         """
+    @$examplesList.empty()
+    @renderNextExamples()
+    @$spinner.show()
         
     # render the features tab
     @featuresTab.empty()
-    featuresData = data.features_data
-    for feature, i in data.features
+    featuresData = @data.features_data
+    for feature, i in @data.features
       continue if i == 0 # Ignore the ID feature.
       
-      featureName = data.features[i].name
+      featureName = @data.features[i].name
       chartId = "chart-#{featureName}"
       
-      isClassFeature = i == numFeatures - 1
+      isClassFeature = i == @numFeatures - 1
       featureData = featuresData[i]
       
       unless isClassFeature
@@ -125,4 +108,54 @@ class DataView
           chart.vis.event("click", @filterExamples)
         chart.render(chartId)
 
+  renderNextExamples: ->
+    examplesData = @data.examples
+    if @curExIndex >= examplesData.length
+      @$spinner.hide()
+      return
+      
+    for example in examplesData[@curExIndex...@curExIndex + @numExToShow]
+      exampleId = example[0]
+      tableId = "table-#{exampleId}"
+      exampleHtml = """
+                    <li>
+                      <div id='#{tableId}'>
+                      <table>
+                      <tr><th>Example #{exampleId}</th><th/></tr>
+                      <tr><th>Class</th><td>#{example[@numFeatures-1]}</td></tr>
+                    """
+      for feature, i in @data.features
+        if i == @numFeatures - 1 or i == 0
+          continue
+        exampleHtml +=  """
+                    <tr><th>#{@data.features[i].name}</th><td>#{example[i]}</td></tr>
+                        """
+      exampleHtml += """
+                      </table>
+                      </div>
+                    </li><br/>
+                    """
+      @$examplesList.append exampleHtml
+    @curExIndex += @numExToShow
+  
+  
+class DataController
+  constructor: (@dataView) ->
+    $(document).scroll => @observeScroll()
+    
+  observeScroll: ->
+    @renderNextPage() if @readyForNextPage()
+    
+  renderNextPage: ->
+    @dataView.renderNextExamples()
+  
+  readyForNextPage: ->
+    return false if !$('#next-page-spinner').is(':visible')
+      
+    threshold = 200
+    bottomPosition = $(window).scrollTop() + $(window).height()
+    distanceFromBottom = $(document).height() - bottomPosition
+    return distanceFromBottom <= threshold
+    
 window.DataView = DataView
+window.DataController = DataController
