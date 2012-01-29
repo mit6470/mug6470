@@ -24,7 +24,14 @@ class CurrentTrialView
     @trialModeValues = ['cv', 'test']
     
     @$testDataSelect = $('#trial_test_datum_id')
+    @$runLoader = $('#run-loader')
+  
+  hideRunLoader: ->
+    @$runLoader.hide();
     
+  showRunLoader: ->
+    @$runLoader.show();
+      
   onFeatureToggle: ->
     $('#toggled-features').toggle('blind', {}, 500)
     false

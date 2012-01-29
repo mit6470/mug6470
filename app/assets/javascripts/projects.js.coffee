@@ -55,9 +55,16 @@ class ProjectController
     onXhrSuccess = (data) =>
       @projectView.renderResult data
       
+    onBeforeSend = =>
+      @currentTrialView.showRunLoader()
+      
+    onComplete = =>
+      @currentTrialView.hideRunLoader()
+      
     $.ajax({
       data: form.serialize(), success: onXhrSuccess,
-      dataType: 'html', type: form.attr('method'), url: form.attr('action')
+      dataType: 'html', type: form.attr('method'), url: form.attr('action'),
+      beforeSend: onBeforeSend, complete: onComplete
     })
   
   getExamples: (params) ->
