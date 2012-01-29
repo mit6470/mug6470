@@ -20,12 +20,36 @@ article#tutorial {
   }
   
   nav {
+    font-size: 11pt;
+    
+    ul {
+      height: 1.5em;
+      margin: 0.5em 0;
+    }
     li:first-child {
       float: left;
     }
     
     li:last-child {
       float: right;
+    }
+    
+    li { 
+      margin: 0.1em 0;
+    }
+    
+    a span.ui-button-text {
+      width: 75px;
+      @include box-sizing(border-box);
+      color: $link-color;
+    }
+    a.ui-button-text-icon-secondary span.ui-button-text {
+      
+      padding: 0.1em 1.8em 0.1em 0.5em;
+    }
+    
+    a.ui-button-text-icon-primary span.ui-button-text {
+      padding: 0.1em 0.5em 0.1em 1.8em;
     }
   }
 }

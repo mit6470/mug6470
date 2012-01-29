@@ -7,8 +7,14 @@
   </div>
   <nav>
     <ul>
-      <li><%= link_to '<<Prev', '#', :id => 'prev-section' %></li>
-      <li><%= link_to 'Next>>', '#', :id => 'next-section' %></li>
+      <li><%= link_to 'Prev', '#', :id => 'prev-button' %></li>
+      <li><%= link_to 'Next', '#', :id => 'next-button' %></li>
+    </ul>
+    <ul>
+      <li>
+        <%= link_to 'Back', tutorials_path, :title => 'Back to index',
+                    :id => 'back-button' %>
+     </li>
     </ul>
   </nav>
 </article>
