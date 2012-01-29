@@ -59,9 +59,9 @@ class TrialResultController
       examplesToRequest = params[currentIndex..currentIndex + 9]
       
       matrixSection = target.closest 'section'
+      $('table.examples').remove()
       
       onXhrSuccess = (data) ->
-        $('table.examples').remove()
         matrixSection.append data
       
       if examplesToRequest.length > 0
