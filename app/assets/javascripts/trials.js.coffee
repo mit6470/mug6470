@@ -97,11 +97,18 @@ class TrialController
     
     onXhrSuccess = (data) =>
       @dataView.render(data)
+      
+    onBeforeSend = =>
+      @dataView.showDataLoader()
     
+    onComplete = =>
+      @dataView.hideDataLoader()
+      
     $.ajax({
       data: form.serialize(), success: onXhrSuccess,
       dataType: 'json', type: dataSelect.attr('data-choose-data-method'),
-      url: dataSelect.attr('data-choose-data-url') 
+      url: dataSelect.attr('data-choose-data-url'),
+      beforeSend: onBeforeSend, complete: onComplete 
     })
   
   chooseClassifier: ->

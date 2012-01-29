@@ -12,9 +12,16 @@ class DataView
 
     @chooseData = ->
     @dataSelect.change => @onDataSelectChange()
+    @$dataLoader = $('#data-loader')
     
     @numExToShow = 10
-      
+  
+  showDataLoader: ->
+    @$dataLoader.show()
+    
+  hideDataLoader: ->
+    @$dataLoader.hide()
+       
   onDataSelectChange: ->
     if @dataSelectValid()
       @chooseData()

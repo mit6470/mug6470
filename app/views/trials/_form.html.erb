@@ -33,6 +33,7 @@
         <%= select_tag :trial_datum_id, training_data_options(current_user), 
             'data-choose-data-url' => choose_data_url,
             'data-choose-data-method' => 'GET' %>
+        <%= image_tag 'loader.gif', :id => 'data-loader', :class => 'hidden' %>
       </div>
       <%= render 'data/show' %>
   </section>
