@@ -31,20 +31,24 @@
       min-height: 26px;
     }
     
-    .result-yes {
-      background: $result-yes-color;
-      color: white;
-      font-weight: bold;
-    }
+    .result {
+      cursor: pointer;
+      
+      &.yes {
+        background: $result-yes-color;
+        color: white;
+        font-weight: bold;
+      }
     
-    .result-no {
-      background: $main-color3;
-      color: white;
-      font-weight: bold;
-    }
+      &.no {
+        background: $main-color3;
+        color: white;
+        font-weight: bold;
+      }
     
-    .result-none {
-      background: $table-background;
+      &.none {
+        background: $table-background;
+      }
     }
   }
 }

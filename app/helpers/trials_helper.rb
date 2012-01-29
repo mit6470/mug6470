@@ -23,11 +23,11 @@ module TrialsHelper
   
   def cell_class(i, j, size)
     if i == j
-      return 'result-yes'
+      return 'yes'
     elsif size > 0
-      return 'result-no'
+      return 'no'
     else
-      return 'result-none'
+      return 'none'
     end
   end
   

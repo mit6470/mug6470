@@ -91,8 +91,8 @@
           <tr>
             <td><%= "#{@trial.datum.class_values[i]} = #{i + 1}" %></td>
             <% r.each_with_index do |c, j| %>
-              <%= content_tag :td, "#{c.size}", 
-                  :class => "#{cell_class i, j, c.size }",
+              <%= content_tag :td, "#{c.size}",
+                  :class => "result #{cell_class i, j, c.size }",
                   'data-confusion-matrix' => data_examples_str(@trial.datum_id, c)%>
             <% end %>
           </tr>
