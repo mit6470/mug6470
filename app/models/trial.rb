@@ -83,7 +83,7 @@ class Trial
         matrix = Array.new(num_class_values) { 
               Array.new(num_class_values) { [] } }
         regex = /^\s*\d+\s+(?<actual>\d+):(?<actual_label>[^\s]+)\s+(?<predicted>\d+):[^\s]+\s+\+?\s+(?<confidence>[\d\.]+)\s*\((?<id>\d+)\)/ 
-        num_correct = 0
+        total = num_correct = 0
         stdout.readlines.each do |l|
           if md = regex.match(l) 
             id = md[:id].to_i
@@ -95,13 +95,13 @@ class Trial
                 :predicted => predicted, :confidence => confidence }
             if actual > 0
               matrix[actual - 1][predicted - 1] << id 
+              total += 1
               num_correct += 1 if actual == predicted
             end
           end
         end
         self.output[:result][:confusion_matrix] = matrix
-        self.output[:result][:accuracy] = 
-            num_correct.to_f / datum.num_examples if datum.num_examples > 0
+        self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
       end
       
       stderr.readlines.each do |line|
