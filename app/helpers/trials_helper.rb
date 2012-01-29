@@ -1,12 +1,12 @@
 module TrialsHelper
   def training_data_options(user)
-    options = [['--Choose data--', -1]]
+    options = [['-- Choose data --', -1]]
     data_for(user).each { |d| options << [d.short_name, d.id] unless d.is_test }
     options_for_select options
   end
   
-  def data_options(user)
-    options = [['--Choose data--', -1]]
+  def test_data_options(user)
+    options = [['-- Choose test data --', -1]]
     data_for(user).each { |d| options << [d.short_name, d.id] }
     options_for_select options
   end

@@ -50,8 +50,7 @@ $button-base-color: change-color($main-color2, $saturation: 55%, $lightness: 45%
 $button-color: change-color($button-base-color, $lightness: 40%);
 $button-border-color: change-color($button-base-color,
     $saturation: 100%, $lightness: 33%) !default;
-$button-font-color: change-color($button-base-color,
-    $saturation: 66%, $lightness: 99%) !default;
+$button-font-color: white;
 $button-shadow-color: change-color($button-base-color,
     $saturation: 66%, $lightness: 76%) !default;
 $button-hover-font-color: change-color($button-base-color,
@@ -72,6 +71,8 @@ $data-tab-active-color: change-color($ui-state-active-color,
                                      $saturation: 25%, $lightness: 80%);
 $data-tab-active-border-color: change-color($ui-state-active-color, 
                                            $saturation: 20%, $lightness: 80%);
+$test-mode-active-color: change-color($ui-state-active-color, 
+                                      $saturation: 60%, $lightness: 40%);
 
 // Error colors
 $error-color: $main-color3;

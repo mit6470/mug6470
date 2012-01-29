@@ -73,7 +73,7 @@ var BarChart = function (chartData, options) {
         .left(function() { return x(this.index) + leftMargin; } )
         .fillStyle(function(d, p) { return fillColors(p); } );   
     bar.add(pv.Label)
-        .bottom(0)
+        .bottom(5)
         .left(function() { return x(this.index) + leftMargin + x.range().band / 2; })
         .text(function () { return labels[this.index]; })
         .textAngle(-Math.PI / 2)
