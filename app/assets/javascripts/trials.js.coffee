@@ -13,8 +13,13 @@ class CurrentTrialView
     @dataView = new window.DataView
     @classifierView = new window.ClassifierView
       
-    @featureToggleButton = $('#feature-toggle-button')
-    @featureToggleButton.live 'click', => @onFeatureToggle()
+    onFeatureToggle = ($target) ->
+      $target.parent().prev().toggle('blind', {}, 500)
+      $($target.children()).toggle()
+      false
+
+    @$featureToggleButtons = $('.feature-toggle-button')
+    @$featureToggleButtons.live 'click', -> onFeatureToggle($(this))
     
     @$trialModeTabs = $('#current-trial-run')
     @$trialModeTabs.tabs()
@@ -32,9 +37,6 @@ class CurrentTrialView
   showRunLoader: ->
     @$runLoader.show();
       
-  onFeatureToggle: ->
-    $('#toggled-features').toggle('blind', {}, 500)
-    false
   
   # Perform the run button action if the input is valid.  
   onRunButtonClick: ->

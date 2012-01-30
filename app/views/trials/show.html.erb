@@ -50,14 +50,17 @@
               <% end %>
             </ul>
             <% if @trial.selected_features.length > 5 %>
-              <ul id="toggled-features" hidden >
+              <ul class="toggled-features" hidden >
                 <% @trial.selected_features[5..-1].each do |i| %>
                   <li><%= datum.features[i][:name] %></li>
                 <% end %>
               </ul>
               <ul>
-                <li id="feature-toggle-button">
-                  <span class="ui-icon ui-icon-triangle-1-s">Reveal</span>
+                <li class="feature-toggle-button">
+                  <span class="ui-icon ui-icon-triangle-1-s" 
+                        title="More features">Reveal</span>
+                  <span class="ui-icon ui-icon-triangle-1-n" style="display: none" 
+                        title="Hide features">Hide</span>
                 </li>
               </ul>
             <% end %>
