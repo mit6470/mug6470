@@ -7,6 +7,7 @@ $text_width: 400px;
 #welcome {
   > .blurb {
     border: 1px solid $border-color;
+    @include box-shadow(0px 0px 10px $border-color);
     background-color: $content-background-color;
     @include border-radius(2em);
     padding: 1em;
@@ -20,7 +21,10 @@ $text_width: 400px;
       font-size: 24pt;
       margin: 0;
       padding: 0;
-      -webkit-border-radius: 1em;
+      $base-color: change-color($header-background-color, $lightness: 40%);
+      $color-stop: change-color($base-color, $saturation: 50%, $lightness: 60%);
+      @include border-radius(1em);
+      @include linear-gradient(top, $color-stop, $base-color)
     }
 
     // Description of why the title was so inspiring.
@@ -31,8 +35,16 @@ $text_width: 400px;
   }
 
   // Anything that needs to be right-aligned (e.g., the "Try it out!" button).
-  > .right-align {
-    text-align: right;
+  .welcome-button {
+    width: 160px;
+    margin: auto;
+
+    a {
+      height: 2.4em;
+      line-height: 2.4em;
+      font-size: 1.1em;
+    }
+    
   }
 }
 
@@ -40,5 +52,6 @@ $text_width: 400px;
   width: $preview-image-width;
   margin-left: $column-margin;
   border: 1px solid $border-color;
+  @include box-shadow(0px 0px 10px $border-color);
   @include border-radius($radius);
 }

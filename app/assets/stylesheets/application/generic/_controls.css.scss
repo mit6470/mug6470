@@ -6,7 +6,7 @@ input[type=text], input[type=email], input[type=tel], input[type=password],
 // Submit buttons.
 input[type=submit], input[type=button], button, a.button {
   margin: 0;
-  padding: 0.1em 1ex;
+  padding: 0.3em 1ex;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -19,6 +19,7 @@ input[type=submit], input[type=button], button, a.button {
   font-size: 1.1em;
   text-decoration: none;
   display: inline-block;
+  font-family: $heading-font;
   
   @include button-with-gradient($button-base-color);
   
