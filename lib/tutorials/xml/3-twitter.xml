@@ -9,6 +9,12 @@
       Understanding Language
     </h2>
     <p>
+      <form id="tweet_search">
+        <input data_tweet_search_method="GET" data_tweet_search_url="/data/tweet" id="tweet_search_term" name="tweet_search_term" type='text' />
+        <button id="tweet_search_button" name="button" type="button">Search</button>
+      </form>
+    </p>
+    <p>
       Natural Language Processing, or NLP, is all about training software to understand
       naturally occurring text. Its strategies can be used to answer questions spoken
       to your phone, filter spam from your inbox, translate from one language to another
@@ -101,9 +107,6 @@
       Let's test the classifier on some live tweets now! Enter a hashtag in the search box below
       and we will go grab a bunch of tweets for you on that subject. We'll create an ARFF file for you
       and put it in the menu on the <em>Test</em> tab.
-    </p>
-    <p>
-      Twitter hash tag search
     </p>
     <p>
       When you have gathered tweets, select the <em>tweet-&lt;YOUR-SEARCH&gt;</em> dataset from the test

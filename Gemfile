@@ -27,7 +27,8 @@ gem 'authpwn_rails', '>= 0.10.7'
 gem 'fbgraph_rails', '>=0.2.2' # Rails does not initialize nested engines.
 gem 'configvars_rails', '>= 0.5.2'
 gem 'enhanced_select'
-gem "remotipart", "~> 1.0"
+gem 'remotipart', '~> 1.0'
+gem 'twitter'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
