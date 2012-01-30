@@ -15,16 +15,17 @@ $text_width: 400px;
 
     // Title of the blurb--something inspiring.
     > h1 {
+      $base-color: change-color($header-background-color,
+                                $lightness: 40%);
+      $shadow-color: change-color($base-color, $lightness: 30%);
+      $color-stop: change-color($base-color, $saturation: 50%, $lightness: 60%);
       color: $header-title-color;
-      background-color: $header-background-color;
+      background-color: $base-color;
       text-align: center;
       font-size: 24pt;
-      margin: 0;
+      margin: 0 0.5em;
       padding: 0;
-      $base-color: change-color($header-background-color, $lightness: 40%);
-      $color-stop: change-color($base-color, $saturation: 50%, $lightness: 60%);
       @include border-radius(1em);
-      @include linear-gradient(top, $color-stop, $base-color)
     }
 
     // Description of why the title was so inspiring.
