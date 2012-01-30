@@ -23,3 +23,6 @@
 
 /user_data/*
 !/user_data/.gitkeep
+
+# This is generated.
+/public/favicon.ico
