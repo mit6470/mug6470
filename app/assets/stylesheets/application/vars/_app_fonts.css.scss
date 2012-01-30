@@ -1,8 +1,11 @@
+@import "vars/fonts.css.scss";
+
 $main-font-size: 12pt;
 $main-line-height: 1.2em;
 
 $header-menu-font-size: 18px;
 $header-menu-line-height: 24px;
 
-@import "vars/fonts.css.scss";
 
+$main-font: 'Droid Serif', Georgia, serif;
+$heading-font: 'Droid Sans', Helvetica, sans-serif;
