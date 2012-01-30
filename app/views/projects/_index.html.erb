@@ -1,16 +1,50 @@
 <% if current_user %>
   <h2>Projects</h2>
   <%= link_to 'New Project', new_project_path, :class => :button %> 
-  <ul>
-    <% current_user.projects.each do |project| %>
-      <li>  
-        <h3><%= link_to "#{project.name}", edit_project_path(project) %></h3>
-        <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %>
+  <% projects = current_user.projects %>
+  <% if projects.any? %>
+    <ul class='projects-index'>
+      <% projects.each do |project| %>
+        <li>  
+          <h3><%= link_to "#{project.name}", edit_project_path(project) %></h3>
+          <div class="actions">
+            <%= link_to close_tag, project, confirm: 'Are you sure?', method: :delete %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <ul>
+      <li>
+        <span class="ui-icon ui-icon-lightbulb"></span>
+        <p>
+          Start creating your first project. Trials in a project are saved so that
+          you can come back later to compare your results.
+        </p>
       </li>
-    <% end %>
-  </ul>
+      <li>
+        <span class="ui-icon ui-icon-lightbulb"></span>
+        <p>
+          You can upload your own data set for analysis.
+        </p>
+      </li>
+      <li>
+        <span class="ui-icon ui-icon-lightbulb"></span>
+        <p>
+          You can organize your projects according the data sets your are
+          analyzing.
+        </p>
+      </li>
+      <li>
+        <span class="ui-icon ui-icon-lightbulb"></span>
+        <p>
+          You can access your data and trial results wherever you go.
+        </p>
+      </li>
+    </ul>
+  <% end %>
 <% else %>
-  <h3>Tips</h3>
+  <h2 class="tips">Tips</h2>
   <ul>
     <li>
       <span class="ui-icon ui-icon-lightbulb"></span>

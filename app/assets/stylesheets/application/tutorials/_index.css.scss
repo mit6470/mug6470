@@ -14,8 +14,7 @@
 }
 
 .sidebar {
-  h3 {
-    margin: 0.8em 0; 
+  h2.tips {
     color: $highlight-color;
   }
   
@@ -23,7 +22,40 @@
     margin: 1em 0;
   }
   
-  p {
+  h3 {
+    font-size: $h4-font-size;
+  }
+  
+  summary {
+    padding: 0 1.5em;
+  }
+}
+
+.projects-index {
+  margin-top: 1em;
+
+  h3 {
+    display: inline-block;
+  }
+  
+  li {
+    width: 50%;
+    padding: 0 1em;
+    @include border-radius($radius);
+    
+    div.actions {
+      display: inline-block;
+      margin-left: 3em;
+    } 
+  }
+    
+  li:nth-child(odd) {
+    background: $table-background;
+  }    
+}
+
+.sidebar, .main {
+  .ui-icon-lightbulb + p {
     margin: 18px;
   }
 }
