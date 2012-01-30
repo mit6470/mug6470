@@ -136,4 +136,87 @@ class DataController < ApplicationController
       format.json { render json: @datum && @datum.chart_data }
     end
   end
+  
+  # XHR GET /data/tweet
+  # XHR GET /data/tweet.json
+  def tweet 
+    # Get 30 tweets, keep at most 10
+    search_term = params[:tweet_search_term]
+    statuses = Twitter.search(search_term, {:rpp => 30})
+    tweet_list = Array.new()
+    # Clean up the tweets
+    statuses.each_with_index do |status, i|
+      if /RT|http:\S+/ =~ status.text
+        next
+      end
+      text = status.text
+      # Convert hashtags
+      text.gsub!('#', ' ')
+      # Strip emoticons
+      text.gsub!(/:\)|:-\)|: \)|:D|=\)|:\(|:-\(|: \(|;3/, '')
+      # Sub usernames
+      text.gsub!(/@\S+/, 'username')
+      # Sub repeated letters
+      text.gsub!(/(\w)\1\1/, '\1')
+      # Remove non letter, number or whitespace
+      text.gsub!(/[^\w\d\s]+/, '')
+      # Clean up whitespace
+      text.gsub!(/\s+/, ' ')
+      text.strip!
+      # Force lower case
+      text.downcase!
+      tweet_list << text
+      if tweet_list.length == 10
+        break
+      end
+    end
+
+    if tweet_list.length == 0
+      respond_to do |format|
+        format.json { render json: { :term => params['tweet_search_term'], :status => 'fail' } }
+      end
+    end
+      
+    search_term.gsub!(/\s+/, '-')
+    filename = "twitter-#{search_term}.arff"
+    file_dir =  File.join ConfigVar[:user_data_dir], current_user.id.to_s       
+    file_path = File.join file_dir, filename
+    Dir.mkdir file_dir unless File.exists? file_dir
+    test_file = File.new(file_path, 'w')
+    if test_file
+      test_file.syswrite("@relation twitter-#{search_term}\n\n")
+      test_file.syswrite("@attribute ID numeric\n")
+      test_file.syswrite("@attribute tweet string\n")
+      test_file.syswrite("@attribute polarity {negative, positive}\n\n")
+      test_file.syswrite("@data\n\n")
+      tweet_list.each_with_index do |tweet, i|
+        test_file.syswrite("#{i+1}, '#{tweet}', ?\n")
+      end
+      test_file.close()
+    else
+      @error_msg = "Couldn't create file #{file_path}"
+    end
+      
+    content = ArffParser.parse_file file_path
+    
+    unless content.blank?
+      @datum = Datum.new :file_path => file_path,
+                    :examples => content[:examples],
+                    :num_examples => content[:examples].size,
+                    :features => content[:features],
+                    :num_features => content[:features].size,
+                    :relation_name => content[:relation],
+                    :profile => current_user.profile
+     
+      if not @datum.save
+        @error_msg = @datum.errors.full_messages[0] 
+      end
+    else
+      @error_msg = 'Invalid file format.' 
+    end
+
+    respond_to do |format|
+      format.json { render json: @datum }
+    end
+  end
 end

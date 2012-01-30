@@ -29,6 +29,7 @@ gem 'configvars_rails', '>= 0.5.2'
 gem 'enhanced_select'
 gem "remotipart", "~> 1.0"
 gem 'tipsy-rails', "~> 1.0.2"
+gem 'twitter'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

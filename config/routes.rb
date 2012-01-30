@@ -13,6 +13,7 @@ Mug6470::Application.routes.draw do
   resources :data, :except => [:destroy, :update, :edit, :new] do
     collection do
       get :choose
+      get :tweet
     end
   end
 
