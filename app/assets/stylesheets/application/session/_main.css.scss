@@ -36,8 +36,8 @@ $text_width: 400px;
   }
 
   // Anything that needs to be right-aligned (e.g., the "Try it out!" button).
-  .welcome-button, .welcome-button:hover {
-    width: 160px;
+  .welcome-button {
+    width: 130px;
     margin: auto;
 
     a {
@@ -54,5 +54,5 @@ $text_width: 400px;
   margin-left: $column-margin;
   border: 1px solid $border-color;
   @include box-shadow(0px 0px 10px $border-color);
-  @include border-radius($radius);
+  @include border-radius(8px);
 }

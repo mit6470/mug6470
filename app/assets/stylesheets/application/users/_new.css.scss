@@ -1,12 +1,18 @@
 #signup-form {
   width: $signup-form-width;
   margin: auto;
+  border: 1px solid $border-color;
+  padding: 1em 1em 2em 1em;
+  @include border-radius($radius);
+  @include box-shadow(0px 0px 10px $border-color);
+  background: white;
  
   h2 {
     @include box-sizing(border-box);
     width: $signup-label-width; 
     text-align: right;
     padding-right: $label-right-padding;
+    margin-bottom: 1em;
   }
   
   form {
@@ -26,11 +32,7 @@
     }
       
     > .actions {
-      padding-left: $signup-value-width;
-      
-      input[type=submit] {
-        @include button-with-gradient($button-base-color);
-      }
+      padding-left: $signup-label-width;
     }
   }
 }
