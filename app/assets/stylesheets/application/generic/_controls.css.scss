@@ -38,6 +38,10 @@ input[type=submit], input[type=button], button, a.button {
     -webkit-box-shadow: inset 0px 2px 2px $button-active-shadow-color;
     box-shadow: inset 0px 2px 2px $button-active-shadow-color;
   }
+  
+  &[disabled=disabled] {
+    opacity: 0.35;
+  }
 }
 
 // Text fields.

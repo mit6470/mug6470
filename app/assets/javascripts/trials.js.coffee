@@ -6,8 +6,8 @@ class CurrentTrialView
     @trialTabs = $('#current-trial')
     @trialTabs.tabs()
 
-    @runButton = $('#run-button')
-    @runButton.click => @onRunButtonClick()
+    @$runButton = $('#run-button')
+    @$runButton.click => @onRunButtonClick()
 
     @form = $('#new_trial')
     @dataView = new window.DataView
@@ -36,6 +36,12 @@ class CurrentTrialView
     
   showRunLoader: ->
     @$runLoader.show();
+    
+  disableRunButton: ->
+    @$runButton.attr('disabled', 'disabled')
+    
+  enableRunButton: ->
+    @$runButton.removeAttr 'disabled'
       
   
   # Perform the run button action if the input is valid.  

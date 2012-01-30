@@ -59,9 +59,11 @@ class ProjectController
       
     onBeforeSend = =>
       @currentTrialView.showRunLoader()
+      @currentTrialView.disableRunButton()
       
     onComplete = =>
       @currentTrialView.hideRunLoader()
+      @currentTrialView.enableRunButton()
       
     $.ajax({
       data: form.serialize(), success: onXhrSuccess,
