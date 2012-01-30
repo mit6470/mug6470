@@ -1,8 +1,9 @@
 <% if @datum %>
-  <table class="examples">
+  <table>
     <thead>
       <tr>
-      <% @datum.features[1..-1].each do |f| %>
+        <td><%= @datum.features[-1][:name] %></td>
+      <% @datum.features[1...-1].each do |f| %>
         <td><%= f[:name] %></td>
       <% end %>
       </tr>
@@ -10,7 +11,8 @@
     <tbody>
       <% @examples && @examples.select { |e| !e.nil? }.each do |e| %>
         <tr>
-          <% e[1..-1].each do |v| %>
+          <td><%= e[-1] %></td>
+          <% e[1...-1].each do |v| %>
             <td><%= v %></td>
           <% end %>
         </tr>

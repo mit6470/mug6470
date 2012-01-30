@@ -31,6 +31,7 @@ class Trial < ActiveRecord::Base
   # not include the class feature which should always be included.
   validates :selected_features, :length => 0..128, :presence => true
   
+  # Training and testing mode
   validates :mode, :length => 1..32
   
   def test_mode?
@@ -54,7 +55,7 @@ class Trial
   #     blank. Result is a hash with example ids and their classification,
   #     accuracy and confusion matrix.
   def run
-    self.output = { :result => {}, :error => {} }
+    self.output = { :result => {}, :error => {}, :warning => {} }
     if datum && classifier && selected_features && mode
       classpath = ConfigVar[:weka_classpath]
       data_file = datum.file_path
@@ -77,6 +78,18 @@ class Trial
       
       stdin, stdout, stderr = Open3.popen3 command.join ' '
       
+      stderr.readlines.each do |line|
+        next if line.strip!.blank?
+        if md = /Warning:(?<warning>.+)/i.match(line)
+          self.output[:warning] = md[:warning]
+          break
+        else
+          k, v = line.split(':', 2)
+          self.output[:error] = v || k  
+          return
+        end
+      end
+
       # Only output accuracy and confusion matrix if the class type is nominal
       if datum.nominal_class_type?
         num_class_values = datum.class_values.size 
@@ -102,16 +115,6 @@ class Trial
         end
         self.output[:result][:confusion_matrix] = matrix
         self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
-      end
-      
-      stderr.readlines.each do |line|
-        next if line.strip!.blank?
-        if md = /Warning:(?<warning>.+)/i.match(line)
-          self.output[:error][:warning] = md[:warning]
-        else
-          self.output[:error][:error] = line 
-        end
-        break 
       end
     end 
   end

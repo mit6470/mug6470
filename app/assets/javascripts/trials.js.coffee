@@ -65,11 +65,12 @@ class TrialResultController
       currentIndex = 1
       examplesToRequest = params[currentIndex..currentIndex + 9]
       
-      matrixSection = target.closest 'section'
-      $('table.examples').remove()
+      $classifiedExampleSection = target.closest('section').next()
+      $classifiedExampleSection.empty()
+      target.addClass('clicked')
       
       onXhrSuccess = (data) ->
-        matrixSection.append data
+        $classifiedExampleSection.append data
       
       if examplesToRequest.length > 0
         $.ajax({

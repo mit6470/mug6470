@@ -26,6 +26,16 @@
           <td>Class:</td>
           <td><strong><%= datum.features.last[:name] %></strong></td>
         </tr>
+         <tr>
+          <td>Test mode:</td>
+          <td><strong><%= @trial.mode %></strong></td>
+          <td>Test data:</td>
+          <td>
+            <strong>
+              <%= @trial.test_datum.short_name if @trial.test_datum %>
+            </strong>
+          </td>
+        </tr>
         
         <tr>
           <td>Features used:</td>
@@ -63,7 +73,7 @@
           <tr>
             <td>Accuracy:</td>
             <td>
-              <strong>
+              <strong class="highlight">
                 <%= "#{"%.4f" % (output[:result][:accuracy] * 100) } %" %>
               </strong>
             </td>
@@ -100,20 +110,20 @@
       </tbody>
     </table>
   </section>
+  <section class="classified-examples"></section>
+  <% end %>
+  <% unless output[:warning].blank? %>
+    <section class="trial-message ui-state-highlight">
+      <span class='ui-icon ui-icon-info'></span>
+       <p><%= "Warning: #{output[:warning]}" %></p>
+    </section>
   <% end %>
   <% unless output[:error].blank? %>
-    <section>
-       <h5>Other output</h5>
-       <table class="summary result">
-         <tbody>
-           <% output[:error].each do |k, v| %>
-              <tr>
-                <td><%= "#{k.capitalize}:" %></td> 
-                <td><%= v %></td>
-              </tr>
-           <% end %>
-        </tbody>
-      </table>
+    <section class="trial-message ui-state-highlight">
+       <p>
+         <span class='ui-icon ui-icon-alert'></span>
+         <%= "Error: #{output[:error]} Please choose compatible data sets and classifier." %>
+       </p>
     </section>
   <% end %>
 <% end %>

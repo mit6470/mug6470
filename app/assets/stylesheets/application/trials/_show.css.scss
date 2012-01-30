@@ -5,8 +5,17 @@
 
   table.summary.result {
     td:first-child {
-      width: 25%;
+      width: 20%;
     }
+    
+    .highlight {
+      color: $highlight-color;
+    }
+  }
+  
+  .trial-message {
+    @include border-radius($radius);
+    padding: 0 1em;
   }
 }
 
@@ -50,5 +59,11 @@
         background: $table-background;
       }
     }
+  }
+}
+
+#current-project {
+  .classified-examples {
+    overflow: auto;
   }
 }

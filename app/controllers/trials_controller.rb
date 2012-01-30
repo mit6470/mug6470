@@ -28,8 +28,8 @@ class TrialsController < ApplicationController
     
     project_id = params[:project_id]
     if project_id
-      max_trial_id = Trial.where(:project_id => project_id).maximum(:id) || 0
-      @trial.name = "Trial-#{max_trial_id + 1}"
+      count = Trial.where(:project_id => project_id).count
+      @trial.name = "Trial-#{count + 1}"
       @trial.project_id = project_id
     else
       time = Time.now
