@@ -30,6 +30,13 @@ class CurrentTrialView
     
     @$testDataSelect = $('#trial_test_datum_id')
     @$runLoader = $('#run-loader')
+    
+    @$tweetSearchForm = $('#tweet_search')
+    if (@$tweetSearchForm.length != 0)
+      @$tweetTerm = $('#tweet_search_term')
+      @$tweetButton = $('#tweet_search_button')
+      @$tweetSearchForm.submit => @onTweetSearch()
+      @$tweetButton.live 'click', => @onTweetSearch()
   
   hideRunLoader: ->
     @$runLoader.hide();
@@ -63,6 +70,21 @@ class CurrentTrialView
   testDataSelectValid: ->
     @$testDataSelect.val() isnt '-1'
       
+  onTweetSearch: ->
+    form = @$tweetSearchForm
+
+    onXhrSuccess = (data) =>
+      @$testDataSelect.append """
+          <option value="#{data.id}">#{data.relation_name}</option>
+                         """
+      console.log(data)
+      
+    $.ajax({
+      data: form.serialize(), success: onXhrSuccess,
+      dataType: 'json', type: @$tweetTerm.attr('data_tweet_search_method'),
+      url: @$tweetTerm.attr('data_tweet_search_url')
+    })
+
 # Handles the event on trial result view.
 class TrialResultController
   constructor: ->

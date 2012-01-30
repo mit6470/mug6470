@@ -15,6 +15,7 @@ Mug6470::Application.routes.draw do
   resources :data do
     collection do
       get :choose
+      get :tweet
     end
   end
 
