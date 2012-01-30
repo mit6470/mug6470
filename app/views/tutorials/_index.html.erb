@@ -1,12 +1,12 @@
 <h2>Tutorials</h2>
-<ul>
+<ol>
   <% tutorials.each do |tutorial| %>
     <li>
-      <h3><%= link_to "#{tutorial.title}", tutorial %></h3>
+      <h3><%= link_to "#{tutorial.number}. #{tutorial.title}", tutorial %></h3>
       <summary>  
         <%= tutorial.summary %>
       </summary>
     </li>
   <% end %>
-</ul>
+</ol>
 

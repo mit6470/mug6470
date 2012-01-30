@@ -36,7 +36,7 @@ $text_width: 400px;
   }
 
   // Anything that needs to be right-aligned (e.g., the "Try it out!" button).
-  .welcome-button {
+  .welcome-button, .welcome-button:hover {
     width: 160px;
     margin: auto;
 

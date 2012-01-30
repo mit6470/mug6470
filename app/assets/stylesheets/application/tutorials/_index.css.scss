@@ -1,5 +1,29 @@
-#tutorials-index {
+.main.tutorials-index {
   h3 {
     margin-top: 0.8em;
+  }
+  
+  summary {
+    padding: 0 2em;
+  }
+  
+  li {
+    padding: 1em 0;
+    
+  }
+}
+
+.sidebar {
+  h3 {
+    margin: 0.8em 0; 
+    color: $highlight-color;
+  }
+  
+  li {
+    margin: 1em 0;
+  }
+  
+  p {
+    margin: 18px;
   }
 }
