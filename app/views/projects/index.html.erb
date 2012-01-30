@@ -1,3 +1,6 @@
-<article id="projects-index">
+<article class="main">
   <%= render 'projects/index', :projects => @projects %>
+</article>
+<article class='sidebar'>
+  <%= render 'tutorials/index', :tutorials => Tutorial.by_number %>
 </article>

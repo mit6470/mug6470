@@ -34,7 +34,7 @@
          offset="0"
          id="stop5576" />
       <stop
-         style="stop-color:#6918d8;stop-opacity:1;"
+         style="stop-color:#7cf150;stop-opacity:0.94117647;"
          offset="1"
          id="stop5578" />
     </linearGradient>
@@ -67,7 +67,7 @@
        cy="394.06485"
        fx="229.2377"
        fy="394.06485"
-       r="78.780455"
+       r="78.780457"
        gradientTransform="matrix(-0.80533734,1.4983145,-1.9159322,-1.029805,1188.5646,435.22061)"
        gradientUnits="userSpaceOnUse" />
   </defs>
@@ -79,16 +79,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="520.97127"
-     inkscape:cy="259.95151"
+     inkscape:cx="339.19853"
+     inkscape:cy="179.13931"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1598"
-     inkscape:window-height="1144"
+     inkscape:window-width="1280"
+     inkscape:window-height="1000"
      inkscape:window-x="0"
-     inkscape:window-y="30"
-     inkscape:window-maximized="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -110,16 +110,31 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(204.52539,-331.45879)">
+    <rect
+       style="fill:#295b5c;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
+       id="rect3777"
+       width="602.0509"
+       height="192.93913"
+       x="-208.56601"
+       y="293.69809"
+       rx="8"
+       ry="11.516644" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        d="m 221.00509,333.62161 c 16.54033,1.41271 36.51402,12.17613 56.94309,30.53125 -2.55309,0.0134 -5.08948,0.19565 -7.57806,0.5625 -2.5806,0.38042 -5.12251,0.94534 -7.62111,1.6875 -2.49861,0.74216 -4.93752,1.63351 -7.34125,2.71875 -2.40373,1.08524 -4.76537,2.34035 -7.06137,3.75 -2.296,1.40965 -4.54151,3.00336 -6.71692,4.71875 -2.17541,1.71539 -4.28745,3.56005 -6.3294,5.5625 -2.04196,2.00245 -4.00319,4.1354 -5.89883,6.40625 -1.89564,2.27085 -3.71027,4.69817 -5.44673,7.21875 -1.73647,2.52058 -3.38715,5.15462 -4.95158,7.90625 -1.56442,2.75163 -3.05537,5.59848 -4.43488,8.5625 -1.37952,2.96402 -2.65033,6.02976 -3.83209,9.1875 -1.18176,3.15774 -2.27969,6.41722 -3.25082,9.75 -0.97112,3.33278 -1.81426,6.76084 -2.5619,10.25 -0.74764,3.48916 -1.38323,7.02938 -1.89451,10.65625 -0.51129,3.62687 -0.90047,7.3166 -1.16255,11.0625 -0.25272,3.61231 -0.37829,7.29404 -0.38751,11 -22.44174,-52.62807 -28.21441,-103.10763 -11.38862,-127.53125 7.34506,-10.66179 18.10064,-15.09448 30.91504,-14 z"
-       id="path3819" />
+       id="path3819"
+       inkscape:export-filename="/home/yingyin/workspace/web/mug6470/app/assets/images/logo.png"
+       inkscape:export-xdpi="26.034246"
+       inkscape:export-ydpi="26.034246" />
     <path
        id="path3848"
        d="m 335.45102,333.62161 c -16.54033,1.41271 -36.51401,12.17613 -56.94309,30.53125 2.55309,0.0134 5.08948,0.19565 7.57806,0.5625 2.5806,0.38042 5.12251,0.94534 7.62111,1.6875 2.49861,0.74216 4.93752,1.63351 7.34125,2.71875 2.40373,1.08524 4.76537,2.34035 7.06137,3.75 2.296,1.40965 4.54151,3.00336 6.71692,4.71875 2.17541,1.71539 4.28745,3.56005 6.3294,5.5625 2.04196,2.00245 4.0032,4.1354 5.89883,6.40625 1.89564,2.27085 3.71027,4.69817 5.44673,7.21875 1.73647,2.52058 3.38716,5.15462 4.95158,7.90625 1.56442,2.75163 3.05537,5.59848 4.43488,8.5625 1.37952,2.96402 2.65033,6.02976 3.83209,9.1875 1.18176,3.15774 2.27969,6.41722 3.25082,9.75 0.97113,3.33278 1.81426,6.76084 2.5619,10.25 0.74764,3.48916 1.38323,7.02938 1.89451,10.65625 0.51129,3.62687 0.90047,7.3166 1.16255,11.0625 0.25272,3.61231 0.37829,7.29404 0.38751,11 22.44174,-52.62807 28.21441,-103.10763 11.38862,-127.53125 -7.34506,-10.66179 -18.10064,-15.09448 -30.91504,-14 z"
-       style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       inkscape:connector-curvature="0" />
+       style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/yingyin/workspace/web/mug6470/app/assets/images/logo.png"
+       inkscape:export-xdpi="26.034246"
+       inkscape:export-ydpi="26.034246" />
     <g
        id="g3909"
        transform="translate(269.28571,87.142857)">
@@ -166,14 +181,17 @@
        sodipodi:type="arc" />
     <path
        sodipodi:type="arc"
-       style="fill:#d6db3f;fill-opacity:0.87671234;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:#fee76b;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="path3915"
        sodipodi:cx="146.07143"
        sodipodi:cy="268.43362"
        sodipodi:rx="16.071428"
        sodipodi:ry="16.071428"
        d="m 162.14285,268.43362 a 16.071428,16.071428 0 1 1 -32.14285,0 16.071428,16.071428 0 1 1 32.14285,0 z"
-       transform="matrix(-1,0,0,1,336.64285,84.285715)" />
+       transform="matrix(-1,0,0,1,336.64285,84.285715)"
+       inkscape:export-filename="/home/yingyin/workspace/web/mug6470/app/assets/images/logo.png"
+       inkscape:export-xdpi="26.034246"
+       inkscape:export-ydpi="26.034246" />
     <path
        transform="matrix(-1,0,0,1,518.49999,155.71428)"
        d="m 162.14285,268.43362 a 16.071428,16.071428 0 1 1 -32.14285,0 16.071428,16.071428 0 1 1 32.14285,0 z"
@@ -182,31 +200,40 @@
        sodipodi:cy="268.43362"
        sodipodi:cx="146.07143"
        id="path3919"
-       style="fill:#d6db3f;fill-opacity:0.87671234;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       sodipodi:type="arc" />
+       style="fill:#fee76b;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/yingyin/workspace/web/mug6470/app/assets/images/logo.png"
+       inkscape:export-xdpi="26.034246"
+       inkscape:export-ydpi="26.034246" />
     <text
        xml:space="preserve"
-       style="font-size:101.05789185px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       style="font-size:101.05789185000000430px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
        x="-21.659077"
        y="462.4982"
        id="text3993"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/yingyin/workspace/web/mug6470/app/assets/images/logo.png"
+       inkscape:export-xdpi="26.034246"
+       inkscape:export-ydpi="26.034246"><tspan
          sodipodi:role="line"
          id="tspan3995"
          x="-21.659084"
          y="462.4982"><tspan
-   style="font-size:150px"
+   style="font-size:150px;fill:#ffffff"
    id="tspan4045">P</tspan>ROTO</tspan></text>
     <path
        sodipodi:type="arc"
-       style="fill:#d6db3f;fill-opacity:1;stroke:#000000;stroke-width:4.76866484;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:#fee76b;fill-opacity:1;stroke:#ffffff;stroke-width:4.76866483999999957;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="path4021"
        sodipodi:cx="146.07143"
        sodipodi:cy="268.43362"
        sodipodi:rx="16.071428"
        sodipodi:ry="16.071428"
        d="m 162.14285,268.43362 c 0,8.87601 -7.19542,16.07143 -16.07142,16.07143 -8.87601,0 -16.07143,-7.19542 -16.07143,-16.07143 0,-8.876 7.19542,-16.07142 16.07143,-16.07142 8.876,0 16.07142,7.19542 16.07142,16.07142 z"
-       transform="matrix(2.0444445,0,0,2.1509538,-164.42064,-150.02863)" />
+       transform="matrix(2.0444445,0,0,2.1509538,-164.42064,-150.02863)"
+       inkscape:export-filename="/home/yingyin/workspace/web/mug6470/app/assets/images/logo.png"
+       inkscape:export-xdpi="26.034246"
+       inkscape:export-ydpi="26.034246" />
     <path
        transform="matrix(2.0444445,0,0,2.1509538,-304.42064,-150.02863)"
        d="m 162.14285,268.43362 c 0,8.87601 -7.19542,16.07143 -16.07142,16.07143 -8.87601,0 -16.07143,-7.19542 -16.07143,-16.07143 0,-8.876 7.19542,-16.07142 16.07143,-16.07142 8.876,0 16.07142,7.19542 16.07142,16.07142 z"
@@ -215,12 +242,18 @@
        sodipodi:cy="268.43362"
        sodipodi:cx="146.07143"
        id="path4051"
-       style="fill:#d6db3f;fill-opacity:1;stroke:#000000;stroke-width:4.76866484;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-       sodipodi:type="arc" />
+       style="fill:#fee76b;fill-opacity:1;stroke:#ffffff;stroke-width:4.76866483999999957;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/yingyin/workspace/web/mug6470/app/assets/images/logo.png"
+       inkscape:export-xdpi="26.034246"
+       inkscape:export-ydpi="26.034246" />
     <path
-       style="fill:url(#radialGradient5620);fill-opacity:1;fill-rule:nonzero;stroke:none"
+       style="fill:url(#radialGradient5620);fill-opacity:1.0;fill-rule:nonzero;stroke:none"
        d="m 278.23269,362.15543 c -43.51185,0 -78.7694,51.21686 -78.7694,114.38474 l 157.56091,0 c 0,-63.16788 -35.27965,-114.38474 -78.79151,-114.38474 z"
        id="path2985-6"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="26.034246"
+       inkscape:export-ydpi="26.034246"
+       inkscape:export-filename="/home/yingyin/workspace/web/mug6470/app/assets/images/logo.png" />
   </g>
 </svg>

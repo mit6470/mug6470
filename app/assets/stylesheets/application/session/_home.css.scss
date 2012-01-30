@@ -1,8 +1,8 @@
-#projects-index, #tutorials-index {
+article.main {
   @include box-sizing(border-box);
   width: $index-width;
 }
 
-#projects-index, #tutorials-index, #sidebar {
+article.main, article.sidebar {
   padding: $column-margin $column-margin * 2;
 }

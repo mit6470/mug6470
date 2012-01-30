@@ -1,13 +1,12 @@
-<article id="tutorials-index">
-  <h2>Tutorials</h2>
-  <ul>
-    <% tutorials.each do |tutorial| %>
-      <li>
-        <h3><%= link_to "#{tutorial.title}", tutorial %></h3>
-        <summary>  
-          <%= tutorial.summary %>
-        </summary>
-      </li>
-    <% end %>
-  </ul>
-</article>
+<h2>Tutorials</h2>
+<ul>
+  <% tutorials.each do |tutorial| %>
+    <li>
+      <h3><%= link_to "#{tutorial.title}", tutorial %></h3>
+      <summary>  
+        <%= tutorial.summary %>
+      </summary>
+    </li>
+  <% end %>
+</ul>
+

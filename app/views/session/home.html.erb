@@ -1,4 +1,6 @@
-<%= render 'tutorials/index', :tutorials => @tutorials %>
-<article id="sidebar">
-  <%= render 'projects/index', :projects => @projects %>
+<article class="main">
+  <%= render 'tutorials/index', :tutorials => @tutorials %>
+</article>
+<article class="sidebar">
+  <%= render 'projects/index' %>
 </article>

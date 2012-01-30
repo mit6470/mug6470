@@ -38,7 +38,7 @@ header, footer {
   position: relative;
 }
 
-article#sidebar {
+article.sidebar {
   @include box-sizing(border-box);
   width: $sidebar-width;
 }

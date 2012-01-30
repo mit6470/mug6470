@@ -1,13 +1,26 @@
-<h2>Projects</h2>
-
-<%= link_to 'New Project', new_project_path, :class => :button %> 
-
-<ul>
-  <% projects.each do |project| %>
-    <li>  
-      <h3><%= link_to "#{project.name}", edit_project_path(project) %></h3>
-      <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %>
+<% if current_user %>
+  <h2>Projects</h2>
+  <%= link_to 'New Project', new_project_path, :class => :button %> 
+  <ul>
+    <% current_user.projects.each do |project| %>
+      <li>  
+        <h3><%= link_to "#{project.name}", edit_project_path(project) %></h3>
+        <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>Tips</h3>
+  <ul>
+    <li>
+      After signing up for an account, you can start your own projects.
     </li>
-  <% end %>
-</ul>
-
+    <li>
+      Trials in a project are saved so that you can come back later to compare
+      your results.
+    </li>
+    <li>
+      Once you have an account, you can upload you own data set for analysis.
+    </li>
+  </ul>
+<% end %>
