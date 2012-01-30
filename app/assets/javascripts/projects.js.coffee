@@ -29,15 +29,17 @@ class ProjectView
     
     $('#project-nav span.ui-icon-close').live 'click', 
                                               -> onCloseTab($(this).parent()) 
+    @numTmpTrials = 0
     
   # Renders the trial result.  
   renderResult: (@resultHtml) ->
-    trialElement = $($(@resultHtml).filter('[data-trial-id]')[0])
-    trialId = trialElement.attr('data-trial-id')
-    trialName = $.trim trialElement.text()     
-    # If the user is not logged in, the trial id is -1 and the trial name should
-    # be unique, so we use the name as the id. 
+    $trialElement = $($(@resultHtml).filter('[data-trial-id]')[0])
+    trialId = $trialElement.attr('data-trial-id')
+    trialName = $trialElement.attr('data-trial-name')
+    # If the user is not logged in, the trial id is -1.
     if trialId is '-1'
+      @numTmpTrials += 1
+      trialName = "Trial-#{@numTmpTrials}"
       trialId = trialName          
     @projectTabs.tabs 'add', "\#trial-#{trialId}", "#{trialName}", 1
     

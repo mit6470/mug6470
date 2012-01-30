@@ -7,7 +7,8 @@
     </ul>
   <div>
 <% else %>
-  <%= content_tag :h4, "#{@trial.name}", 'data-trial-id' => @trial.id || -1 %>
+  <%= content_tag :h4, "Trial result", 'data-trial-id' => @trial.id || -1,
+                  'data-trial-name' => @trial.name || '' %>
   <% datum = @trial.datum %>
   <section>
     <h5>Summary</h5>
