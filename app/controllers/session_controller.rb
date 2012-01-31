@@ -15,6 +15,10 @@ class SessionController < ApplicationController
   end
   private :home
   
+  # Sets up the 'session/about' view.
+  def about
+  end
+  
   # The notification text displayed when a session authentication fails.
   def bounce_notice_text(reason)
     case reason

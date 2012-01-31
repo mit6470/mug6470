@@ -23,7 +23,11 @@ Mug6470::Application.routes.draw do
     end
   end
 
-  resource :session, :controller => 'session'
+  resource :session, :controller => 'session' do
+    collection do
+      get :about
+    end
+  end
   
   resources :users, :only => [:new, :create] do
     collection do
