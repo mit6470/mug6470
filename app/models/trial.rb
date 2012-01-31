@@ -38,6 +38,10 @@ class Trial < ActiveRecord::Base
   def test_mode?
     mode == 'test'
   end
+  
+  def unlabeled_test?
+    test_mode? && test_datum && test_datum.is_test
+  end
 
 end
 
@@ -65,7 +69,7 @@ class Trial
       command = ["java -cp #{classpath}",
                  "weka.classifiers.meta.FilteredClassifier -p 1", 
                  "-t #{data_file}"]
-      if test_mode?
+      if test_mode? && test_datum
         command << "-T #{test_datum.file_path}"  
       end
       
@@ -114,7 +118,7 @@ class Trial
             end
           end
         end
-        unless test_datum && test_datum.is_test
+        if (test_mode? and not test_datum.is_test) or (not test_mode?)
           self.output[:result][:confusion_matrix] = matrix
           self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
         end
