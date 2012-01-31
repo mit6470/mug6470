@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
     t.integer  "num_features",                                         :null => false
     t.integer  "profile_id"
     t.boolean  "is_test",                           :default => false, :null => false
+    t.boolean  "is_tmp",                            :default => false, :null => false
     t.datetime "created_at",                                           :null => false
     t.datetime "updated_at",                                           :null => false
   end

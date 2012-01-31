@@ -83,7 +83,7 @@ class CurrentTrialView
             <option value="#{data.id}">#{data.relation_name}</option>
                            """
         window.statusView.showStatus "Test data #{data.relation_name} created successfully.", 'highlight'
-        
+      
       $.ajax({
         data: form.serialize(), success: onXhrSuccess,
         dataType: 'json', type: @$tweetTerm.attr('data_tweet_search_method'),

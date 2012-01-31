@@ -34,7 +34,8 @@ class WekaLoader
                     :num_examples => content[:examples].size,
                     :features => content[:features],
                     :num_features => content[:features].size,
-                    :relation_name => content[:relation]
+                    :relation_name => content[:relation],
+                    :is_tmp => false
       begin
         d.save!
       rescue

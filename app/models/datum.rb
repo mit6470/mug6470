@@ -29,6 +29,9 @@ class Datum < ActiveRecord::Base
   # True if the datum is only for testing because the class is not labeled.
   validates :is_test, :inclusion => { :in => [true, false] }
   
+  # True if the datum is only temporary.
+  validates :is_tmp, :inclusion => { :in => [true, false] }
+  
   def to_s
     short_name
   end

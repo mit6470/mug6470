@@ -76,7 +76,8 @@ class DataController < ApplicationController
                       :features => content[:features],
                       :num_features => content[:features].size,
                       :relation_name => content[:relation],
-                      :profile => current_user.profile
+                      :profile => current_user.profile,
+                      :is_tmp => false
        
         if @datum.save
           Dir.mkdir file_dir unless File.exists? file_dir
@@ -209,20 +210,21 @@ class DataController < ApplicationController
                     :num_examples => content[:examples].size,
                     :features => content[:features],
                     :num_features => content[:features].size,
-                    :relation_name => content[:relation]
+                    :relation_name => content[:relation],
+                    :is_tmp => true
      
       if not @datum.save
         @error_msg = @datum.errors.full_messages[0] || 'Invalid file format.' 
       end
     else
-      @error_msg = 'Invalid file format.' 
+      @error_msg = 'Invalid search term.' 
     end
 
     respond_to do |format|
       unless @error_msg
         format.json { render json: @datum, status: :created }
       else
-        format.json { render @error_msg, status: :unprocessable_entity }
+        format.json { render json: @error_msg, status: :unprocessable_entity }
       end
     end
   end

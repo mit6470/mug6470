@@ -9,7 +9,7 @@ class CreateData < ActiveRecord::Migration
       t.integer :num_features, :null => false
       t.references :profile, :null => true
       t.boolean :is_test, :null => false, :default => false
-      
+      t.boolean :is_tmp, :null => false, :default => false
       t.timestamps
     end
     
