@@ -9,3 +9,4 @@ libsvm = Rails.root.join 'lib/weka/libsvm.jar'
 ConfigVars.string :weka_classpath, "#{weka}:#{libsvm}"
 ConfigVars.string(:data_dir) { Rails.root.join 'lib/weka/data' }
 ConfigVars.string(:user_data_dir) { Rails.root.join 'user_data' }
+ConfigVars.string(:nouser_data_dir) { Rails.root.join 'user_data/nouser' }

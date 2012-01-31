@@ -138,7 +138,7 @@ class DataController < ApplicationController
   def tweet 
     # Get 30 tweets, keep at most 10
     search_term = params[:tweet_search_term]
-    statuses = Twitter.search(search_term, {:rpp => 30})
+    statuses = Twitter.search(search_term, {:rpp => 30, :lang => 'en'})
     tweet_list = Array.new()
     # Clean up the tweets
     statuses.each_with_index do |status, i|
@@ -167,20 +167,24 @@ class DataController < ApplicationController
       end
     end
 
-    if tweet_list.length == 0
-      respond_to do |format|
-        format.json { render json: { :term => params['tweet_search_term'], :status => 'fail' } }
-      end
-    end
+    #if tweet_list.length == 0
+    #end
       
+    # Setup a new ARFF file for the tweets
     search_term.gsub!(/\s+/, '-')
-    filename = "twitter-#{search_term}.arff"
-    file_dir =  File.join ConfigVar[:user_data_dir], current_user.id.to_s       
-    file_path = File.join file_dir, filename
+    time = Time.now
+    timestr = "#{time.hour}-#{time.min}-#{time.sec}"
+    filename = "twitter-#{search_term}-#{timestr}.arff"
+    if current_user
+      file_dir =  File.join ConfigVar[:user_data_dir], current_user.id.to_s       
+    else
+      file_dir =  ConfigVar[:nouser_data_dir]
+    end
     Dir.mkdir file_dir unless File.exists? file_dir
+    file_path = File.join file_dir, filename
     test_file = File.new(file_path, 'w')
     if test_file
-      test_file.syswrite("@relation twitter-#{search_term}\n\n")
+      test_file.syswrite("@relation twitter-#{search_term}-#{time.hour}-#{time.min}-#{time.sec}\n\n")
       test_file.syswrite("@attribute ID numeric\n")
       test_file.syswrite("@attribute tweet string\n")
       test_file.syswrite("@attribute polarity {negative, positive}\n\n")
@@ -201,8 +205,7 @@ class DataController < ApplicationController
                     :num_examples => content[:examples].size,
                     :features => content[:features],
                     :num_features => content[:features].size,
-                    :relation_name => content[:relation],
-                    :profile => current_user.profile
+                    :relation_name => content[:relation]
      
       if not @datum.save
         @error_msg = @datum.errors.full_messages[0] 
@@ -212,7 +215,7 @@ class DataController < ApplicationController
     end
 
     respond_to do |format|
-      format.json { render json: @datum }
+      format.json { render json: @datum, status: :created }
     end
   end
 end

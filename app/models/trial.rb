@@ -113,8 +113,10 @@ class Trial
             end
           end
         end
-        self.output[:result][:confusion_matrix] = matrix
-        self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
+        if (test_mode? and not test_datum.is_test) or (not test_mode?)
+          self.output[:result][:confusion_matrix] = matrix
+          self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
+        end
       end
     end 
   end
