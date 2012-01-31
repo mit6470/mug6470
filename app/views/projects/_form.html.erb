@@ -1,0 +1,12 @@
+<%= form_for(project) do |f| %>
+  <section class="fields">
+    <p class="field">
+      <%= f.label :name, 'Enter a new project name:' %>
+      <%= f.text_field :name, :required => true, :autofocus => true,
+                       :value => project_default_name %>
+   </p>
+   <p class="actions">
+      <%= f.submit %>
+   </p>
+  </section>
+<% end %>

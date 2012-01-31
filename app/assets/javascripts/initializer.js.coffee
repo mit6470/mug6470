@@ -13,3 +13,5 @@ $ ->
   dataController = new window.DataController(window.dataView)
   
   tutorialView = new window.TutorialView
+  
+  projectIndexView = new window.ProjectIndexView

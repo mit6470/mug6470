@@ -1,6 +1,7 @@
 <% if current_user %>
   <h2>Projects</h2>
-  <%= link_to 'New Project', new_project_path, :class => :button %> 
+  <%= button_tag 'New project', :id => 'new-project-button' %> 
+  <%= render "projects/form", :project => Project.new %>
   <% projects = current_user.projects %>
   <% if projects.any? %>
     <ul class='projects-index'>

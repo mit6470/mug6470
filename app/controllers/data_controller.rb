@@ -82,7 +82,7 @@ class DataController < ApplicationController
           Dir.mkdir file_dir unless File.exists? file_dir
           FileUtils.cp tempfile.path, file_path
         else
-          @error_msg = @datum.errors.full_messages[0] 
+          @error_msg = @datum.errors.full_messages[0] || 'Invalid data file.'
         end
       else
         @error_msg = 'Invalid file format.' 

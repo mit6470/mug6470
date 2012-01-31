@@ -1,7 +1,7 @@
-<% if flash[:error] %>
+<% if flash[:alert] %>
 <p class="status-bar ui-state-error">
   <%= alert_icon_tag %>
-  <%= flash[:error] %>
+  <%= flash[:alert] %>
 
   <span class="actions">
     <%= close_status_tag %>

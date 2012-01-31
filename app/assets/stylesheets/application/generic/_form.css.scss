@@ -58,3 +58,16 @@ form {
     }
   }
 }
+
+form.ui-dialog-content {
+  display: block;
+  
+  .field, .field > * {
+    display: block;
+  }
+  
+  .field > * {
+    margin: 1em 0;
+  }
+  
+}
