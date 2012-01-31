@@ -1,25 +1,21 @@
 <%= image_tag 'preview.png', :id => 'preview-image' %>
-
-<div id="welcome">
+<article class='sidebar'>
+  <h2>
+    Learn<br/>Machine Learning
+  </h2>
+  <p>
+    ProtoM teaches you machine learning.
+    It's simple and interactive so you can get down to business:
+    software that understands speech, Twitter sentiment, stock prices and much, much more.
+  </p>
   <div class="welcome-button">
-    <%= link_to 'Get started', tutorials_path, :class => :button %>
+    <%= link_to 'Learn the Basics', '/tutorials/1', :class => :button %>
   </div>
-
-  <div class="blurb">
-    <h1>Learn</h1>
-    <p> What is machine learning?  How can it be useful to you?  ProtoM can help you find the answers to these questions and more! </p> 
+  <div class="welcome-button">
+    <%= link_to 'Start Experimenting', new_project_path(), :class => :button %>
   </div>
-
-  <div class="blurb">
-    <h1>Test</h1>
-    <p> Got a project that needs that special machine learning-touch?  Look no further!  ProtoM is the perfect tool to test out new projects and determine which classifier is right. </p> 
+  <div class="welcome-button">
+    <h3>or</h3>
+    <%= render 'projects/index' %>
   </div>
-
-  <div class="blurb">
-    <h1>Contribute!</h1>
-    <p> 
-      Advance the fields of research!  See how machine learning can help your 
-      project.  This is a <a href="http://fsf.org">Free Software</a> project, so please contribute! </p> 
-  </div>
-
-</div>
+</article>
