@@ -212,14 +212,18 @@ class DataController < ApplicationController
                     :relation_name => content[:relation]
      
       if not @datum.save
-        @error_msg = @datum.errors.full_messages[0] 
+        @error_msg = @datum.errors.full_messages[0] || 'Invalid file format.' 
       end
     else
       @error_msg = 'Invalid file format.' 
     end
 
     respond_to do |format|
-      format.json { render json: @datum, status: :created }
+      unless @error_msg
+        format.json { render json: @datum, status: :created }
+      else
+        format.json { render @error_msg, status: :unprocessable_entity }
+      end
     end
   end
 end

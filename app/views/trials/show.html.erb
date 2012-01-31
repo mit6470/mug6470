@@ -135,7 +135,8 @@
     </section>
   <% end %>
 
-  <% if @trial.test_mode? and @trial.test_datum.is_test %>
+  <% if @trial.selected_features && @trial.test_mode? && @trial.test_datum && 
+        @trial.test_datum.is_test %>
     <table>
       <thead>
         <tr>
