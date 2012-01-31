@@ -2,6 +2,7 @@
   
   summary {
     padding: 0 2em;
+    line-height: 1.2em;
   }
   
   li {
@@ -11,13 +12,19 @@
   
 }
 
+.tips p {
+  font-family: $heading-font;
+  font-size: 1.2em;
+  line-height: 1.2em;
+}
+
 .sidebar {
-  h2.tips {
-    color: $highlight-color;
-  }
-  
   li {
     padding: 0.5em 0;
+  }
+  
+  .button:first-child {
+    margin: 1em 0;  
   }
   
   h3 {
@@ -27,6 +34,17 @@
   summary {
     padding: 0 1.5em;
   }
+}
+
+.tutorials-index {
+  li {
+    border-bottom: 1px solid $border-color;
+  }
+  
+  li:last-child {
+    border: none;
+  }
+    
 }
 
 .projects-index {

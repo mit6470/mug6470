@@ -45,27 +45,26 @@
     </ul>
   <% end %>
 <% else %>
-  <h2 class="tips">Tips</h2>
-  <ul>
+  <%= link_to 'Create account', new_user_path, :class => :button %>
+  <h3>So that you can...</h3>
+  <ul class="tips">
     <li>
       <span class="ui-icon ui-icon-lightbulb"></span>
       <p>
-        After 
-        <%= link_to 'signing up', new_user_path %>
-        for an account, you can start your own projects.
+        Start your own projects.
       </p>
     </li>
     <li>
       <span class="ui-icon ui-icon-lightbulb"></span>
       <p>
-        Trials in a project are saved so that you can come back later to compare
+        Save trials automatically so that you can come back later to compare
         your results.
       </p>
     </li>
     <li>
       <span class="ui-icon ui-icon-lightbulb"></span>
       <p>
-        Once you have an account, you can upload your own data set for analysis.
+        Upload your own data set for analysis.
       </p>
     </li>
   </ul>
