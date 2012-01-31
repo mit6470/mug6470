@@ -29,6 +29,9 @@ class DataView
   dataSelectValid: ->
     @dataSelect.val() isnt '-1'
     
+  featureSelectValid: ->
+    $('input[name="sf[]"]:checked', @featuresTab).length > 0
+    
   onChartClick: ->
     @renderNewExamples();
 

@@ -26,6 +26,7 @@ class Datum < ActiveRecord::Base
   
   validates :relation_name, :presence => true, :length => 1..256
   
+  # True if the datum is only for testing because the class is not labeled.
   validates :is_test, :inclusion => { :in => [true, false] }
   
   def to_s

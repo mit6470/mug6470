@@ -31,7 +31,8 @@ module TrialsHelper
     end
   end
   
-  def data_examples_str(data_id, example_ids)
-    ([data_id] << example_ids).flatten.join '-'
+  def data_examples_str(trial, example_ids)
+    id = (trial.test_datum && trial.test_datum_id) || trial.datum_id
+    ([id] << example_ids).flatten.join '-'
   end
 end

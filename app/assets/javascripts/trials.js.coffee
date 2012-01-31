@@ -48,12 +48,15 @@ class CurrentTrialView
   onRunButtonClick: ->
     errorMsg = ''
     if @dataView.dataSelectValid() and @classifierView.classifierSelectValid()
-      index = @$trialModeTabs.tabs('option', 'selected')
-      @$trialModeInput.val @trialModeValues[index]
-      if index is 0 or @testDataSelectValid()
-        @onSubmit()
-      else  
-        errorMsg = 'Please select a test data set.'
+      if @dataView.featureSelectValid()
+        index = @$trialModeTabs.tabs('option', 'selected')
+        @$trialModeInput.val @trialModeValues[index]
+        if index is 0 or @testDataSelectValid()
+          @onSubmit()
+        else  
+          errorMsg = 'Please select a test data set.'
+      else
+        errorMsg = 'Please select at least one feature.'
     else
       errorMsg = 'Please select both a data set and a classifier.'
     

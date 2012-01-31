@@ -1,6 +1,10 @@
 <%= image_tag 'preview.png', :id => 'preview-image' %>
 
 <div id="welcome">
+  <div class="welcome-button">
+    <%= link_to 'Get started', tutorials_path, :class => :button %>
+  </div>
+
   <div class="blurb">
     <h1>Learn</h1>
     <p> What is machine learning?  How can it be useful to you?  ProtoM can help you find the answers to these questions and more! </p> 
@@ -18,7 +22,4 @@
       project.  This is a <a href="http://fsf.org">Free Software</a> project, so please contribute! </p> 
   </div>
 
-  <div class="welcome-button">
-    <%= link_to 'Get started', tutorials_path, :class => :button %>
-  </div>
 </div>

@@ -41,28 +41,30 @@
         <tr>
           <td>Features used:</td>
           <td colspan="3">
-            <strong>
-              <%= "#{@trial.selected_features.size} / #{datum.num_features - 2}" %>
-            </strong>
-            <ul>
-              <% @trial.selected_features[0..4].each do |i| %>
-                <li><%= datum.features[i][:name] %></li>
-              <% end %>
-            </ul>
-            <% if @trial.selected_features.length > 5 %>
-              <ul class="toggled-features" hidden >
-                <% @trial.selected_features[5..-1].each do |i| %>
+            <% if @trial.selected_features %>
+              <strong>
+                <%= "#{@trial.selected_features.size} / #{datum.num_features - 2}" %>
+              </strong>
+              <ul>
+                <% @trial.selected_features[0..4].each do |i| %>
                   <li><%= datum.features[i][:name] %></li>
                 <% end %>
               </ul>
-              <ul>
-                <li class="feature-toggle-button">
-                  <span class="ui-icon ui-icon-triangle-1-s" 
-                        title="More features">Reveal</span>
-                  <span class="ui-icon ui-icon-triangle-1-n" style="display: none" 
-                        title="Hide features">Hide</span>
-                </li>
-              </ul>
+              <% if @trial.selected_features.length > 5 %>
+                <ul class="toggled-features" hidden >
+                  <% @trial.selected_features[5..-1].each do |i| %>
+                    <li><%= datum.features[i][:name] %></li>
+                  <% end %>
+                </ul>
+                <ul>
+                  <li class="feature-toggle-button">
+                    <span class="ui-icon ui-icon-triangle-1-s" 
+                          title="More features">Reveal</span>
+                    <span class="ui-icon ui-icon-triangle-1-n" style="display: none" 
+                          title="Hide features">Hide</span>
+                  </li>
+                </ul>
+              <% end %>
             <% end %>
           </td>
         </tr>
@@ -70,22 +72,24 @@
     </table>
     <% output = @trial.output %>
     <h5>Result</h5>
-    <% accuracy = output[:result][:accuracy] %>
-    <% if accuracy %>
-      <table class="summary result">
-        <tbody>
-          <tr>
-            <td>Accuracy:</td>
-            <td>
+    <table class="summary result">
+      <tbody>
+        <tr>
+          <td>Accuracy:</td>
+          <td>
+            <% accuracy = output[:result][:accuracy] %>
+            <% if accuracy %>
               <strong class="highlight">
-                <%= "#{"%.4f" % (output[:result][:accuracy] * 100) } %" %>
+                <%= "#{"%.4f" % (accuracy * 100) } %" %>
               </strong>
-            </td>
-            <td></td><td></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
+            <% elsif @trial.test_datum && @trial.test_datum.is_test %>
+              No accuracy result for unlabeled test data.
+            <% end %>
+          </td>
+          <td></td><td></td>
+        </tr>
+      </tbody>
+    </table>
   </section>
   <% matrix = output[:result][:confusion_matrix] %>
   <% if matrix %>
@@ -107,7 +111,7 @@
             <% r.each_with_index do |c, j| %>
               <%= content_tag :td, "#{c.size}",
                   :class => "result #{cell_class i, j, c.size }",
-                  'data-confusion-matrix' => data_examples_str(@trial.datum_id, c)%>
+                  'data-confusion-matrix' => data_examples_str(@trial, c)%>
             <% end %>
           </tr>
         <% end %>

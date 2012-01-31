@@ -91,7 +91,7 @@ class Trial
         end
       end
 
-      # Only output accuracy and confusion matrix if the class type is nominal
+      # Only output accuracy and confusion matrix if the class type is nominal.
       if datum.nominal_class_type?
         num_class_values = datum.class_values.size 
         matrix = Array.new(num_class_values) { 
@@ -114,8 +114,10 @@ class Trial
             end
           end
         end
-        self.output[:result][:confusion_matrix] = matrix
-        self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
+        unless test_datum && test_datum.is_test
+          self.output[:result][:confusion_matrix] = matrix
+          self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
+        end
       end
     end 
   end
