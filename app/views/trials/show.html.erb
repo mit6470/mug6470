@@ -118,8 +118,8 @@
       </tbody>
     </table>
   </section>
-  <section class="classified-examples"></section>
   <% end %>
+  <section class="classified-examples"></section>
   <% unless output[:warning].blank? %>
     <section class="trial-message ui-state-highlight">
       <span class='ui-icon ui-icon-info'></span>
@@ -133,5 +133,33 @@
          <%= "Error: #{output[:error]} Please choose compatible data sets and classifier." %>
        </p>
     </section>
+  <% end %>
+
+  <% if @trial.test_mode? and @trial.test_datum.is_test %>
+    <table>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>prediction</td>
+          <% @trial.selected_features.each do |i| %>
+            <td> <%= datum.features[i][:name] %></td>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @trial.test_datum.examples.each do |example| %>
+          <% exampleID = example[0].to_i %>
+          <% predNumber = output[:result][exampleID][:predicted].to_i %>
+          <% predClass = @trial.datum.class_values[predNumber-1] %>
+          <tr>
+            <td><%= exampleID %></td>
+            <td><%= predClass %></td>
+            <% @trial.selected_features.each do |i| %>
+              <td><%= example[i] %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% end %>
 <% end %>

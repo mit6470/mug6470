@@ -35,7 +35,6 @@ class CurrentTrialView
     if (@$tweetSearchForm.length != 0)
       @$tweetTerm = $('#tweet_search_term')
       @$tweetButton = $('#tweet_search_button')
-      @$tweetSearchForm.submit => @onTweetSearch()
       @$tweetButton.live 'click', => @onTweetSearch()
   
   hideRunLoader: ->
@@ -75,18 +74,24 @@ class CurrentTrialView
       
   onTweetSearch: ->
     form = @$tweetSearchForm
-
-    onXhrSuccess = (data) =>
-      @$testDataSelect.append """
-          <option value="#{data.id}">#{data.relation_name}</option>
-                         """
-      console.log(data)
-      
-    $.ajax({
-      data: form.serialize(), success: onXhrSuccess,
-      dataType: 'json', type: @$tweetTerm.attr('data_tweet_search_method'),
-      url: @$tweetTerm.attr('data_tweet_search_url')
-    })
+    
+    if not @tweetSearchValid()
+      window.statusView.showStatus "Enter a Tweet search term!", 'error'
+    else
+      onXhrSuccess = (data) =>
+        @$testDataSelect.append """
+            <option value="#{data.id}">#{data.relation_name}</option>
+                           """
+        window.statusView.showStatus "Test data #{data.relation_name} created successfully.", 'highlight'
+        
+      $.ajax({
+        data: form.serialize(), success: onXhrSuccess,
+        dataType: 'json', type: @$tweetTerm.attr('data_tweet_search_method'),
+        url: @$tweetTerm.attr('data_tweet_search_url')
+      })
+  
+  tweetSearchValid: ->
+    @$tweetTerm.val() isnt ''
 
 # Handles the event on trial result view.
 class TrialResultController
@@ -114,7 +119,6 @@ class TrialResultController
     
     $('[data-confusion-matrix]').live 'click', 
                                       -> onConfusionMatrixClick($(this))
-
 
 
 class TrialController
