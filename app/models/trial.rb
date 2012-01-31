@@ -35,10 +35,12 @@ class Trial < ActiveRecord::Base
   # The number of the trial the user has run in a project.
   validates :number, :presence => true, :uniqueness => { :scope => :project_id }
   
+  # Returns true if the testing mode is using test data.
   def test_mode?
     mode == 'test'
   end
   
+  # Returns true if using unlabeled test data for testing.
   def unlabeled_test?
     test_mode? && test_datum && test_datum.is_test
   end
@@ -118,7 +120,7 @@ class Trial
             end
           end
         end
-        if (test_mode? and not test_datum.is_test) or (not test_mode?)
+        if !unlabeled_test?
           self.output[:result][:confusion_matrix] = matrix
           self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
         end
