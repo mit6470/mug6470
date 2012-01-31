@@ -19,7 +19,7 @@
   }
   
   li {
-    margin: 1em 0;
+    padding: 0.5em 0;
   }
   
   h3 {
@@ -34,15 +34,16 @@
 .projects-index {
   margin-top: 1em;
 
-  h3 {
-    display: inline-block;
-  }
   
   li {
-    width: 50%;
-    padding: 0 1em;
+    padding: 0.5em;
     @include border-radius($radius);
+    width: 23em;
     
+    h3, h3 > a {
+      display: inline-block;
+      width: 10em;
+    }
     div.actions {
       display: inline-block;
       margin-left: 3em;
