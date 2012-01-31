@@ -103,8 +103,10 @@
       and put it in the menu on the <em>Test</em> tab.
     </p>
     <p>
-      <form id="tweet_search">
-        <input data_tweet_search_method="GET" data_tweet_search_url="/data/tweet" id="tweet_search_term" name="tweet_search_term" type='text' />
+      <form id="tweet_search" data-remote="true">
+        <input data_tweet_search_method="GET" 
+               data_tweet_search_url="/data/tweet" id="tweet_search_term" 
+               name="tweet_search_term" type='text' />
         <button id="tweet_search_button" name="button" type="button">Search</button>
       </form>
     </p>
