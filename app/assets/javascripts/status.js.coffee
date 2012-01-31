@@ -22,6 +22,9 @@ class StatusView
     $error = $('.status-bar.ui-state-error')
     $error.hide('slide', {direction: 'up'}, @slideTime, -> $(this).remove())
   
+  # Shows the status bar and auto hides it according to the type of the message.
+  # @param [String] msg the message to be displayed in the status bar.
+  # @param [String] type type of the message in ['highlight', 'error' ].
   showStatus: (msg, type)->
     icon = 'info'
     if type == 'error'

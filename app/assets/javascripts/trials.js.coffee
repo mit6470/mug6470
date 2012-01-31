@@ -84,8 +84,11 @@ class CurrentTrialView
                            """
         window.statusView.showStatus "Test data #{data.relation_name} created successfully.", 'highlight'
       
+      onXhrError = (xhr) ->
+        window.statusView.showStatus xhr.responseText, 'error'
+        
       $.ajax({
-        data: form.serialize(), success: onXhrSuccess,
+        data: form.serialize(), success: onXhrSuccess, error: onXhrError,
         dataType: 'json', type: @$tweetTerm.attr('data_tweet_search_method'),
         url: @$tweetTerm.attr('data_tweet_search_url')
       })
