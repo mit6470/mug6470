@@ -1,7 +1,7 @@
 Mug6470::Application.routes.draw do
 
-  resources :tutorials, :except => [:destroy] do
-    resources :sections
+  resources :tutorials, :only => [:index, :show] do
+    resources :sections, :only => [:index, :show]
   end
 
   resources :projects do
@@ -10,15 +10,13 @@ Mug6470::Application.routes.draw do
 
   resources :trials, :only => [:destroy]
 
-  resources :profiles
-  
-  resources :data do
+  resources :data, :except => [:destroy, :update, :edit, :new] do
     collection do
       get :choose
     end
   end
 
-  resources :classifiers do 
+  resources :classifiers, :except => [:destroy, :update, :edit] do 
     collection do
       get :choose
     end
@@ -26,7 +24,7 @@ Mug6470::Application.routes.draw do
 
   resource :session, :controller => 'session'
   
-  resources :users do
+  resources :users, :only => [:new, :create] do
     collection do
       post :check_email
     end

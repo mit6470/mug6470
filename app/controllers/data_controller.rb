@@ -44,11 +44,13 @@ class DataController < ApplicationController
       format.json { render json: @datum }
     end
   end
+  private :new
 
   # GET /data/1/edit
   def edit
     @datum = Datum.find(params[:id])
   end
+  private :edit
 
   # POST /data
   # POST /data.json
@@ -109,6 +111,7 @@ class DataController < ApplicationController
       end
     end
   end
+  private :update
 
   # DELETE /data/1
   # DELETE /data/1.json
@@ -121,6 +124,7 @@ class DataController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private :destroy
   
   # XHR GET /data/choose
   # XHR GET /data/choose.json

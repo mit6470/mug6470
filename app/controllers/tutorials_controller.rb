@@ -21,6 +21,8 @@ class TutorialsController < ApplicationController
     end
   end
 
+  private
+  
   # GET /tutorials/new
   # GET /tutorials/new.json
   def new
