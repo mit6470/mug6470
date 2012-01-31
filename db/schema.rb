@@ -89,11 +89,12 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
     t.text     "output",            :limit => 16777215,                   :null => false
     t.integer  "test_datum_id"
     t.string   "mode",              :limit => 32,       :default => "cv", :null => false
+    t.integer  "number",                                                  :null => false
     t.datetime "created_at",                                              :null => false
     t.datetime "updated_at",                                              :null => false
   end
 
-  add_index "trials", ["project_id"], :name => "index_trials_on_project_id"
+  add_index "trials", ["project_id", "number"], :name => "index_trials_on_project_id_and_number", :unique => true
 
   create_table "tutorials", :force => true do |t|
     t.string   "title",      :limit => 128, :null => false

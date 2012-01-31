@@ -28,12 +28,10 @@ class TrialsController < ApplicationController
     
     project_id = params[:project_id]
     if project_id
-      count = Trial.where(:project_id => project_id).count
-      @trial.name = "Trial-#{count + 1}"
+      number = Project.find_by_id(project_id).max_trial_number + 1
+      @trial.name = "Trial-#{number}"
       @trial.project_id = project_id
-    else
-      time = Time.now
-      @trial.name = "Trial-#{time.hour}-#{time.min}-#{time.sec}"
+      @trial.number = number
     end 
     
     @trial.run

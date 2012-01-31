@@ -11,10 +11,11 @@ class CreateTrials < ActiveRecord::Migration
       
       t.integer :test_datum_id, :null => true
       t.string :mode, :null => false, :default => :cv, :limit => 32 
+      t.integer :number, :null => false
       
       t.timestamps
     end
     
-    add_index :trials, :project_id, :null => false
+    add_index :trials, [:project_id, :number], :null => false, :unique => true
   end
 end

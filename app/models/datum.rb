@@ -1,4 +1,4 @@
-# The input data for a machine learing trial.
+# The input data for a machine learning trial.
 class Datum < ActiveRecord::Base
   serialize :examples, Array
   serialize :features, Array
@@ -44,7 +44,7 @@ class Datum < ActiveRecord::Base
   # :features => array of hashes 
   #                 :name => feature name.
   #                 :type => type of the feature.
-  # :features_data => agregated data for all features.
+  # :features_data => aggregated data for all features.
   #                 :values => array nominal values for a feature.
   #                 :data => an array of hashes for each feature value with 
   #                          class values as keys and class value occurrences as

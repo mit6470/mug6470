@@ -1,5 +1,3 @@
-require 'open3'
-
 # A trial is a particular configuration of input data, classifier, and training
 # and testing modes.
 class Trial < ActiveRecord::Base
@@ -33,6 +31,9 @@ class Trial < ActiveRecord::Base
   
   # Training and testing mode
   validates :mode, :length => 1..32
+  
+  # The number of the trial the user has run in a project.
+  validates :number, :presence => true, :uniqueness => { :scope => :project_id }
   
   def test_mode?
     mode == 'test'
