@@ -101,7 +101,7 @@ class TrialResultController
   constructor: ->
     
     onConfusionMatrixClick = (target) ->
-      params = target.attr('data-confusion-matrix').split '-'
+      params = target.attr('data-matrix-examples').split '-'
       dataId = params[0]
       currentIndex = 1
       examplesToRequest = params[currentIndex..currentIndex + 9]
@@ -111,6 +111,12 @@ class TrialResultController
       target.addClass('clicked')
       
       onXhrSuccess = (data) ->
+        params = target.attr('data-matrix-classes').split '-'
+        $classifiedExampleSection.html """
+                                       <p>Showing some examples with class label <strong>#{params[0]}</strong>
+                                         classified as <strong>#{params[1]}</strong>:
+                                       </p>
+                                       """
         $classifiedExampleSection.append data
       
       if examplesToRequest.length > 0
@@ -120,7 +126,7 @@ class TrialResultController
           dataType: 'html', type: 'GET', url: "/data/#{dataId}"
         })  
     
-    $('[data-confusion-matrix]').live 'click', 
+    $('[data-matrix-examples]').live 'click', 
                                       -> onConfusionMatrixClick($(this))
 
 

@@ -57,13 +57,10 @@ class Trial
   #     -W weka.classifiers.rules.DecisionTable -- 
   #         -X 1 -S "weka.attributeSelection.BestFirst -D 1 -N 5"
   #
-  # @return [Hash] result and error from the execution. If datum or 
-  #     classifier or selected_features is not specified, result and error are
-  #     blank. Result is a hash with example ids and their classification,
-  #     accuracy and confusion matrix.
+  # @return [Boolean] true if input is valid.
   def run
     self.output = { :result => {}, :error => {}, :warning => {} }
-    if datum && classifier && selected_features && mode
+    if datum && classifier && selected_features && mode && (!test_mode? || test_datum)
       classpath = ConfigVar[:weka_classpath]
       data_file = datum.file_path
       rm_features = (0..datum.num_features - 2).to_a - selected_features
@@ -71,7 +68,7 @@ class Trial
       command = ["java -cp #{classpath}",
                  "weka.classifiers.meta.FilteredClassifier -p 1", 
                  "-t #{data_file}"]
-      if test_mode? && test_datum
+      if test_mode?
         command << "-T #{test_datum.file_path}"  
       end
       
@@ -93,7 +90,7 @@ class Trial
         else
           k, v = line.split(':', 2)
           self.output[:error] = v || k  
-          return
+          return true
         end
       end
 
@@ -125,6 +122,10 @@ class Trial
           self.output[:result][:accuracy] = num_correct.to_f / total if total > 0
         end
       end
+      true
+    else
+      false
     end 
   end
+
 end

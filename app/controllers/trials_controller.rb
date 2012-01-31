@@ -34,7 +34,7 @@ class TrialsController < ApplicationController
       @trial.number = number
     end 
     
-    @trial.run
+    valid = @trial.run
     
     respond_to do |format|
       if project_id
@@ -49,8 +49,13 @@ class TrialsController < ApplicationController
                                status: :unprecessable_entity }
         end
       else
-        format.html { render :show, layout: false }
-        format.json { render json: @trial, status: :ok }
+        if valid
+          format.html { render :show, layout: false }
+          format.json { render json: @trial, status: :ok }
+        else
+          format.html { render :nothing => true, 
+                               :status => :unprocessable_entity }
+        end
       end
     end
   end

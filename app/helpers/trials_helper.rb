@@ -37,4 +37,8 @@ module TrialsHelper
           trial.datum_id
     ([id] << example_ids).flatten.join '-'
   end
+  
+  def classes_str(datum, i, j)
+    "#{datum.class_values[i]}-#{datum.class_values[j]}"
+  end
 end

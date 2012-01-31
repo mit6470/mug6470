@@ -1,0 +1,61 @@
+<section>
+  <h5>Summary</h5>
+  <table class="summary result">
+    <tbody>
+      <tr>
+        <td>Data:</td>
+        <td><strong><%= datum.short_name %></strong></td>
+        <td>Classifier:</td>
+        <td><strong><%= trial.classifier %></strong></td>
+      </tr>
+      
+      <tr>
+        <td>Examples:</td>
+        <td><strong><%= datum.num_examples %></strong></td>
+        <td>Class:</td>
+        <td><strong><%= datum.features.last[:name] %></strong></td>
+      </tr>
+       <tr>
+        <td>Test mode:</td>
+        <td><strong><%= trial.mode %></strong></td>
+        <td>Test data:</td>
+        <td>
+          <strong>
+            <%= trial.test_datum.short_name if trial.test_mode? && trial.test_datum %>
+          </strong>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>Features used:</td>
+        <td colspan="3">
+          <% if trial.selected_features %>
+            <strong>
+              <%= "#{@trial.selected_features.size} / #{datum.num_features - 2}" %>
+            </strong>
+            <ul>
+              <% trial.selected_features[0..4].each do |i| %>
+                <li><%= datum.features[i][:name] %></li>
+              <% end %>
+            </ul>
+            <% if trial.selected_features.length > 5 %>
+              <ul class="toggled-features" hidden >
+                <% trial.selected_features[5..-1].each do |i| %>
+                  <li><%= datum.features[i][:name] %></li>
+                <% end %>
+              </ul>
+              <ul>
+                <li class="feature-toggle-button">
+                  <span class="ui-icon ui-icon-triangle-1-s" 
+                        title="More features">Reveal</span>
+                  <span class="ui-icon ui-icon-triangle-1-n" style="display: none" 
+                        title="Hide features">Hide</span>
+                </li>
+              </ul>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+     </tbody>
+  </table>
+</section>

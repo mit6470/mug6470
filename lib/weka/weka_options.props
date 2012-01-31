@@ -132,15 +132,9 @@ weka.classifiers.Classifier=\
  weka.classifiers.bayes.NaiveBayesUpdateable,\
  weka.classifiers.functions.LibSVM,\
  weka.classifiers.functions.RBFNetwork,\
- weka.classifiers.functions.SimpleLogistic,\
  weka.classifiers.functions.SMO,\
- weka.classifiers.trees.BFTree,\
  weka.classifiers.trees.DecisionStump,\
- weka.classifiers.trees.FT,\
  weka.classifiers.trees.J48,\
- weka.classifiers.trees.J48graft,\
- weka.classifiers.trees.LADTree,\
- weka.classifiers.rules.Ridor,\
  weka.classifiers.rules.ZeroR
 
 # Lists the AbstractOutput classes I want to choose from
