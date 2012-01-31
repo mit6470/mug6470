@@ -129,6 +129,7 @@ class DataView
         options = {stack: true, fillColors: pv.Colors.category20().range()}
         if isClassFeature
           options['clickCallback'] = @filterExamples
+          options['cursorType'] = 'pointer'
           @classChart = new BarChart(chartData, options)
           @classChart.render(chartId)
           classChartElem = $('#'+chartId)

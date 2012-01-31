@@ -28,6 +28,7 @@ var BarChart = function (chartData, options) {
   var leftMargin = options.leftMargin || BarChart.DefaultStyle.leftMargin;
   var xlabelHeight = options.xlabelHeight || BarChart.DefaultStyle.xlabelHeight;
   var ylabelWidth = options.ylabelWidth || BarChart.DefaultStyle.ylabelWidth;
+  var cursorType = options.cursorType || "auto"
   var clickCallback = options.clickCallback;
   
   var barData = function (d) {
@@ -74,7 +75,10 @@ var BarChart = function (chartData, options) {
         .width(x.range().band)
         .left(function() { return x(this.index) + leftMargin; } )
         .fillStyle(function(d, p) { return fillColors(p); } )
-        .cursor("pointer")   
+        .cursor(cursorType)   
+        .text(function(d, p) { return "Class label: " + p })
+        .event("mouseover", pv.Behavior.tipsy({ gravity: "s", fade: true }));
+        
     if (options.clickCallback) {
       bar.event("click", options.clickCallback);
     }
@@ -114,7 +118,7 @@ BarChart.prototype.render = function (id) {
 }
 
 BarChart.DefaultStyle = {
-  width: 600, height: 250, xlabelHeight: 0, ylabelWidth: 12, leftMargin: 8,
+  width: 600, height: 250, xlabelHeight: 1, ylabelWidth: 12, leftMargin: 8,
   fillColors: ["#60D698", "#F26C6C"]
 };
 

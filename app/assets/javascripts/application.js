@@ -9,4 +9,6 @@
 //= require jquery.remotipart
 //= require jquery-ui
 //= require protovis
+//= require tipsy
+//= require protovis-tipsy
 //= require_tree .
