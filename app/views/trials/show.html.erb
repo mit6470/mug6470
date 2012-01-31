@@ -16,8 +16,8 @@
     <% unless output[:error].blank? %>
       <section class="trial-message ui-state-highlight">
         <p>
-          <span class='ui-icon ui-icon-alert'></span>
-          <%= "Error: #{output[:error]} Please choose compatible data sets and classifier." %>
+          <span class='ui-icon ui-icon-info'></span>
+          <%= "Info: #{output[:error]} Please choose compatible data sets and classifier." %>
         </p>
       </section>
     <% else %>
@@ -57,7 +57,7 @@
         <section class="trial-message ui-state-highlight">
           <p>
             <span class='ui-icon ui-icon-info'></span>
-            <%= "Warning: #{output[:warning]}" %>
+            <%= "Info: #{output[:warning]}" %>
           </p>
         </section>
       <% end %>
