@@ -1,52 +1,44 @@
 <article>
-  <h1>Introduction to Machine Learning</h1>
+  <h1>Machine Learning Basics</h1>
   <summary>
-    Machine learning is a burgeoning new technology for mining knowledge from
-    data. But what is it all about? This tutorial will teach you some basics
-    of applying machine learning through a simple example of prescribing contact lenses.
+    Learn some core concepts and lingo in this tutorial,
+    by training software to prescribe contact lenses.
   </summary>
   <section>
     <h2>
-      Computers are dumb...until we teach them things
+      So, what is machine learning?
     </h2>
     <p>
-      So, what is machine learning?
-    </p>
-    <p>
-      It boils down to a simple idea: teaching computers to see patterns in data.
+      It's all about teaching computers to see patterns in data.
       We see patterns in data all the time. If I show you a picture of a blimp,
       you'll recognize it as a blimp because you've seen blimps in the past and 
-      you've learned that blimps are large, egg-shaped flying machines. At a lower 
-      level, your brain is processing raw image data, allowing you to decide that 
-      the blimp is in fact egg-shaped.
+      you've learned that blimps are large, egg-shaped flying machines.
     </p>
     <p>
-      Well, computers have none of this software built-in. Machine learning is
+      Well, computers have none of this intelligence built-in. Machine learning is
       all about training software to see data as blimps, cars, people, spoken words,
       stock prices, and almost anything else you can think of.
     </p>
   </section>
   <section>
     <h2>
-      The Basics
+      The Task
     </h2>
     <p>
-      Alright, let's get our hands dirty and start using Protom on a real example:
+      The machine learning task is this: we have <em>training data</em>, which are examples
+      of different classes we want to teach the computer about. We want to train a <em>classifier</em>
+      to label new examples with the correct class, by showing it the training examples.
+    </p>
+    <p>
+      Alright, let's get our hands dirty and start using ProtoM on a real example:
       deciding what kind of contact lenses a person needs. On the right, you should
       be in the <em>Data</em> tab. From the <em>Choose data</em> menu, select <em>contact-lenses</em>.
     </p>
     <p>
-      The machine learning setup is this: we have <em>training data</em>, which are examples
-      of different classes we want to teach the computer about. Take a moment to look
-      at the examples in the contact-lenses dataset. Here, we have 24 examples of 
-      people and 3 classes: <em>soft</em>, <em>hard</em>, and <em>none</em>.
-      <em>soft</em> means the person needs soft contact lenses, <em>hard</em> means
-      they need hard lenses, and <em>none</em> means they don't need contact lenses.
-    </p>
-    <p>
-      We teach the computer by training what is called a <em>classifier</em>. The classifier
-      should then be able to classify examples by labeling them with the correct class.
-      In this example, it decides whether a person needs soft, hard or no contact lenses.
+      Take a moment to look at the examples in the contact-lenses dataset. Here, we have 24 examples of 
+      people and 3 classes of contact lens prescriptions: <em>soft</em>, <em>hard</em>, and <em>none</em>.
+      The histogram shows how many examples are in each class. If you click on a class in the histogram,
+      the examples from that class will be listed below.
     </p>
   </section>
   <section>
@@ -59,15 +51,15 @@
       classes.
     </p>
     <p>
-      Take for instance <em>Person 2</em>. She is young, has a myope prescription,
-      doesn't have astigmatism and has a normal tear production rate. Other people have 
-      different values for the same features. These features correlate in some way to what 
-      kind of contact lenses are needed for each individual.
+      Take for instance <em>Example 2</em>, a person who needs <em>soft</em> lenses. She is young,
+      has a myope prescription, doesn't have astigmatism and has a normal tear production rate.
+      These features hopefully correlate in some way to what kind of contact lenses are 
+      needed for each individual.
     </p>
     <p>
       During training, it is the classifier's job to learn this correlation. That way, when
       a new person comes into the optometrist's office, the classifier can decide what kind
-      of contact lenses they need based on their age, prescription and health conditions.
+      of contact lenses they need based on their age and vision conditions.
     </p>
   </section>
   <section>
@@ -76,14 +68,14 @@
     </h2>
     <p>
       In order to train the classifier, we must choose one first. Click on the <em>Classifier</em>
-      tab at the top of the page. From the <em>Choose Classifier</em> menu, select
+      tab at the top of the page. From the <em>Choose classifier</em> menu, select
       <em>trees.J48</em>.
     </p>
     <p>
       This is a type of classifier called a decision tree, which learns a set of rules for 
       classifying examples based on feature values. How the tree works is outside the scope
       of this tutorial, but you can find a good description
-      <a href="http://en.wikipedia.org/wiki/Decision_tree">here</a>.
+      <a href="http://en.wikipedia.org/wiki/Decision_tree" target="_blank">here</a>.
     </p>
   </section>
   <section>
@@ -96,6 +88,11 @@
       <em>results</em> for this trial should appear on the page. For example, the accuracy
       is something like 83%.
     </p>
+  </section>
+  <section>
+    <h2>
+      Results
+    </h2>
     <p>
       What do the results mean? How have we checked that the classifier worked? This is done 
       using <em>cross-validation</em>. The idea is to use 9/10 of the data for training, and the
@@ -106,6 +103,21 @@
       The result is that each example is given to the decision tree at some point for classification.
       If the actual label doesn't match the classifier's decision, this is counted as an error.
       The accuracy means that 83% of the people were given the correct type of contact lenses.
+    </p>
+  </section>
+  <section>
+    <h2>
+      Basics: Covered
+    </h2>
+    <p>
+      We've now covered some of the basic concepts behind practical machine learning. The 
+      steps in teaching computers to understand data is actually quite simple: prepare some training
+      data, choose a classifier, train the classifier and use cross-validation
+      to verify how well the classifier is doing.
+    </p>
+    <p>
+      The trickier bits are in understanding how features and classifiers can impact your results.
+      Move on to the next tutorial by clicking the <em>Back</em> button below and choosing Tutorial 2.
     </p>
   </section>
 </article>
