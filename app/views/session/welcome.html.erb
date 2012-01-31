@@ -1,5 +1,5 @@
 <%= image_tag 'preview.png', :id => 'preview-image' %>
-<article class='sidebar'>
+<article class="sidebar" id="welcome">
   <h2>
     Learn<br/>Machine Learning
   </h2>
@@ -9,13 +9,33 @@
     software that understands speech, Twitter sentiment, stock prices and much, much more.
   </p>
   <div class="welcome-button">
-    <%= link_to 'Learn the Basics', '/tutorials/1', :class => :button %>
+    <%= link_to 'Learn the Basics', Tutorial.by_number.first , :class => :button %>
   </div>
   <div class="welcome-button">
-    <%= link_to 'Start Experimenting', new_project_path(), :class => :button %>
+    <%= link_to 'Start Experimenting', new_project_path, :class => :button %>
   </div>
   <div class="welcome-button">
     <h3>or</h3>
-    <%= render 'projects/index' %>
+    <%= link_to 'Create account', new_user_path, :class => :button %>
+    <ul class="tips">
+      <li>
+        <span class="ui-icon ui-icon-lightbulb"></span>
+        <p>
+          Start your own projects.
+        </p>
+      </li>
+      <li>
+        <span class="ui-icon ui-icon-lightbulb"></span>
+        <p>
+          Save trials automatically and compare your results historically.
+        </p>
+      </li>
+      <li>
+        <span class="ui-icon ui-icon-lightbulb"></span>
+        <p>
+          Upload your own data sets for analysis.
+        </p>
+      </li>
+    </ul>
   </div>
 </article>
