@@ -16,7 +16,7 @@ Mug6470::Application.routes.draw do
     end
   end
 
-  resources :classifiers, :except => [:destroy, :update, :edit] do 
+  resources :classifiers, :except => [:destroy, :update, :edit, :create, :new] do 
     collection do
       get :choose
     end
