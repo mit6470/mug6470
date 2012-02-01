@@ -131,7 +131,6 @@ weka.classifiers.Classifier=\
  weka.classifiers.bayes.NaiveBayesMultinomial,\
  weka.classifiers.bayes.NaiveBayesUpdateable,\
  weka.classifiers.functions.LibSVM,\
- weka.classifiers.functions.RBFNetwork,\
  weka.classifiers.functions.SMO,\
  weka.classifiers.trees.DecisionStump,\
  weka.classifiers.trees.J48,\
