@@ -195,11 +195,15 @@
   #data-tabs-features {
     label {
       font-weight: bold;
-      
     }
     div.field {
       margin-bottom: 0.2em;
-      margin-top: 0.6em;
+      margin-top: 0.2em;
+    }
+    li {
+      border: 1px solid $border-color;
+      margin-bottom: 0.7em;
+      @include border-radius($radius);
     }
   }
 }
