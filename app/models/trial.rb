@@ -29,7 +29,7 @@ class Trial < ActiveRecord::Base
  
   # An array of integer indices as selected features used in training. It does
   # not include the class feature which should always be included.
-  validates :selected_features, :length => 0..128, :presence => true
+  validates :selected_features, :length => 0..512, :presence => true
   
   # Training and testing mode
   validates :mode, :length => 1..32, :inclusion => { :in => %w(cv test) }
