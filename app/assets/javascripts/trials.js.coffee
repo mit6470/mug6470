@@ -50,7 +50,7 @@ class CurrentTrialView
     @$runButton.removeAttr 'disabled'
       
   
-  # Perform the run button action if the input is valid.  
+  # Performs the run button action if the input is valid.  
   onRunButtonClick: ->
     errorMsg = ''
     if @dataView.dataSelectValid() and @classifierView.classifierSelectValid()

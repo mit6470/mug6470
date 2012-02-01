@@ -33,7 +33,7 @@ class ProjectView
     
   # Renders the trial result.  
   renderResult: (@resultHtml) ->
-    $trialElement = $($(@resultHtml).filter('[data-trial-id]')[0])
+    $trialElement = $($(@resultHtml).find('[data-trial-id]')[0])
     trialId = $trialElement.attr('data-trial-id')
     trialName = $trialElement.attr('data-trial-name')
     # If the user is not logged in, the trial id is -1.

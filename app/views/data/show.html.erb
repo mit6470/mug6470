@@ -2,9 +2,9 @@
   <table>
     <thead>
       <tr>
-        <td><%= @datum.features[-1][:name] %></td>
+        <th><%= @datum.features[-1][:name] %></th>
       <% @datum.features[1...-1].each do |f| %>
-        <td><%= f[:name] %></td>
+        <th><%= f[:name] %></th>
       <% end %>
       </tr>
     </thead>

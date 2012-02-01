@@ -112,7 +112,7 @@
       bottom: 2px solid $table-border;
       top: 1px solid $table-border;
     }
-    padding: 0.2em 0;
+    padding: 0.2em 0.2em;
   }
   
   select > option:first-child {
@@ -142,6 +142,16 @@
     .ui-state-active {
       background: white;
       border-color: $data-tab-active-border-color;
+    }
+  }
+  
+  .classified-examples {
+    thead tr {
+      background: $example-header-background-color;
+      
+      th {
+        color: white;
+      }
     }
   }
 }
@@ -184,6 +194,21 @@
         }
       }
     }
+  }
+  
+  #data-tabs-features {
+    label {
+      font-weight: bold;
+    }
+    div.field {
+      margin-bottom: 0.3em;
+    }
+  }
+}
+
+#data-tabs-features, .trial-result {
+  p {
+    margin: 0.2em 0 0.4em 0;
   }
 }
 
