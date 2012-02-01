@@ -1,69 +1,70 @@
-<%= content_tag :h4, "Trial result", 'data-trial-id' => @trial.id || -1,
-                'data-trial-name' => @trial.name || '' %>
-<% if @trial.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-      <% @trial.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <div>
-<% else %>
-  <% datum = @trial.datum %>
-  <% if datum %>
-    <%= render 'trials/summary', :trial => @trial, :datum => datum %>
-    <% output = @trial.output %>
-    <% unless output[:error].blank? %>
-      <section class="trial-message ui-state-highlight">
-        <p>
-          <span class='ui-icon ui-icon-info'></span>
-          <%= "Info: #{output[:error]} Please choose compatible data sets and classifier." %>
-        </p>
-      </section>
-    <% else %>
-      <% unless output[:result].blank? %>
-        <section>
-          <h5>Result</h5>
-          <table class="summary result">
-            <tbody>
-              <tr>
-                <td>Accuracy:</td>
-                <td>
-                  <% accuracy = output[:result][:accuracy] %>
-                  <% if accuracy %>
-                    <strong class="highlight">
-                      <%= "#{"%.4f" % (accuracy * 100) } %" %>
-                    </strong>
-                  <% elsif @trial.unlabeled_test? %>
-                    No accuracy result for unlabeled test data.
-                  <% end %>
-                </td>
-                <td></td><td></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <% matrix = output[:result][:confusion_matrix] %>
-        <% if matrix %>
-          <%= render 'trials/matrix', :trial => @trial, :datum => datum, 
-                                      :matrix => matrix %>
+<div class="trial-result">
+  <%= content_tag :h4, "Trial result", 'data-trial-id' => @trial.id || -1,
+                  'data-trial-name' => @trial.name || '' %>
+  <% if @trial.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @trial.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
         <% end %>
-        <% if @trial.selected_features && @trial.unlabeled_test? %>
-          <%= render 'trials/predicted_classification', :trial => @trial, 
-                     :output => @trial.output %>
-        <% end %>
-      <% end %>
-      <% unless output[:warning].blank? %>
+      </ul>
+    <div>
+  <% else %>
+    <% datum = @trial.datum %>
+    <% if datum %>
+      <%= render 'trials/summary', :trial => @trial, :datum => datum %>
+      <% output = @trial.output %>
+      <% unless output[:error].blank? %>
         <section class="trial-message ui-state-highlight">
           <p>
             <span class='ui-icon ui-icon-info'></span>
-            <%= "Info: #{output[:warning]}" %>
+            <%= "Info: #{output[:error]} Please choose compatible data sets and classifier." %>
           </p>
         </section>
+      <% else %>
+        <% unless output[:result].blank? %>
+          <section>
+            <h5>Result</h5>
+            <table class="summary result">
+              <tbody>
+                <tr>
+                  <td>Accuracy:</td>
+                  <td>
+                    <% accuracy = output[:result][:accuracy] %>
+                    <% if accuracy %>
+                      <strong class="highlight">
+                        <%= "#{"%.4f" % (accuracy * 100) } %" %>
+                      </strong>
+                    <% elsif @trial.unlabeled_test? %>
+                      No accuracy result for unlabeled test data.
+                    <% end %>
+                  </td>
+                  <td></td><td></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <% matrix = output[:result][:confusion_matrix] %>
+          <% if matrix %>
+            <%= render 'trials/matrix', :trial => @trial, :datum => datum, 
+                                        :matrix => matrix %>
+          <% end %>
+          <% if @trial.selected_features && @trial.unlabeled_test? %>
+            <%= render 'trials/predicted_classification', :trial => @trial, 
+                       :output => @trial.output %>
+          <% end %>
+        <% end %>
+        <% unless output[:warning].blank? %>
+          <section class="trial-message ui-state-highlight">
+            <p>
+              <span class='ui-icon ui-icon-info'></span>
+              <%= "Info: #{output[:warning]}" %>
+            </p>
+          </section>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
-
+</div>
 
  

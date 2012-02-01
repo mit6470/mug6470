@@ -1,6 +1,8 @@
 # A trial is a particular configuration of input data, classifier, and training
 # and testing modes.
 class Trial < ActiveRecord::Base
+  MODE_NAMES = {'cv' => 'Cross validation', 'test' => 'Use test data' }
+  
   serialize :output, Hash
   serialize :selected_features, Array
     
@@ -30,7 +32,7 @@ class Trial < ActiveRecord::Base
   validates :selected_features, :length => 0..128, :presence => true
   
   # Training and testing mode
-  validates :mode, :length => 1..32
+  validates :mode, :length => 1..32, :inclusion => { :in => %w(cv test) }
   
   # The number of the trial the user has run in a project.
   validates :number, :presence => true, :uniqueness => { :scope => :project_id }
@@ -45,6 +47,9 @@ class Trial < ActiveRecord::Base
     test_mode? && test_datum && test_datum.is_test
   end
 
+  def mode_name
+    MODE_NAMES[mode]
+  end
 end
 
 # :nodoc: Trial execution

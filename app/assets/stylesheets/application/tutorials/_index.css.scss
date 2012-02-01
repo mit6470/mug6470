@@ -27,10 +27,6 @@
     margin: 1em 0;  
   }
   
-  h3 {
-    font-size: $h4-font-size;
-  }
-  
   summary {
     padding: 0 1.5em;
   }
@@ -43,6 +39,10 @@
   
   li:last-child {
     border: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
   }
     
 }
@@ -66,6 +66,14 @@
   li:nth-child(odd) {
     background: $table-background;
   }    
+  
+  h3 {
+    font-size: $h4-font-size;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .sidebar, .main {
@@ -75,5 +83,9 @@
   
   ol, ul {
     margin-top: 1em;
+  }
+  
+  > h2 + button {
+    margin: 1em 0;
   }
 }
