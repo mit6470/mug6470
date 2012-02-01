@@ -44,10 +44,6 @@
       border-top: 1px solid $border-color;
       padding-top: .5em;
 
-      div.field {
-        margin-bottom: 1em;
-      }
-      
       input {
         vertical-align: top;
       }
@@ -199,9 +195,11 @@
   #data-tabs-features {
     label {
       font-weight: bold;
+      
     }
     div.field {
-      margin-bottom: 0.3em;
+      margin-bottom: 0.2em;
+      margin-top: 0.6em;
     }
   }
 }
