@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20120122052424) do
     t.string   "name",              :limit => 32,                         :null => false
     t.integer  "classifier_id",                                           :null => false
     t.integer  "datum_id",                                                :null => false
-    t.string   "selected_features", :limit => 128,                        :null => false
+    t.text     "selected_features",                                       :null => false
     t.text     "output",            :limit => 16777215,                   :null => false
     t.integer  "test_datum_id"
     t.string   "mode",              :limit => 32,       :default => "cv", :null => false
