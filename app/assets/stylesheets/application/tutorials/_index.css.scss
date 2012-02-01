@@ -27,10 +27,6 @@
     margin: 1em 0;  
   }
   
-  h3 {
-    font-size: $h4-font-size;
-  }
-  
   summary {
     padding: 0 1.5em;
   }
@@ -43,6 +39,10 @@
   
   li:last-child {
     border: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
   }
     
 }

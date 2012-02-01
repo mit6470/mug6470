@@ -1,5 +1,5 @@
-<div id="about">
-  <article class='main'>
+<article class="main">
+  <section>
     <h2>About ProtoM</h2>
     <p>
       ProtoM is built on top of <%= link_to 'Weka', 'http://www.cs.waikato.ac.nz/ml/weka/'%>, 
@@ -12,10 +12,24 @@
       Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten (2009); The WEKA Data Mining Software: An Update; SIGKDD Explorations, Volume 11, Issue 1.
     </p>
     <a href="http://www.cs.waikato.ac.nz/ml/weka/"><%= image_tag 'weka-logo.png', :id => 'weka-image' %></a>
-    <h2>Contact</h2>
+  </section>
+  <section>
+    <h3>ARFF data format</h3>
     <p>
-      For any questions, requests or comments, please contact us at <a href="mailto:protom.web@gmail.com">protom.web@gmail.com</a>
+      To upload your own data sets to ProtoM, you need to format your data files 
+      according to WEKA's <a href="http://weka.wikispaces.com/ARFF">ARFF</a> 
+      data format, with '.arff' as the file extension. The first attribute of 
+      the relation has to be ID numeric.
     </p>
-  </article>
-</div>
+    <p>
+      You can find an example of a valid ARFF file 
+      <%= link_to 'here', '/tweet-sentiment-example.arff' %>.
+  </section>
+</article>
+<article class="sidebar">
+  <h2>Contact</h2>
+  <p>
+    For any questions, requests or comments, please contact us at <a href="mailto:protom.web@gmail.com">protom.web@gmail.com</a>
+  </p>
+</article>  
 
