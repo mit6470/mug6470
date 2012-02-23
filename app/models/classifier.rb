@@ -5,7 +5,7 @@ class Classifier < ActiveRecord::Base
                            :length => 1..128
   
   # The information about the classifier.
-  validates :synopsis, :length => 0..4.kilobytes, :allow_nil => true
+  validates :synopsis, :length => { :in => 0..4.kilobytes, :allow_nil => true }
   
   def to_s
     short_name
